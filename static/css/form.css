@@ -1,0 +1,509 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+
+/* my container */
+
+.container {
+max-width: 1180px;
+margin-inline: auto;
+overflow: hidden; /*   responsive */
+}
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.progress-indicator {
+    display: flex;
+    align-items: center; /* Adjust gap as needed */
+}
+
+.step { 
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ddd;
+    position: relative;
+    z-index: 1;
+}
+
+
+.step:not(:first-child) .line {
+    left: -50%;
+}
+
+
+
+.step.completed .circle  {
+    background-color: #34c181;
+}
+
+.step.completed .line  {
+    background-color: #34c181;
+}
+
+
+.sidebar {
+    
+    padding: 20px;
+    
+    border-radius: 10px;
+    /* margin-right: 20px; */
+}
+
+.sidebanner{
+    width: 400px;
+    height: auto;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+
+.form-container {
+    
+   width: 100%;
+    /* background-color: #fff; */
+    padding: 30px;
+    border-radius: 10px;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.progress-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.progress-step {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 2px solid #e0e0e0;
+    position: relative;
+}
+
+.progress-step.active {
+    font-weight: bold;
+    color: #35b67e;
+    border-bottom: 2px solid #35b67e;
+}
+.form-step {
+    display: none;
+}
+.form-step.active {
+    display: block;
+}
+.progress-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -50%;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: #e0e0e0;
+    z-index: -1;
+}
+
+.progress-step.active:not(:last-child)::after {
+    background-color: #35b67e;
+}
+
+h2 {
+    color: #35b67e;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    background-color: #f2f7f5;
+    padding: 20px 20px;
+   
+    border-radius: 15px;
+}
+
+.form-group input[type=text] {
+    width: 70%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 18px 20px 18px 20px;
+    
+}
+
+.back input[type=text] {
+    width: 70%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    
+    background-image: url('../assets/depart.png');
+    background-size: 30px ;
+    background-position: 20px 15px;
+    background-size: 19px; 
+    background-repeat: no-repeat;
+    padding: 18px 20px 18px 20px;
+}
+
+
+.radio-group label {
+    width: 70%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: white;
+    align-items: center;
+    background-size: 30px ;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 18px 20px 18px 20px;
+    
+}
+
+.form-step-2
+{
+    background-color: #27ae60;
+}
+
+
+
+
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-input {
+    display: flex;
+    gap: 20px;
+}
+
+.form-input input,
+.radio-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    
+}
+
+#uploadDocuments{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+::-webkit-file-upload-button {
+    display: none;
+ }
+
+
+/* Style for the entire form group */
+
+.form-group {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    
+}
+
+/* Style for the radio group container */
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+/* Style for individual radio buttons */
+.custom-radio {
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: #f7f9fc;
+        border: 1px solid #dce3ed;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+    
+}
+
+/* Hide the default radio button */
+.custom-radio input[type="radio"] {
+    display: none; /* Hide the default radio button */
+}
+
+/* Style for the custom radio indicator */
+.radio-indicator {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    margin-right: 10px; /* Space between radio button and text */
+    position: relative;
+    background-color: #fff;
+    border-color: #4CAF50;
+}
+
+/* Style for the checked radio button */
+.custom-radio input[type="radio"]:checked + .radio-indicator {
+    background-color: white; /* Change background when checked */
+    border-color: #4CAF50;
+}
+
+.custom-radio input[type="radio"]:checked + .radio-indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-radio input[type="radio"]:checked + .radio-indicator::after {
+    content: '';
+    display: block;
+    position: absolute;
+    align-items: center;
+    width: 13px;
+    height: 13px;
+    top: 50%;
+    left: 50%;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.custom-radio span {
+    margin-right: 10px;
+}
+
+/* Hover effect for radio indicator */
+.custom-radio:hover {
+    background-color: #e2e8f0;
+}
+
+.custom-radio:hover .radio-indicator {
+    border-color: #10d129;
+}
+
+
+
+/* #form-step-5 div{
+    background-color: #dce3ed;   
+} */
+
+#form-step-5 .compensation-summary{
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+#form-step-5 .compensation-summary strong{ 
+   color: #27ae60;
+}
+
+.flight-arrival-details strong{
+    padding-block: 10px;
+}
+
+#form-step-5 .nextBtn1{
+    background-color: white;
+    color: blue;
+    border: 1px solid blue;
+}
+
+
+button#nextBtn {
+    background-color: #35b67e;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    float: right;
+}
+
+.addtBtn{
+    background-color: white ;
+    border: 1px solid #35b67e;
+    color: black;
+}
+button {
+    background-color: #248b55;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button.prevBtn {
+
+}
+
+/* button:hover {
+    background-color: #1e7448;
+} */
+
+
+
+.form-step-container-wo-btn{
+    background-color: #d1ead7;
+    
+    padding: 50px;
+    border-radius: 15px;
+}
+
+.form-step-container-wo-btn .form-group{
+    background-color: white;
+}
+
+
+.form-step-container-wo-btn .form-group input{
+    background-color:#d1ead7;
+    padding: 18px 20px 18px 40px;
+    border-radius: 15px;
+    color: black;
+    border: none;
+}
+
+#form-step-4 .form-group input[type="date"]{
+    background-color:white;
+    padding: 18px 20px 18px 40px;
+    border-radius: 15px;
+    color: black;
+    border: none;
+}
+
+.footer-section {
+    background-color: #d1ead7;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #eaeaea;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    /* max-width: 1200px; */
+}
+
+.footer-logo img {
+    max-width: 150px; /* Adjust size as needed */
+}
+
+.footer-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-links li {
+    margin: 0 15px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.footer-links a:hover {
+    color: #27ae60;
+}
+
+.footer-copyright {
+    font-size: 1em;
+    color: #555;
+}
+
+
+
+
+
+
+
+
+
+/* Assuming you're using Tailwind CSS */
+
+/* Default circle style */
+.progress-indicator .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #d9d9d9; /* Original color */
+    border: 2px solid #d9d9d9;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Completed circle style */
+.progress-indicator .step.completed .circle {
+    background-color: #36AC57; /* Green color */
+    border-color: #36AC57;
+}
+
+/* Default line style */
+.progress-indicator .line {
+    background-color: #d9d9d9; /* Original color */
+    height: 2px;
+    transition: background-color 0.3s;
+}
+
+/* Completed line style */
+.progress-indicator .step.completed .line {
+    background-color: #36AC57; /* Green color */
+}
+
+/* Optional: Hover or active states */
+.progress-indicator .circle:hover {
+    /* Define hover styles if needed */
+}

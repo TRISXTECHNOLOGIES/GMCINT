@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Lists - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/super.css') }}">
+
+    <script>
+        function submitForm(n) {
+    var form = document.getElementById(n);
+    if (form) {
+        form.submit();
+    } else {
+        console.error("Form with ID " + n + " not found.");
+    }
+}
+
+    </script>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ url_for('static', filename='assets/logo2.png') }}" alt="Get My Claims Logo">
+        </div>
+        <nav>
+            <ul>
+                <li ><a href="/super-dash">Dashboard</a></li>
+                <li class="active"><a href="/super">CRM Data</a></li>
+                <li><a href="/create_admin">Add Admin</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-section">
+            <h3 style=" margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin-right: 10px
+        ">Website</h3>
+            <ul style="
+            padding-left: 10px;
+            margin-bottom: 0px;
+            margin-top: 11px;
+        ">
+                <li style=" margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    padding: 10px; margin-right: 10px; padding-left: 0px;" ><a href="#">Gallery</a></li>
+                <li style=" margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                padding: 10px; padding-left: 0px;"><a href="#">Blogs</a></li>
+                <li style=" margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                padding: 10px; padding-left: 0px;"><a href="#">Testimonials</a></li>
+                <li style=" margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                padding: 10px; padding-left: 0px;"><a href="#">Achievements</a></li>
+            </ul>
+        </div>
+        
+        <div class="sidebar-section">
+            <ul style="
+            padding-left: 10px;
+            margin-bottom: 0px;
+            margin-top: 11px;
+        ">
+                <li style=" margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+            "><a href="#">Setting</a></li>
+                <li style=" margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                padding: 10px;"><a href="/logout">Log Out</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="menu-toggle">
+                    <img src="icons/menu-icon.png" alt="Menu">
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="notifications">
+                    <img src="icons/notification-icon.png" alt="Notifications">
+                </div>
+                <div class="language-selector">
+                    <img src="icons/flag-icon.png" alt="Language">
+                    <span>English</span>
+                </div>
+                <div class="user-profile">
+                    <img src="icons/user-icon.png" alt="User">
+                    <span>{{username}} </span>
+                    <span class="user-role">{{role}} </span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <main>
+            <section class="content-header">
+                <h2>Contact Lists</h2>
+                <form action="/super" method="get">
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <button type="submit" class="download-btn">Find</button>
+                        <select name="date">
+                            <option value="">Date</option>
+                            {% for date in allowed_dates %}
+                            <option value="{{date}}">
+                                {{date}}
+                            </option>
+                            {% endfor %}
+                        </select>
+
+                        <select name="admin">
+                            <option value="">Admin</option>
+                            {% for admin in admins %}
+                            <option value="{{admin.id}}">
+                                {{admin.first_name}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                            <select name="status">
+                                <option value="" >Status</option>
+                                {% for status in allowed_status %}
+                                    <option value="{{status}}">{{status}}</option>
+                                {% endfor %}
+                            </select>
+                                <!-- Status options dynamically generated -->
+                        <button type="reset" class="download-btn" style="margin-right: 12px;">Reset</button>
+                            
+                    </div>
+                </form>
+                <button><a href="{{ url_for('download_data', date=date,admin=admin,status=status) }}">download data</a></button>
+            </div>
+            </section>
+
+            <section class="contact-table-section">
+                <table class="contact-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Date</th>
+                            <!-- <th>Type</th> -->
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for flight in flights %}
+                        <form action="/super" id="{{flight.id}}" method="post">
+                        <tr>
+                            <td>{{flight.id}} </td>
+                            <td>{{flight.first_name}} </td>
+                            <td>{{flight.phone_number}} </td>
+                            <td>{{flight.email}} </td>
+                            <td>{{flight.date}} </td>
+                            <!-- <td>Electric</td> -->
+                            <td class="status"><span class="status-badge controlled">
+                                <input name="id" type="number" value="{{flight.id}}" required hidden>
+                                <select name="option" onchange="submitForm('{{flight.id}}')" style="background-color: #35b67e0a;border-top-width: 0px;border-right-width: 0px;border-left-width: 0px;border-bottom-width: 0px;">
+                                    <option value="{{flight.status}}">{{flight.status | upper}}</option>
+                                <option value="open">Open</option>
+                                <option value="progress">In Progress</option>
+                                <option value="pending">Pending</option>
+                                <option value="completed">Completed</option>
+                                <option value="NA">NA</option>
+                            </select></span></td>
+                        </tr>
+                    </form>
+                        {% endfor %}
+                        
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                        {% if pagination.has_prev %}
+                        <button class="prev-page">
+                            <a href="{{ url_for('super', page=pagination.prev_num, date=date,admin=admin,status=status) }}">Previous</a>
+                        </button>
+                        {% endif %}
+                        
+                        {% for page_num in pagination.iter_pages(left_edge=2, right_edge=2, left_current=2, right_current=2) %}
+                        {% if page_num %}
+                            <a href="{{ url_for('super', page=page_num, date=date,admin=admin,status=status) }}"
+                            class="{% if page_num == pagination.page %}active{% endif %}">
+                            {{ page_num }}
+                        </a>
+                    {% else %}
+                        ...
+                        {% endif %}
+                        {% endfor %}
+                                
+                                
+                                {% if pagination.has_next %}
+                                <button class="next-page">
+                                    <a href="{{ url_for('super', page=pagination.next_num, date=date,admin=admin,status=status) }}">Next</a>
+                                </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/super.js') }}"></script>
+</body>
+</html>

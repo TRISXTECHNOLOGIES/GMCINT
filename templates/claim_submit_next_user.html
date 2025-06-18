@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* Base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        background-color: white;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      .claim-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Header Section */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        width: 56%;
+      }
+
+      .back-btn a {
+        text-decoration: none;
+        color: #27ae60;
+        font-size: 1.2em;
+      }
+
+      .logo img {
+        width: 200px;
+      }
+
+      /* Flight info */
+      .flight-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .flight-info h3 {
+        font-size: 1.5em;
+        color: #000;
+        font-weight: bold;
+      }
+
+      .plane-icon img {
+        width: 50px;
+      }
+
+      .highlight {
+        color: #27ae60;
+      }
+
+      /* Claim content */
+      .claim-content {
+        display: flex;
+        justify-content: space-between;
+        /* gap: 20px; */
+        flex-wrap: wrap;
+      }
+
+      .upload-doc {
+        text-decoration: none;
+        color: white;
+        background-color: #0056d2;
+        font-size: 16px;
+
+        display: flex;
+
+        padding: 10px 20px;
+        font-weight: 400;
+        line-height: 22.05px;
+        text-align: left;
+        border: 1px solid rgba(33, 95, 255, 1);
+        border-radius: 5px;
+        text-align: center;
+        background-image: url(../static/assets/upload.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: right;
+        white-space: nowrap;
+        padding-right: 35px;
+      }
+
+      /* Each section style */
+
+      .claim-info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .claim-info,
+      .claim-status,
+      .next-step {
+        background-color: #fff;
+        padding: 20px;
+        /* border-radius: 10px; */
+        /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+        flex: 1;
+        width: 100%;
+        border: 1px solid #0000001a;
+      }
+
+      .claim-info h4,
+      .claim-status h4,
+      .next-step h4 {
+        font-size: 1.2em;
+        color: #000;
+        margin-bottom: 15px;
+      }
+
+      .claim-info p,
+      .claim-status p,
+      .next-step p {
+        font-size: 1em;
+        color: #555;
+      }
+
+      .status-message,
+      .next-message {
+        color: #27ae60;
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        overflow-wrap: anywhere;
+      }
+
+      .status-detail,
+      .next-detail {
+        font-size: 0.9em;
+        color: #bcbcbc;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .flight-info {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .claim-content {
+          flex-direction: column;
+        }
+
+        .claim-info,
+        .claim-status,
+        .next-step {
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+    <title>Claim Status</title>
+  </head>
+  <body>
+    <section class="claim-section">
+      <header class="header">
+        <div class="back-btn">
+          <a href="/user_dashboard">&#x2190; Back</a>
+        </div>
+        <div class="logo">
+          <img
+            src="{{url_for('static',filename='assets/logo22.png')}}"
+            alt="Logo"
+          />
+        </div>
+      </header>
+
+      <div class="flight-info">
+        <div
+          class="from"
+          style="
+            display: flex;
+            gap: 20px;
+
+            align-items: center;
+          "
+        >
+          <img
+            src="{{url_for('static',filename='assets/depart.png')}}"
+            alt=""
+          />
+          <h3>{{flight.leaving_from}}</h3>
+        </div>
+        <div class="plane-icon">
+          <img
+            src="{{url_for('static',filename='assets/14.png')}}"
+            alt="Plane Icon"
+          />
+        </div>
+        <div
+          class="to"
+          style="
+            display: flex;
+            gap: 20px;
+
+            align-items: center;
+          "
+        >
+          <img src="{{url_for('static',filename='assets/final.png')}}" alt="" />
+          <h3>{{flight.destination}}</h3>
+        </div>
+      </div>
+
+      <div class="claim-content">
+        <!-- Claim Info -->
+        <div class="claim-info">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              border-bottom: 1px solid #0000001a;
+            "
+          >
+            <h4>
+              Claim ID <a href="#" style="color: #36ac57">#{{flight.id}} </a>
+            </h4>
+            <p>Created {{flight.date}}</p>
+          </div>
+          <div style="border-bottom: 1px solid #0000001a">
+            <p>Airline</p>
+            <span class="highlight">{{flight.airline}}</span>
+          </div>
+          <div>
+            <p>Flight Date</p>
+            <span class="highlight">{{flight.flight_date}} </span>
+          </div>
+          <!-- updated //////////////////////////// -->
+          <form action="/in_dash/{{flight.id}}" id="uploadForm" method="post" enctype="multipart/form-data" >
+          <input type="file" id="select" name="files[]" onchange="submitForm()" multiple required hidden>
+            <button class="upload-doc" style="text-decoration: none; float: left" onclick="triggerFileSelection()">upload document</button>
+          </form>
+          <p>{{msg}}</p>
+          <script>
+            function triggerFileSelection() {
+              document.getElementById("select").click();
+            }
+            function submitForm() {
+              document.getElementById("uploadForm").submit();
+            }
+          </script>
+        </div>
+
+        <!-- Claim Status -->
+        <div
+          class="claim-status"
+          style="display: flex; flex-direction: column; gap: 20px"
+        >
+          <h4>Claim Status</h4>
+          {% if flight.status=='NA' %}
+          <p class="status-message" style="color: #36ac57; font-size: 2em">
+            Your claim is submitted!
+          </p>
+          {% else %}
+          <p class="status-message" style="color: #36ac57; font-size: 2em">
+            {{flight.status|upper}}
+          </p>
+          {% endif %}
+
+          <p class="status-detail">
+            Thank you for filing your claim with us! We're eager to help you get
+            the compensation that we believe the airline owes you for the
+            flight.
+          </p>
+        </div>
+
+        <!-- Next Step -->
+        <div
+          class="next-step"
+          class="claim-status"
+          style="display: flex; flex-direction: column; gap: 20px"
+        >
+          <h4>Next Step</h4>
+          <p class="next-message" style="color: #36ac57; font-size: 2em">
+            We'll take a closer look at your claim
+          </p>
+          <p class="next-detail">
+            Our claim experts will have a look at your claim to confirm we have
+            everything needed to properly check its eligibility and argue your
+            case with {{flight.airline}}. We'll let you know if anything's missing.
+          </p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

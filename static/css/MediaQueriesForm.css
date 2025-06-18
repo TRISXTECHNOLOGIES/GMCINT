@@ -1,0 +1,150 @@
+@media screen and (max-width:991px) {
+
+    h3{
+        font-size: 1.2rem;
+    }
+
+    h1{
+        font-size: small;
+    }
+
+    
+    .step{
+        width: 50%;
+        padding-left: 0;
+    }
+
+    .sidebar img{
+        width: 350px;
+        justify-content: center;
+        margin-top: 80px;
+        display: none;
+    }
+}
+
+@media screen and (max-width:767px) {
+
+    .logo img{
+        max-width: 150px;
+        height: auto;
+        /* display: none; */
+        padding-top: 10px;
+    }
+
+    .progress-indicator{
+        width: 90%;
+        overflow: hidden;
+    }
+    .step{
+        width: 50%;
+        padding-left: 0;
+    }
+    .sidebar img{
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        
+    }
+
+    .radio-group label{
+        font-size: 0.8rem;
+    }
+
+    .section-container{
+        flex-direction: column-reverse;
+    }
+
+    .form-container{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:479px) {
+
+    
+
+
+    .logo img{
+        max-width: 130px;
+        height: auto;
+        /* display: none; */
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding-top: 15px;
+    }
+    
+    .progress-indicator{
+       display: none;
+    }
+   
+    .sidebar img{
+        width: 200px;
+        justify-content: center;
+       margin-top: 0;
+        
+    }
+
+    .sidebar{
+        padding-left: 15%;
+    }
+
+    .sidebar img{
+        width: 90%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    html,body{
+        overflow-x: hidden;
+    }
+
+    .radio-group{
+        flex-direction: column;
+    }
+
+    .radio-group label{
+        font-size: 0.8em;
+    }
+
+    .form-input{
+        flex-direction: column;
+    }
+
+    .footer-content{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 10px;
+        text-align: center;
+    }
+    
+
+
+  
+    h1{
+        font-size: 2rem;
+    }
+    
+    h2{
+        font-size: 1.5rem;
+    }
+    
+    h3{
+        font-size: 1.5rem;
+    }
+
+    p{
+        font-size: 1rem;
+    }
+
+    
+}
+
+
+

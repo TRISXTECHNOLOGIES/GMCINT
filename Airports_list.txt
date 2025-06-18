@@ -1,0 +1,951 @@
+Airports list
+Afghanistan:
+Kabul Hamid Karzai International Airport (Kabul) - IATA: KBL
+Albania:
+Tirana International Airport (Tirana) - IATA: TIA
+Algeria:
+Houari Boumediene Airport (Algiers) - IATA: ALG
+Angola:
+Quatro de Fevereiro Airport (Luanda) - IATA: LAD
+Antigua and Barbuda:
+V.C. Bird International Airport (Antigua) - IATA: ANU
+Argentina:
+Ezeiza Ministro Pistarini International Airport (Buenos Aires) - IATA: EZE
+Armenia:
+Zvartnots International Airport (Yerevan) - IATA: EVN
+Australia:
+Sydney Kingsford Smith Airport (Sydney) - IATA: SYD
+Austria:
+Vienna International Airport (Vienna) - IATA: VIE
+Salzburg Airport (Salzburg) - IATA: SZG
+Innsbruck Airport (Innsbruck) - IATA: INN
+Azerbaijan:
+Heydar Aliyev International Airport (Baku) - IATA: GYD
+Bahamas:
+Lynden Pindling International Airport (Nassau) - IATA: NAS
+Bahrain:
+Bahrain International Airport (Manama) - IATA: BAH
+Bangladesh:
+Shahjalal International Airport (Dhaka) - IATA: DAC
+Barbados:
+Grantley Adams International Airport (Bridgetown) - IATA: BGI
+Belarus:
+Minsk National Airport (Minsk) - IATA: MSQ
+Belgium:
+Brussels Airport (Brussels) - IATA: BRU
+Antwerp International Airport (Antwerp) - IATA: ANR
+Liege Airport (Liege) - IATA: LGG
+Belize:
+Philip S. W. Goldson International Airport (Belize City) - IATA: BZE
+Benin:
+Cotonou Cadjehoun Airport (Cotonou) - IATA: COO
+Bhutan:
+Paro International Airport (Paro) - IATA: PBH
+Bolivia:
+Viru Viru International Airport (Santa Cruz) - IATA: VVI
+Bosnia and Herzegovina:
+Sarajevo International Airport (Sarajevo) - IATA: SJJ
+Botswana:
+Sir Seretse Khama International Airport (Gaborone) - IATA: GBE
+Brazil:
+Sao Paulo-Guarulhos International Airport (Sao Paulo) - IATA: GRU
+Brunei:
+Brunei International Airport (Bandar Seri Begawan) - IATA: BWN
+Bulgaria:
+Sofia Airport (Sofia) - IATA: SOF
+Varna Airport (Varna) - IATA: VAR
+Burgas Airport (Burgas) - IATA: BOJ
+Burkina Faso:
+Ouagadougou Airport (Ouagadougou) - IATA: OUA
+Burundi:
+Bujumbura International Airport (Bujumbura) - IATA: BJM
+Cabo Verde (Cape Verde):
+Amilcar Cabral International Airport (Espargos) - IATA: SID
+Cambodia:
+Phnom Penh International Airport (Phnom Penh) - IATA: PNH
+Cameroon:
+Douala International Airport (Douala) - IATA: DLA
+Canada:
+Toronto Pearson International Airport (Toronto) - IATA: YYZ
+Vancouver International Airport (Vancouver) - IATA: YVR
+Montreal-Trudeau International Airport (Montreal) - IATA: YUL
+Central African Republic:
+Bangui M'Poko International Airport (Bangui) - IATA: BGF
+Chad:
+N'Djamena International Airport (N'Djamena) - IATA: NDJ
+Chile:
+Arturo Merino Benitez International Airport (Santiago) - IATA: SCL
+China:
+Beijing Capital International Airport (Beijing) - IATA: PEK
+Shanghai Pudong International Airport (Shanghai) - IATA: PVG
+Guangzhou Baiyun International Airport (Guangzhou) - IATA: CAN
+Colombia:
+El Dorado International Airport (Bogota) - IATA: BOG
+Comoros:
+Prince Said Ibrahim International Airport (Moroni) - IATA: HAH
+Congo, Republic of the:
+Maya-Maya Airport (Brazzaville) - IATA: BZV
+Congo, Democratic Republic of the:
+N'Djili International Airport (Kinshasa) - IATA: FIH
+Costa Rica:
+Juan Santamaria International Airport (San Jose) - IATA: SJO
+Croatia:
+Zagreb Franjo Tudman Airport (Zagreb) - IATA: ZAG
+Dubrovnik Airport (Dubrovnik) - IATA: DBV
+Split Airport (Split) - IATA: SPU
+Cuba:
+Jose Marti International Airport (Havana) - IATA: HAV
+Cyprus:
+Larnaca International Airport (Larnaca) - IATA: LCA
+Paphos International Airport (Paphos) - IATA: PFO
+Czech Republic:
+Vaclav Havel Airport Prague (Prague) - IATA: PRG
+Brno-Turany Airport (Brno) - IATA: BRQ
+Ostrava Airport (Ostrava) - IATA: OSR
+Denmark:
+Copenhagen Airport (Copenhagen) - IATA: CPH
+Billund Airport (Billund) - IATA: BLL
+Aalborg Airport (Aalborg) - IATA: AAL
+Djibouti:
+Djibouti-Ambouli International Airport (Djibouti) - IATA: JIB
+Dominica:
+Douglas-Charles Airport (Marigot) - IATA: DOM
+Dominican Republic:
+Las Americas International Airport (Santo Domingo) - IATA: SDQ
+Ecuador:
+Mariscal Sucre International Airport (Quito) - IATA: UIO
+Egypt:
+Cairo International Airport (Cairo) - IATA: CAI
+El Salvador:
+Monsenor Oscar Arnulfo Romero International Airport (San Salvador) - IATA: SAL
+Equatorial Guinea:
+Malabo International Airport (Malabo) - IATA: SSG
+Eritrea:
+Asmara International Airport (Asmara) - IATA: ASM
+Estonia:
+Tallinn Lennart Meri Airport (Tallinn) - IATA: TLL
+Eswatini (Swaziland):
+King Mswati III International Airport (Manzini) - IATA: SHO
+Ethiopia:
+Addis Ababa Bole International Airport (Addis Ababa) - IATA: ADD
+Fiji:
+Nadi International Airport (Nadi) - IATA: NAN
+Finland:
+Helsinki-Vantaa Airport (Helsinki) - IATA: HEL
+Oulu Airport (Oulu) - IATA: OUL
+Tampere-Pirkkala Airport (Tampere) - IATA: TMP
+France:
+Paris Charles de Gaulle Airport (Paris) - IATA: CDG
+Paris Orly Airport (Paris) - IATA: ORY
+Nice Cote d'Azur Airport (Nice) - IATA: NCE
+Lyon Saint-Exupery Airport (Lyon) - IATA: LYS
+Marseille Provence Airport (Marseille) - IATA: MRS
+Toulouse Blagnac Airport (Toulouse) - IATA: TLS
+Bordeaux-Merignac Airport (Bordeaux) - IATA: BOD
+Nantes Atlantique Airport (Nantes) - IATA: NTE
+Gabon:
+Libreville International Airport (Libreville) - IATA: LBV
+Gambia:
+Banjul International Airport (Banjul) - IATA: BJL
+Georgia:
+Tbilisi International Airport (Tbilisi) - IATA: TBS
+Germany:
+Frankfurt am Main Airport (Frankfurt) - IATA: FRA
+Munich Airport (Munich) - IATA: MUC
+Berlin Brandenburg Airport (Berlin) - IATA: BER
+Dusseldorf Airport (Dusseldorf) - IATA: DUS
+Hamburg Airport (Hamburg) - IATA: HAM
+Stuttgart Airport (Stuttgart) - IATA: STR
+Cologne Bonn Airport (Cologne/Bonn) - IATA: CGN
+Ghana:
+Kotoka International Airport (Accra) - IATA: ACC
+Greece:
+Athens International Airport (Athens) - IATA: ATH
+Thessaloniki Airport (Thessaloniki) - IATA: SKG
+Heraklion Airport (Heraklion) - IATA: HER
+Rhodes Diagoras International Airport (Rhodes) - IATA: RHO
+Grenada:
+Maurice Bishop International Airport (St. George's) - IATA: GND
+Guatemala:
+La Aurora International Airport (Guatemala City) - IATA: GUA
+Guinea:
+Conakry International Airport (Conakry) - IATA: CKY
+Guinea-Bissau:
+Osvaldo Vieira International Airport (Bissau) - IATA: OXB
+Guyana:
+Cheddi Jagan International Airport (Georgetown) - IATA: GEO
+Haiti:
+Toussaint Louverture International Airport (Port-au-Prince) - IATA: PAP
+Honduras:
+Ramon Villeda Morales International Airport (San Pedro Sula) - IATA: SAP
+Hungary:
+Budapest Ferenc Liszt International Airport (Budapest) - IATA: BUD
+Iceland:
+Keflavik International Airport (Reykjavik) - IATA: KEF
+India:
+Indira Gandhi International Airport (New Delhi) - IATA: DEL
+Chhatrapati Shivaji Maharaj International Airport (Mumbai) - IATA: BOM
+Kempegowda International Airport (Bengaluru) - IATA: BLR
+Netaji Subhas Chandra Bose International Airport (Kolkata) - IATA: CCU
+Chennai International Airport (Chennai) - IATA: MAA
+Rajiv Gandhi International Airport (Hyderabad) - IATA: HYD
+Cochin International Airport (Kochi) - IATA: COK
+Sardar Vallabhbhai Patel International Airport (Ahmedabad) - IATA: AMD
+Goa International Airport (Goa) - IATA: GOI
+Pune International Airport (Pune) - IATA: PNQ
+Trivandrum International Airport (Thiruvananthapuram) - IATA: TRV
+Mangalore International Airport (Mangalore) - IATA: IXE
+Madurai International Airport (Madurai) - IATA: IXM
+Tiruchirappalli International Airport (Tiruchirappalli) - IATA: TRZ
+Bagdogra International Airport (Bagdogra) - IATA: IXB
+Biju Patnaik International Airport (Bhubaneswar) - IATA: BBI
+Lokpriya Gopinath Bordoloi International Airport (Guwahati) - IATA: GAU
+Imphal International Airport (Imphal) - IATA: IMF
+Veer Savarkar International Airport (Port Blair) - IATA: IXZ
+Kannur International Airport (Kannur) - IATA: CNN
+Indonesia:
+Soekarno-Hatta International Airport (Jakarta) - IATA: CGK
+Ngurah Rai International Airport (Bali) - IATA: DPS
+Iran:
+Tehran Imam Khomeini International Airport (Tehran) - IATA: IKA
+Iraq:
+Baghdad International Airport (Baghdad) - IATA: BGW
+Ireland:
+Dublin Airport (Dublin) - IATA: DUB
+Cork Airport (Cork) - IATA: ORK
+Shannon Airport (Shannon) - IATA: SNN
+Israel:
+Ben Gurion International Airport (Tel Aviv) - IATA: TLV
+Italy:
+Leonardo da Vinci-Fiumicino Airport (Rome) - IATA: FCO
+Rome Fiumicino Leonardo da Vinci Airport (Rome) - IATA: FCO
+Milan Malpensa Airport (Milan) - IATA: MXP
+Venice Marco Polo Airport (Venice) - IATA: VCE
+Naples International Airport (Naples) - IATA: NAP
+Bologna Airport (Bologna) - IATA: BLQ
+Florence Airport (Florence) - IATA: FLR
+Jamaica:
+Norman Manley International Airport (Kingston) - IATA: KIN
+Sangster International Airport (Montego Bay) - IATA: MBJ
+Japan:
+Tokyo Haneda International Airport (Tokyo) - IATA: HND
+Narita International Airport (Tokyo) - IATA: NRT
+Kansai International Airport (Osaka) - IATA: KIX
+Jordan:
+Queen Alia International Airport (Amman) - IATA: AMM
+Kazakhstan:
+Nursultan Nazarbayev International Airport (Nur-Sultan) - IATA: NQZ
+Almaty International Airport (Almaty) - IATA: ALA
+Kenya:
+Jomo Kenyatta International Airport (Nairobi) - IATA: NBO
+Kiribati:
+Bonriki International Airport (Tarawa) - IATA: TRW
+Kuwait:
+Kuwait International Airport (Kuwait City) - IATA: KWI
+Kyrgyzstan:
+Manas International Airport (Bishkek) - IATA: FRU
+Laos:
+Wattay International Airport (Vientiane) - IATA: VTE
+Latvia:
+Riga International Airport (Riga) - IATA: RIX
+Lebanon:
+Beirut Rafic Hariri International Airport (Beirut) - IATA: BEY
+Lesotho:
+Moshoeshoe I International Airport (Maseru) - IATA: MSU
+Liberia:
+Roberts International Airport (Monrovia) - IATA: ROB
+Libya:
+Mitiga International Airport (Tripoli) - IATA: MJI
+Lithuania:
+Vilnius International Airport (Vilnius) - IATA: VNO
+Kaunas International Airport (Kaunas) - IATA: KUN
+Palanga International Airport (Palanga) - IATA: PLQ
+Luxembourg:
+Luxembourg Findel Airport (Luxembourg City) - IATA: LUX
+Madagascar:
+Ivato International Airport (Antananarivo) - IATA: TNR
+Malawi:
+Lilongwe International Airport (Lilongwe) - IATA: LLW
+Malaysia:
+Kuala Lumpur International Airport (Kuala Lumpur) - IATA: KUL
+Maldives:
+Velana International Airport (Male) - IATA: MLE
+Mali:
+Bamako-Senou International Airport (Bamako) - IATA: BKO
+Malta:
+Malta International Airport (Luqa) - IATA: MLA
+Marshall Islands:
+Amata Kabua International Airport (Majuro) - IATA: MAJ
+Mauritania:
+Nouakchott-Oumtounsy International Airport (Nouakchott) - IATA: NKC
+Mauritius:
+Sir Seewoosagur Ramgoolam International Airport (Port Louis) - IATA: MRU
+Mexico:
+Mexico City International Airport (Mexico City) - IATA: MEX
+Micronesia:
+Pohnpei International Airport (Pohnpei) - IATA: PNI
+Moldova:
+Chisinau International Airport (Chisinau) - IATA: KIV
+Monaco:
+No airports (Nearest: Nice Cote d'Azur Airport, France - IATA: NCE)
+Mongolia:
+Chinggis Khaan International Airport (Ulaanbaatar) - IATA: ULN
+Montenegro:
+Podgorica Airport (Podgorica) - IATA: TGD
+Morocco:
+Mohammed V International Airport (Casablanca) - IATA: CMN
+Mozambique:
+Maputo International Airport (Maputo) - IATA: MPM
+Myanmar:
+Yangon International Airport (Yangon) - IATA: RGN
+Namibia:
+Hosea Kutako International Airport (Windhoek) - IATA: WDH
+Nauru:
+Nauru International Airport (Yaren) - IATA: INU
+Nepal:
+Tribhuvan International Airport (Kathmandu) - IATA: KTM
+Netherlands:
+Amsterdam Schiphol Airport (Amsterdam) - IATA: AMS
+Eindhoven Airport (Eindhoven) - IATA: EIN
+Rotterdam The Hague Airport (Rotterdam/The Hague) - IATA: RTM
+New Zealand:
+Auckland International Airport (Auckland) - IATA: AKL
+Nicaragua:
+Augusto C. Sandino International Airport (Managua) - IATA: MGA
+Niger:
+Diori Hamani International Airport (Niamey) - IATA: NIM
+Nigeria:
+Murtala Muhammed International Airport (Lagos) - IATA: LOS
+North Macedonia:
+Skopje International Airport (Skopje) - IATA: SKP
+Norway:
+Oslo Gardermoen Airport (Oslo) - IATA: OSL
+Oman:
+Muscat International Airport (Muscat) - IATA: MCT
+Palau:
+Roman Tmetuchl International Airport (Koror) - IATA: ROR
+Panama:
+Tocumen International Airport (Panama City) - IATA: PTY
+Papua New Guinea:
+Jacksons International Airport (Port Moresby) - IATA: POM
+Paraguay:
+Silvio Pettirossi International Airport (Asuncion) - IATA: ASU
+Peru:
+Jorge Chavez International Airport (Lima) - IATA: LIM
+Philippines:
+Ninoy Aquino International Airport (Manila) - IATA: MNL
+Poland:
+Warsaw Chopin Airport (Warsaw) - IATA: WAW
+Krakow John Paul II International Airport (Krakow) - IATA: KRK
+Gdansk Lech Walesa Airport (Gdansk) - IATA: GDN
+Portugal:
+Lisbon Humberto Delgado Airport (Lisbon) - IATA: LIS
+Porto Francisco Sa Carneiro Airport (Porto) - IATA: OPO
+Faro Airport (Faro) - IATA: FAO
+Madeira Airport (Funchal) - IATA: FNC
+Qatar:
+Hamad International Airport (Doha) - IATA: DOH
+Romania:
+Henri Coanda International Airport (Bucharest) - IATA: OTP
+Cluj-Napoca International Airport (Cluj-Napoca) - IATA: CLJ
+Russia:
+Sheremetyevo International Airport (Moscow) - IATA: SVO
+Domodedovo International Airport (Moscow) - IATA: DME
+Pulkovo Airport (St. Petersburg) - IATA: LED
+Rwanda:
+Kigali International Airport (Kigali) - IATA: KGL
+Saint Kitts and Nevis:
+Robert L. Bradshaw International Airport (Basseterre) - IATA: SKB
+Saint Lucia:
+Hewanorra International Airport (Vieux Fort) - IATA: UVF
+Saint Vincent and the Grenadines:
+Argyle International Airport (Kingstown) - IATA: SVD
+Samoa:
+Faleolo International Airport (Apia) - IATA: APW
+San Marino:
+No airports (Nearest: Federico Fellini International Airport, Italy - IATA: RMI)
+Sao Tome and Principe:
+Sao Tome International Airport (Sao Tome) - IATA: TMS
+Saudi Arabia:
+King Khalid International Airport (Riyadh) - IATA: RUH
+King Abdulaziz International Airport (Jeddah) - IATA: JED
+Prince Mohammad bin Abdulaziz International Airport (Medina) - IATA: MED
+Senegal:
+Blaise Diagne International Airport (Dakar) - IATA: DSS
+Serbia:
+Belgrade Nikola Tesla Airport (Belgrade) - IATA: BEG
+Seychelles:
+Seychelles International Airport (Victoria) - IATA: SEZ
+Sierra Leone:
+Lungi International Airport (Freetown) - IATA: FNA
+Singapore:
+Changi International Airport (Singapore) - IATA: SIN
+Slovakia:
+Bratislava Airport (Bratislava) - IATA: BTS
+Slovenia:
+Ljubljana Joze Pucnik Airport (Ljubljana) - IATA: LJU
+Solomon Islands:
+Honiara International Airport (Honiara) - IATA: HIR
+Somalia:
+Aden Adde International Airport (Mogadishu) - IATA: MGQ
+South Africa:
+O.R. Tambo International Airport (Johannesburg) - IATA: JNB
+Cape Town International Airport (Cape Town) - IATA: CPT
+King Shaka International Airport (Durban) - IATA: DUR
+South Korea:
+Incheon International Airport (Seoul) - IATA: ICN
+Gimpo International Airport (Seoul) - IATA: GMP
+South Sudan:
+Juba International Airport (Juba) - IATA: JUB
+Spain:
+Madrid Barajas Airport (Madrid) - IATA: MAD
+Barcelona El Prat Airport (Barcelona) - IATA: BCN
+Palma de Mallorca Airport (Palma de Mallorca) - IATA: PMI
+Malaga-Costa del Sol Airport (Malaga) - IATA: AGP
+Gran Canaria Airport (Gran Canaria) - IATA: LPA
+Seville Airport (Seville) - IATA: SVQ
+Sri Lanka:
+Bandaranaike International Airport (Colombo) - IATA: CMB
+Sudan:
+Khartoum International Airport (Khartoum) - IATA: KRT
+Suriname:
+Johan Adolf Pengel International Airport (Paramaribo) - IATA: PBM
+Sweden:
+Stockholm Arlanda Airport (Stockholm) - IATA: ARN
+Gothenburg Landvetter Airport (Gothenburg) - IATA: GOT
+Malmo Airport (Malmo) - IATA: MMX
+Switzerland:
+Zurich Airport (Zurich) - IATA: ZRH
+Geneva Airport (Geneva) - IATA: GVA
+Basel-Mulhouse Airport (Basel) - IATA: BSL
+Syria:
+Damascus International Airport (Damascus) - IATA: DAM
+Taiwan:
+Taoyuan International Airport (Taipei) - IATA: TPE
+Tajikistan:
+Dushanbe International Airport (Dushanbe) - IATA: DYU
+Tanzania:
+Julius Nyerere International Airport (Dar es Salaam) - IATA: DAR
+Thailand:
+Suvarnabhumi Airport (Bangkok) - IATA: BKK
+Don Mueang International Airport (Bangkok) - IATA: DMK
+Togo:
+Gnassingbe Eyadema International Airport (Lome) - IATA: LFW
+Tonga:
+Fua`amotu International Airport (Nuku`alofa) - IATA: TBU
+Trinidad and Tobago:
+Piarco International Airport (Port of Spain) - IATA: POS
+Tunisia:
+Tunis-Carthage International Airport (Tunis) - IATA: TUN
+Turkey:
+Istanbul Airport (Istanbul) - IATA: IST
+Sabiha Gokcen International Airport (Istanbul) - IATA: SAW
+Turkmenistan:
+Ashgabat International Airport (Ashgabat) - IATA: ASB
+Tuvalu:
+Funafuti International Airport (Funafuti) - IATA: FUN
+Uganda:
+Entebbe International Airport (Entebbe) - IATA: EBB
+Ukraine:
+Boryspil International Airport (Kyiv) - IATA: KBP
+United Arab Emirates:
+Dubai International Airport (Dubai) - IATA: DXB
+Abu Dhabi International Airport (Abu Dhabi) - IATA: AUH
+Sharjah International Airport (Sharjah) - IATA: SHJ
+United Kingdom:
+London Heathrow Airport (London) - IATA: LHR
+London Gatwick Airport (London) - IATA: LGW
+Manchester Airport (Manchester) - IATA: MAN
+Edinburgh Airport (Edinburgh) - IATA: EDI
+Birmingham Airport (Birmingham) - IATA: BHX
+Glasgow International Airport (Glasgow) - IATA: GLA
+Bristol Airport (Bristol) - IATA: BRS
+United States:
+Hartsfield-Jackson Atlanta International Airport (Atlanta) - IATA: ATL
+Los Angeles International Airport (Los Angeles) - IATA: LAX
+Chicago O'Hare International Airport (Chicago) - IATA: ORD
+John F. Kennedy International Airport (New York) - IATA: JFK
+Dallas/Fort Worth International Airport (Dallas/Fort Worth) - IATA: DFW
+San Francisco International Airport (San Francisco) - IATA: SFO
+Denver International Airport (Denver) - IATA: DEN
+Seattle-Tacoma International Airport (Seattle) - IATA: SEA
+Miami International Airport (Miami) - IATA: MIA
+Las Vegas McCarran International Airport (Las Vegas) - IATA: LAS
+Orlando International Airport (Orlando) - IATA: MCO
+Boston Logan International Airport (Boston) - IATA: BOS
+Houston George Bush Intercontinental Airport (Houston) - IATA: IAH
+Uruguay:
+Carrasco International Airport (Montevideo) - IATA: MVD
+Uzbekistan:
+Tashkent International Airport (Tashkent) - IATA: TAS
+Vanuatu:
+Bauerfield International Airport (Port Vila) - IATA: VLI
+Vatican City:
+No airport (Nearest: Rome Fiumicino Airport, Italy - IATA: FCO)
+Venezuela:
+Simon Bolivar International Airport (Caracas) - IATA: CCS
+Vietnam:
+Noi Bai International Airport (Hanoi) - IATA: HAN
+Tan Son Nhat International Airport (Ho Chi Minh City) - IATA: SGN
+Yemen:
+Sana'a International Airport (Sana'a) - IATA: SAH
+Zambia:
+Kenneth Kaunda International Airport (Lusaka) - IATA: LUN
+Zimbabwe:
+Robert Gabriel Mugabe International Airport (Harare) - IATA: HRE
+
+
+
+
+
+
+
+
+////////////////////////////////////////////
+
+
+Brunei:
+Brunei International Airport (Bandar Seri Begawan) - IATA: BWN
+Bulgaria:
+Sofia Airport (Sofia) - IATA: SOF
+Varna Airport (Varna) - IATA: VAR
+Burgas Airport (Burgas) - IATA: BOJ
+Burkina Faso:
+Ouagadougou Airport (Ouagadougou) - IATA: OUA
+Burundi:
+Bujumbura International Airport (Bujumbura) - IATA: BJM
+Cabo Verde (Cape Verde):
+Amilcar Cabral International Airport (Espargos) - IATA: SID
+Cambodia:
+Phnom Penh International Airport (Phnom Penh) - IATA: PNH
+Cameroon:
+Douala International Airport (Douala) - IATA: DLA
+Canada:
+Toronto Pearson International Airport (Toronto) - IATA: YYZ
+Vancouver International Airport (Vancouver) - IATA: YVR
+Montreal-Trudeau International Airport (Montreal) - IATA: YUL
+Central African Republic:
+Bangui M'Poko International Airport (Bangui) - IATA: BGF
+Chad:
+N'Djamena International Airport (N'Djamena) - IATA: NDJ
+Chile:
+Arturo Merino Benitez International Airport (Santiago) - IATA: SCL
+China:
+Beijing Capital International Airport (Beijing) - IATA: PEK
+Shanghai Pudong International Airport (Shanghai) - IATA: PVG
+Guangzhou Baiyun International Airport (Guangzhou) - IATA: CAN
+Colombia:
+El Dorado International Airport (Bogota) - IATA: BOG
+Comoros:
+Prince Said Ibrahim International Airport (Moroni) - IATA: HAH
+Congo, Republic of the:
+Maya-Maya Airport (Brazzaville) - IATA: BZV
+Congo, Democratic Republic of the:
+N'Djili International Airport (Kinshasa) - IATA: FIH
+Costa Rica:
+Juan Santamaria International Airport (San Jose) - IATA: SJO
+Croatia:
+Zagreb Franjo Tudman Airport (Zagreb) - IATA: ZAG
+Dubrovnik Airport (Dubrovnik) - IATA: DBV
+Split Airport (Split) - IATA: SPU
+Cuba:
+Jose Marti International Airport (Havana) - IATA: HAV
+Cyprus:
+Larnaca International Airport (Larnaca) - IATA: LCA
+Paphos International Airport (Paphos) - IATA: PFO
+Czech Republic:
+Vaclav Havel Airport Prague (Prague) - IATA: PRG
+Brno-Turany Airport (Brno) - IATA: BRQ
+Ostrava Airport (Ostrava) - IATA: OSR
+Denmark:
+Copenhagen Airport (Copenhagen) - IATA: CPH
+Billund Airport (Billund) - IATA: BLL
+Aalborg Airport (Aalborg) - IATA: AAL
+Djibouti:
+Djibouti-Ambouli International Airport (Djibouti) - IATA: JIB
+Dominica:
+Douglas-Charles Airport (Marigot) - IATA: DOM
+Dominican Republic:
+Las Americas International Airport (Santo Domingo) - IATA: SDQ
+Ecuador:
+Mariscal Sucre International Airport (Quito) - IATA: UIO
+Egypt:
+Cairo International Airport (Cairo) - IATA: CAI
+El Salvador:
+Monsenor Oscar Arnulfo Romero International Airport (San Salvador) - IATA: SAL
+Equatorial Guinea:
+Malabo International Airport (Malabo) - IATA: SSG
+Eritrea:
+Asmara International Airport (Asmara) - IATA: ASM
+Estonia:
+Tallinn Lennart Meri Airport (Tallinn) - IATA: TLL
+Eswatini (Swaziland):
+King Mswati III International Airport (Manzini) - IATA: SHO
+Ethiopia:
+Addis Ababa Bole International Airport (Addis Ababa) - IATA: ADD
+Fiji:
+Nadi International Airport (Nadi) - IATA: NAN
+Finland:
+Helsinki-Vantaa Airport (Helsinki) - IATA: HEL
+Oulu Airport (Oulu) - IATA: OUL
+Tampere-Pirkkala Airport (Tampere) - IATA: TMP
+France:
+Paris Charles de Gaulle Airport (Paris) - IATA: CDG
+Paris Orly Airport (Paris) - IATA: ORY
+Nice Cote d'Azur Airport (Nice) - IATA: NCE
+Lyon Saint-Exupery Airport (Lyon) - IATA: LYS
+Marseille Provence Airport (Marseille) - IATA: MRS
+Toulouse Blagnac Airport (Toulouse) - IATA: TLS
+Bordeaux-Merignac Airport (Bordeaux) - IATA: BOD
+Nantes Atlantique Airport (Nantes) - IATA: NTE
+Gabon:
+Libreville International Airport (Libreville) - IATA: LBV
+Gambia:
+Banjul International Airport (Banjul) - IATA: BJL
+Georgia:
+Tbilisi International Airport (Tbilisi) - IATA: TBS
+Germany:
+Frankfurt am Main Airport (Frankfurt) - IATA: FRA
+Munich Airport (Munich) - IATA: MUC
+Berlin Brandenburg Airport (Berlin) - IATA: BER
+Dusseldorf Airport (Dusseldorf) - IATA: DUS
+Hamburg Airport (Hamburg) - IATA: HAM
+Stuttgart Airport (Stuttgart) - IATA: STR
+Cologne Bonn Airport (Cologne/Bonn) - IATA: CGN
+Ghana:
+Kotoka International Airport (Accra) - IATA: ACC
+Greece:
+Athens International Airport (Athens) - IATA: ATH
+Thessaloniki Airport (Thessaloniki) - IATA: SKG
+Heraklion Airport (Heraklion) - IATA: HER
+Rhodes Diagoras International Airport (Rhodes) - IATA: RHO
+Grenada:
+Maurice Bishop International Airport (St. George's) - IATA: GND
+Guatemala:
+La Aurora International Airport (Guatemala City) - IATA: GUA
+Guinea:
+Conakry International Airport (Conakry) - IATA: CKY
+Guinea-Bissau:
+Osvaldo Vieira International Airport (Bissau) - IATA: OXB
+Guyana:
+Cheddi Jagan International Airport (Georgetown) - IATA: GEO
+Haiti:
+Toussaint Louverture International Airport (Port-au-Prince) - IATA: PAP
+Honduras:
+Ramon Villeda Morales International Airport (San Pedro Sula) - IATA: SAP
+Hungary:
+Budapest Ferenc Liszt International Airport (Budapest) - IATA: BUD
+Iceland:
+Keflavik International Airport (Reykjavik) - IATA: KEF
+India:
+Indira Gandhi International Airport (New Delhi) - IATA: DEL
+Chhatrapati Shivaji Maharaj International Airport (Mumbai) - IATA: BOM
+Kempegowda International Airport (Bengaluru) - IATA: BLR
+Netaji Subhas Chandra Bose International Airport (Kolkata) - IATA: CCU
+Chennai International Airport (Chennai) - IATA: MAA
+Rajiv Gandhi International Airport (Hyderabad) - IATA: HYD
+Cochin International Airport (Kochi) - IATA: COK
+Sardar Vallabhbhai Patel International Airport (Ahmedabad) - IATA: AMD
+Goa International Airport (Goa) - IATA: GOI
+Pune International Airport (Pune) - IATA: PNQ
+Trivandrum International Airport (Thiruvananthapuram) - IATA: TRV
+Mangalore International Airport (Mangalore) - IATA: IXE
+Madurai International Airport (Madurai) - IATA: IXM
+Tiruchirappalli International Airport (Tiruchirappalli) - IATA: TRZ
+Bagdogra International Airport (Bagdogra) - IATA: IXB
+Biju Patnaik International Airport (Bhubaneswar) - IATA: BBI
+Lokpriya Gopinath Bordoloi International Airport (Guwahati) - IATA: GAU
+Imphal International Airport (Imphal) - IATA: IMF
+Veer Savarkar International Airport (Port Blair) - IATA: IXZ
+Kannur International Airport (Kannur) - IATA: CNN
+Indonesia:
+Soekarno-Hatta International Airport (Jakarta) - IATA: CGK
+Ngurah Rai International Airport (Bali) - IATA: DPS
+Iran:
+Tehran Imam Khomeini International Airport (Tehran) - IATA: IKA
+Iraq:
+Baghdad International Airport (Baghdad) - IATA: BGW
+Ireland:
+Dublin Airport (Dublin) - IATA: DUB
+Cork Airport (Cork) - IATA: ORK
+Shannon Airport (Shannon) - IATA: SNN
+Israel:
+Ben Gurion International Airport (Tel Aviv) - IATA: TLV
+Italy:
+Leonardo da Vinci-Fiumicino Airport (Rome) - IATA: FCO
+Rome Fiumicino Leonardo da Vinci Airport (Rome) - IATA: FCO
+Milan Malpensa Airport (Milan) - IATA: MXP
+Venice Marco Polo Airport (Venice) - IATA: VCE
+Naples International Airport (Naples) - IATA: NAP
+Bologna Airport (Bologna) - IATA: BLQ
+Florence Airport (Florence) - IATA: FLR
+Jamaica:
+Norman Manley International Airport (Kingston) - IATA: KIN
+Sangster International Airport (Montego Bay) - IATA: MBJ
+Japan:
+Tokyo Haneda International Airport (Tokyo) - IATA: HND
+Narita International Airport (Tokyo) - IATA: NRT
+Kansai International Airport (Osaka) - IATA: KIX
+Jordan:
+Queen Alia International Airport (Amman) - IATA: AMM
+Kazakhstan:
+Nursultan Nazarbayev International Airport (Nur-Sultan) - IATA: NQZ
+Almaty International Airport (Almaty) - IATA: ALA
+Kenya:
+Jomo Kenyatta International Airport (Nairobi) - IATA: NBO
+Kiribati:
+Bonriki International Airport (Tarawa) - IATA: TRW
+Kuwait:
+Kuwait International Airport (Kuwait City) - IATA: KWI
+Kyrgyzstan:
+Manas International Airport (Bishkek) - IATA: FRU
+Laos:
+Wattay International Airport (Vientiane) - IATA: VTE
+Latvia:
+Riga International Airport (Riga) - IATA: RIX
+Lebanon:
+Beirut Rafic Hariri International Airport (Beirut) - IATA: BEY
+Lesotho:
+Moshoeshoe I International Airport (Maseru) - IATA: MSU
+Liberia:
+Roberts International Airport (Monrovia) - IATA: ROB
+Libya:
+Mitiga International Airport (Tripoli) - IATA: MJI
+Lithuania:
+Vilnius International Airport (Vilnius) - IATA: VNO
+Kaunas International Airport (Kaunas) - IATA: KUN
+Palanga International Airport (Palanga) - IATA: PLQ
+Luxembourg:
+Luxembourg Findel Airport (Luxembourg City) - IATA: LUX
+Madagascar:
+Ivato International Airport (Antananarivo) - IATA: TNR
+Malawi:
+Lilongwe International Airport (Lilongwe) - IATA: LLW
+Malaysia:
+Kuala Lumpur International Airport (Kuala Lumpur) - IATA: KUL
+Maldives:
+Velana International Airport (Male) - IATA: MLE
+Mali:
+Bamako-Senou International Airport (Bamako) - IATA: BKO
+Malta:
+Malta International Airport (Luqa) - IATA: MLA
+Marshall Islands:
+Amata Kabua International Airport (Majuro) - IATA: MAJ
+Mauritania:
+Nouakchott-Oumtounsy International Airport (Nouakchott) - IATA: NKC
+Mauritius:
+Sir Seewoosagur Ramgoolam International Airport (Port Louis) - IATA: MRU
+Mexico:
+Mexico City International Airport (Mexico City) - IATA: MEX
+Micronesia:
+Pohnpei International Airport (Pohnpei) - IATA: PNI
+Moldova:
+Chisinau International Airport (Chisinau) - IATA: KIV
+Monaco:
+No airports (Nearest: Nice Cote d'Azur Airport, France - IATA: NCE)
+Mongolia:
+Chinggis Khaan International Airport (Ulaanbaatar) - IATA: ULN
+Montenegro:
+Podgorica Airport (Podgorica) - IATA: TGD
+Morocco:
+Mohammed V International Airport (Casablanca) - IATA: CMN
+Mozambique:
+Maputo International Airport (Maputo) - IATA: MPM
+Myanmar:
+Yangon International Airport (Yangon) - IATA: RGN
+Namibia:
+Hosea Kutako International Airport (Windhoek) - IATA: WDH
+Nauru:
+Nauru International Airport (Yaren) - IATA: INU
+Nepal:
+Tribhuvan International Airport (Kathmandu) - IATA: KTM
+Netherlands:
+Amsterdam Schiphol Airport (Amsterdam) - IATA: AMS
+Eindhoven Airport (Eindhoven) - IATA: EIN
+Rotterdam The Hague Airport (Rotterdam/The Hague) - IATA: RTM
+New Zealand:
+Auckland International Airport (Auckland) - IATA: AKL
+Nicaragua:
+Augusto C. Sandino International Airport (Managua) - IATA: MGA
+Niger:
+Diori Hamani International Airport (Niamey) - IATA: NIM
+Nigeria:
+Murtala Muhammed International Airport (Lagos) - IATA: LOS
+North Macedonia:
+Skopje International Airport (Skopje) - IATA: SKP
+Norway:
+Oslo Gardermoen Airport (Oslo) - IATA: OSL
+Oman:
+Muscat International Airport (Muscat) - IATA: MCT
+Palau:
+Roman Tmetuchl International Airport (Koror) - IATA: ROR
+Panama:
+Tocumen International Airport (Panama City) - IATA: PTY
+Papua New Guinea:
+Jacksons International Airport (Port Moresby) - IATA: POM
+Paraguay:
+Silvio Pettirossi International Airport (Asuncion) - IATA: ASU
+Peru:
+Jorge Chavez International Airport (Lima) - IATA: LIM
+Philippines:
+Ninoy Aquino International Airport (Manila) - IATA: MNL
+Poland:
+Warsaw Chopin Airport (Warsaw) - IATA: WAW
+Krakow John Paul II International Airport (Krakow) - IATA: KRK
+Gdansk Lech Walesa Airport (Gdansk) - IATA: GDN
+Portugal:
+Lisbon Humberto Delgado Airport (Lisbon) - IATA: LIS
+Porto Francisco Sa Carneiro Airport (Porto) - IATA: OPO
+Faro Airport (Faro) - IATA: FAO
+Madeira Airport (Funchal) - IATA: FNC
+Qatar:
+Hamad International Airport (Doha) - IATA: DOH
+Romania:
+Henri Coanda International Airport (Bucharest) - IATA: OTP
+Cluj-Napoca International Airport (Cluj-Napoca) - IATA: CLJ
+Russia:
+Sheremetyevo International Airport (Moscow) - IATA: SVO
+Domodedovo International Airport (Moscow) - IATA: DME
+Pulkovo Airport (St. Petersburg) - IATA: LED
+Rwanda:
+Kigali International Airport (Kigali) - IATA: KGL
+Saint Kitts and Nevis:
+Robert L. Bradshaw International Airport (Basseterre) - IATA: SKB
+Saint Lucia:
+Hewanorra International Airport (Vieux Fort) - IATA: UVF
+Saint Vincent and the Grenadines:
+Argyle International Airport (Kingstown) - IATA: SVD
+Samoa:
+Faleolo International Airport (Apia) - IATA: APW
+San Marino:
+No airports (Nearest: Federico Fellini International Airport, Italy - IATA: RMI)
+Sao Tome and Principe:
+Sao Tome International Airport (Sao Tome) - IATA: TMS
+Saudi Arabia:
+King Khalid International Airport (Riyadh) - IATA: RUH
+King Abdulaziz International Airport (Jeddah) - IATA: JED
+Prince Mohammad bin Abdulaziz International Airport (Medina) - IATA: MED
+Senegal:
+Blaise Diagne International Airport (Dakar) - IATA: DSS
+Serbia:
+Belgrade Nikola Tesla Airport (Belgrade) - IATA: BEG
+Seychelles:
+Seychelles International Airport (Victoria) - IATA: SEZ
+Sierra Leone:
+Lungi International Airport (Freetown) - IATA: FNA
+Singapore:
+Changi International Airport (Singapore) - IATA: SIN
+Slovakia:
+Bratislava Airport (Bratislava) - IATA: BTS
+Slovenia:
+Ljubljana Joze Pucnik Airport (Ljubljana) - IATA: LJU
+Solomon Islands:
+Honiara International Airport (Honiara) - IATA: HIR
+Somalia:
+Aden Adde International Airport (Mogadishu) - IATA: MGQ
+South Africa:
+O.R. Tambo International Airport (Johannesburg) - IATA: JNB
+Cape Town International Airport (Cape Town) - IATA: CPT
+King Shaka International Airport (Durban) - IATA: DUR
+South Korea:
+Incheon International Airport (Seoul) - IATA: ICN
+Gimpo International Airport (Seoul) - IATA: GMP
+South Sudan:
+Juba International Airport (Juba) - IATA: JUB
+Spain:
+Madrid Barajas Airport (Madrid) - IATA: MAD
+Barcelona El Prat Airport (Barcelona) - IATA: BCN
+Palma de Mallorca Airport (Palma de Mallorca) - IATA: PMI
+Malaga-Costa del Sol Airport (Malaga) - IATA: AGP
+Gran Canaria Airport (Gran Canaria) - IATA: LPA
+Seville Airport (Seville) - IATA: SVQ
+Sri Lanka:
+Bandaranaike International Airport (Colombo) - IATA: CMB
+Sudan:
+Khartoum International Airport (Khartoum) - IATA: KRT
+Suriname:
+Johan Adolf Pengel International Airport (Paramaribo) - IATA: PBM
+Sweden:
+Stockholm Arlanda Airport (Stockholm) - IATA: ARN
+Gothenburg Landvetter Airport (Gothenburg) - IATA: GOT
+Malmo Airport (Malmo) - IATA: MMX
+Switzerland:
+Zurich Airport (Zurich) - IATA: ZRH
+Geneva Airport (Geneva) - IATA: GVA
+Basel-Mulhouse Airport (Basel) - IATA: BSL
+Syria:
+Damascus International Airport (Damascus) - IATA: DAM
+Taiwan:
+Taoyuan International Airport (Taipei) - IATA: TPE
+Tajikistan:
+Dushanbe International Airport (Dushanbe) - IATA: DYU
+Tanzania:
+Julius Nyerere International Airport (Dar es Salaam) - IATA: DAR
+Thailand:
+Suvarnabhumi Airport (Bangkok) - IATA: BKK
+Don Mueang International Airport (Bangkok) - IATA: DMK
+Togo:
+Gnassingbe Eyadema International Airport (Lome) - IATA: LFW
+Tonga:
+Fua`amotu International Airport (Nuku`alofa) - IATA: TBU
+Trinidad and Tobago:
+Piarco International Airport (Port of Spain) - IATA: POS
+Tunisia:
+Tunis-Carthage International Airport (Tunis) - IATA: TUN
+Turkey:
+Istanbul Airport (Istanbul) - IATA: IST
+Sabiha Gokcen International Airport (Istanbul) - IATA: SAW
+Turkmenistan:
+Ashgabat International Airport (Ashgabat) - IATA: ASB
+Tuvalu:
+Funafuti International Airport (Funafuti) - IATA: FUN
+Uganda:
+Entebbe International Airport (Entebbe) - IATA: EBB
+Ukraine:
+Boryspil International Airport (Kyiv) - IATA: KBP
+United Arab Emirates:
+Dubai International Airport (Dubai) - IATA: DXB
+Abu Dhabi International Airport (Abu Dhabi) - IATA: AUH
+Sharjah International Airport (Sharjah) - IATA: SHJ
+United Kingdom:
+London Heathrow Airport (London) - IATA: LHR
+London Gatwick Airport (London) - IATA: LGW
+Manchester Airport (Manchester) - IATA: MAN
+Edinburgh Airport (Edinburgh) - IATA: EDI
+Birmingham Airport (Birmingham) - IATA: BHX
+Glasgow International Airport (Glasgow) - IATA: GLA
+Bristol Airport (Bristol) - IATA: BRS
+United States:
+Hartsfield-Jackson Atlanta International Airport (Atlanta) - IATA: ATL
+Los Angeles International Airport (Los Angeles) - IATA: LAX
+Chicago O'Hare International Airport (Chicago) - IATA: ORD
+John F. Kennedy International Airport (New York) - IATA: JFK
+Dallas/Fort Worth International Airport (Dallas/Fort Worth) - IATA: DFW
+San Francisco International Airport (San Francisco) - IATA: SFO
+Denver International Airport (Denver) - IATA: DEN
+Seattle-Tacoma International Airport (Seattle) - IATA: SEA
+Miami International Airport (Miami) - IATA: MIA
+Las Vegas McCarran International Airport (Las Vegas) - IATA: LAS
+Orlando International Airport (Orlando) - IATA: MCO
+Boston Logan International Airport (Boston) - IATA: BOS
+Houston George Bush Intercontinental Airport (Houston) - IATA: IAH
+Uruguay:
+Carrasco International Airport (Montevideo) - IATA: MVD
+Uzbekistan:
+Tashkent International Airport (Tashkent) - IATA: TAS
+Vanuatu:
+Bauerfield International Airport (Port Vila) - IATA: VLI
+Vatican City:
+No airport (Nearest: Rome Fiumicino Airport, Italy - IATA: FCO)
+Venezuela:
+Simon Bolivar International Airport (Caracas) - IATA: CCS
+Vietnam:
+Noi Bai International Airport (Hanoi) - IATA: HAN
+Tan Son Nhat International Airport (Ho Chi Minh City) - IATA: SGN
+Yemen:
+Sana'a International Airport (Sana'a) - IATA: SAH
+Zambia:
+Kenneth Kaunda International Airport (Lusaka) - IATA: LUN
+Zimbabwe:
+Robert Gabriel Mugabe International Airport (Harare) - IATA: HRE
+

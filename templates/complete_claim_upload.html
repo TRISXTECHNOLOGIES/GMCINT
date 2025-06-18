@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Step 2: Upload Documents - GetMyClaims</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        .upload-zone {
+            border: 2px dashed #ccc;
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .upload-zone .upload-icon {
+            font-size: 48px;
+        }
+        .btn-submit {
+            margin-top: 20px;
+            background-color: #00aaff;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        .btn-submit:hover {
+            background-color: #007acc;
+        }
+    </style>
+</head>
+{% if thank_you %}
+<script>
+window.onload = function() {
+    alert("Thank you! Your documents have been uploaded successfully.");
+    // Optionally, redirect after showing the alert:
+    // window.location.href = "{{ url_for('some_other_page') }}";
+}
+</script>
+{% endif %}
+<body>
+    <div class="container">
+        <h2>2. Upload Documents</h2>
+        <p>Please upload your boarding pass and any other relevant documents:</p>
+        
+        <form action="{{ url_for('complete_claim_upload', flight_id=flight.id) }}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="documents" id="documents" multiple accept=".png,.jpg,.jpeg,.pdf">
+            <div class="upload-zone" id="drag-drop-area">
+                <div class="upload-icon">📁</div>
+                <p>Drag & drop files here or click to select files</p>
+                <p class="small">(Accepted formats: .jpg, .png, .pdf)</p>
+            </div>
+            <button type="submit" class="btn-submit">Submit Claim</button>
+        </form>
+    </div>
+
+    <script>
+        const dropArea = document.getElementById('drag-drop-area');
+        const fileInput = document.getElementById('documents');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, e => {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.add('highlight'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.remove('highlight'), false);
+        });
+
+        dropArea.addEventListener('drop', function (e) {
+            fileInput.files = e.dataTransfer.files;
+        });
+
+        dropArea.addEventListener('click', function () {
+            fileInput.click();
+        });
+    </script>
+</body>
+</html>

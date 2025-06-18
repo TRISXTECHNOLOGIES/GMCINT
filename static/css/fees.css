@@ -1,0 +1,485 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Set the whole background color to white */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 100px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f2f7f5;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #ffffff;
+}
+
+.language-login {
+    display: flex;
+    align-items: center;
+}
+
+.language-select {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.language-select img {
+    height: 35px;
+    margin-right: 0px;
+}
+
+.login {
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+
+.compensation-breakdown {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.compensation-breakdown h1 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.compensation-breakdown h2 {
+    font-size: 1em;
+    color: #7a7a7a;
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 100px;
+}
+
+.card {
+    flex: 2;
+    min-width: 200px;
+    max-width: 300px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h3 {
+    font-size: 1.2em;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+
+.breakdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.breakdown p {
+    font-size: 1em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.chart {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: conic-gradient(#a8e6a3 0% 65%, #f9f9f9 65% 100%); 
+    border-radius: 50%;
+    margin: 20px 0;
+    
+}
+
+.chart0 {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: conic-gradient(#a8e6a3 0% 50%, #f9f9f9 50% 100%); 
+    border-radius: 50%;
+    margin: 20px 0;
+}
+
+.breakdown-chart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.percentage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    color: #28a745;
+}
+
+
+.why-choose-section {
+    padding: 50px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.why-choose-section h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.why-choose-section h2 span {
+    color: #27ae60;
+}
+
+.comparison-content {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.column {
+    width: 45%;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f2f2f2;
+    border: 1px;
+    border-radius: 35px;
+}
+
+.column h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.column h3 span {
+    color: #27ae60;
+}
+
+.column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.column ul li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.column ul li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.column ul li div {
+    text-align: left;
+}
+
+.column ul li h4 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.column ul li p {
+    font-size: 1em;
+    color: #555;
+}
+
+
+.get-my-claim-btn {
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-left: 50%;
+}
+
+.get-my-claim-btn:hover {
+    background-color: #0056b3;
+}
+
+
+.fees-detailed-view {
+    padding: 40px 20px;
+    text-align: left;
+    background-color: #fff;
+}
+
+.fees-detailed-view h1 {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+}
+
+.fees-detailed-view h2 {
+    font-size: 1.2em;
+    color: #7a7a7a;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.introduction {
+    padding: 20px;
+}
+
+.introduction h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h4 {
+    font-size: 1.2em;
+    color: #28a745;
+    margin-bottom: 10px;
+    margin: auto;
+}
+
+.section p {
+    font-size: 1em;
+    color: #333;
+    margin: 5px 0;
+}
+
+.definitions {
+    padding: 40px 20px;
+    text-align: left;
+    background-color: #fff;
+}
+
+.definitions h1 {
+    font-size: 2em;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+
+.definitions .content p {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 10px;
+    margin: auto;
+}
+
+.definition-item {
+    margin-bottom: 20px;
+}
+
+
+.services-free {
+    padding: 40px 20px;
+    text-align: left;
+    background-color: #fff;
+}
+
+.services-free h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.services-free h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.services-free .content p {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 10px;
+    margin: auto;
+}
+
+.service-item {
+    margin-bottom: 20px;
+}
+
+.service-item p {
+    margin: 0;
+}
+
+
+.compensation-fees {
+    padding: 40px 20px;
+    text-align: left;
+    background-color: #fff;
+}
+
+.compensation-fees h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.compensation-fees .content p {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.fee-item {
+    margin-bottom: 20px;
+}
+
+.fee-item p {
+    margin: 0;
+}
+
+.fee-item p span {
+    color: #28a745; /* green color for section numbers */
+}
+
+.footer-section {
+    background-color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 0%;
+}
+
+.footer-logo img {
+    max-width: 300px; /* Adjust size as needed */
+    padding: 0%;
+    margin: 0%;
+}
+
+.footer-text {
+    flex-grow: 1;
+    margin: 0 20px;
+    color: #555;
+}
+
+.footer-text p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.footer-icons img {
+    margin: 0 10px;
+    width: 30px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+}
+
+
+.multi-column-footer {
+    background-color: #f9f9f9;
+    padding: 50px;
+    text-align: left;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.company {
+    align-items: center;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.footer-column h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1em;
+}
+
+.footer-column ul li a:hover {
+    color: #27ae60;
+}

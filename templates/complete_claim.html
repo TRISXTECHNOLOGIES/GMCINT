@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Claim - GetMyClaims</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            max-height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .claim-form {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .flight-details {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .flight-details h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            width: 140px;
+            flex-shrink: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .signature-pad {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            height: 200px;
+            position: relative;
+            background-color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .signature-controls {
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        
+        .btn-submit {
+            background-color: #007bff;
+            padding: 12px 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .upload-zone {
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 30px;
+            text-align: center;
+            background-color: #f8f9fa;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        
+        .upload-icon {
+            font-size: 36px;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        
+        .flash-messages {
+            margin-bottom: 20px;
+        }
+        
+        .flash-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ url_for('static', filename='assets/logo2.png') }}" alt="GetMyClaims Logo" class="logo">
+            <h1>Complete Your Flight Compensation Claim</h1>
+        </div>
+        
+        {% if get_flashed_messages() %}
+        <div class="flash-messages">
+            {% for message in get_flashed_messages() %}
+            <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <div class="claim-form">
+            <div class="flight-details">
+                <h3>Flight Information</h3>
+                <div class="detail-row">
+                    <span class="detail-label">Airline:</span>
+                    <span>{{ flight.airline }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Flight Number:</span>
+                    <span>{{ flight.flight_number }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Flight Date:</span>
+                    <span>{{ flight.flight_date }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">From:</span>
+                    <span>{{ flight.leaving_from }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">To:</span>
+                    <span>{{ flight.destination }}</span>
+                </div>
+            </div>
+            
+            <form action="{{ url_for('client_complete_claim', flight_id=flight.id, token=flight.verification_token) }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <h3>1. Signature</h3>
+                    <p>Please sign below to authorize us to process your claim:</p>
+                    <div class="signature-pad">
+                        <canvas id="signature-pad" style="width: 100%; height: 200px;"></canvas>
+                    </div>
+                    <div class="signature-controls">
+    <input type="hidden" name="signature" id="signature-data">
+    <div style="display: flex; align-items: flex-start; gap: 8px; padding: 8px 8px 12px 8px;">
+        <label for="whatsappNotification" style="display: flex; align-items: center; margin: 0; cursor: pointer;">
+            <input required type="checkbox" id="whatsappNotification" name="notification" style="margin: 0; flex-shrink: 0;" />
+        </label>
+        <span style="line-height: 1.4;">
+            By signing you agree to
+            <strong class="text-[#215fff]"><a href="{{url_for('TC')}}" target="_blank">Terms and Conditions</a></strong> and
+            <strong class="text-[#215fff]"><a href="{{url_for('fees')}}" target="_blank">Pricing</a></strong>, and you authorize us to show your signature on the
+            <strong class="text-[#215fff]"><a href="{{url_for('static',filename='consent_form_templates.pdf')}}" target="_blank">Assignment Agreement</a></strong>
+        </span>
+    </div>
+</div>
+
+
+                        
+                    <button class="bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90" type="button" onclick="clearSignature()">Clear Signature</button>
+                </div>
+                
+                <div class="form-group">
+                    <h3>2. Upload Documents</h3>
+                    <p>Please upload your boarding pass and any other relevant documents:</p>
+                    <input type="file" name="documents" id="documents" multiple accept=".png,.jpg,.jpeg,.pdf">
+                    <div class="upload-zone" id="drag-drop-area">
+                        <div class="upload-icon">📁</div>
+                        <p>Drag & drop files here or click to select files</p>
+                        <p class="small">(Accepted formats: .jpg, .png, .pdf)</p>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-submit">Submit Claim</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+    // Signature pad configuration
+    const canvas = document.getElementById('signature-pad');
+    const signaturePad = new SignaturePad(canvas, {
+        backgroundColor: 'rgb(255, 255, 255)',
+        penColor: 'rgb(0, 0, 0)'
+    });
+
+    // Responsive canvas resizing
+    function resizeCanvas() {
+        const ratio = Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext('2d').scale(ratio, ratio);
+        signaturePad.clear();
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    // Clear Signature function (called by both buttons)
+    function clearSignature() {
+        signaturePad.clear();
+    }
+
+    // Keep backward compatibility with old clear button if still exists
+    const oldClearButton = document.getElementById('clear-button');
+    if (oldClearButton) {
+        oldClearButton.addEventListener('click', function() {
+            clearSignature();
+        });
+    }
+
+    // Handle form submission
+    document.querySelector('form').addEventListener('submit', function(e) {
+        if (signaturePad.isEmpty()) {
+            alert('Please sign the form.');
+            e.preventDefault();
+            return false;
+        }
+
+        const dataURL = signaturePad.toDataURL();
+        document.getElementById('signature-data').value = dataURL;
+    });
+
+    // Drag and drop file upload functionality (keep untouched)
+    const dropArea = document.getElementById('drag-drop-area');
+    const fileInput = document.getElementById('documents');
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight() {
+        dropArea.classList.add('highlight');
+    }
+
+    function unhighlight() {
+        dropArea.classList.remove('highlight');
+    }
+
+    dropArea.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        fileInput.files = files;
+    }
+
+    dropArea.addEventListener('click', function() {
+        fileInput.click();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upload CSV - Partner Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/super.css') }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #35B67E;
+            --primary-light: #e8f5f0;
+            --primary-dark: #2a8c5f;
+            --secondary: #2b8c40;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --background: #f8fafc;
+            --background-alt: #edf2f7;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--background);
+            color: var(--text-primary);
+            font-size: 14px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1002;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mobile-menu-toggle svg {
+            width: 20px;
+            height: 20px;
+            color: var(--text-primary);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: linear-gradient(135deg, var(--white) 0%, #fafbfc 100%);
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            overflow-y: auto;
+            border-right: 1px solid var(--border-light);
+        }
+
+        .sidebar-header {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-header img {
+            width: 160px;
+            max-width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .sidebar-header img:hover {
+            transform: scale(1.02);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 0.25rem;
+        }
+
+        nav ul li a {
+            display: flex;
+            align-items: center;
+            padding: 0.875rem 1rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 14px;
+            transition: var(--transition);
+            color: var(--text-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--primary);
+            transform: scaleY(0);
+            transition: var(--transition);
+        }
+
+        nav ul li.active a {
+            background: linear-gradient(135deg, var(--primary-light) 0%, rgba(53, 182, 126, 0.1) 100%);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        nav ul li.active a::before {
+            transform: scaleY(1);
+        }
+
+        nav ul li:not(.active) a:hover {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin-left: 260px; /* Adjust for sidebar width */
+            background-color: var(--background);
+        }
+
+        /* Upload specific styles */
+        .upload-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .upload-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .upload-header h2 {
+            color: var(--text-primary);
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .upload-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            background-color: var(--background-alt);
+            margin-bottom: 1.5rem;
+        }
+        
+        .upload-area.dragover {
+            border-color: var(--primary);
+            background-color: rgba(54, 172, 87, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .upload-text {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .upload-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .browse-btn {
+            background-color: var(--background);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .submit-btn {
+            margin-top: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .upload-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .browse-btn:hover {
+            background-color: rgba(54, 172, 87, 0.1);
+        }
+        
+        .upload-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .helper-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .helper-link {
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .helper-link:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .upload-progress {
+            margin: 1.5rem 0;
+        }
+        
+        .progress-label {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: var(--border-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .upload-status {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            border-radius: var(--radius);
+            font-size: 14px;
+        }
+        
+        .upload-status.success {
+            background: rgba(54, 172, 87, 0.1);
+            color: var(--primary-dark);
+            border: 1px solid var(--primary);
+        }
+        
+        .upload-status.error {
+            background: #FEE2E2;
+            color: #991B1B;
+            border: 1px solid #EF4444;
+        }
+        
+        .upload-status.warning {
+            background: #FEF3C7;
+            color: #92400E;
+            border: 1px solid #F59E0B;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+                width: calc(100% - 240px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 1001;
+                width: 260px;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .upload-container {
+                padding: 1rem;
+            }
+
+            .helper-links {
+                flex-direction: column;
+            }
+        }
+
+        /* File preview styles */
+        .file-preview {
+            margin: 1.5rem 0;
+            background: var(--background-alt);
+            border-radius: var(--radius);
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .file-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .file-details {
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        #fileName {
+            font-weight: 500;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .file-size {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        
+        .remove-file {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.2s ease;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+        
+        .remove-file:hover {
+            color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+        
+        /* Upload success animation */
+        @keyframes uploadSuccess {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .upload-success-animation {
+            animation: uploadSuccess 0.5s ease forwards;
+        }
+        
+        /* Checkmark animation */
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 2;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+            margin: 10% auto;
+            box-shadow: inset 0px 0px 0px #36AC57;
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+        }
+        
+        .checkmark__circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            stroke: #36AC57;
+            fill: none;
+            animation: stroke .6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke .3s cubic-bezier(0.65, 0, 0.45, 1) .8s forwards;
+        }
+        
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        @keyframes scale {
+            0%, 100% {
+                transform: none;
+            }
+            50% {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+        }
+        
+        @keyframes fill {
+            100% {
+                box-shadow: inset 0px 0px 0px 30px #36AC57;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ url_for('static', filename='assets/logo2.png') }}" alt="Logo" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/partner_dashboard">Dashboard</a></li>
+                <li class="active"><a href="/partner_upload">Upload Claims</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="upload-container">
+            <div class="upload-header">
+                <i class="fas fa-file-upload upload-icon"></i>
+                <h2>Upload Booking Details</h2>
+                <p class="upload-description">Upload your CSV file containing booking details. Ensure the file format matches the sample provided.</p>
+            </div>
+
+            <form id="uploadForm" action="/partner_upload" method="POST" enctype="multipart/form-data">
+                <div class="upload-area" id="dropZone">
+                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                    <p class="upload-text">Drag and drop your CSV file here or click to browse</p>
+                    <input type="file" name="file" id="fileInput" class="file-input" accept=".csv" required />
+                    <button type="button" class="upload-btn browse-btn" onclick="document.getElementById('fileInput').click()" title="Choose a file">
+                        <i class="fas fa-folder-open"></i> Choose File
+                    </button>
+                </div>
+
+                <!-- File preview section - separate from upload area -->
+                <div class="file-preview" id="filePreview" style="display: none;">
+                    <div class="file-info">
+                        <i class="fas fa-file-csv file-icon"></i>
+                        <div class="file-details">
+                            <span id="fileName">No file selected</span>
+                            <span id="fileSize" class="file-size"></span>
+                        </div>
+                        <button type="button" class="remove-file" id="removeFile">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Progress section - separate from file preview -->
+                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                    <p class="progress-label">Uploading file...</p>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                    </div>
+                </div>
+
+                <!-- Status message - separate from progress -->
+                <div class="upload-status" id="uploadStatus" style="display: none;"></div>
+
+                <!-- Submit button - at the bottom -->
+                <button type="submit" class="upload-btn submit-btn" id="submitBtn" disabled title="Upload your file">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload
+                </button>
+            </form>
+
+            <div class="helper-links">
+                <a href="/download_sample_csv" class="helper-link" title="Download a sample CSV file">
+                    <i class="fas fa-download"></i> Download Sample CSV
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // File upload handling
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const uploadProgress = document.getElementById('uploadProgress');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const uploadStatus = document.getElementById('uploadStatus');
+        const filePreview = document.getElementById('filePreview');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const removeFile = document.getElementById('removeFile');
+
+        // Drag and drop handlers
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                handleFileSelect();
+            }
+        });
+
+        fileInput.addEventListener('change', handleFileSelect);
+
+        // Remove file button
+        removeFile.addEventListener('click', () => {
+            fileInput.value = '';
+            filePreview.style.display = 'none';
+            submitBtn.disabled = true;
+            uploadStatus.style.display = 'none';
+        });
+
+        function handleFileSelect() {
+            const file = fileInput.files[0];
+            if (file) {
+                // Display file info
+                fileName.textContent = file.name;
+                fileSize.textContent = formatFileSize(file.size);
+                filePreview.style.display = 'block';
+                
+                if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
+                    submitBtn.disabled = false;
+                    uploadStatus.style.display = 'none';
+                } else {
+                    showStatus('Please select a valid CSV file', 'error');
+                    submitBtn.disabled = true;
+                }
+            }
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Form submission
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            submitBtn.disabled = true;
+            uploadProgress.style.display = 'block';
+            progressBarFill.style.width = '0%';
+
+            // Hide file preview during upload
+            filePreview.style.display = 'none';
+
+            // Simulate progress
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += 5;
+                progressBarFill.style.width = `${Math.min(progress, 90)}%`;
+                if (progress >= 90) clearInterval(progressInterval);
+            }, 100);
+
+            // Use traditional form submission with hidden iframe to capture response
+            const iframe = document.createElement('iframe');
+            iframe.name = 'upload_iframe';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            
+            // Set form target to the iframe
+            const form = document.getElementById('uploadForm');
+            const originalAction = form.action;
+            const originalTarget = form.target;
+            form.target = 'upload_iframe';
+            
+            // Listen for iframe load event
+            iframe.onload = function() {
+                clearInterval(progressInterval);
+                progressBarFill.style.width = '100%';
+                
+                // Check if there are success indicators in the response
+                try {
+                    const iframeContent = iframe.contentDocument || iframe.contentWindow.document;
+                    const successIndicators = [
+                        'Successfully uploaded',
+                        'Email sent successfully',
+                        'records added'
+                    ];
+                    
+                    const iframeText = iframeContent.body.textContent || '';
+                    const isSuccess = successIndicators.some(indicator => iframeText.includes(indicator));
+                    
+                    setTimeout(() => {
+                        uploadProgress.style.display = 'none';
+                        
+                        if (isSuccess) {
+                            // Show success animation
+                            showSuccessAnimation();
+                            
+                            // Reset form after successful upload
+                            setTimeout(() => {
+                                form.reset();
+                                filePreview.style.display = 'none';
+                                submitBtn.disabled = true;
+                                uploadStatus.style.display = 'none';
+                                
+                                // Restore original form properties
+                                form.action = originalAction;
+                                form.target = originalTarget;
+                                
+                                // Remove iframe
+                                document.body.removeChild(iframe);
+                            }, 3000);
+                        } else {
+                            filePreview.style.display = 'block';
+                            showStatus('Upload completed, but with possible errors. Please check your dashboard.', 'warning');
+                            submitBtn.disabled = false;
+                            
+                            // Restore original form properties
+                            form.action = originalAction;
+                            form.target = originalTarget;
+                            
+                            // Remove iframe
+                            document.body.removeChild(iframe);
+                        }
+                    }, 500);
+                } catch (error) {
+                    // If we can't access iframe content (cross-origin), assume success
+                    uploadProgress.style.display = 'none';
+                    showSuccessAnimation();
+                    
+                    // Reset form after assumed successful upload
+                    setTimeout(() => {
+                        form.reset();
+                        filePreview.style.display = 'none';
+                        submitBtn.disabled = true;
+                        uploadStatus.style.display = 'none';
+                        
+                        // Restore original form properties
+                        form.action = originalAction;
+                        form.target = originalTarget;
+                        
+                        // Remove iframe
+                        document.body.removeChild(iframe);
+                    }, 3000);
+                }
+            };
+            
+            // Submit the form
+            form.submit();
+        });
+
+        function showStatus(message, type) {
+            uploadStatus.textContent = message;
+            uploadStatus.className = `upload-status ${type}`;
+            uploadStatus.style.display = 'block';
+        }
+
+        function showSuccessAnimation() {
+            // Create success animation container
+            const successContainer = document.createElement('div');
+            successContainer.className = 'upload-success-animation';
+            successContainer.innerHTML = `
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+                <p style="text-align: center; color: #36AC57; font-weight: bold;">File uploaded successfully!</p>
+            `;
+            
+            // Replace upload status with success animation
+            uploadStatus.innerHTML = '';
+            uploadStatus.appendChild(successContainer);
+            uploadStatus.className = 'upload-status success';
+            uploadStatus.style.display = 'block';
+        }
+
+        // Mobile sidebar toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Close sidebar on mobile when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(event.target) && 
+                !toggle.contains(event.target) && 
+                sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

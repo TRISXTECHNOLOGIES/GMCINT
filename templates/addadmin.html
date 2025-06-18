@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Admin - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ url_for('static', filename='assets/logo2.png') }}" alt="Get My Claims Logo">
+
+        </div>
+        <div class="user-info">
+            <div class="avatar"></div>
+            <div class="user-name"></div>
+            <div class="user-email"></div>
+        </div>
+        <nav>
+
+            <ul>
+                <li><a href="{{ url_for('super_dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('super') }}">CRM Data</a></li>
+                <li class="active"><a href="{{ url_for('create_admin') }}">Add Admin</a></li>
+                <h3>Website</h3>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">Achievements</a></li>
+
+                <li><a href="/settings">Setting</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="menu-toggle">
+                    <img src="icons/menu-icon.png" alt="Menu">
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="notifications">
+                    <img src="icons/notification-icon.png" alt="Notifications">
+                </div>
+                <div class="language-selector">
+                    <img src="icons/flag-icon.png" alt="Language">
+                    <span>English</span>
+                </div>
+                <div class="user-profile">
+                    <img src="icons/user-icon.png" alt="User">
+                    <span>{{username}}</span>
+                    <span class="user-role">{{role}} </span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <main>
+            <div class="container" style="
+            margin-top: 65px;
+            margin-left: 81px;
+            height: auto;
+            width: 619px;
+        ">
+                <h2>Add Admin</h2>
+                <form id="adminForm" method="post" action="/create_admin" >
+                    <div class="form-group">
+                        <label for="adminName">Admin Name</label>
+                        <input type="text" name="name" id="adminName" placeholder="Enter Admin Name" required style="
+                        padding-right: 0px;
+                        width: 578px;
+                        height: 17px;
+                    ">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminEmail">Admin Email</label>
+                        <input type="email" name="email" id="adminEmail" placeholder="Enter Admin Email" required style="
+                        padding-right: 0px;
+                        width: 578px;
+                        height: 17px;
+                    ">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">Password</label>
+                        <input type="password" name="password" id="adminPassword" placeholder="Enter Password" required style="
+                        padding-right: 0px;
+                        width: 578px;
+                        height: 17px;
+                    ">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminRole">Role</label>
+                        <select id="adminRole" name="role" style="
+                        
+                        width: 592px;
+                    ">
+                            <option value="super_admin">Super Admin</option>
+                            <option value="admin">Admin</option>
+                            <option value="moderator">Moderator</option>
+                            <option value="partner">Partner</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="addAdminButton">Add Admin</button>
+                </form>
+
+                <h3>Admin List</h3>
+                <table id="adminTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for admin in admins %}
+                        <tr>
+                            <td>{{admin.first_name}} {{admin.last_name}}</td>
+                            <td>{{admin.email}}</td>
+                            <td>{{admin.role}}</td>
+                        </tr>
+                        {% endfor %}
+                        <!-- Admins will be dynamically added here -->
+                    </tbody>
+                </table>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                {% for message in messages %}
+                <li>{{message}} </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            {% endwith %}
+  
+            </div>
+        </main>
+    </div>
+    <!-- <script src="{{ url_for('static', filename='js/admin.js') }}"></script> -->
+
+</body>
+
+</html>

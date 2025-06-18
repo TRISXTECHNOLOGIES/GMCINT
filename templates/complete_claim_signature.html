@@ -1,0 +1,157 @@
+#complete_claim_signature.html-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete Your Flight Compensation Claim2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        .flight-info {
+            border-left: 3px solid green;
+            padding-left: 15px;
+            margin-bottom: 30px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            width: 100%;
+            height: 150px;
+        }
+        .checkbox {
+            margin-top: 15px;
+        }
+        .checkbox label {
+            font-size: 14px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #0099ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .btn:hover {
+            background-color: #007acc;
+        }
+        .btn-clear {
+            background-color: #87cefa;
+            color: black;
+        }
+        .btn-clear:hover {
+            background-color: #6ec6f4;
+        }
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Complete Your Flight Compensation Claim</h2>
+
+        {% if get_flashed_messages() %}
+            {% for message in get_flashed_messages() %}
+                <div class="error-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="flight-info">
+            <p><strong>Airline:</strong> {{ flight.airline }}</p>
+            <p><strong>Flight Number:</strong> {{ flight.flight_number }}</p>
+            <p><strong>Flight Date:</strong> {{ flight.flight_date }}</p>
+            <p><strong>From:</strong> {{ flight.leaving_from }}</p>
+            <p><strong>To:</strong> {{ flight.destination }}</p>
+        </div>
+
+        <h3>1. Signature</h3>
+        <p>Please sign below to authorize us to process your claim:</p>
+
+        <form id="sigForm" method="POST">
+            <canvas id="signature-pad"></canvas>
+            <input type="hidden" name="signature_data" id="signature_data">
+
+            <div class="checkbox">
+                <input type="checkbox" id="agree" name="agree">
+                <label for="agree">
+                    By signing you agree to
+                    <a href="#" target="_blank">Terms and Conditions</a>,
+                    <a href="#" target="_blank">Pricing</a>,
+                    and you authorize us to show your signature on the
+                    <a href="#" target="_blank">Assignment Agreement</a>.
+                </label>
+            </div>
+
+            <p class="error-message" id="signature-error">Please provide your signature and agree to the terms.</p>
+
+            <div class="button-group">
+                <button type="button" class="btn btn-clear" onclick="clearPad()">Clear Signature</button>
+                <button type="submit" class="btn">Next</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('signature-pad');
+        const ctx = canvas.getContext('2d');
+        const sigForm = document.getElementById('sigForm');
+        const errorMsg = document.getElementById('signature-error');
+        const agreeCheckbox = document.getElementById('agree');
+
+        let drawing = false;
+        let isSigned = false;
+
+        canvas.addEventListener('mousedown', () => drawing = true);
+        canvas.addEventListener('mouseup', () => {
+            drawing = false;
+            isSigned = true;
+        });
+        canvas.addEventListener('mousemove', draw);
+
+        function draw(e) {
+            if (!drawing) return;
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#000';
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(e.offsetX, e.offsetY);
+        }
+
+        function clearPad() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            isSigned = false;
+        }
+
+        sigForm.addEventListener('submit', function (e) {
+            if (!isSigned || !agreeCheckbox.checked) {
+                e.preventDefault();
+                errorMsg.style.display = 'block';
+                return;
+            }
+            const dataURL = canvas.toDataURL();
+            document.getElementById('signature_data').value = dataURL;
+        });
+    </script>
+</body>
+</html>

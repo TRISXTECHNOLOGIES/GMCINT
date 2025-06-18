@@ -1,0 +1,264 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Set the whole background color to white */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f2f7f5;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #e0e0e0;
+}
+
+.language-login {
+    display: flex;
+    align-items: center;
+}
+
+.language-select {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.language-select img {
+    height: 25px;
+    margin-right: 25px;
+}
+
+.login {
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+
+.terms-section {
+    margin: 120px;
+    padding-top: 20px;
+}
+
+.terms-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.terms-content p {
+    margin-bottom: 20px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.services-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.services-section h1 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.services-section h2 {
+    font-size: 1.2em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.service-content p {
+    margin-bottom: 10px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.service-content .number {
+    color: green;
+    font-weight: bold;
+}
+
+
+.definitions-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.definitions-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.definitions-section p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.definition-content .number {
+    color: green;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+
+.eligibility-info-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.eligibility-info-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.eligibility-info-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.eligibility-info-section p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.eligibility-content .number {
+    color: green;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+
+.footer-section {
+    background-color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 0%;
+}
+
+.footer-logo img {
+    max-width: 300px; /* Adjust size as needed */
+    padding: 0%;
+    margin: 20px;
+}
+
+.footer-text {
+    flex-grow: 1;
+    margin: 0 20px;
+    color: #555;
+}
+
+.footer-text p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.footer-icons img {
+    margin: 0 10px;
+    width: 30px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+}
+
+
+.multi-column-footer {
+    background-color: #f9f9f9;
+    padding: 50px;
+    text-align: left;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.company {
+    align-items: center;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.footer-column h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1em;
+}
+
+.footer-column ul li a:hover {
+    color: #27ae60;
+}

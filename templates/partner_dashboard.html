@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Partner Dashboard - Contact Lists</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/super.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/dash.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <style>
+        :root {
+            --primary: #35B67E;
+            --primary-light: #e8f5f0;
+            --primary-dark: #2a8c5f;
+            --secondary: #2b8c40;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --background: #f8fafc;
+            --background-alt: #edf2f7;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--background);
+            color: var(--text-primary);
+            font-size: 14px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1002;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mobile-menu-toggle svg {
+            width: 20px;
+            height: 20px;
+            color: var(--text-primary);
+        }
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: linear-gradient(135deg, var(--white) 0%, #fafbfc 100%);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    transition: var(--transition);
+    overflow-y: auto;
+    border-right: 1px solid var(--border-light);
+}
+
+.sidebar-header {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 2rem;
+}
+
+.sidebar-header img {
+    width: 160px;
+    max-width: 100%;
+    height: auto;
+    transition: var(--transition);
+}
+
+.sidebar-header img:hover {
+    transform: scale(1.02);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-bottom: 0.25rem;
+}
+
+nav ul li a {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 14px;
+    transition: var(--transition);
+    color: var(--text-secondary);
+    position: relative;
+    overflow: hidden;
+    width: 100%; /* Ensure link spans full width */
+    box-sizing: border-box; /* Prevent padding from affecting width */
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--primary);
+    transform: scaleY(0);
+    transition: var(--transition);
+}
+
+nav ul li.active a {
+    background: linear-gradient(90deg, var(--primary-light) 0%, rgba(53, 182, 126, 0.05) 100%); /* Restored subtle gradient */
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+nav ul li.active a::before {
+    transform: scaleY(1);
+}
+
+nav ul li:not(.active) a:hover {
+    background: linear-gradient(90deg, var(--primary-light) 0%, rgba(53, 182, 126, 0.05) 100%); /* Subtle gradient on hover */
+    color: var(--primary);
+    transform: translateX(4px);
+}
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
+            padding: 1.5rem;
+            background-color: var(--background);
+            min-height: 100vh;
+            width: calc(100% - 260px);
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(10px);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-bar {
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            width: 100%;
+            transition: var(--transition);
+            font-size: 14px;
+            background: var(--background);
+        }
+
+        .search-bar:focus {
+            border-color: var(--primary);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(53, 182, 126, 0.1);
+            outline: none;
+        }
+
+        .search-container::before {
+            content: '🔍';
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .user-profile:hover {
+            background: var(--primary-light);
+            border-color: var(--primary);
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+            flex-shrink: 0;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .user-role {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Status Cards */
+        .status-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: default; /* Changed from pointer to default */
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .status-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .status-card:hover {
+            transform: none; /* Remove the translateY effect */
+            box-shadow: var(--shadow-sm); /* Keep the same shadow on hover */
+            border-color: var(--border-light); /* Keep the same border color */
+        }
+
+        .status-card h3 {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-card .count {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .status-card .status-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        /* Add status-specific colors */
+        .status-card[data-status="open"]::before {
+            background: linear-gradient(90deg, #1565C0 0%, #1976D2 100%);
+        }
+
+        .status-card[data-status="progress"]::before {
+            background: linear-gradient(90deg, #E65100 0%, #F57C00 100%);
+        }
+
+        .status-card[data-status="pending"]::before {
+            background: linear-gradient(90deg, #4A148C 0%, #7B1FA2 100%);
+        }
+
+        .status-card[data-status="waiting_signature"]::before {
+            background: linear-gradient(90deg, #0277BD 0%, #039BE5 100%);
+        }
+
+        .status-card[data-status="forwarded"]::before {
+            background: linear-gradient(90deg, #00695C 0%, #00897B 100%);
+        }
+
+        .status-card[data-status="closed"]::before {
+            background: linear-gradient(90deg, #1B5E20 0%, #388E3C 100%);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .filter-header {
+            display: flex;
+            align-items: center;
+            justify-content: between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .filter-header h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .filter-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-item label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .filter-item select,
+        .filter-item input {
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 14px;
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .filter-item select:focus,
+        .filter-item input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(53, 182, 126, 0.1);
+            outline: none;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 14px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            min-width: auto;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 13px;
+        }
+
+        /* Table */
+        .table-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .table-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--background-alt);
+        }
+
+        .table-title {
+            display: flex;
+            align-items: center;
+        }
+
+        .table-title h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .table-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .total-count {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        th {
+            background: var(--background-alt);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: left;
+            padding: 1rem 1.5rem;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-primary);
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        tr:hover {
+            background: linear-gradient(135deg, var(--primary-light) 0%, rgba(53, 182, 126, 0.05) 100%);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            padding: 0.375rem 0.875rem;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 80px;
+        }
+
+        .status-open {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            color: #1565C0;
+            border: 1px solid #1976D2;
+        }
+
+        .status-progress {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFCC02 100%);
+            color: #E65100;
+            border: 1px solid #F57C00;
+        }
+
+        .status-pending {
+            background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+            color: #4A148C;
+            border: 1px solid #7B1FA2;
+        }
+
+        .status-waiting_signature {
+            background: linear-gradient(135deg, #E1F5FE 0%, #B3E5FC 100%);
+            color: #0277BD;
+            border: 1px solid #039BE5;
+        }
+
+        .status-forwarded {
+            background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%);
+            color: #00695C;
+            border: 1px solid #00897B;
+        }
+
+        .status-closed {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            color: #1B5E20;
+            border: 1px solid #388E3C;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-light);
+            background: var(--background-alt);
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pagination-info {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .pagination-btn {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            background: var(--white);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: 40px;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .pagination-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .pagination-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            font-weight: 600;
+        }
+
+        .pagination-ellipsis {
+            color: var(--text-muted);
+            padding: 0.5rem;
+        }
+
+        /* Add loading state for pagination */
+        .pagination.loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .pagination.loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+            animation: loading 1s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Ensure table container doesn't hide pagination */
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            overflow: visible;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .empty-state p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+
+            .main-content {
+                margin-left: 240px;
+                width: calc(100% - 240px);
+            }
+
+            .status-cards {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 1001;
+                width: 260px;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .search-container {
+                max-width: none;
+            }
+
+            .user-profile {
+                justify-content: center;
+            }
+
+            .status-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-actions {
+                justify-content: stretch;
+            }
+
+            .filter-actions .btn {
+                flex: 1;
+            }
+
+            .table-wrapper {
+                border-radius: 0;
+            }
+
+            th,
+            td {
+                padding: 0.75rem 0.5rem;
+                font-size: 13px;
+            }
+
+            .pagination {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .status-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .status-card .count {
+                font-size: 1.875rem;
+            }
+        }
+
+        /* Focus states for accessibility */
+        .btn:focus,
+        .search-bar:focus,
+        .filter-item select:focus,
+        .filter-item input:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --border: #000000;
+                --text-secondary: #000000;
+                --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Table improvements */
+        .table-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .total-count {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .email-link,
+        .phone-link {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .email-link:hover,
+        .phone-link:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Add these styles for the date picker */
+        .flatpickr-calendar {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+
+        .flatpickr-day.selected {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .flatpickr-day.inRange {
+            background: var(--primary-light);
+            border-color: var(--primary);
+        }
+
+        .flatpickr-day:hover {
+            background: var(--primary-light);
+        }
+
+        .flatpickr-current-month {
+            padding: 0.5rem 0;
+        }
+
+        .flatpickr-months .flatpickr-month {
+            height: 40px;
+        }
+
+        .flatpickr-day {
+            border-radius: var(--radius);
+            margin: 2px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ url_for('static', filename='assets/logo2.png') }}" alt="Logo" />
+        </div>
+        <nav>
+            <ul>
+                <li class="active"><a href="/partner_dashboard">Dashboard</a></li>
+                <li><a href="/partner_upload">Upload Claims</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header fade-in">
+            <div class="search-container">
+                <input type="text" placeholder="Search contacts, emails, phone numbers..." class="search-bar" />
+            </div>
+            <div class="user-profile">
+                <!-- <img src="{{ url_for('static', filename='assets/user-avatar.png') }}" alt="User Avatar"
+                    class="user-avatar" /> -->
+                <div class="user-details">
+                    <span class="user-name">{{ username }}</span>
+                    <span class="user-role">{{ role }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Cards -->
+        <div class="status-cards slide-in">
+            <div class="status-card" data-status="open">
+                <h3>Open Leads</h3>
+                <div class="count">{{ open_count }}</div>
+                <div class="status-description">New leads requiring attention</div>
+            </div>
+            <div class="status-card" data-status="progress">
+                <h3>In Progress</h3>
+                <div class="count">{{ progress_count }}</div>
+                <div class="status-description">Currently being processed</div>
+            </div>
+            <div class="status-card" data-status="pending">
+                <h3>Pending</h3>
+                <div class="count">{{ pending_count }}</div>
+                <div class="status-description">Waiting for updates</div>
+            </div>
+            <div class="status-card" data-status="waiting_signature">
+                <h3>Waiting for Signature</h3>
+                <div class="count">{{ waiting_signature_count }}</div>
+                <div class="status-description">Client needs to sign</div>
+            </div>
+            <div class="status-card" data-status="forwarded">
+                <h3>Forwarded</h3>
+                <div class="count">{{ forwarded_count }}</div>
+                <div class="status-description">Sent to processing</div>
+            </div>
+            <div class="status-card" data-status="closed">
+                <h3>Closed</h3>
+                <div class="count">{{ closed_count }}</div>
+                <div class="status-description">Completed claims</div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section fade-in">
+            <div class="filter-header">
+                <h3>Filter Contacts</h3>
+            </div>
+            <form action="/partner_dashboard" method="get" id="filter-form">
+                <div class="filter-grid">
+                    <div class="filter-item">
+                        <label for="datepicker">Date (Format: DD/MM/YYYY)</label>
+                        <input type="text" id="datepicker" name="date" placeholder="e.g., 6/6/2025" autocomplete="off" value="{{ date }}" />
+                        <small class="form-text text-muted">Available dates: {{ allowed_dates | join(', ') }}</small>
+                    </div>
+                    <div class="filter-item">
+                        <label for="filter-status">Status</label>
+                        <select id="filter-status" name="status">
+                            <option value="">All Status</option>
+                            {% for status_option in allowed_status %}
+                            <option value="{{ status_option }}" {% if status_option==status %}selected{% endif %}>
+                                {{ status_option | capitalize }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-actions">
+                    <button type="button" id="reset-filter-btn" class="btn btn-secondary">Reset Filters</button>
+                    <button type="submit" class="btn btn-primary">Apply Filters</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Contact List Table -->
+        <div class="table-container fade-in">
+            <div class="table-header">
+                <div class="table-title">
+                    <h3>Contact List</h3>
+                </div>
+                <div class="table-actions">
+                    <span class="total-count">Total Records: {{ pagination.total if pagination else 0 }}</span>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Contact Name</th>
+                            <th>Email Address</th>
+                            <th>Phone Number</th>
+                            <th>Date Created</th>
+                            <th>Actions</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if flights and flights|length > 0 %}
+                        {% for flight in flights %}
+                        <tr class="fade-in">
+                            <td><strong>#{{ flight.id }}</strong></td>
+                            <td>{{ flight.first_name }} {{ flight.last_name }}</td>
+                            <td><a href="mailto:{{ flight.email }}" class="email-link">{{ flight.email }}</a></td>
+                            <td><a href="tel:{{ flight.phone_number }}" class="phone-link">{{ flight.phone_number }}</a>
+                            </td>
+                            <td>{{ flight.date }}</td>
+                            <td>
+                                <a href="{{ url_for('view', flight_id=flight.id) }}" class="btn btn-primary btn-sm" target="_blank">View</a>
+                            </td>
+                            <td>
+                                <span class="status-badge status-{{ flight.status | lower }}">
+                                    {% if flight.status == 'pending' %}
+                                    Not Signed
+                                    {% elif flight.status == 'completed' %}
+                                    Forwarded
+                                    {% elif flight.status == 'waiting_signature' %}
+                                    Awaiting Signature
+                                    {% else %}
+                                    {{ flight.status | capitalize }}
+                                    {% endif %}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="7">
+                                <div class="empty-state">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    <h3>No contacts found</h3>
+                                    <p>Try adjusting your filters or check back later for new contacts.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Updated Pagination Section -->
+            {% if pagination and pagination.pages > 1 %}
+            <div class="pagination">
+                <div class="pagination-info">
+                    Showing {{ (pagination.page - 1) * pagination.per_page + 1 }} to 
+                    {% if pagination.page * pagination.per_page > pagination.total %}
+                        {{ pagination.total }}
+                    {% else %}
+                        {{ pagination.page * pagination.per_page }}
+                    {% endif %} 
+                    of {{ pagination.total }} entries
+                </div>
+                <div class="pagination-controls">
+                    {% if pagination.has_prev %}
+                    <a href="{{ url_for('partner_dashboard', 
+                        page=pagination.prev_num, 
+                        date=date, 
+                        status=status) }}" 
+                       class="pagination-btn">
+                        <span>←</span> Previous
+                    </a>
+                    {% endif %}
+
+                    {% for page_num in pagination.iter_pages(left_edge=2, right_edge=2, left_current=2, right_current=2) %}
+                        {% if page_num %}
+                            <a href="{{ url_for('partner_dashboard', 
+                                page=page_num, 
+                                date=date, 
+                                status=status) }}"
+                               class="pagination-btn {% if page_num == pagination.page %}active{% endif %}">
+                                {{ page_num }}
+                            </a>
+                        {% else %}
+                            <span class="pagination-ellipsis">...</span>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if pagination.has_next %}
+                    <a href="{{ url_for('partner_dashboard', 
+                        page=pagination.next_num, 
+                        date=date, 
+                        status=status) }}" 
+                       class="pagination-btn">
+                        Next <span>→</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the available dates from the server
+            const allowedDates = {{ allowed_dates | tojson | safe }};
+            console.log("Available dates:", allowedDates);
+            
+            // Initialize flatpickr as a single date picker
+            const datepicker = flatpickr("#datepicker", {
+                dateFormat: "n/j/Y",  // Format to match database: M/D/YYYY
+                allowInput: true,
+                altInput: true,  
+                altFormat: "d F Y",
+                // format (e.g., June 16, 2025)
+                placeholder: "Select date (M/D/YYYY)",
+                // Enable only dates that exist in the database
+                enable: allowedDates.length > 0 ? allowedDates : undefined,
+                // Set initial date if available in URL params
+                defaultDate: "{{ date }}" || undefined,
+                onChange: function(selectedDates, dateStr) {
+                    console.log("Selected date:", dateStr);
+                }
+            });
+            
+            // Handle reset button
+            document.getElementById('reset-filter-btn').addEventListener('click', function() {
+                // Clear the datepicker
+                datepicker.clear();
+                
+                // Reset the status dropdown
+                document.getElementById('filter-status').value = '';
+                
+                // Redirect to the base URL without any parameters
+                window.location.href = window.location.pathname;
+            });
+            
+            // Debug form submission
+            document.getElementById('filter-form').addEventListener('submit', function(e) {
+                // Get form values
+                const dateValue = document.querySelector('input[name="date"]').value.trim();
+                const statusValue = document.getElementById('filter-status').value.trim();
+                
+                // Log form data before submission
+                console.log("Submitting form with data:");
+                console.log("Date:", dateValue);
+                console.log("Status:", statusValue);
+                
+                // Continue with form submission
+                return true;
+            });
+            
+            // Remove click event listeners from status cards
+            // They should be informational only, not interactive filters
+            const statusCards = document.querySelectorAll('.status-card');
+            statusCards.forEach(card => {
+                // Remove the cursor pointer style
+                card.style.cursor = 'default';
+                
+                // Remove any existing click event listeners
+                const newCard = card.cloneNode(true);
+                card.parentNode.replaceChild(newCard, card);
+            });
+        });
+    </script>
+</body>
+
+</html>

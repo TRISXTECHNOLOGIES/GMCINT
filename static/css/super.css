@@ -1,0 +1,264 @@
+/* General styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #F7F9FA;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar-header img {
+    width: 150px;
+    margin-bottom: 30px;
+}
+
+nav ul li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+nav ul li.active a,
+nav ul li a:hover {
+    color: #35B67E;
+    font-weight: 700;
+}
+
+nav ul li.active,
+nav ul li:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+nav ul li img {
+    margin-right: 10px;
+}
+.sidebar-section ul li .active,
+.sidebar-section ul li:hover {
+        background-color: #f0f0f0;
+        border-radius: 5px;
+    }
+.sidebar-section ul li .active a,
+.sidebar-section ul li a:hover {
+    color: #35B67E;
+    font-weight: 700;
+}
+.sidebar-section ul li{
+    margin-right: 10px;
+}
+
+    
+/* Main Content styles */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: #f7f9fa;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle img {
+    width: 30px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #E0E0E0;
+    background-color: #F8F8F8;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.notifications img,
+.language-selector img,
+.user-profile img {
+    width: 30px;
+}
+
+.language-selector span,
+.user-profile span {
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.user-role {
+    color: #999;
+    font-size: 12px;
+}
+
+/* Content Header */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.content-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-group select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: #F8F8F8;
+}
+
+.reset-filter {
+    background-color: transparent;
+    color: #FF5B5B;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.download-btn {
+    background-color: #FFC107;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Contact Table Section */
+.contact-table-section {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.contact-table th,
+.contact-table td {
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.contact-table th {
+    background-color: #F8F8F8;
+    font-weight: 700;
+}
+
+.contact-table td {
+    color: #333;
+}
+
+.contact-table tr:hover {
+    background-color: #F1F1F1;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.controlled {
+    background-color: #35B67E;
+    color: #FFFFFF;
+}
+
+.pending {
+    background-color: #FFC107;
+    color: #333;
+}
+
+.na {
+    background-color: #E0E0E0;
+    color: #333;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pagination-controls button {
+    background-color: #FFFFFF;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.pagination-controls button:hover {
+    background-color: #E0E0E0;
+}

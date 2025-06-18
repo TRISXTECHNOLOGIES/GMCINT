@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet"
+          href="../static/css/mediaQueriesLanding.css" />
+    <link rel="stylesheet"
+          href="../static/css/landingPage.css" />
+    <link rel="stylesheet"
+          href="l.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Know Your Rights | Get My Claims</title>
+ <link rel="icon" href="../static/assets/GMC_Logomark.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/kyr.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header style="background-color: white">
+      <div class="main-nav container1">
+        <!-- Logo Section -->
+        <div class="logo">
+          <a href="{{ url_for('landing') }}">
+            <img src="../static/assets/logo22.png" alt="Company Logo" />
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav style="margin-right: 30px">
+          <ul class="nav-links" id="nav-links">
+            <li><a href="/index1">Get My Claim</a></li>
+
+            <!-- Dropdown for Know Your Rights -->
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">Know Your Rights</a>
+              <div class="dropdown-content" id="dropdown-content">
+                <a href="#Air Passenger Rights and Regulations"
+                  >Air passenger rights</a
+                >
+                <a href="#Regulation"
+                  >Flight delay compensation</a
+                >
+                <a href="#Flight Cancellation Compensation"
+                  >Flight cancellation compensation</a
+                >
+                <a href="#Missed Connection Compensation">Missed connection</a>
+                <a href="#Overbooking Compensation">Overbooking compensation</a>
+                <a href="#Denied Boarding Compensation"
+                  >Denied boarding compensation</a
+                >
+                <a href="#Denied Boarding Compensation"
+                  >Delayed baggage compensation</a
+                >
+                <a href="#Airline Strike Compensation"
+                  >Airline strike compensation</a
+                >
+                <!-- <a href="#">Passengers with disabilities</a>
+                <a href="#">Airlines</a>
+                <a href="#">Airports</a> -->
+              </div>
+            </li>
+
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li>
+              <a href="/login" class="login" id="logIn" style="display: none"
+                >Log in</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Language Selector and Login -->
+        <div class="language-login" id="language-login">
+          <!-- <div class="language-select">
+            <img src="../static/assets/lang.png" alt="Language" />
+          </div> -->
+          <a href="/login" class="login">Log in</a>
+        </div>
+
+        <!-- Mobile Navigation Toggle -->
+        <a class="nav-toggle" id="nav-toggle">☰</a>
+      </div>
+    </header>
+
+    <!-- Content Section -->
+    <section class="content-section">
+      <div class="container1" style="display: flex; gap: 15px">
+        <div class="sidebar">
+          <div style="width: 100%">
+            <ul>
+              <li class="active"><span class="dot"></span> Introduction</li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#explained"
+                  style="text-decoration: none; color: black"
+                >
+                  Your Air Passenger Rights explained
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Should Know"
+                  style="text-decoration: none; color: black"
+                >
+                  Air Passenger Rights and Regulations People Should Know
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Regulation"
+                  style="text-decoration: none; color: black"
+                  >Flight Compensation Regulation</a
+                >
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Delayed" style="text-decoration: none; color: black"
+                  >Compensation for Delayed Flights
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Europe" style="text-decoration: none; color: black">
+                  Coverage for Flights from/to Europe
+                </a>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <a href="#Years" style="text-decoration: none; color: black">
+                  Claim Up to 3 Years After Your Flight
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Covered
+                  "
+                  style="text-decoration: none; color: black"
+                >
+                  Which Flights and Airlines Are Covered?
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Convention
+                  "
+                  style="text-decoration: none; color: black"
+                >
+                  Montreal Convention
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Strike" style="text-decoration: none; color: black">
+                  Airline Strike
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Delay"
+                  style="text-decoration: none; color: black"
+                >
+                  Flight Delay Compensation
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Cancellation"
+                  style="text-decoration: none; color: black"
+                >
+                  Flight Cancellation Compensation
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Missed" style="text-decoration: none; color: black">
+                  Missed Connection Compensation
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Overbooking"
+                  style="text-decoration: none; color: black"
+                >
+                  Overbooking Compensation
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Denied"
+                  style="text-decoration: none; color: black"
+                >
+                  Denied Boarding Compensation
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#id1" style="text-decoration: none; color: black"
+                  >Flight cancellation rights
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="main-content">
+          <h1 id="Air Passenger Rights and Regulations">
+            Your Air Passenger Rights explained
+          </h1>
+          <div class="content-row">
+            <div>
+              <p>
+                Air passenger rights are a set of legal provisions designed to
+                protect travelers and ensure they receive appropriate
+                compensation for flight disruptions caused by airlines. While
+                the specifics of these laws differ across various jurisdictions,
+                they are widely enforced both domestically and internationally,
+                including in India, United States and Europe. Fundamentally,
+                individuals traveling by air are entitled to certain legal
+                protections. However, a significant challenge is the widespread
+                lack of awareness, with 4 out of 5 air passengers being unaware
+                of their rights.
+              </p>
+              <h2 style="font-weight: 700" id="Should Know">
+                Air Passenger Rights and Regulations People Should Know
+              </h2>
+              <p>
+                While it’s true that individual countries abide by their own
+                laws, there are some key features of regional or international
+                laws that serve as powerful tools to air passengers. These
+                include, but are not limited to, EU legislation EC 261, various
+                US laws, and the Montreal Convention.
+              </p>
+            </div>
+            <div class="content-image">
+              <img
+                src="../static/assets/kyr1.png"
+                style="width: 1500px; height: auto"
+                alt="Flight view"
+              />
+            </div>
+          </div>
+          <!-- <div class="extra-content"></div> -->
+
+          <section class="cta-section container">
+            <div>
+              <img
+                src="../static/assets/waiting.png"
+                style="float: right"
+                alt=""
+              />
+            </div>
+            <div class="cta-container">
+              <p>
+                Flight Delayed, Canceled, or Overbooked in the Last 3 Years? You
+                Could Be Eligible for Up to 600€ in Compensation!
+              </p>
+              <a href="{{ url_for('index1') }}" class="cta-button"
+                >Get My Claim</a
+              >
+            </div>
+          </section>
+
+          <section class="content-section">
+            <div>
+              <h1 id="Regulation">Flight Compensation Regulation</h1>
+            </div>
+            <div class="content-container">
+              <p>What is EC 261?</p>
+              <p>
+                EC 261/2004 is a regulation in EU law that favors the passenger
+                and holds airlines financially accountable when air travel takes
+                an unexpected turn that are deemed the airlines’ errors.
+                Incomparison to other legal statutes regarding passenger rights,
+                EC 261 is one of the mostcomprehensive. This important piece of
+                legislation plays a vital role in advocating for air travellers
+                and passenger rights at large.
+              </p>
+              <p>Why You Should Know About EC 261?</p>
+              <p>
+                Travellers often do not understand that in many instances,
+                airlines are legally and financially responsible for flight
+                issues, not the passenger. Depending on your flight, flight
+                scenario, and ultimate destination, understanding passenger
+                rights and filing a claim can mean up to 600 euros (INR 53,000
+                approximately) per passenger in compensation.
+              </p>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1 id="Delayed">Compensation for Delayed Flights</h1>
+              <p>
+                Under EU Regulation EC 261/2004, if your flight arrives at its
+                final destination with a delay of 3 hours or more, you could be
+                entitled to compensation. The amount you can claim depends on
+                the flight distance.
+              </p>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1 id="Europe">Coverage for Flights from/to Europe</h1>
+              <p>
+                This regulation applies to all flights departing from European
+                airports, regardless of the airline. It also covers flights
+                arriving at European airports if they are operated by European
+                airlines, including British carriers.
+              </p>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1 id="Years">Claim Up to 3 Years After Your Flight</h1>
+              <p>
+                You have up to 3 years from the date of your flight to file a
+                compensation claim for delays, cancellations, or other
+                disruptions. In some countries, including the UK, this period
+                extends to 6 years.
+              </p>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1
+                id="Covered"
+              >
+                Which Flights and Airlines Are Covered?
+              </h1>
+              <p>
+                Flights Departing from Europe: All flights departing from EU
+                airports are covered, regardless of the airline’s nationality
+              </p>
+              <p>
+                European Airlines: Flights operated by European airlines,
+                including British carriers, are covered when departing from or
+                arriving at European airports.
+              </p>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1
+                id="Convention"
+              >
+                Montreal Convention
+              </h1>
+              <p style="color: green;"><b>What is the Montreal Convention?</b></p>
+              <p>
+                The Montreal Convention is an international treaty that governs the rights of passengers on international flights. It provides passengers with specific rights and potential compensation in cases of flight disruptions. Participating nations, including 120 countries such as the US and those in the EU, are required to honor these regulations. One of the notable provisions of the Montreal Convention is that it offers fairly generous compensation regarding baggage-related issues.
+<br><br>However, not all flight disruptions qualify for compensation under the Montreal Convention. Certain extraordinary circumstances, such as strikes by airport employees or air traffic control, political unrest, severe weather conditions, and security risks, fall outside the scope of airline responsibility. In these cases, airlines are not obligated to provide compensation to affected passengers.
+
+              </p>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1
+                id="Strike"
+              >
+                Airline Strike: How to Get Flight Compensation
+              </h1>
+              <p>
+                When an airline’s staff or crew goes on strike, it often results
+                in heavy flight disruptions. This greatly inconveniences air
+                passengers, as there is a lot of confusion as flights get
+                cancelled. If you have experienced delays due to airline strikes
+                and were travelling in either the UK or EU, you may be entitled
+                up to €600 in airline strike compensation.<br><br>You may be eligible for flight strike compensation if your flight was disrupted by an airline staff strike and certain conditions apply. Specifically, your flight must have been delayed by 3 hours or more, or cancelled less than 14 days before the scheduled departure. Additionally, the flight should have either taken off from or landed in the UK or EU, and you must have had a confirmed reservation. The disruption must have occurred within the last 3 years, and if you took a replacement flight, its arrival time must have been significantly different from the original flight.
+                <br><br>
+               When am I not eligible for strike compensation? <br><br>
+
+You are not eligible for strike compensation if the strike is beyond the airline's control. Examples of such strikes include those by airport security staff, baggage handlers, air traffic management staff, or strikes caused by political unrest. These situations are considered outside the airline's responsibility, and thus, compensation is not applicable.
+
+              </p>
+             
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1
+                id="Delay"
+              >
+                Flight Delay Compensation
+              </h1>
+              <p>
+                Flight delays can significantly impact your travel plans. Under
+                European regulation EC 261/2004, if your flight is delayed by
+                three hours or more, you may be entitled to compensation. The
+                compensation amount depends on the length of the delay and the
+                distance of the flight
+              </p>
+              <p>
+              Claiming flight delay compensation with us is simple. Just fill out our online form with your flight details and submit the necessary documents, such as your booking confirmation or any communication from the airline regarding the delay. Don’t worry if you don’t have your boarding pass, we can still help! Once we receive your information, our team will confirm your flight’s eligibility by checking if it was delayed by 3 hours or more and if it either departed from or arrived at an EU airport with an EU airline. After that, we will handle everything, from contacting the airline to negotiating your compensation.<br>
+              <br>
+                You can claim compensation for flights delayed up to three years
+                ago, so don’t worry if your delayed flight was not recent.<br />
+              </p>
+              <p>
+                For Example: If your British Airways flight from London to Rome
+                is cancelled within 14 days of departure and the new flight
+                arrives 5 hours later than the original, you may be entitled to
+                compensation.
+              </p>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1
+                id="Cancellation"
+              >
+                Flight Cancellation Compensation
+              </h1>
+              <p>
+                When a flight is cancelled, airlines must offer you a choice
+                between a full refund and an alternative flight. Additionally,
+                if the cancellation occurs within 14 days of your scheduled
+                departure, you may be entitled to compensation:
+              </p>
+              <p>
+                Understanding flight cancellation compensation is simple with us. If your flight is cancelled, the airline must offer you either a full refund or an alternative flight. If the cancellation happens within 14 days of your scheduled departure, you could be eligible for compensation. For notice between 7-14 days, you may qualify if the alternative flight departs more than 2 hours earlier or arrives more than 4 hours later than the original flight. For less than 7 days notice, compensation applies if the new flight departs more than 1 hour earlier or arrives more than 2 hours later.
+              <br><br>
+              Claiming your compensation is easy. Simply keep your booking confirmation, cancellation notice, and any details of the alternative flight. Once you’ve submitted these through our online form, our team will verify that your situation meets the necessary criteria. After that, we’ll handle the entire process for you!
+                Claims can be made for cancellations up to three years old, so
+                it’s worth checking past flights as well.<br />
+               <p> For Example: An Emirates flight from Dubai to Munich cancelled
+                with less than 7 days' notice could qualify for up to €600 in
+                compensation if the alternative flight arrives more than 2 hours
+                later.</p>
+              </p>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1 id="Missed">Missed Connection Compensation</h1>
+              <p>
+                Missed connections can be particularly frustrating, especially
+                if they lead to long delays. If your missed connection is due to
+                a delay or cancellation of your first flight, you may be
+                eligible for compensation under EC 261/2004. The compensation
+                amounts are similar to those for flight delays
+              </p>
+              <p>
+                To claim compensation for a missed connection, all you need to do is fill out our online form with your flight details and submit the required documents, such as your boarding passes, booking confirmation, and any communication from the airline about the delay or missed connection. Once we receive your information, our team will review everything and confirm your eligibility. From there, we will handle the entire claim process to secure your compensation, so you don’t need to worry about a thing. Just sit back, and we’ll take care of the rest!
+              
+                You can claim for missed connections up to three years after the
+                incident.
+              </p>
+              <p>
+                For Example: Missing a connection due to a delayed Alitalia
+                flight from Rome to Tokyo could qualify you for compensation.
+              </p>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1 id="Overbooking">Overbooking Compensation</h1>
+              <p>
+                Overbooking happens when airlines sell more tickets than there
+                are seats on the plane. If you're denied boarding due to
+                overbooking, you are entitled to compensation. The compensation
+                amount depends on the length of the delay caused by the
+                overbooking
+              </p>
+              <p>To claim compensation for overbooking, simply fill out our online form with your flight details and submit the necessary documents, such as your boarding pass, booking confirmation, and any communication from the airline regarding the overbooking. Once we have your information, our team will verify your eligibility. After that, we will manage the entire claim process on your behalf to secure your compensation. You only need to provide the details, and we’ll handle the rest!
+              
+                Claims for overbooking compensation can be made for incidents up
+                to three years old.
+               
+              </p>
+              <p> For Example: Being denied boarding on a KLM flight from
+                Amsterdam to Toronto due to overbooking qualifies for
+                compensation, depending on the delay duration.</p>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1
+                id="Denied"
+              >
+                Denied Boarding Compensation
+              </h1>
+              <p>
+                Denied boarding can occur for several reasons, including
+                overbooking or operational issues. If you are involuntarily
+                denied boarding, airlines must compensate you.
+              </p>
+              <p>To claim compensation for denied boarding, simply complete our online form with your flight details and submit the required documents, such as your boarding pass, booking confirmation, and any communication from the airline about the denied boarding. Once we receive your information, we will confirm your eligibility under EC 261/2004. From there, our team will handle the entire process to ensure you receive your compensation. Just provide your details, and we’ll take care of the rest!
+                You have up to three years to claim compensation for denied
+                boarding incidents.
+                
+              </p>
+              <p>For Example: If you are denied boarding on an Air France
+                flight from Paris to Tokyo due to overbooking, you could claim
+                up to €600 in compensation.</p>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <div class="eligibility-container">
+              <h1
+                id="Denied"
+              >
+               Airline Strike Compensation
+              </h1>
+              <p>
+                Strikes by airline staff can lead to significant disruptions. If your flight is delayed or cancelled due to an airline strike, you may be entitled to compensation under certain regulations, particularly if the strike is not considered an "extraordinary circumstance.
+              </p>
+              <p>To claim compensation for disruptions caused by an airline strike, simply fill out our online form with your flight details and submit the necessary documents, such as your booking confirmation, boarding pass, and any communication from the airline regarding the strike. Once we receive your information, our team will verify your eligibility under the applicable regulations. After that, we will handle the entire claim process to secure your compensation. You only need to provide the details, and we’ll take care of the rest!
+                Claims can be made for airline strike disruptions up to three years old.<br><br>
+For Example: If an Emirates flight from Dubai to Paris is cancelled due to an airline strike, you may be eligible for compensation depending on the specific situation.
+              </p>
+            </div>
+          </section>
+
+          <section class="compensation-section" id="compensation-section">
+            <div class="compensation-container">
+              <h1 id="id1">
+                How is flight cancellation compensation calculated?
+              </h1>
+              <p>
+               
+              </p>
+              <div class="compensation-table" id="id2">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Under 2 hours</th>
+                      <th>2-3 hours</th>
+                      <th>3-4 hours</th>
+                      <th>More than 4 hours</th>
+                      <th>Never arrived</th>
+                      <th>Distance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>€250</td>
+                      <td>€250</td>
+                      <td>€250</td>
+                      <td>€250</td>
+                      <td>€250</td>
+                      <td>1,500km or less</td>
+                    </tr>
+                    <tr>
+                      <td>€400</td>
+                      <td>€400</td>
+                      <td>€400</td>
+                      <td>€400</td>
+                      <td>€400</td>
+                      <td>Between 1,500km and 3,500km</td>
+                    </tr>
+                    <tr>
+                      <td>€600</td>
+                      <td>€600</td>
+                      <td>€600</td>
+                      <td>€600</td>
+                      <td>€600</td>
+                      <td>Flights over 3,500km</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Section -->
+    <section
+      class="py-10 footer-banner"
+      style="background: linear-gradient(to top, #f2f7f5 50%, white 50%)"
+    >
+      <div class="container1 mx-auto">
+        <img src="https://i.postimg.cc/hGp8gyNL/1.png" alt="" />
+      </div>
+      <!-- <img class="container"
+           src="{{url_for('static',filename='assets/secc.png')}}"
+           alt="Descriptive Alt Text" /> -->
+    </section>
+
+    <!--Footer Section-->
+    <!-- <section class="container footer-social-media-icons">
+      <div class="footer-logo">
+        <img src="{{url_for('static',filename='assets/logo2.png')}}"
+             alt="Get My Claims Logo" />
+      </div>
+      <div class="footer-icons">
+        <img src="{{url_for('static',filename='assets/instagram.png')}}"
+             alt="Instagram" />
+        <img src="{{url_for('static',filename='assets/twitter.png')}}"
+             alt="Twitter" />
+        <img src="{{url_for('static',filename='assets/facebook.png')}}"
+             alt="Facebook" />
+        <img src="{{url_for('static',filename='assets/threads.png')}}"
+             alt="Threads" />
+      </div>
+    </section> -->
+
+    <!-- Multi-Column Footer Section -->
+    <!-- <footer class="multi-column-footer">
+      <div class="footer-content2 container">
+        <div class="footer-column">
+          <h3 class="footerH3">KNOW YOUR RIGHTS</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>KNOW YOUR RIGHTS</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/kyr">Air passenger rights</a></li>
+                <li><a href="/kyr">Flight delay compensation</a></li>
+                <li><a href="/kyr">Flight cancellation compensation</a></li>
+                <li><a href="/kyr">Missed connection</a></li>
+                <li><a href="/kyr">Denied boarding compensation</a></li>
+                <li><a href="/kyr">Airline strike compensation</a></li>
+                <li><a href="/kyr">Airlines</a></li>
+                <li><a href="/kyr">Airports</a></li>
+                <li><a href="/kyr">Flight refund</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3 class="footerH3">OUR COMPANY</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>OUR COMPANY</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/about">About us</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/partner">Become a partner</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footerH3">SUPPORT</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>SUPPORT</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/help">Help</a></li>
+                <li><a href="/fees">Our fees</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footerH3">OUR PRODUCTS</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>OUR PRODUCTS</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/">Check your compensation</a></li>
+                <li><a href="/refer">Refer a friend</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3 class="footerH3">OTHERS</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>OTHERS</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/T&C">Terms and Conditions</a></li>
+                <li><a href="/policy">Privacy Policy</a></li>
+                <li><a href="/cookies">Cookies</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+    
+    <footer class=" bg-[#f2f7f5] ">
+      <section class="py-20 relative ">
+        <div class="container mx-auto p-2">
+          <div class="flex justify-between lg:flex-row flex-col lg:gap-0 gap-8 ">
+            <div class=" ">
+              <img src="../static/assets/gncLogo.png"
+                   alt=""
+                   class="w-[40%] pb-5">
+              <p class="lg:w-[50%] !text-[20px] font-medium leading-[24px] ">
+                  Flight Delayed or Cancelled?<br>
+                  Don't let your cash fly away.<br> Claim Now and get what you're owed!
+
+
+              </p>
+            </div>
+            <div class="w-full flex lg:justify-end gap-5">
+              <a href="https://www.facebook.com/share/FTovYP4P1vxifv5a/?mibextid=LQQJ4d"> <img src="../static/assets/facebook.png"
+                   alt="facebook"
+                   class="w-[25px] h-[30px]">
+              </a>
+              <a href="https://x.com/getmyclaims">   
+                  <img src="../static/assets/twitter.png"
+                   alt="Twitter"
+                   class="w-[25px] h-[30px]">
+              </a>
+              <img src="../static/assets/threads.png"
+                   alt="threads"
+                   class="w-[30px] h-[30px]">
+              
+              <a href="https://www.instagram.com/getmyclaims/profilecard/?igsh=MThxeWQ3YjN5OGZuZg=="> 
+                <img src="../static/assets/instagram.png"
+                   alt="instagram"
+                   class="w-[35px] h-[30px]">
+                  
+              </a>
+
+
+            </div>
+          </div>
+          <div>
+
+          </div>
+        </div>
+      </section>
+      <div class="justify-center flex">
+        <hr class="border-[1px] border-[#c5c9c7] w-[100%]" />
+      </div>
+      <div class="container mx-auto relative lg:block hidden p-2 mt-[-2rem]">
+        <img
+          src="../static/assets/GMC_Logomark.png"
+          alt=""
+          class="w-[25%] opacity-25 absolute right-0 top-[30%]"
+        />
+        <div class="flex flex-row justify-between py-10 mb-20">
+          <div>
+            <p class="uppercase font-bold">Know your right</p>
+            <div class="pt-5">
+              <div class=" flex flex-col gap-3">
+                <div><a href="{{url_for('kyr')+'#Should Know'}}">Air passenger rights</a></div>
+                <div><a href="{{url_for('kyr')+'#Delay'}}">Flight delay compensation</a></div>
+                <div><a href="{{url_for('kyr')+'#Cancellation'}}">Flight cancellation compensation</a></div>
+                <div><a href="{{url_for('kyr')+'#Missed'}}">Missed connection</a></div>
+                <div><a href="{{url_for('kyr')+'#Delayed'}}">Delayed baggage compensation</a></div>
+                <div><a href="{{url_for('kyr')+'#Strike'}}">Airline strike compensation</a></div>
+                <div><a href="/airlines">Airlines</a></div>
+                <div><a href="/kyr">Airports</a></div>
+                <div><a href="/kyr">Flight refund</a></div>
+              </div>
+
+            </div>
+          </div>
+          <div class="flex flex-col gap-8">
+            <div>
+              <div>
+                <p class="uppercase font-bold">Our Company</p>
+                <div class="pt-5">
+                  <div class="flex flex-col gap-3">
+                    <div><a href="/about">About us</a></div>
+                    <div><a href="#">Blog</a></div>
+                    <div><a href="/partner">Become a partner</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="uppercase font-bold">Support</p>
+              <div class="pt-5">
+                <div class="flex flex-col gap-3">
+                  <div><a href="/help">Help</a></div>
+                  <div><a href="/fees">Our fees</a></div>
+                  <div><a href="/contact">Contact Us</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="uppercase font-bold">Our Product</p>
+            <div class="pt-5">
+              <div class="flex flex-col gap-3">
+                <div><a href="/">Check your compensation</a></div>
+                <div><a href="#">Refer a friend</a></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="uppercase font-bold">Others</p>
+            <div class="pt-5">
+              <div class="flex flex-col gap-3">
+                <div><a href="/T&C">Terms and Conditions</a></div>
+                <div><a href="/policy">Privacy Policy</a></div>
+                <div><a href="/cookies">Cookies</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mx-auto hidden lg:block">
+        <div class="justify- flex py-1">
+          <hr class="border-[1px] border-[#c5c9c7] w-[100%]" />
+        </div>
+        <div class="flex flex-row justify-center">
+          <p class="!text-[16px]">Copyright &copy; 2025 Get My Claims</p>
+        </div>
+      </div>
+    </footer>
+    <div class="accordion-container w-full flex flex-col block xl:hidden">
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Know your right
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div><a href="/kyr" class=" hover:underline">Air passenger rights</a></div>
+            <div><a href="{{url_for('kyr')+'#Delayed'}}" class="hover:underline">Flight delay compensation</a></div>
+            <div><a href="{{url_for('kyr')+'#Cancellation'}}" class="  hover:underline">Flight cancellation compensation</a></div>
+            <div><a href="/kyr" class="hover:underline">Missed connection</a></div>
+            <div><a href="{{url_for('kyr')+'#Delayed'}}" class="hover:underline">Delayed baggage compensation</a></div>
+            <div><a href="{{url_for('kyr')+'#Strike'}}" class="  hover:underline">Airline strike compensation</a></div>
+            <div><a href="/airlines" class="hover:underline">Airlines</a></div>
+            <div><a href="/kyr" class="hover:underline">Airports</a></div>
+            <div><a href="/kyr" class="hover:underline">Flight refund</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Our Company
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div><a href="/about" class="hover:underline">About us</a></div>
+            <div><a href="/" class="hover:underline">Blog</a></div>
+            <div>
+              <a href="/partner" class="hover:underline">Become a partner</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Support
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div><a href="/help" class="hover:underline">Help</a></div>
+            <div><a href="/fees" class="hover:underline">Our fees</a></div>
+            <div><a href="/contact" class="hover:underline">Contact Us</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Our Product
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div>
+              <a href="/index1" class="hover:underline">Check your compensation</a>
+            </div>
+            <div>
+              <a href="/" class="hover:underline">Refer a friend</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Others
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div>
+              <a href="/T&C" class="hover:underline">Terms and Conditions</a>
+            </div>
+            <div>
+              <a href="/policy" class="hover:underline">Privacy Policy</a>
+            </div>
+            <div><a href="/cookies" class="hover:underline">Cookies</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto lg:hidden block bg-[#f2f7f5]">
+      <div class="justify- flex">
+        <hr class="border border-[#c5c9c7] w-[100%]" />
+      </div>
+      <div class="flex flex-row justify-center">
+        <p class="!text-[16px]">Copyright &copy; 2024 getmyClaim</p>
+      </div>
+    </div>
+
+    <script>
+      // window.onscroll = function () {
+      //   myFunction();
+      // };
+
+      // function myFunction() {
+      //   var winScroll =
+      //     document.body.scrollTop || document.documentElement.scrollTop;
+      //   var height =
+      //     document.documentElement.scrollHeight -
+      //     document.documentElement.clientHeight;
+      //   var scrolled = (winScroll / height) * 100;
+      //   document.getElementById("myBar").style.height = scrolled + "%";
+      // }
+
+      document
+        .getElementById("nav-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("nav-links").classList.toggle("open");
+          document.getElementById("logIn").style.display = "block";
+        });
+
+      // Toggle accordion content on click
+      document.querySelectorAll(".accordion-toggle").forEach((item) => {
+        item.addEventListener("click", function () {
+          // Toggle the 'active' class on the clicked item
+          this.classList.toggle("active");
+
+          // Get the associated content
+          const content = this.nextElementSibling;
+
+          // Toggle the display of the content
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      });
+
+      // Mobile Navigation Toggle
+      // document
+      //   .getElementById("nav-toggle")
+      //   .addEventListener("click", function () {
+      //     document.getElementById("nav-links").classList.toggle("active");
+      //   });
+
+      // Toggle functionality for accordion
+      const accordionButtons = document.querySelectorAll(".accordion-button");
+
+      accordionButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const expanded =
+            button.getAttribute("aria-expanded") === "true" || false;
+          button.setAttribute("aria-expanded", !expanded);
+
+          const content = button.nextElementSibling;
+          if (!expanded) {
+            content.style.maxHeight = content.scrollHeight + "px";
+          } else {
+            content.style.maxHeight = 0;
+          }
+        });
+      });
+
+      document.querySelectorAll(".dropbtn").forEach((item) => {
+        item.addEventListener("click", function () {
+          // Toggle the 'active' class on the clicked item
+          this.classList.toggle("active");
+
+          // Get the associated content
+          const content = this.nextElementSibling;
+
+          // Toggle the display of the content
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      });
+    </script>
+
+    <script>
+      // Get all sidebar links and sections
+      const sidebarLinks = document.querySelectorAll(".sidebar ul li");
+      const sections = document.querySelectorAll(
+        ".main-content section, .main-content h1"
+      );
+
+      // Function to remove 'active' class from all links
+      function removeActiveClasses() {
+        sidebarLinks.forEach((link) => {
+          link.classList.remove("active");
+        });
+      }
+
+      // Function to add 'active' class to the current link
+      function addActiveClass(link) {
+        link.classList.add("active");
+      }
+
+      // Event listener for scrolling
+      window.addEventListener("scroll", () => {
+        let current = "";
+
+        // Determine which section is currently in the viewport
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= sectionTop - sectionHeight / 3) {
+            current = section.getAttribute("id");
+          }
+
+          const dropdown_content_toggle =
+            document.getElementById("dropdown-content");
+
+          dropdown_content_toggle.style.display = "none";
+        });
+
+        // Remove and add 'active' classes based on the current section
+        sidebarLinks.forEach((li) => {
+          const anchor = li.querySelector("a");
+          if (anchor && anchor.getAttribute("href") === `#${current}`) {
+            removeActiveClasses();
+            addActiveClass(li);
+          }
+        });
+      });
+
+      // Event listener for sidebar clicks to change the active link
+      sidebarLinks.forEach((li) => {
+        li.addEventListener("click", function () {
+          removeActiveClasses();
+          addActiveClass(this);
+        });
+      });
+    </script>
+
+    <script>
+      const accordionHeaders = document.querySelectorAll(
+        ".accordion-headerfoot"
+      );
+      const accordionContents = document.querySelectorAll(
+        ".accordion-contentmb"
+      );
+      const accordionIcons = document.querySelectorAll(".accordion-icon");
+
+      accordionHeaders.forEach((header, index) => {
+        header.addEventListener("click", () => {
+          accordionContents.forEach((content, i) => {
+            if (i !== index) {
+              content.classList.add("hidden");
+              accordionIcons[i].classList.remove("fa-angle-up");
+              accordionIcons[i].classList.add("fa-angle-down");
+            }
+          });
+
+          accordionContents[index].classList.toggle("hidden");
+
+          const isOpen = !accordionContents[index].classList.contains("hidden");
+          accordionIcons[index].classList.toggle("fa-angle-down", !isOpen);
+          accordionIcons[index].classList.toggle("fa-angle-up", isOpen);
+        });
+      });
+    </script>
+  </body>
+</html>

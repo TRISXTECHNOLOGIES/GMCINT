@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Privacy Policy | Get My Claims</title>
+ <link rel="icon" href="../static/assets/GMC_Logomark.png" type="image/x-icon">
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: white; /* Set the whole background color to white */
+      }
+
+      .container {
+        max-width: 1280px !important;
+        margin-inline: auto;
+        overflow: hidden;
+        /* padding-top: 40px; */
+      }
+
+      /* General Navbar Styles */
+      .main-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 20px;
+        background-color: white;
+        position: relative;
+      }
+
+      .logo img {
+        height: 130px;
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        background-color: #f2f7f5;
+        border-radius: 25px;
+        padding: 15px 15px;
+      }
+
+      nav ul li {
+        /* margin: 0 20px; */
+        text-align: center;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+        padding: 15px 20px;
+        border-radius: 20px;
+        transition: background-color 0.3s;
+      }
+
+      nav ul li a:hover {
+        background-color: #ffffff;
+      }
+
+      .language-login {
+        display: flex;
+        align-items: center;
+      }
+
+      .language-select {
+        margin-right: 20px;
+      }
+
+      .language-select img {
+        height: 25px;
+      }
+
+      .login {
+        padding: 10px 20px;
+        border: 2px solid #007bff;
+        background-color: white;
+        color: #007bff;
+        border-radius: 25px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .login:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      /* Dropdown for Know Your Rights */
+      .dropdown {
+        position: relative;
+        z-index: 1000;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: fixed;
+        background-color: white;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        min-width: 200px;
+        z-index: 999;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+
+      .dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        /* border-bottom: 1px solid #f2f2f2; */
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f2f7f5;
+      }
+
+      .dropbtn::after {
+        content: "▼";
+
+        margin-left: 10px;
+      }
+
+      .dropbtn.active::after {
+        content: "▲";
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover a {
+        background-color: #fff;
+      }
+
+      /* Mobile Styles */
+      .nav-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 991px) {
+        .nav-toggle {
+          display: block;
+          background: none;
+          border: none;
+          font-size: 24px;
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: fixed;
+          background-color: white;
+          top: 95px;
+          left: 0;
+          width: 100%;
+
+          z-index: 999;
+          border: none;
+          border-radius: 0%;
+          align-items: center;
+        }
+
+        .nav-links.open {
+          display: flex;
+        }
+
+        .nav-links li {
+          margin: 10px 0;
+        }
+
+        nav ul li {
+          text-align: left;
+        }
+
+        .dropdown-content {
+          position: static;
+          border: none;
+        }
+
+        .dropdown-content a {
+          padding: 10px 15px;
+        }
+
+        .language-login {
+          display: none;
+          position: fixed;
+          background-color: white;
+          top: 295px;
+          left: 0;
+          width: 100%;
+          z-index: 999;
+          padding-bottom: 20px;
+          flex-direction: column;
+        }
+
+        .language-login.open {
+          display: flex;
+        }
+      }
+
+      /* Reduce font size for smaller screens */
+      @media screen and (max-width: 1096px) {
+        nav ul li a {
+          font-size: 12px;
+        }
+      }
+
+      .privacy-statement-section {
+        /* margin: 100px; */
+        padding: 20px;
+      }
+
+      .privacy-statement-section h4 {
+        font-size: 1em;
+        color: grey;
+        margin-bottom: 5px;
+      }
+
+      .privacy-statement-section h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+      }
+
+      .privacy-content p {
+        font-size: 1em;
+        line-height: 1.5;
+        margin-bottom: 15px;
+      }
+
+      .definitions-personal-data-section {
+        /* margin: 100px; */
+        padding: 20px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+      }
+
+      .section h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+      }
+
+      .section p {
+        font-size: 1em;
+        line-height: 1.5;
+      }
+
+      .principles-section {
+        /* margin: 100px; */
+        padding: 20px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+      }
+
+      .section h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+      }
+
+      .section p {
+        font-size: 1em;
+        line-height: 1.5;
+      }
+
+      .section ul {
+        list-style-type: disc;
+        padding-left: 20px;
+      }
+
+      .section ul li {
+        margin-bottom: 10px;
+        line-height: 1.5;
+      }
+
+      .data-collection-section {
+        /* margin: 100px; */
+        padding: 20px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+      }
+
+      .section h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+      }
+
+      .section p {
+        font-size: 1em;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .privacy-statement-section,
+        .definitions-personal-data-section,
+        .principles-section,
+        .data-collection-section {
+          /* margin: 20px; */
+          padding: 15px;
+        }
+
+        .header {
+          flex-direction: row;
+          align-items: flex-start;
+        }
+
+        nav ul {
+          flex-direction: row;
+          padding: 10px 0;
+        }
+      }
+
+      /* @media screen and (max-width: 479px) {
+        footer section {
+          padding-top: 20px !important;
+          padding-bottom: 20px !important;
+        }
+      } */
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header style="background-color: white">
+      <div class="main-nav container">
+        <!-- Logo Section -->
+        <div class="logo">
+          <a href="{{ url_for('landing') }}">
+            <img src="../static/assets/logo22.png" alt="Company Logo" />
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav style="margin-right: 30px">
+          <ul class="nav-links" id="nav-links">
+            <li><a href="/index1">Get My Claim</a></li>
+
+            <!-- Dropdown for Know Your Rights -->
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">Know Your Rights</a>
+              <div class="dropdown-content" id="dropdown-content">
+                <a href="../templates/kyr.html#Should Know "
+                  >Air passenger rights</a
+                >
+                <a href="../templates/kyr.html#Delay"
+                  >Flight delay compensation</a
+                >
+                <a href="../templates/kyr.html#Cancellation"
+                  >Flight cancellation compensation</a
+                >
+                <a href="../templates/kyr.html#Missed">Missed connection</a>
+                <a href="../templates/kyr.html#Overbooking"
+                  >Overbooking compensation</a
+                >
+                <a href="../templates/kyr.html#Denied"
+                  >Denied boarding compensation</a
+                >
+                <a href="../templates/kyr.html#Delayed"
+                  >Delayed baggage compensation</a
+                >
+                <a href="../templates/kyr.html#Strike"
+                  >Airline strike compensation</a
+                >
+                <!-- <a href="#">Passengers with disabilities</a>
+                <a href="#">Airlines</a>
+                <a href="#">Airports</a> -->
+              </div>
+            </li>
+
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li>
+              <a href="/login" class="login" id="logIn" style="display: none"
+                >Log in</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Language Selector and Login -->
+        <div class="language-login" id="language-login">
+          <!-- <div class="language-select">
+            <img src="../static/assets/lang.png" alt="Language" />
+          </div> -->
+          <a href="/login" class="login">Log in</a>
+        </div>
+
+        <!-- Mobile Navigation Toggle -->
+        <a class="nav-toggle" id="nav-toggle">☰</a>
+      </div>
+    </header>
+
+    <!-- Privacy Statement Section -->
+    <section class="privacy-statement-section container">
+      <h4>Privacy & Policy</h4>
+      <h2>Privacy Statement</h2>
+      <div class="privacy-content">
+        <p>
+          In this section, we have outlined our Privacy Policy. <br />
+          Please acquaint yourself with it, since our services require the
+          collection of personal data. In all events, we take extreme care in
+          handling your personal information and we fully comply with the
+          applicable laws. <br />
+          The air passenger compensation service/ platform currently branded as
+          ‘GETMYCLAIMS.COM’ (“Platform”) which is owned, operated and managed by
+          GETMYCLAIMS (“Company”) that is being accessed and used by you, the
+          user (“you/ your/ User”) of the Platform, is committed to protecting
+          the privacy of its Users.<br />
+          By accessing the Platform, you signify your agreement to accept this
+          privacy policy (“Policy”) for using GETMYCLAIMS.COM website and any
+          subsisting page within the GETMYCLAIMS.COM domain. This website is
+          owned and operated by the Company and/or its subsidiaries. If you do
+          not agree with any of the following terms of this Policy, please do
+          not access the Platform and/ or use its services. This Policy is not a
+          contract and does not create any legal rights, it serves as an
+          expression of our commitment to protecting private personal
+          information.
+          <br />
+          If you would like to benefit from our services and submit information
+          to us, you may be asked to provide personal data in order for us to
+          operate and improve our business and services. Personal data may be
+          submitted via our website, email, other electronic or software
+          solutions supported by us, postal service, or phone. Your personal
+          data is processed lawfully. The Platform’s activities are governed
+          under applicable data privacy and data protection laws (collectively,
+          “Data Protection Laws”) in connection with the services we
+          provide. The Data Protection Laws may include, depending on the
+          circumstances, but are not limited to the Digital Personal Data
+          Protection Act, 2023, Information Technology Act, 2000 and The
+          Information Technology (Reasonable Security Practices and Procedures
+          and Practices and Sensitive Personal Data or Information) Rules, 2011,
+          and other applicable legislation and regulations implementing Data
+          Protection Laws.
+        </p>
+        <p>
+          This Policy is subject to change/ amendments/ modifications/
+          alterations based on changes in the legal requirements, business,
+          regulatory changes and the updated Policy shall be accessible to you
+          on the Platform and shall be effective from the moment of availability
+          of such updated Policy on the Platform, from time to time. Your
+          continued use of the Platform pursuant to any change in the Policy
+          shall be deemed an acceptance of the Policy. The Platform hereby
+          encourages the User to view the Policy periodically to keep updated
+          with any changes made to the Policy. Any such change in the Policy
+          which materially lessens the Platform’s commitment to you shall be
+          communicated to you via prominent notices or other appropriate means.
+          <br />
+          This Policy explains how and why the Platform uses personal data [also
+          known as personal information and/ or personally identifiable
+          information (“PII”)]. Examples of PII are as follows: (i) names; (ii)
+          date of birth; (iii) address; (iv) email address; (v) contact number;
+          (vi) passports/ proof of national identification; and (vii) national
+          identification numbers.
+          <br />
+          We will use personal data for the purpose it is collected, and keep
+          the data for no longer than necessary for that purpose. We may retain
+          your information for as long as your account and/or claim application
+          is active or as needed to provide services, comply with our legal
+          obligations, or any of the purposes listed above. Access to personal
+          data is strictly limited to personnel of Company and its controlled
+          subsidiaries and affiliates who have the appropriate authorization
+          under a corporate binding agreement with the Company, and a clear
+          business need for the data.
+        </p>
+        <p>
+          However, the User must note that any information that is freely
+          available or accessible in public domain or furnished under the Right
+          to Information Act, 2005 or any other law for the time being in force
+          shall not be regarded as PII for the purposes of this Policy and the
+          Platform shall not be obliged to take any measures to protect any
+          information that is freely available in the public domain.
+        </p>
+        <p>
+          The Platform does not knowingly collect PII from individuals who are
+          under the minimum required ages specified herein. You must be at least
+          18 years old or the age of majority in your jurisdiction, whichever is
+          greater, to use the Platform. Individuals under the applicable age may
+          use the Platforms only through a parent or legal guardian's account
+          and with their involvement. If you are a parent or legal guardian who
+          believes your child has provided PII to the Platform without your
+          consent, you may ask the Platform to delete such information by
+          contacting the Platform at info@getmyclaims.com.
+        </p>
+      </div>
+    </section>
+
+    <!-- Definitions and Personal Data Section -->
+    <section class="definitions-personal-data-section container">
+      <div class="section">
+        <h2>Collections</h2>
+        <p>What kind of data/ PII is collected?</p>
+        <p>
+          Account information/ information provided by you – The information
+          provided by you while creating an account/ filling the claim
+          application to access the Platform as provided in the
+          <a href="{{ url_for('TC') }}" class="text-[Blue]"
+            >Terms of Service/User Agreement</a
+          >, including but not limited to your registered email address, payment
+          method(s), PII, etc., and/ or data provided by you/ volunteered to be
+          provided by you while accessing and using the Platform may be
+          collected by the Platform.
+        </p>
+        <p>
+          Automatic information – Any and all kind of information that the
+          Platform deems vital during your access to the Platform including but
+          not limited to the time spent by you on the Platform, details of your
+          interaction with support (as available on the Platform), device IDs or
+          other unique identifiers of your device/ browser and network, etc.,
+          may be collected by the Platform to further optimize your use of the
+          Platform and for the purpose of improving the Platform.
+        </p>
+        <p>
+          Information from affiliates – The Platform may collect information
+          from third party companies that you are in association with/ in
+          affiliation with/ in a relationship with (“Affiliates”). These
+          Affiliates may include your internet service provider, mobile phone
+          carriers, other companies who provide services to you in relation with
+          the Platform (payment gateways, internet browsers, etc.). Such
+          information collected by Affiliates would include: (i) search queries
+          and commands applicable to the Platform made through Affiliate devices
+          or voice assistants; (ii) device IDs and unique identifiers like user
+          interface information, the Platform registration user experience,
+          etc.; and (iii) Platform activation system including but not limited
+          to contact information.
+        </p>
+        <p>
+          Other information: Any and all information collected from other
+          sources in relation to the Platform including but not limited to (i)
+          service providers that help the Platform determine a location based on
+          your IP address in order to customize the Platform for you and for any
+          other uses consistent with this Policy; (ii) security service
+          providers that provide the Platform with information to secure the
+          Platform’s systems, prevent fraud and help the Platform protect the
+          security of the Users accounts; (iii) payment service providers that
+          provide the Platform with payment or balance information, or updates
+          to that information, based on their relationship with you; or (iv)
+          publicly-available sources such as publicly available posts on social
+          media platforms and information available through public databases
+          associating IP addresses with internet service providers (ISPs).
+          Please note that the sources of the aforementioned information are
+          varying, from time to time.
+        </p>
+        <p>
+          THE PLATFORM SHALL NEVER MANDATE YOU TO PROVIDE YOUR PII/ SENSITIVE
+          INFORMATION/ FINANCIAL INFORMATION/ HEALTH INFORMATION TO THE PLATFORM
+          OR TO ANY AFFILIATE/ ANY ENTITY REPRESENTING THE PLATFORM. ANY
+          DISCLOSURE OF SENSITIVE PERSONAL INFORMATION/ DATA SHALL BE AT THE
+          SOLE RISK OF THE USER AND WITHOUT ANY LIABILITY TO THE PLATFORM
+          (INCLUDING ITS ASSIGNEES, LICENSEES, SUB-LICENSEES, AFFILIATES,
+          OFFICERS, DIRECTORS, AND EMPLOYEES). You understand, acknowledge and
+          agree that the Platform or any other person/ entity acting on behalf
+          of the Platform shall not in any manner be responsible for the
+          authenticity of the sensitive personal information, or personal data
+          or any other sensitive information provided by you to the Platform.
+          The Platform shall not be liable or shall not be held responsible for
+          any damage, loss, misuse of your data due to any reason attributable
+          to a force majeure event.
+        </p>
+        <p>
+          Please note that the Platform or any entity representing the Platform
+          shall in no event ask for your sensitive information including
+          financial information like debit card/ credit card number, financial
+          pin numbers, etc. In the event of your utilization of services of the
+          Company through the Platform requires any type of payment service(s),
+          the information related to such third party service/ payment gateway
+          shall be collected by such third party services and/ or payment
+          gateway engaged by the Platform to facilitate such use by you of the
+          Platform and that such data shall not be stored by the Platform in any
+          event save and except only to the extent necessary. Since such private
+          information shall be processed and accessed by such third party
+          payment aggregator, the User is encouraged to read the privacy
+          policies of such third party services. You acknowledge and agree that
+          the Platform shall not be liable for any collection, access and
+          processing of data by the payment gateway. The only data collection by
+          the Platform from the payment aggregator of data shall be to send a
+          notification to the User that payment has been processed, save and
+          except such data collection, the Platform disclaims all liabilities in
+          respect of payment to access the Platform. You agree and acknowledge
+          that the Platform shall not be liable or shall not be held responsible
+          for any losses whatsoever, whether direct or indirect, consequential,
+          incidental, special, including without limitation any losses due to
+          delay in payment processing, payment fraud and/ or credit card, debit
+          card fraud.
+        </p>
+        <p>
+          use of information: The Platform uses information to provide, analyze,
+          administer, enhance and personalize the services and marketing
+          efforts, to process your registration, for your payments, and to
+          communicate with you on these and other topics. For example, the
+          Platform uses such information to: help the Platform to quickly and
+          efficiently respond to inquiries and requests;
+        </p>
+        <p>
+          understand the Platform’s audience, improve the services offered by
+          the Platform (including the Platform’s user interface experiences)
+          determine your general geographic location (such as your city,
+          state/province, and postal code);
+        </p>
+        <p>determine your ISP to support network troubleshooting for you;</p>
+        <p>
+          coordinate with Affiliates on making the Platform available to members
+          of the Platform and providing information to non-members about the
+          availability of the Platform, based on the specific relationship you
+          have with the Affiliate;
+        </p>
+        <p>
+          secure the Platform’s systems, prevent fraud and help the Platform
+          protect the security of the Platform’s accounts/ User information
+          while filling the claim application;
+        </p>
+        <p>
+          prevent, detect and investigate potentially prohibited or illegal
+          activities, including fraud, and to enforce the Platform’s terms
+          communicate with you concerning the Platform so that the Platform can
+          send you updates about the Platform, details about new features and
+          services available on the Platform, special offers, consumer surveys,
+          and to assist you with operational requests These communications may
+          be by various methods, such as email, push notifications, text
+          message, online messaging channels such as email.
+        </p>
+        <p>
+          /for other purposes such as statistics, administration and
+          communication, IT and security administration, physical security,
+          authentication and authorization systems, support systems,
+          collaboration of internal projects, and organizational teams and
+          activities.
+        </p>
+
+        <p>
+          gather demographic and device information about the user base as a
+          whole. The Platform may use this information in its advertising
+          services. The Platform may also use such information to measure sales
+          and traffic patterns on the Platform, advertising interactions and
+          effectiveness and advertisement identifiers and general enhancement of
+          the Platform.
+        </p>
+      </div>
+      <div class="section">
+        <h2>Collection of information:</h2>
+        <p>
+          The Platform may use certain methods to collect information about you
+          subject to the device and/ or the browser you access the Platform
+          with/ by and at the Platform’s sole discretion. Electronic identifiers
+          refer to unique digital information that may be associated with your
+          device and/or your browser when you access the Platform (“Electronic
+          Identifiers”).
+        </p>
+      </div>
+    </section>
+
+    <!-- Principles Section -->
+    <section class="principles-section container">
+      <div class="section">
+        <h2>Principles</h2>
+        <p>
+          Our Privacy Statement is based on the following data protection
+          principles:
+        </p>
+        <ul>
+          <li>
+            The processing of personal data shall take place in a lawful, fair,
+            and transparent way.
+          </li>
+          <li>
+            The collection of personal data shall only be performed for
+            specified, explicit, and legitimate purposes and not further
+            processed in a manner that is incompatible with those purposes.
+          </li>
+          <li>
+            The collection of personal data shall be adequate, relevant, and
+            limited to what is necessary in relation to the purpose for which
+            they are processed.
+          </li>
+          <li>
+            The personal data shall be accurate and where necessary, kept up to
+            date.
+          </li>
+          <li>
+            Every reasonable step shall be taken to ensure that personal data
+            that are inaccurate having regard to the purposes for which they are
+            processed, are erased or rectified without delay.
+          </li>
+          <li>
+            Personal data shall be kept in a form which permits identification
+            for no longer than it is necessary for the purpose for which the
+            personal data are processed.
+          </li>
+          <li>
+            All personal data shall be kept confidential and stored in a manner
+            that ensures appropriate security.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Collection And Use Of Personal Data Section -->
+    <section class="data-collection-section container">
+      <div class="section">
+        <h2>Collection of Information</h2>
+        <p>
+          The Platform may use certain methods to collect information about you
+          subject to the device and/ or the browser you access the Platform
+          with/ by and at the Platform’s sole discretion. Electronic identifiers
+          refer to unique digital information that may be associated with your
+          device and/or your browser when you access the Platform (“Electronic
+          Identifiers”).
+        </p>
+        <p>
+          The Electronic Identifiers shall include but not limit (i) cookies
+          that are small text files that are stored on your device (computer,
+          smartphone, tablet, etc.,) when you visit/ use/ access the Platform
+          (“Cookies”); and (ii) other device/ electronic identifiers may include
+          pixel tags, web beacons, local storage, and similar technologies that
+          perform similar functions. These Cookies contain information that
+          allows the Platform to recognize your device/ browser during
+          subsequent visits.
+        </p>
+        <p>
+          The Platform may use certain methods to collect information about you
+          subject to the device and/ or the browser you access the Platform
+          with/ by and at the Platform’s sole discretion. Electronic identifiers
+          refer to unique digital information that may be associated with your
+          device and/or your browser when you access the Platform (“Electronic
+          Identifiers”).
+        </p>
+        <p>
+          Such Electronic Identifiers may also store data on your device and/ or
+          the browser. Such methods shall/ may attach a unique identification
+          (“User ID”) to the User and unless the User ID is voluntarily
+          identified by you using your registration data, the Platform will be
+          unaware of your identity at all times. Third party companies may place
+          cookies/ electronic identifiers to their advertisements which is
+          beyond the control of the Platform and the Platform disclaims any
+          damages/ losses arising due to your clicking of such advertisements.
+          The Platform may place temporary or permanent Electronic Identifiers
+          in your device(s). You have the option to manage and control the
+          acceptance of Electronic Identifiers through your browser or device
+          settings, the consequences of such management of Electronic
+          Identifiers including Cookies shall vary at the sole discretion of the
+          Platform. Most web browsers allow you to control the use of cookies
+          and other similar technologies, including web beacons and pixel tags.
+        </p>
+        <p>
+          Choosing Electronic Identifiers: To manage Cookies: You may choose to
+          prevent installation of Cookies through your browser settings and
+          configure your browser to set your cookie preferences. At this time,
+          the Platform do not respond to web browser "do not track" signals. [NJ
+          Comment: Please confirm and basis that, retain or delete the
+          highlighted sentence.]
+        </p>
+        <p>
+          To manage the resettable device identifiers: To opt out of behavioural
+          ads from the Platform in connection with a resettable device
+          identifier on a mobile device, tablet, or streaming media devices,
+          please configure the appropriate setting on your device in the device
+          settings. You may still see the Platform ads on your device, but they
+          will not be selected based on your likely interests.
+        </p>
+        <p>
+          To manage other technologies: There are a number of ways to exercise
+          choice regarding technologies that are similar to cookies, such as
+          browser storage and plugins (e.g., HTML5, IndexedDB, and WebSQL). For
+          example, many popular browsers provide the ability to clear browser
+          storage, commonly in the settings or preferences area. The users are
+          recommended to see your browser's help function or support area to
+          learn more.
+        </p>
+        <p>
+          By continuing to use the Platform, you consent to the use of Cookies
+          and other device identifiers in accordance with this Policy. If you do
+          not agree to the use of Electronic Identifiers, you should discontinue
+          using the Platform or manage your Electronic Identifiers as aforesaid
+          above.
+        </p>
+      </div>
+    </section>
+
+    <!-- Collection And Use Of Personal Data Section -->
+    <section class="data-collection-section container">
+      <div class="section">
+        <h2>Disclosure of Information</h2>
+        <p>
+          Company: The Platform may share your information among the Company
+          family of companies as needed for: providing you with access to the
+          Platform’s services; providing customer support; making decisions
+          about service improvements; and for other purposes described in this
+          Policy.
+        </p>
+        <p>
+          Service Providers: The Platform uses other companies, agents or
+          contractors ("Service Providers") to perform services on the
+          Platform’s behalf or to assist the Platform with the provision of
+          services to you. For example, the Platform engages Service Providers
+          to provide advertising, security, infrastructure and IT services, to
+          customize, personalize and optimize the Platform, for legal purposes,
+          for payment methods, to provide customer service and to process and
+          administer consumer surveys, etc. In the course of providing such
+          services, these Service Providers may have access to your personal or
+          other information. The Platform does not authorize them to use or
+          disclose your PII except in connection with providing their services
+          and has contracts with them to govern how the personal data may be
+          used.
+        </p>
+        <p>
+          Affiliates: As described above, you may have a relationship with one
+          or more of the Platform’s Affiliates, in which case the Platform may
+          share certain information with them in order to coordinate with them
+          on providing the Platform to members and providing information about
+          the availability of the Platform. For example, depending on what
+          Affiliate services you use, the Platform may share information: (i) in
+          order to facilitate Affiliate pre-paid promotions or collection of
+          payment for the Platform for distribution to the Platform; (ii) with
+          Affiliates who operate voice assistant platforms that allow you to
+          interact with the Platform using voice commands; (iii) so that the
+          features available in the Platform can be suggested to you in the
+          Affiliates user interface.
+        </p>
+        <p>
+          Promotional offers: the Platform may offer joint promotions or
+          programs that, in order for your participation, will require the
+          Platform to share your information with third parties. In fulfilling
+          these types of promotions, the Platform may share your name and other
+          information in connection with fulfilling the incentive. Please note
+          that these third parties are responsible for their own privacy
+          practices.
+        </p>
+        <p>
+          Protection of the Platform and others: The Platform and its service
+          providers may disclose and otherwise use your personal and other
+          information to locations inside and outside India (as applicable)
+          where the Platform or they reasonably believe such disclosure is
+          needed to (a) satisfy any applicable law, regulation, legal process,
+          or governmental request, (b) enforce applicable terms of use,
+          including investigation of potential violations thereof, (c) detect,
+          prevent, or otherwise address illegal or suspected illegal activities
+          (including payment fraud), security or technical issues, or (d)
+          protect against harm to the rights, property or safety of the
+          Platform, its users or the public, as required or permitted by law.
+          The Platform will share personal data where necessary to establish,
+          exercise or defend the Platform’s legal rights.
+        </p>
+        <p>
+          Business transfers: In connection with any reorganization,
+          restructuring, merger or sale, or other transfer of assets, the
+          Platform will transfer information, including PII, provided that the
+          receiving party agrees to respect your PII in a manner that is
+          consistent with the Platform’s Policy.
+        </p>
+        <p>
+          Whenever in the course of sharing information the Platform transfers
+          PII to other countries, the Platform will ensure that the PII is
+          transferred in accordance with this Policy, with appropriate security
+          measures in place and as permitted by the applicable laws on data
+          protection.
+        </p>
+        <p>
+          Social media: The user and social media subscribers and other
+          individuals may engage with the Platform through third-party social
+          networks (for example, Facebook, X, Instagram and Pinterest). The
+          Platform may also allow Users to access their accounts or specific
+          content through social networks. Where Users or other individuals
+          engage or login through social media, the Platform will share personal
+          data with and receive personal data from the relevant social network.
+          Where Users or individuals engage or login through a social network,
+          the Platform encourages that they read the relevant social network’s
+          privacy policy.
+        </p>
+        <p>
+          You may also choose to disclose your information in the following
+          ways: (i) certain portions of the Platform may contain a tool which
+          gives you the option to share information by email, text message and
+          social or other sharing applications, using the applications on your
+          smart device; and (ii) social plugins and similar technologies allow
+          you to share information. Social plugins and social applications are
+          operated by the social networks themselves, and are subject to their
+          terms of use and privacy policies.
+        </p>
+
+        <p>
+          The Platform uses commercially reasonable security measures,
+          practices, methods and procedures, at the minimum, mandated under the
+          Information Technology Act, 2000 as amended and read with Information
+          Technology (Reasonable Security Practices and Sensitive Personal Data
+          or Information) Rules, 2011, to safeguard and protect your information
+          and data. Such measures are implemented by the Platform to protect any
+          unauthorised access to and unlawful interception of PII. You accept,
+          acknowledge and confirm that there is an inherent security risk of
+          providing any kind of information over internet/ cellular networks and
+          understand and accept that the Platform cannot guarantee the absolute
+          security of your information. You agree to not hold the Platform
+          responsible for any breach (threatened, alleged, or actual) of
+          security or the disclosure of PII. You agree that disclosing any
+          information by yourself is solely and completely at your own risk.
+        </p>
+        <p>
+          Storage of information (if any): The information collected shall be
+          stored in an electronic form, primarily, however, information may be
+          stored in a physical form as well. You agree that the Platform may
+          store, collect, process and use your data in locations/ jurisdictions
+          outside the country of India and such data will be used in line and in
+          compliance with applicable laws.
+        </p>
+        <p>
+          Data retention: The Platform shall store your data in full compliance
+          with applicable laws and until as necessary to comply with legal
+          obligations, enforce the Platform’s policies and resolve complaints
+          and/ or disputes. The Platform shall delete your information upon
+          completion of the purpose of such information and shall be deleted in
+          a secure method. For abundant clarity, deletion of your information
+          shall exclude anonymous data collected through your use/ access of the
+          Platform.
+        </p>
+        <p>
+          Job Application: Personal Data submitted as part of the procedure for
+          a job application, shall be processed only for the purposes of the
+          application and shall be stored for no more than 6 (six) months after
+          the completion of the procedure. The data may be used during the
+          storage period in case the application procedure is resumed.
+        </p>
+        <p>
+          Access: As per the applicable laws, should you wish to request access
+          to information collected about you, you may place such request by
+          contacting the Platform at info@getmyclaims.com. The Platform provides
+          with you all information that the Platform maintains about you such as
+          the contact information, payment (transaction) information upon proper
+          verification of the User at the time of request of such information.
+          Proper verification shall include the following information at the
+          time of contacting the Platform for any kind of information: (i) Your
+          physical or electronic signature; and (ii) adequate information by
+          which the Platform can contact you. You may also request to correct
+          the information collected about you by contacting the Grievance
+          Officer (mentioned below) and/ or the Platform at info@getmyclaims.com
+          and/ or request the deletion of any information collected about you.
+          Upon deletion of such information collected about you, you agree,
+          acknowledge and confirm that such deletion may result in cancellation
+          of your access to/ usage of the Platform and/ or certain features of
+          the Platform. You agree and acknowledge that certain information
+          collected about you cannot be deleted or corrected or prohibited to be
+          deleted as required by any legal enforcement agency, under applicable
+          laws and/ or for archival purposes.
+        </p>
+
+        <p>
+          Support: If you have any queries, feedbacks or complaints regarding
+          the Policy and/ or Platform, your access to the Platform, you may
+          please avail the support and assistance of the support chat available
+          on the Platform under ‘support’. In the event your query is not
+          resolved via the support chat, you may please contact the Platform at
+          info@getmyclaims.com. If you have any information, data, complaint,
+          feedback regarding any of your information/ PII, please reach out to
+          the Platform at info@getmyclaims.com. Proper verification shall
+          include the following information at the time of contacting the
+          Platform for any kind of information: (i) Your physical or electronic
+          signature; (ii) adequate information by which the Platform can contact
+          you; and (iii) a statement stating that the information in the written
+          notice is accurate. Please refrain from frivolous claims and/ or
+          misinformation as such notices are considered in a serious manner and
+          you could bear legal consequences and/ or suspension/ termination of
+          your account. Please note that such communication by you to the
+          Platform shall only result in taking down any information upon a valid
+          court decree from the relevant government organisation/ agency and
+          upon following the applicable procedure and laws. The Platform
+          reserves the right to take any action, however not under any
+          obligation, in relation to such complaints at its sole discretion.
+        </p>
+
+        <p>
+          The User has full control over the type of communication you wish to
+          receive from the Platform. You may opt out of receiving all kind of
+          communication from the Platform by writing to info@getmyclaims.com.
+        </p>
+
+        <p>
+          For opting out of WhatsApp messages, you may use the app’s
+          functionality settings or reply ‘STOP’ to the message received by the
+          Platform; for opting out of emails, you may select the ‘Unsubscribe’
+          button at the bottom of the email, however, any email regarding
+          essential communication like password re-set and payment shall
+          continue; for opting out of any other kind of communication to you,
+          you may use the device/ browser’s functionality settings for the same.
+        </p>
+
+        <p>
+          Grievance Officer: The Grievance Officer is identified above pursuant
+          to the provisions of applicable laws including but not limited to the
+          Information Technology Act, 2000 and the rules enacted under those
+          laws. Please find the details of the Grievance Officer below: Name:
+          [.] Email: [.] Address: [.]
+        </p>
+
+        <p>
+          Miscellaneous: This Policy shall be governed by and construed in
+          accordance with the laws of India and the Courts at New Delhi shall
+          have exclusive jurisdiction regarding any matter arising out of or
+          related to this Policy. Each affiliate of the Platform is severally
+          liable for its own obligations under this Policy and is not jointly
+          liable for the obligations of other affiliates of the Platform. In
+          addition, each affiliate of the Platform is solely responsible with
+          respect to its exercise of its rights and compliance with its
+          obligations in connection with the territory or territories for which
+          it is responsible, as determined by the Platform in its sole
+          discretion. If any provision of this Agreement is adjudged by a court
+          to be void or unenforceable, the same shall in no way affect any other
+          provision of this Agreement, or its validity or enforceability and the
+          unenforceable provision shall be performed to the extent valid and
+          enforceable.
+        </p>
+      </div>
+    </section>
+
+    <!-- Image Section -->
+    <section
+      class="py-10 footer-banner"
+      style="background: linear-gradient(to top, #f2f7f5 50%, white 50%)"
+    >
+      <div class="container mx-auto">
+        <img src="../static/assets/banner.png" alt="" />
+      </div>
+      <!-- <img class="container"
+             src="{{url_for('static',filename='assets/secc.png')}}"
+             alt="Descriptive Alt Text" /> -->
+    </section>
+
+    <!--Footer Section-->
+    <!-- <section class="container footer-social-media-icons">
+        <div class="footer-logo">
+          <img src="{{url_for('static',filename='assets/logo2.png')}}"
+               alt="Get My Claims Logo" />
+        </div>
+        <div class="footer-icons">
+          <img src="{{url_for('static',filename='assets/instagram.png')}}"
+               alt="Instagram" />
+          <img src="{{url_for('static',filename='assets/twitter.png')}}"
+               alt="Twitter" />
+          <img src="{{url_for('static',filename='assets/facebook.png')}}"
+               alt="Facebook" />
+          <img src="{{url_for('static',filename='assets/threads.png')}}"
+               alt="Threads" />
+        </div>
+      </section> -->
+
+    <!-- Multi-Column Footer Section -->
+    <!-- <footer class="multi-column-footer">
+        <div class="footer-content2 container">
+          <div class="footer-column">
+            <h3 class="footerH3">KNOW YOUR RIGHTS</h3>
+            <div class="accordion">
+              <button class="accordion-button">
+                <h3>KNOW YOUR RIGHTS</h3>
+                <svg viewBox="0 0 24 24"
+                     class="accordion-icon">
+                  <path fill="currentColor"
+                        d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li><a href="/kyr">Air passenger rights</a></li>
+                  <li><a href="/kyr">Flight delay compensation</a></li>
+                  <li><a href="/kyr">Flight cancellation compensation</a></li>
+                  <li><a href="/kyr">Missed connection</a></li>
+                  <li><a href="/kyr">Denied boarding compensation</a></li>
+                  <li><a href="/kyr">Airline strike compensation</a></li>
+                  <li><a href="/kyr">Airlines</a></li>
+                  <li><a href="/kyr">Airports</a></li>
+                  <li><a href="/kyr">Flight refund</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3 class="footerH3">OUR COMPANY</h3>
+            <div class="accordion">
+              <button class="accordion-button">
+                <h3>OUR COMPANY</h3>
+                <svg viewBox="0 0 24 24"
+                     class="accordion-icon">
+                  <path fill="currentColor"
+                        d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li><a href="/about">About us</a></li>
+                  <li><a href="/blog">Blog</a></li>
+                  <li><a href="/partner">Become a partner</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+  
+          <div class="footer-column">
+            <h3 class="footerH3">SUPPORT</h3>
+            <div class="accordion">
+              <button class="accordion-button">
+                <h3>SUPPORT</h3>
+                <svg viewBox="0 0 24 24"
+                     class="accordion-icon">
+                  <path fill="currentColor"
+                        d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li><a href="/help">Help</a></li>
+                  <li><a href="/fees">Our fees</a></li>
+                  <li><a href="/contact">Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+  
+          <div class="footer-column">
+            <h3 class="footerH3">OUR PRODUCTS</h3>
+            <div class="accordion">
+              <button class="accordion-button">
+                <h3>OUR PRODUCTS</h3>
+                <svg viewBox="0 0 24 24"
+                     class="accordion-icon">
+                  <path fill="currentColor"
+                        d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li><a href="/">Check your compensation</a></li>
+                  <li><a href="/refer">Refer a friend</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3 class="footerH3">OTHERS</h3>
+            <div class="accordion">
+              <button class="accordion-button">
+                <h3>OTHERS</h3>
+                <svg viewBox="0 0 24 24"
+                     class="accordion-icon">
+                  <path fill="currentColor"
+                        d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li><a href="/T&C">Terms and Conditions</a></li>
+                  <li><a href="/policy">Privacy Policy</a></li>
+                  <li><a href="/cookies">Cookies</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer> -->
+    <footer class="bg-[#f2f7f5]">
+      <section class="py-20 relative">
+        <div class="container mx-auto p-2">
+          <div class="flex justify-between lg:flex-row flex-col lg:gap-0 gap-8">
+            <div class=" ">
+              <img
+                src="../static/assets/gncLogo.png"
+                alt=""
+                class="w-[40%] pb-5"
+              />
+              <p class="lg:w-[50%] !text-[20px] font-medium leading-[24px]">
+                Flight Delayed or Cancelled?<br />
+                Don't let your cash fly away.<br />
+                Claim Now and get what you're owed!
+              </p>
+            </div>
+            <div class="w-full flex lg:justify-end gap-5">
+              <a
+                href="https://www.facebook.com/share/FTovYP4P1vxifv5a/?mibextid=LQQJ4d"
+              >
+                <img
+                  src="../static/assets/facebook.png"
+                  alt="facebook"
+                  class="w-[25px] h-[30px]"
+                />
+              </a>
+              <a href="https://x.com/getmyclaims">
+                <img
+                  src="../static/assets/twitter.png"
+                  alt="Twitter"
+                  class="w-[25px] h-[30px]"
+                />
+              </a>
+              <img
+                src="../static/assets/threads.png"
+                alt="threads"
+                class="w-[30px] h-[30px]"
+              />
+
+              <a
+                href="https://www.instagram.com/getmyclaims/profilecard/?igsh=MThxeWQ3YjN5OGZuZg=="
+              >
+                <img
+                  src="../static/assets/instagram.png"
+                  alt="instagram"
+                  class="w-[35px] h-[30px]"
+                />
+              </a>
+            </div>
+          </div>
+          <div></div>
+        </div>
+      </section>
+      <div class="justify-center flex">
+        <hr class="border-[1px] border-[#c5c9c7] w-[100%]" />
+      </div>
+      <div class="container mx-auto relative lg:block hidden p-2 mt-[-2rem]">
+        <img
+          src="../static/assets/GMC_Logomark.png"
+          alt=""
+          class="w-[25%] opacity-25 absolute right-0 top-[30%]"
+        />
+        <div class="flex flex-row justify-between py-10 mb-20">
+          <div>
+            <p class="uppercase font-bold">Know your right</p>
+            <div class="pt-5">
+              <div class="flex flex-col gap-3">
+                <div><a href="/kyr">Air passenger rights</a></div>
+                <div><a href="/kyr">Flight delay compensation</a></div>
+                <div><a href="/kyr">Flight cancellation compensation</a></div>
+                <div><a href="/kyr">Missed connection</a></div>
+                <div><a href="/kyr">Denied boarding compensation</a></div>
+                <div><a href="/kyr">Airline strike compensation</a></div>
+                <div><a href="/kyr">Airlines</a></div>
+                <div><a href="/kyr">Airports</a></div>
+                <div><a href="/kyr">Flight refund</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-8">
+            <div>
+              <div>
+                <p class="uppercase font-bold">Our Company</p>
+                <div class="pt-5">
+                  <div class="flex flex-col gap-3">
+                    <div><a href="/about">About us</a></div>
+                    <div><a href="#">Blog</a></div>
+                    <div><a href="/partner">Become a partner</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="uppercase font-bold">Support</p>
+              <div class="pt-5">
+                <div class="flex flex-col gap-3">
+                  <div><a href="/help">Help</a></div>
+                  <div><a href="/fees">Our fees</a></div>
+                  <div><a href="/contact">Contact Us</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="uppercase font-bold">Our Product</p>
+            <div class="pt-5">
+              <div class="flex flex-col gap-3">
+                <div><a href="/">Check your compensation</a></div>
+                <div><a href="#">Refer a friend</a></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="uppercase font-bold">Others</p>
+            <div class="pt-5">
+              <div class="flex flex-col gap-3">
+                <div><a href="/T&C">Terms and Conditions</a></div>
+                <div><a href="/policy">Privacy Policy</a></div>
+                <div><a href="/cookies">Cookies</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mx-auto hidden lg:block">
+        <div class="justify- flex py-1">
+          <hr class="border-[1px] border-[#c5c9c7] w-[100%]" />
+        </div>
+        <div class="flex flex-row justify-center">
+          <p>Copyright &copy; 2025 Get My Claims</p>
+        </div>
+      </div>
+    </footer>
+    <div class="accordion-container w-full flex flex-col block xl:hidden">
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Know your right
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div>
+              <a href="/kyr" class="hover:underline">Air passenger rights</a>
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Flight delay compensation</a
+              >
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Flight cancellation compensation</a
+              >
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline">Missed connection</a>
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Denied boarding compensation</a
+              >
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Airline strike compensation</a
+              >
+            </div>
+            <div><a href="/kyr" class="hover:underline">Airlines</a></div>
+            <div><a href="/kyr" class="hover:underline">Airports</a></div>
+            <div><a href="/kyr" class="hover:underline">Flight refund</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Our Company
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div><a href="/about" class="hover:underline">About us</a></div>
+            <div><a href="/blog" class="hover:underline">Blog</a></div>
+            <div>
+              <a href="/partner" class="hover:underline">Become a partner</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Support
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div><a href="/help" class="hover:underline">Help</a></div>
+            <div><a href="/fees" class="hover:underline">Our fees</a></div>
+            <div><a href="/contact" class="hover:underline">Contact Us</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Our Product
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div>
+              <a href="/" class="hover:underline">Check your compensation</a>
+            </div>
+            <div>
+              <a href="/refer" class="hover:underline">Refer a friend</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Others
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div>
+              <a href="/T&C" class="hover:underline">Terms and Conditions</a>
+            </div>
+            <div>
+              <a href="/policy" class="hover:underline">Privacy Policy</a>
+            </div>
+            <div><a href="/cookies" class="hover:underline">Cookies</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto lg:hidden block bg-[#f2f7f5]">
+      <div class="justify- flex">
+        <hr class="border border-[#c5c9c7] w-[100%]" />
+      </div>
+      <div class="flex flex-row justify-center">
+        <p>Copyright &copy; 2024 getmyClaim</p>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("nav-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("nav-links").classList.toggle("open");
+          document.getElementById("logIn").style.display = "block";
+        });
+
+      window.addEventListener("scroll", () => {
+        const dropdown_content_toggle =
+          document.getElementById("dropdown-content");
+
+        dropdown_content_toggle.style.display = "none";
+
+        document.getElementById("nav-links").classList.remove("open");
+      });
+
+      document.querySelectorAll(".dropbtn").forEach((item) => {
+        item.addEventListener("click", function () {
+          // Toggle the 'active' class on the clicked item
+          this.classList.toggle("active");
+
+          // Get the associated content
+          const content = this.nextElementSibling;
+
+          // Toggle the display of the content
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      });
+    </script>
+
+    <script>
+      const accordionHeaders = document.querySelectorAll(
+        ".accordion-headerfoot"
+      );
+      const accordionContents = document.querySelectorAll(
+        ".accordion-contentmb"
+      );
+      const accordionIcons = document.querySelectorAll(".accordion-icon");
+
+      accordionHeaders.forEach((header, index) => {
+        header.addEventListener("click", () => {
+          accordionContents.forEach((content, i) => {
+            if (i !== index) {
+              content.classList.add("hidden");
+              accordionIcons[i].classList.remove("fa-angle-up");
+              accordionIcons[i].classList.add("fa-angle-down");
+            }
+          });
+
+          accordionContents[index].classList.toggle("hidden");
+
+          const isOpen = !accordionContents[index].classList.contains("hidden");
+          accordionIcons[index].classList.toggle("fa-angle-down", !isOpen);
+          accordionIcons[index].classList.toggle("fa-angle-up", isOpen);
+        });
+      });
+    </script>
+  </body>
+</html>

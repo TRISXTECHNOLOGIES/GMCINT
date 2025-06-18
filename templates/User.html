@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get My Claims Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css')}}">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="{{ url_for('landing') }}"> <img src="{{ url_for('static', filename='assets/logo22.png')}}" alt="Get My Claims Logo"
+                    style="align-items: center; padding-left: 38px;"></a>
+        </div>
+        <div class="user-info">
+            <div class="user-icon">{{icon}} </div>
+            <p>{{username}} </p>
+            <p>{{email}}</p>
+        </div>
+        <nav>
+            <ul style="
+            width: 106px;
+            padding-left: 89px;
+            font-weight: bolder;
+        
+        ">
+                <li><a href="/user_dashboard">Home</a></li>
+                <li><a href="/my_claims">My Claims</a></li>
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        <section class="welcome-section">
+            <h2>Hey {{username}} , How can we help?</h2>
+            <div class="actions">
+                <div class="action" style="
+                height: 88px;
+                width: 155px;
+            ">
+                    <a href="/index1"> <img src="{{ url_for('static', filename='assets/add claim.png')}}"
+                            alt="Add Claim">
+                        <p>Add Claim</p>
+                    </a>
+                </div>
+                <div class="action" style="
+                height: 88px;
+                width: 155px;
+            ">
+                    <img src="{{ url_for('static', filename='assets/FAQ.png')}}" alt="FAQs">
+                    <p>FAQs</p>
+                </div>
+                <div class="action" style="
+                height: 88px;
+                width: 155px;
+            ">
+                    <img src="{{ url_for('static', filename='assets/chat.png')}}" alt="Chat with us">
+                    <p>Chat with us</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="claims-section">
+            <h3>Your compensation claims</h3>
+            <div class="claims-list">
+                {% for flight in flights %}
+                <div class="claim-item">
+
+                    <div class="claim-details">
+                        <p>{{flight.leaving_from}} <span style="color: #35b67e;">&rarr;</span> {{flight.destination}}
+                        </p>
+                        <p>Airline:{{flight.airline}} </p>
+                        <p>Flight Date:{{flight.flight_date}} </p>
+                    </div>
+                    <div class="claim-status">
+                        <span class="status-badge cancelled" style="
+                        
+                        margin-left: 280px;
+                    ">{{flight.disruption}} </span>
+                    </div>
+                    <div class="claim-status">
+                        <a href="/in_dash/{{flight.id}}"> <span class="status-badge cancelled">view</span></a>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- <div class="claim-item">
+                    <div class="claim-details">
+                        <p>Salzburg <span>&rarr;</span> Copenhagen</p>
+                        <p>Airline: British Airways</p>
+                        <p>Flight Date: 7 July 2024</p>
+                    </div>
+                    <div class="claim-status">
+                        <span class="status-badge overbooked">Overbooked</span>
+                        <button class="complete-claim">Complete Claim</button>
+                    </div>
+                </div> -->
+
+            </div>
+            <a href="/user_dashboard?all=all"><button class="see-all-btn">See all</button></a>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/user.js')}}"></script>
+</body>
+
+</html>

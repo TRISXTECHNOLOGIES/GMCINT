@@ -1,0 +1,177 @@
+/* General styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #F7F9FA;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar-header img {
+    width: 150px;
+    margin-bottom: 30px;
+}
+
+.user-info {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.user-icon {
+    background-color: #35B67E;
+    color: #fff;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 10px;
+}
+
+.user-info p {
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+nav ul li {
+    margin-bottom: 15px;
+}
+
+nav ul li.active a,
+nav ul li a:hover {
+    color: #35B67E;
+    font-weight: 700;
+}
+
+/* Main Content styles */
+.main-content {
+    flex: 1;
+    padding: 30px 40px;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.actions {
+    display: flex;
+    gap: 30px;
+}
+
+.action-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #35B67E;
+}
+
+.action-item img {
+    width: 30px;
+}
+
+.claims-section h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.claim-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.claim-info p {
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+.claim-info span {
+    font-size: 18px;
+}
+
+.claim-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.overbooked {
+    background-color: #FFC107;
+    color: #333;
+}
+
+.cancelled {
+    background-color: #FF5B5B;
+    color: #FFFFFF;
+}
+
+.complete-claim-btn {
+    background-color: #35B67E;
+    color: #FFFFFF;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.complete-claim-btn:hover {
+    background-color: #2E995B;
+}
+
+.claim-actions img {
+    width: 20px;
+    cursor: pointer;
+}

@@ -1,0 +1,28 @@
+name: Deploy to Ubuntu Server
+
+on:
+  push:
+    branches:
+      - master  # Trigger deployment only on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Using SSH with a password (not recommended, prefer SSH keys)
+    - name: Install sshpass
+      run: sudo apt-get install -y sshpass
+
+    - name: Deploy application via SSH with secrets
+      run: |
+        sshpass -p "GetmyClaims@2210A" ssh -o StrictHostKeyChecking=no root@139.59.30.209 '
+          cd ~/GetMyClaims-QA &&
+          git pull &&
+          source venv/bin/activate &&
+          pm2 restart all
+        '
+       # Set environment variables if needed.

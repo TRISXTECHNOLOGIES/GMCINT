@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Terms & Conditions | Get My Claims</title>
+ <link rel="icon" href="../static/assets/GMC_Logomark.png" type="image/x-icon">
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: white; /* Set the whole background color to white */
+      }
+
+      .container {
+        max-width: 1280px !important;
+        margin-inline: auto;
+        overflow: hidden;
+        /* padding-top: 40px; */
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      /* General Navbar Styles */
+      .main-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 20px;
+        background-color: white;
+        position: relative;
+      }
+
+      .logo img {
+        height: 130px;
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        background-color: #f2f7f5;
+        border-radius: 25px;
+        padding: 15px 15px;
+      }
+
+      nav ul li {
+        /* margin: 0 20px; */
+        text-align: center;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+        padding: 15px 20px;
+        border-radius: 20px;
+        transition: background-color 0.3s;
+      }
+
+      nav ul li a:hover {
+        background-color: #ffffff;
+      }
+
+      .language-login {
+        display: flex;
+        align-items: center;
+      }
+
+      .language-select {
+        margin-right: 20px;
+      }
+
+      .language-select img {
+        height: 25px;
+      }
+
+      .login {
+        padding: 10px 20px;
+        border: 2px solid #007bff;
+        background-color: white;
+        color: #007bff;
+        border-radius: 25px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .login:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      /* Dropdown for Know Your Rights */
+      .dropdown {
+        position: relative;
+        z-index: 1000;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: fixed;
+        background-color: white;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        min-width: 200px;
+        z-index: 999;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+
+      .dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        /* border-bottom: 1px solid #f2f2f2; */
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f2f7f5;
+      }
+
+      .dropbtn::after {
+        content: "▼";
+
+        margin-left: 10px;
+      }
+
+      .dropbtn.active::after {
+        content: "▲";
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover a {
+        background-color: #fff;
+      }
+
+      /* Mobile Styles */
+      .nav-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 991px) {
+        .nav-toggle {
+          display: block;
+          background: none;
+          border: none;
+          font-size: 24px;
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: fixed;
+          background-color: white;
+          top: 95px;
+          left: 0;
+          width: 100%;
+
+          z-index: 999;
+          border: none;
+          border-radius: 0%;
+          align-items: center;
+        }
+
+        .nav-links.open {
+          display: flex;
+        }
+
+        .nav-links li {
+          margin: 10px 0;
+        }
+
+        nav ul li {
+          text-align: left;
+        }
+
+        .dropdown-content {
+          position: static;
+          border: none;
+        }
+
+        .dropdown-content a {
+          padding: 10px 15px;
+        }
+
+        .language-login {
+          display: none;
+          position: fixed;
+          background-color: white;
+          top: 295px;
+          left: 0;
+          width: 100%;
+          z-index: 999;
+          padding-bottom: 20px;
+          flex-direction: column;
+        }
+
+        .language-login.open {
+          display: flex;
+        }
+      }
+
+      /* Reduce font size for smaller screens */
+      @media screen and (max-width: 1096px) {
+        nav ul li a {
+          font-size: 12px;
+        }
+      }
+
+      .terms-section {
+        /* margin: 120px; */
+        padding: 20px;
+      }
+
+      .terms-section h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+
+      .terms-content p {
+        margin-bottom: 20px;
+        font-size: 1em;
+        line-height: 1.5;
+      }
+
+      .services-section {
+        /* margin: 100px; */
+        padding: 20px;
+      }
+
+      .services-section h1 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+
+      .services-section h2 {
+        font-size: 1.2em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      .service-content p {
+        margin-bottom: 10px;
+        font-size: 1em;
+        line-height: 1.5;
+      }
+
+      .service-content .number {
+        color: green;
+        font-weight: bold;
+      }
+
+      .definitions-section {
+        /* margin: 100px; */
+        padding: 20px;
+      }
+
+      .definitions-section h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+
+      .definitions-section p {
+        font-size: 1em;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+
+      .definition-content .number {
+        color: green;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+
+      .eligibility-info-section {
+        /* margin: 100px; */
+        padding: 20px;
+      }
+
+      .eligibility-info-section h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+
+      .eligibility-info-section h3 {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+      }
+
+      .eligibility-info-section p {
+        font-size: 1em;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+
+      .eligibility-content .number {
+        color: green;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+
+      /* Mobile Responsive Adjustments */
+      @media (max-width: 768px) {
+        .terms-section,
+        .services-section,
+        .definitions-section,
+        .eligibility-info-section {
+          /* margin: 20px; */
+          padding: 10px;
+        }
+
+        .terms-section h2,
+        .services-section h1,
+        .definitions-section h2,
+        .eligibility-info-section h2 {
+          font-size: 1.5em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header style="background-color: white">
+      <div class="main-nav container">
+        <!-- Logo Section -->
+        <div class="logo">
+          <a href="{{ url_for('landing') }}">
+            <img src="../static/assets/logo22.png" alt="Company Logo" />
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav style="margin-right: 30px">
+          <ul class="nav-links" id="nav-links">
+            <li><a href="/index1">Get My Claim</a></li>
+
+            <!-- Dropdown for Know Your Rights -->
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">Know Your Rights</a>
+              <div class="dropdown-content" id="dropdown-content">
+                <a href="../templates/kyr.html#Should Know "
+                  >Air passenger rights</a
+                >
+                <a href="../templates/kyr.html#Delay"
+                  >Flight delay compensation</a
+                >
+                <a href="../templates/kyr.html#Cancellation"
+                  >Flight cancellation compensation</a
+                >
+                <a href="../templates/kyr.html#Missed">Missed connection</a>
+                <a href="../templates/kyr.html#Overbooking"
+                  >Overbooking compensation</a
+                >
+                <a href="../templates/kyr.html#Denied"
+                  >Denied boarding compensation</a
+                >
+                <a href="../templates/kyr.html#Delayed"
+                  >Delayed baggage compensation</a
+                >
+                <a href="../templates/kyr.html#Strike"
+                  >Airline strike compensation</a
+                >
+                <!-- <a href="#">Passengers with disabilities</a>
+                <a href="#">Airlines</a>
+                <a href="#">Airports</a> -->
+              </div>
+            </li>
+
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li>
+              <a href="/login" class="login" id="logIn" style="display: none"
+                >Log in</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Language Selector and Login -->
+        <div class="language-login" id="language-login">
+          <!-- <div class="language-select">
+            <img src="../static/assets/lang.png" alt="Language" />
+          </div> -->
+          <a href="/login" class="login">Log in</a>
+        </div>
+
+        <!-- Mobile Navigation Toggle -->
+        <a class="nav-toggle" id="nav-toggle">☰</a>
+      </div>
+    </header>
+
+    <!-- Terms and Conditions Section -->
+    <section class="terms-section container">
+      <h2>Terms And Conditions</h2>
+      <div class="terms-content">
+        <p>
+          These Terms and Conditions (the “Terms”) constitute the legally
+          binding agreement between a customer (“Customer” or “you”) and the
+          Company with regard to provisions of our Services (defined below). By
+          accepting these Terms, you agree to be bound by them and any
+          additional terms applicable to our Services, and the Getmyclaims
+          (“Company”) Privacy Policy
+
+          <br />We recommend that you do not engage with the Company for any of
+          our Services until you have read and understood these Terms,
+          the Privacy Policy, and our fee structure. If you have any questions,
+          doubts, or concerns, please contact the Company at Getmyclaims or
+          refer to our
+          <a href="../templates/help.html" class="text-[Blue]">FAQs</a>. 
+        </p>
+      </div>
+    </section>
+
+    <!-- Use and Nature of Our Services Section -->
+
+    <!-- Definitions Section -->
+    <section class="definitions-section container">
+      <h2>1. DEFINITIONS</h2>
+      <p>
+        In these Terms, except where the context otherwise requires, the
+        following words and expressions shall have the following meanings:
+      </p>
+      <div class="definition-content">
+        <p>
+          <span class="number">1.1</span> “Airline” means the commercial airline
+          that operated the flight for which our Services may be provided. 
+        </p>
+        <p>
+          <span class="number">1.2</span> “Air Passenger Rights Regulations”
+          means any law, regulation, directive, international convention, or
+          similar, whether issued on a state, federal, European Union, national,
+          international, or regional level, and case law, upon which a consumer
+          may claim monetary compensation, damages, or refunds in the event of
+          overbooked, delayed, cancelled, or any other Flight Disruption
+          (defined below) or luggage-related issues, including but not limited
+          to, “EC 261”: Regulation (EC) No. 261/2004 of the European Parliament
+          and of the Council dated February 11, 2004.
+        </p>
+        <p>
+          <span class="number">1.3</span> “Assignment Agreement” means the
+          document, in electronic or other format, requested by Company on a
+          case-to-case basis, whereby you and the Company agree that the Company
+          shall become the owner of the Claim, subject to the terms of the
+          Assignment Agreement, in order to collect and receive payments on
+          behalf of the Customer.
+        </p>
+        <p>
+          <span class="number">1.4</span>“Authority Document” means the document
+          which authorizes the Company to act on your behalf with regard to your
+          Claim. The document may be in any manner and form, due to various
+          jurisdictional requirements, including but not limited to a power of
+          attorney or certificate of authorization.
+        </p>
+        <p>
+          <span class="number">1.5</span>“Claim” means any claim submitted by
+          the Company on behalf of the Customer against the Airline, to uphold
+          the Customer’s passenger rights for Compensation, damages, or refund
+          in accordance with Air Passenger Rights Regulations.
+        </p>
+        <p>
+          <span class="number">1.6</span>
+          “Compensation” means any amount paid by the Airline to the Customer in
+          relation to the Claim, including but not limited to compensation,
+          refund, damages, settlement, a gesture of goodwill, or otherwise, as a
+          result of Services provided by the Company.
+        </p>
+        <p>
+          <span class="number">1.7</span>“Flight Disruption” means any and all
+          disruptions experienced by the Customer, including but not limited to
+          long delay, cancellation, denied boarding and/or downgrade.
+        </p>
+        <p>
+          <span class="number">1.8</span> “Form” means the initial information
+          provided by the Customer to the Company in relation to the Claim,
+          including but not limited to submission and execution of Assignment
+          Agreement, Authority Document, power of attorney, or other documents
+          which enable the Company to provide the Customer with its Services.
+        </p>
+        <p>
+          <span class="number">1.9</span>“Legal Action” means initiating
+          proceedings in court against the Airline, either by Company’s lawyers
+          or a contracted legal representative such as a lawyer or a law firm.
+        </p>
+        <p>
+          <span class="number">1.10</span> “Privacy Policy” means Company’s
+          privacy policy that can be found here.
+          <a href="{{ url_for('policy') }}" class="text-[Blue]">Policy</a>
+        </p>
+        <p>
+          <span class="number">1.11</span> “Services” means monetary
+          compensation services provided by the Company, including but not
+          limited to the Company, either by itself or together with a third
+          party, pursues a Claim on your behalf, including Legal Action, in
+          accordance with these Terms and any additional terms specific to the
+          Services selected by you.
+        </p>
+        <p>
+          <span class="number">1.12</span>
+          “Service Fee” means the amounts payable by the Customer to the Company
+          when the Customer receives Compensation in the manner as set out
+          under/in
+          <a href="{{ url_for('fees') }}" class="text-[Blue]">Fees</a>. 
+        </p>
+      </div>
+    </section>
+
+    <!-- Eligibility and Information Services Section -->
+    <section class="eligibility-info-section container">
+      <h2>2.OBLIGATIONS OF THE CUSTOMER AND TERMS OF SERVICE OF THE COMPANY</h2>
+
+      <div class="eligibility-content">
+        <p>
+          <span class="number">2.1</span> The Customer inter alia agrees and
+          undertakes the following:
+        </p>
+        <p>
+          <span class="number">a.</span>
+          The Customer acknowledges that failure to adhere to any of the
+          obligations under this clause will negatively impact the Company’s
+          ability to provide the Service.  
+        </p>
+        <p>
+          <span class="number">b.</span> Prior to commencement of Services by
+          the Company, the Customer agrees and acknowledges that Company will
+          only claim Compensation that is monetary, and that it is in Company’s
+          sole discretion to accept travel vouchers and/or other services as
+          Compensation and that Airline’s offer/s for non-monetary compensation
+          may be treated by Company as an Airline’s refusal of Compensation.
+        </p>
+        <p>
+          <span class="number">c.</span> Prior to commencing the Services, the
+          Customer agrees and acknowledges that the Customer is not pursuing the
+          Claim by any other means either directly or through any other third
+          parties and no legal dispute is directly or indirectly pending or
+          expected between the Customer and the Airline on the same matter.
+        </p>
+        <p>
+          <span class="number">d.</span> Upon receipt and review of the Form,
+          the Company may at its sole discretion, proceed with or reject such
+          Form, or may request further information or documentation prior to
+          commencement of Services in relation to the Claim. The Company shall
+          inform the Customer of the rejection or approval of the Form, in
+          writing (emails permitted)
+        </p>
+        <p>
+          <span class="number">e.</span> After submitting the Form, the Customer
+          may not assign the Claim to any other party as the legal title to the
+          Claim has been assigned to Company. The Customer may not mandate or
+          authorize another third party to act on your behalf concerning the
+          same Claim.
+        </p>
+        <p>
+          <span class="number">f.</span> If the Customer receives any direct
+          payments or any other compensation from the Airline after entering
+          this Claim-Compensation arrangement with the Company, the Customer
+          must inform about the same to the Company immediately. Such payments
+          shall be considered Compensation under these Terms and entitle the
+          Company to the Service Fee, and the fee for Legal Action, if any,
+          prior to you having received any amounts from the Airline. 
+        </p>
+        <p>
+          <span class="number">g.</span> After submitting the Form, the Customer
+          must cease negotiations with the Airline and direct any communication
+          with the Airline in relation to the Claim to the Company. 
+          Reassignment: The Claim may be reassigned back to the Customer either
+          at the request of the Customer, or by the Company’s initiative, at its
+          sole discretion, in writing (emails permitted). In the event that you
+          have signed an Authority Document, you may withdraw the authority
+          given in the Authority Document by giving a written notice to the
+          Company. 
+        </p>
+        <p>
+          <span class="number">h.</span> Upon receipt of the Form by the
+          Company, the Company will prepare a request for payment in relation to
+          the Claim and send it to the Airline and handle all further
+          correspondence.
+        </p>
+        <p>
+          <span class="number">i.</span> Reassignment: The Claim may be
+          reassigned back to the Customer either at the request of the Customer,
+          or by the Company’s initiative, at its sole discretion, in writing
+          (emails permitted). In the event that you have signed an Authority
+          Document, you may withdraw the authority given in the Authority
+          Document by giving a written notice to the Company. 
+        </p>
+        <p>
+          <span class="number">j.</span>Upon receipt of the Form by the Company,
+          the Company will prepare a request for payment in relation to the
+          Claim and send it to the Airline and handle all further
+          correspondence.
+        </p>
+        <p>
+          <span class="number">k.</span> Legal Action: In the event the Airline
+          fails to pay the Compensation within a reasonable period after being
+          notified by the Company, or the Company has, in its sole discretion,
+          assessed that the Airline is unlikely to respond to a request for
+          Compensation, the Company may initiate Legal Action. In the event that
+          Legal Action is initiated, and the Compensation is paid, the Customer
+          will be required to pay to the Company, the fee for such Legal Action
+          in addition to the Service Fee. Where a separate form or other
+          additional documents are required to undertake the Legal Action, the
+          Customer undertakes to take all steps, sign all documents and comply
+          with any and all requirements as are necessary for the Company to
+          obtain Compensation in relation to the Claim. If the Company commences
+          Legal Action to pursue a Claim, the Company will cover any and all
+          legal expenses incurred during the Legal Action, even if the Legal
+          Action is lost. In the event a settlement has been arrived at between
+          the Airline and Company through a Legal Action, Company may recover
+          from the Customer, any and all costs incurred by the Company, that are
+          not covered by the Airline. The Customer acknowledge that the final
+          outcome of Legal Action and obtaining Compensation is a time taking
+          procedure and is not under the control of the Company
+        </p>
+        <p>
+          <span class="number">l.</span> Settlements: The Company may pursue the
+          assigned Claim in its own name and may offer to or accept from the
+          Airline, individual or collective, at its sole discretion, Claim
+          settlements for Compensation. The Customer acknowledges that the
+          decision to accept a settlement from the Airline for Compensation
+          rests solely with Company. In the event the Company acts on your
+          behalf, in accordance with an Authority Document, the Company shall
+          accept or reject settlement offers at its sole discretion, without the
+          consent of the Customer.
+        </p>
+        <p>
+          <span class="number">m.</span> The Customer is responsible for
+          providing the correct data to proceed with the Services in relation to
+          the Claim. The Company shall not be held liable for any incorrect
+          communications, documents, incorrect data/information, and fraudulent
+          conduct shared by the Customer. In the event the Customer provides
+          incorrect information or data, in addition to any other recourse, the
+          Company shall be have the right to exercise any remedies available to
+          it under law and in equity. In the event Compensation is not received
+          by the Airline in relation to the Claim, the Company shall, with the
+          instruction of the Customer, claim compensation in kind, such as a
+          flight voucher, fidelity points, or air miles.
+        </p>
+        <p>
+          <span class="number">n.</span> In the event Compensation is not
+          received by the Airline in relation to the Claim, the Company shall,
+          with the instruction of the Customer, claim compensation in kind, such
+          as a flight voucher, fidelity points, or air miles.
+        </p>
+        <p>
+          <span class="number">o.</span>Subject to occurrence of any event of
+          Force Majeure, if the Company is prevented from performing its
+          Services in relation to the Claim, the Company shall resume its
+          Services upon cessation of such Force Majeure event. For the purpose
+          of these Terms, “Force Majeure” shall mean if the Company is prevented
+          from performing its Services for the reasons including, but not
+          limited to, strike, lock-out, labor dispute, force majeure, natural
+          disasters, war, riot, civil commotion, malicious damage, compliance
+          with a law or governmental order, rule, regulation or direction,
+          accident, breakdown of plant or machinery, fire, flood, storm, Airline
+          insolvency, etc.
+        </p>
+      </div>
+    </section>
+
+    <!-- Definitions Section -->
+    <section class="definitions-section container">
+      <h2>3. SERVICE FEES AND PAYMENTS</h2>
+
+      <div class="definition-content">
+        <p>
+          <span class="number">3.1</span> The Customer shall be liable to pay
+          the Service Fee to the Company in the event the Company is successful
+          in obtaining the Compensation in relation to the Claim. The Company
+          will transfer the Compensation to the Customer, after deducting the
+          applicable Service Fee, plus GST. For clarity, the Service Fee shall
+          not include any other expenses incurred by the Company towards
+          obtaining the Compensation in relation to the Claim and such expenses
+          shall be additionally charged to the Customer and the Customer shall
+          be liable to pay the same to the Company.
+        </p>
+        <p>
+          <span class="number">3.2</span> The Service Fee and the fee for Legal
+          Action shall apply to any kind of settlement whenever the Company is
+          able to procure the Compensation, whether obtained through Legal
+          Action, settlement with the Airline, or where Company has settled the
+          Claim with the Airline jointly with other Claims.
+        </p>
+        <p>
+          <span class="number">3.3</span> In the event the Compensation and/or
+          the legal expenses, interest, or any other amounts in relation to the
+          Claim are transferred directly from the Airline to the Customer, the
+          Customer shall immediately inform the Company of the receipt of such
+          amounts. Upon receipt of such amounts, the Customer shall be liable to
+          pay the Service Fee, legal expenses, fee for Legal Action, if any,
+          interest, or any other amounts in relation to the Claim incurred by
+          the Company, without any delay.
+        </p>
+        <p>
+          <span class="number">3.4</span>Upon disbursement of the Compensation
+          by the Company in relation to the Claim, the Company shall not be
+          liable for checks, prepaid debit cards, credit cards, and similar lost
+          in transit to the Customer, any effect of the Customer giving wrong
+          information including but not limited to bank account details,
+          address. In the event the Compensation has been paid to a wrong
+          receiver, the Company shall not be obligated to reclaim it.
+        </p>
+        <p>
+          <span class="number">3.5</span>
+          The Customer shall not be entitled to claim any interest on the
+          Compensation during the time period between when the Company receives
+          it and when it is transferred to the Customer. The Company reserves
+          the right to retain any interest on any and all amounts recovered from
+          the Airline.
+        </p>
+      </div>
+    </section>
+
+    <section class="definitions-section container">
+      <h2>4. WITHDRAWAL AND TERMINATION:</h2>
+
+      <div class="definition-content">
+        <p>
+          <span class="number">4.1</span> Without prejudice to any other claims,
+          rights or remedies that the Company may have against the Customer
+          hereunder and/or under law or in equity, the Company may withdraw from
+          the Service in relation to the Claim upon occurrence of Force Majeure
+          and/or if the Customer has provided incorrect information engaged in
+          fraud, or engaged in activities that the Company may reasonably
+          suspect to be misleading or fraudulent, in relation to the Claim. The
+          Company shall notify the Customer in writing of such withdrawal and
+          the Company agrees to resume its Services on the dates as the Company
+          deems fit upon cessation of such Force Majeure event and/or upon the
+          Customer rectifying the submission of such incorrect information.
+        </p>
+        <p>
+          <span class="number">4.2</span> The Company may terminate its Services
+          in the following circumstances:
+        </p>
+        <p>
+          <span class="number">a.</span> Upon the occurrence of an event of
+          Force Majeure which continues for a period of more than 7 (seven) days
+          from the date of withdrawal;
+        </p>
+        <p>
+          <span class="number">b.</span> In the event the Customer at any time
+          fails, or is unable, neglects or refuses to perform any of its
+          obligations specified under these Terms, or is otherwise in breach of
+          its obligations and fails to remedy such breach within 7 (seven) days
+          of issuance of the notice in this regard by the Company;
+        </p>
+        <p>
+          <span class="number">c.</span> In its sole discretion, by notice to
+          the Customer without assigning any reason; or
+        </p>
+        <p>
+          <span class="number">d.</span> The Customer has provided incorrect
+          information, engaged in fraud, or engaged in activities that the
+          Company may reasonably suspect to be misleading or fraudulent, in
+          which case the Customer shall not be entitled to the Compensation or
+          any other payments.
+        </p>
+        <p>
+          <span class="number">4.3</span> The Customer shall not in any event,
+          terminate its rights and obligations under these Terms, unless under
+          the statutory provision that entitles the Customer in its capacity as
+          a consumer to withdraw from these terms within 14 (fourteen) days from
+          the date of conclusion, without giving any reasons.
+        </p>
+        <p>
+          <span class="number">4.4</span>
+          Without prejudice to any right that the Producer may have hereunder
+          and/or under law or in equity, if the Services are terminated for any
+          reason, the Customer shall pay the Service Fee, fee for Legal Action
+          including the legal expenses incurred by the Company and any all
+          amounts payable to Company under these Terms, including without
+          limitation, in the event of withdrawal of Services by the Customer
+          after the Airline confirms the payment of Compensation, within a
+          period of 7 (seven) days from the date of termination. The Company
+          shall reassign the Claim of the Customer upon request by the
+          Customer. 
+        </p>
+        <p>
+          <span class="number">4.5</span> In the event of the Customer’s breach
+          of any of the its obligations under these Terms, the Customer agrees
+          that the Customer ’s sole remedy against the Company shall be for
+          actual damages, if any. All rights to recover consequential and/or
+          aggravated damages from the Company are waived by the Customer.
+        </p>
+      </div>
+    </section>
+
+    <section class="definitions-section container">
+      <h2>5. Miscellaneous</h2>
+
+      <div class="definition-content">
+        <p>
+          <span class="number">5.1</span> Versions and Modifications: The
+          Company reserves the right to amend these Terms at any time without
+          further notice. The latest version will always be available on the
+          Company website. Any new features of our Services will be subject to
+          the latest version of the Terms displayed on the Company website. Your
+          use of the Services will be governed by the version of the Terms in
+          place on the date in which you accepted them. If you are unsure of
+          which version of the Terms applies to you, please contact Company
+          at <b style="color: blue">info@getmyclaims.com</b> and we’ll provide
+          them to you.
+        </p>
+        <p>
+          <span class="number">5.2</span> Data Protection: All personal data
+          collected in the tenure of Services provided by the Company, or
+          connected to the provision of such Services, will be subject to the
+          Privacy Policy.
+        </p>
+        <p>
+          <span class="number">5.3</span> No Waiver: Save and except as
+          expressly provided in these Terms, no exercise, failure to exercise,
+          or delay in exercising any right, power, or remedy vested in the
+          Company under or pursuant to these Terms shall constitute a waiver by
+          the Company of that or any other right, power, or remedy.
+        </p>
+        <p>
+          <span class="number">5.4</span> Severability: If any provision of the
+          Terms is adjudged by a court to be void or unenforceable, the same
+          shall in no way affect any other provision of the Terms, or its
+          validity or enforceability and the unenforceable provision shall be
+          performed to the extent valid and enforceable.
+        </p>
+        <p>
+          <span class="number">5.5</span> Entire Agreement: The Terms, together
+          with all agreements and documents executed contemporaneously with it
+          or referred to in it, constitute the entire Terms in relation to its
+          subject matter and supersedes all prior version and understanding,
+          whether oral or written, between the Company and the Customer, with
+          respect to such subject matter.
+        </p>
+        <p>
+          <span class="number">5.6</span> Assignment: The Customer shall not
+          assign these Terms and/or any of its rights and obligations under the
+          Terms to any third party. The Company has the right to assign any of
+          its rights and obligations under these Terms to any third party,
+          without seeking the Customer’s consent.
+        </p>
+        <p>
+          <span class="number">5.7</span>Governing Law and Jurisdiction: These
+          Terms shall be governed by and construed in accordance with the laws
+          of India and the Parties agree that the Courts at New Delhi shall have
+          exclusive jurisdiction regarding any matter arising out of or related
+          to these Terms.
+        </p>
+      </div>
+    </section>
+
+    <!-- Image Section -->
+    <section
+      class="py-10 footer-banner"
+      style="background: linear-gradient(to top, #f2f7f5 50%, white 50%)"
+    >
+      <div class="container mx-auto">
+        <img src="../static/assets/banner3.png" alt="" />
+      </div>
+      <!-- <img class="container"
+           src="{{url_for('static',filename='assets/secc.png')}}"
+           alt="Descriptive Alt Text" /> -->
+    </section>
+
+    <!--Footer Section-->
+    <!-- <section class="container footer-social-media-icons">
+      <div class="footer-logo">
+        <img src="{{url_for('static',filename='assets/logo2.png')}}"
+             alt="Get My Claims Logo" />
+      </div>
+      <div class="footer-icons">
+        <img src="{{url_for('static',filename='assets/instagram.png')}}"
+             alt="Instagram" />
+        <img src="{{url_for('static',filename='assets/twitter.png')}}"
+             alt="Twitter" />
+        <img src="{{url_for('static',filename='assets/facebook.png')}}"
+             alt="Facebook" />
+        <img src="{{url_for('static',filename='assets/threads.png')}}"
+             alt="Threads" />
+      </div>
+    </section> -->
+
+    <!-- Multi-Column Footer Section -->
+    <!-- <footer class="multi-column-footer">
+      <div class="footer-content2 container">
+        <div class="footer-column">
+          <h3 class="footerH3">KNOW YOUR RIGHTS</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>KNOW YOUR RIGHTS</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/kyr">Air passenger rights</a></li>
+                <li><a href="/kyr">Flight delay compensation</a></li>
+                <li><a href="/kyr">Flight cancellation compensation</a></li>
+                <li><a href="/kyr">Missed connection</a></li>
+                <li><a href="/kyr">Denied boarding compensation</a></li>
+                <li><a href="/kyr">Airline strike compensation</a></li>
+                <li><a href="/kyr">Airlines</a></li>
+                <li><a href="/kyr">Airports</a></li>
+                <li><a href="/kyr">Flight refund</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3 class="footerH3">OUR COMPANY</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>OUR COMPANY</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/about">About us</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/partner">Become a partner</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footerH3">SUPPORT</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>SUPPORT</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/help">Help</a></li>
+                <li><a href="/fees">Our fees</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footerH3">OUR PRODUCTS</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>OUR PRODUCTS</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/">Check your compensation</a></li>
+                <li><a href="/refer">Refer a friend</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3 class="footerH3">OTHERS</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>OTHERS</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/T&C">Terms and Conditions</a></li>
+                <li><a href="/policy">Privacy Policy</a></li>
+                <li><a href="/cookies">Cookies</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+    <footer class="bg-[#f2f7f5]">
+      <section class="py-20 relative">
+        <div class="container mx-auto p-2">
+          <div class="flex justify-between lg:flex-row flex-col lg:gap-0 gap-8">
+            <div class=" ">
+              <img
+                src="../static/assets/gncLogo.png"
+                alt=""
+                class="w-[40%] pb-5"
+              />
+              <p class="lg:w-[50%] text-[20px] font-medium leading-[24px]">
+                Flight Delayed or Cancelled?<br />
+                Don't let your cash fly away.<br />
+                Claim Now and get what you're owed!
+              </p>
+            </div>
+            <div class="w-full flex lg:justify-end gap-5">
+              <a
+                href="https://www.facebook.com/share/FTovYP4P1vxifv5a/?mibextid=LQQJ4d"
+              >
+                <img
+                  src="../static/assets/facebook.png"
+                  alt="facebook"
+                  class="w-[25px] h-[30px]"
+                />
+              </a>
+              <a href="https://x.com/getmyclaims">
+                <img
+                  src="../static/assets/twitter.png"
+                  alt="Twitter"
+                  class="w-[25px] h-[30px]"
+                />
+              </a>
+              <img
+                src="../static/assets/threads.png"
+                alt="threads"
+                class="w-[30px] h-[30px]"
+              />
+
+              <a
+                href="https://www.instagram.com/getmyclaims/profilecard/?igsh=MThxeWQ3YjN5OGZuZg=="
+              >
+                <img
+                  src="../static/assets/instagram.png"
+                  alt="instagram"
+                  class="w-[35px] h-[30px]"
+                />
+              </a>
+            </div>
+          </div>
+          <div></div>
+        </div>
+      </section>
+      <div class="justify-center flex">
+        <hr class="border-[1px] border-[#c5c9c7] w-[100%]" />
+      </div>
+      <div class="container mx-auto relative lg:block hidden p-2 mt-[-2rem]">
+        <img
+          src="../static/assets/GMC_Logomark.png"
+          alt=""
+          class="w-[25%] opacity-25 absolute right-0 top-[30%]"
+        />
+        <div class="flex flex-row justify-between py-10 mb-20">
+          <div>
+            <p class="uppercase font-bold">Know your right</p>
+            <div class="pt-5">
+              <div class="flex flex-col gap-3">
+                <div><a href="/kyr">Air passenger rights</a></div>
+                <div><a href="/kyr">Flight delay compensation</a></div>
+                <div><a href="/kyr">Flight cancellation compensation</a></div>
+                <div><a href="/kyr">Missed connection</a></div>
+                <div><a href="/kyr">Denied boarding compensation</a></div>
+                <div><a href="/kyr">Airline strike compensation</a></div>
+                <div><a href="/kyr">Airlines</a></div>
+                <div><a href="/kyr">Airports</a></div>
+                <div><a href="/kyr">Flight refund</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-8">
+            <div>
+              <div>
+                <p class="uppercase font-bold">Our Company</p>
+                <div class="pt-5">
+                  <div class="flex flex-col gap-3">
+                    <div><a href="/about">About us</a></div>
+                    <div><a href="#">Blog</a></div>
+                    <div><a href="/partner">Become a partner</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="uppercase font-bold">Support</p>
+              <div class="pt-5">
+                <div class="flex flex-col gap-3">
+                  <div><a href="/help">Help</a></div>
+                  <div><a href="/fees">Our fees</a></div>
+                  <div><a href="/contact">Contact Us</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="uppercase font-bold">Our Product</p>
+            <div class="pt-5">
+              <div class="flex flex-col gap-3">
+                <div><a href="/">Check your compensation</a></div>
+                <div><a href="#">Refer a friend</a></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="uppercase font-bold">Others</p>
+            <div class="pt-5">
+              <div class="flex flex-col gap-3">
+                <div><a href="/T&C">Terms and Conditions</a></div>
+                <div><a href="/policy">Privacy Policy</a></div>
+                <div><a href="/cookies">Cookies</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mx-auto hidden lg:block">
+        <div class="justify- flex py-1">
+          <hr class="border-[1px] border-[#c5c9c7] w-[100%]" />
+        </div>
+        <div class="flex flex-row justify-center">
+          <p>Copyright &copy; 2024 getmyClaim</p>
+        </div>
+      </div>
+    </footer>
+    <div class="accordion-container w-full flex flex-col block xl:hidden">
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Know your right
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div>
+              <a href="/kyr" class="hover:underline">Air passenger rights</a>
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Flight delay compensation</a
+              >
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Flight cancellation compensation</a
+              >
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline">Missed connection</a>
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Denied boarding compensation</a
+              >
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Airline strike compensation</a
+              >
+            </div>
+            <div><a href="/kyr" class="hover:underline">Airlines</a></div>
+            <div><a href="/kyr" class="hover:underline">Airports</a></div>
+            <div><a href="/kyr" class="hover:underline">Flight refund</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Our Company
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div><a href="/about" class="hover:underline">About us</a></div>
+            <div><a href="/" class="hover:underline">Blog</a></div>
+            <div>
+              <a href="/partner" class="hover:underline">Become a partner</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Support
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div><a href="/help" class="hover:underline">Help</a></div>
+            <div><a href="/fees" class="hover:underline">Our fees</a></div>
+            <div><a href="/contact" class="hover:underline">Contact Us</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Our Product
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div>
+              <a href="/" class="hover:underline">Check your compensation</a>
+            </div>
+            <div>
+              <a href="/" class="hover:underline">Refer a friend</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Others
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div>
+              <a href="/T&C" class="hover:underline">Terms and Conditions</a>
+            </div>
+            <div>
+              <a href="/policy" class="hover:underline">Privacy Policy</a>
+            </div>
+            <div><a href="/cookies" class="hover:underline">Cookies</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto lg:hidden block bg-[#f2f7f5]">
+      <div class="justify- flex">
+        <hr class="border border-[#c5c9c7] w-[100%]" />
+      </div>
+      <div class="flex flex-row justify-center">
+        <p>Copyright &copy; 2024 getmyClaim</p>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("nav-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("nav-links").classList.toggle("open");
+          document.getElementById("logIn").style.display = "block";
+        });
+
+      window.addEventListener("scroll", () => {
+        const dropdown_content_toggle =
+          document.getElementById("dropdown-content");
+
+        dropdown_content_toggle.style.display = "none";
+
+        document.getElementById("nav-links").classList.remove("open");
+      });
+
+      document.querySelectorAll(".dropbtn").forEach((item) => {
+        item.addEventListener("click", function () {
+          // Toggle the 'active' class on the clicked item
+          this.classList.toggle("active");
+
+          // Get the associated content
+          const content = this.nextElementSibling;
+
+          // Toggle the display of the content
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      });
+    </script>
+
+    <script>
+      const accordionHeaders = document.querySelectorAll(
+        ".accordion-headerfoot"
+      );
+      const accordionContents = document.querySelectorAll(
+        ".accordion-contentmb"
+      );
+      const accordionIcons = document.querySelectorAll(".accordion-icon");
+
+      accordionHeaders.forEach((header, index) => {
+        header.addEventListener("click", () => {
+          accordionContents.forEach((content, i) => {
+            if (i !== index) {
+              content.classList.add("hidden");
+              accordionIcons[i].classList.remove("fa-angle-up");
+              accordionIcons[i].classList.add("fa-angle-down");
+            }
+          });
+
+          accordionContents[index].classList.toggle("hidden");
+
+          const isOpen = !accordionContents[index].classList.contains("hidden");
+          accordionIcons[index].classList.toggle("fa-angle-down", !isOpen);
+          accordionIcons[index].classList.toggle("fa-angle-up", isOpen);
+        });
+      });
+    </script>
+  </body>
+</html>

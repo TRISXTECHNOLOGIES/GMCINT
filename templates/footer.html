@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="{{url_for('static',filename='css/mediaQueriesLanding.css')}}" />
+  <link rel="stylesheet" href="../static/css/landingPage.css" />
+  <title>Get My Claims</title>
+</head>
+<body>
+    <footer class=" bg-[#f2f7f5]">
+    <section class="py-20 relative">
+        
+      <div class="container mx-auto">
+        <div class="flex justify-between ">
+          <div class="">
+            <img src="../static/assets/gncLogo.png" alt="" class="w-[35%] pb-5">
+            <p class="w-[50%] text-[20px] font-medium leading-[24px] ">Lorem ipsum dolor sit, amet consectetur
+              adipisicing elit.
+              Facere quos ex modi explicabo nihil architecto rerum
+              assumenda odit quo perspiciatis.</p>
+          </div>
+          <div class="w-full flex justify-end gap-5">
+            <img src="../static/assets/facebook.png" alt="facebook" class="w-[30px] h-[30px]">
+            <img src="../static/assets/twitter.png" alt="Twitter" class="w-[30px] h-[30px]">
+            <img src="../static/assets/threads.png" alt="threads" class="w-[30px] h-[30px]">
+            <img src="../static/assets/instagram.png" alt="instagram" class="w-[30px] h-[30px]">
+
+
+          </div>
+        </div>
+        <div>
+
+        </div>
+      </div>
+    </section>
+    <div class="justify-center flex">
+      <hr class="border-[1px] border-[#c5c9c7]   w-[100%] ">
+    </div>
+    <div class="container mx-auto relative">
+      <img src="{{url_for('static',filename='assets/GMC_Logomark.png')}}" alt="" class="w-[25%] opacity-25 absolute right-0 top-[15%]">
+      <div class="flex flex-row justify-between py-10">
+        <div>
+          <p class="uppercase  font-bold">Know your right</p>
+          <div class="pt-5">
+            <div class=" flex flex-col gap-3">
+              <div><a href="/kyr">Air passenger rights</a></div>
+              <div><a href="/kyr">Flight delay compensation</a></div>
+              <div><a href="/kyr">Flight cancellation compensation</a></div>
+              <div><a href="/kyr">Missed connection</a></div>
+              <div><a href="/kyr">Denied boarding compensation</a></div>
+              <div><a href="/kyr">Airline strike compensation</a></div>
+              <div><a href="/kyr">Airlines</a></div>
+              <div><a href="/kyr">Airports</a></div>
+              <div><a href="/kyr">Flight refund</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-8">
+          <div>
+            <div>
+              <p class="uppercase  font-bold">Our Company</p>
+              <div class="pt-5">
+                <div class=" flex flex-col gap-3">
+                  <div><a href="/about">About us</a></div>
+                  <div><a href="/blog">Blog</a></div>
+                  <div><a href="/partner">Become a partner</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="uppercase  font-bold">Support</p>
+            <div class="pt-5">
+              <div class=" flex flex-col gap-3">
+                <div><a href="/">Help</a></div>
+                <div><a href="/fees">Our fees</a></div>
+                <div><a href="/contact">Contact Us</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="uppercase  font-bold">Our Product</p>
+          <div class="pt-5">
+            <div class=" flex flex-col gap-3">
+              <div><a href="/index1">Check your compensation</a></div>
+              <div><a href="/refer">Refer a friend</a></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="uppercase  font-bold">Others</p>
+          <div class="pt-5">
+            <div class=" flex flex-col gap-3">
+              <div><a href="/T&C">Terms and Conditions</a></div>
+              <div><a href="/policy">Privacy Policy</a></div>
+              <div><a href="/cookies">Cookies</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto">
+      <div class="justify- flex py-1">
+          <hr class="border-[1px] border-[#c5c9c7]  w-[100%] ">
+        </div>
+        <div class="flex flex-row justify-end">
+          <p>Copyright &copy; 2024 getmyClaim </p>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    const grid = document.getElementById("problems-grid");
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    grid.addEventListener("mousedown", (e) => {
+      isDown = true;
+      grid.classList.add("active");
+      startX = e.pageX - grid.offsetLeft;
+      scrollLeft = grid.scrollLeft;
+    });
+
+    grid.addEventListener("mouseleave", () => {
+      isDown = false;
+      grid.classList.remove("active");
+    });
+
+    grid.addEventListener("mouseup", () => {
+      isDown = false;
+      grid.classList.remove("active");
+    });
+
+    grid.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - grid.offsetLeft;
+      const walk = (x - startX) * 3; //scroll-fast
+      grid.scrollLeft = scrollLeft - walk;
+    });
+
+    const comparisonContent = document.querySelector(".comparison-content");
+
+    // Mouse down event
+    comparisonContent.addEventListener("mousedown", (e) => {
+      isDown = true;
+      comparisonContent.classList.add("active"); // Add an active class if you want to style the dragging state
+      startX = e.pageX - comparisonContent.offsetLeft;
+      scrollLeft = comparisonContent.scrollLeft;
+    });
+
+    // Mouse leave event (for when the mouse leaves the carousel while dragging)
+    comparisonContent.addEventListener("mouseleave", () => {
+      isDown = false;
+      comparisonContent.classList.remove("active");
+    });
+
+    // Mouse up event (stops scrolling)
+    comparisonContent.addEventListener("mouseup", () => {
+      isDown = false;
+      comparisonContent.classList.remove("active");
+    });
+
+    // Mouse move event (scrolling logic)
+    comparisonContent.addEventListener("mousemove", (e) => {
+      if (!isDown) return; // Stop the function if not holding the mouse
+      e.preventDefault();
+      const x = e.pageX - comparisonContent.offsetLeft;
+      const walk = (x - startX) * 2; // Multiply for faster scroll
+      comparisonContent.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch events for mobile swipe scrolling
+    comparisonContent.addEventListener("touchstart", (e) => {
+      isDown = true;
+      startX = e.touches[0].pageX - comparisonContent.offsetLeft;
+      scrollLeft = comparisonContent.scrollLeft;
+    });
+
+    comparisonContent.addEventListener("touchend", () => {
+      isDown = false;
+    });
+
+    comparisonContent.addEventListener("touchmove", (e) => {
+      if (!isDown) return;
+      const x = e.touches[0].pageX - comparisonContent.offsetLeft;
+      const walk = (x - startX) * 2;
+      comparisonContent.scrollLeft = scrollLeft - walk;
+    });
+
+    document
+      .getElementById("nav-toggle")
+      .addEventListener("click", function () {
+        const navLinks = document.getElementById("nav-links");
+        const langLogin = document.getElementById("language-login");
+        navLinks.classList.toggle("open");
+        langLogin.classList.toggle("open");
+      });
+
+    // Toggle functionality for accordion
+    const accordionButtons = document.querySelectorAll(".accordion-button");
+
+    accordionButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const expanded =
+          button.getAttribute("aria-expanded") === "true" || false;
+        button.setAttribute("aria-expanded", !expanded);
+
+        const content = button.nextElementSibling;
+        if (!expanded) {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+          content.style.maxHeight = 0;
+        }
+      });
+    });
+
+
+    // JavaScript for toggling the mobile menu
+    document.getElementById('nav-toggle').addEventListener('click', function () {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+  </script>
+</body>
+</html>

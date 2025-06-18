@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Claims Dashboard</title>
+        <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Arial", sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+    }
+
+    .container {
+      display: flex;
+      position: relative;
+      top: 50%;
+    }
+
+    .page-container {
+      max-width: 1180px;
+      margin-inline: auto;
+      padding-inline: var(--padding-inline-section);
+      overflow: hidden;
+      /*   responsive */
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: rgba(242, 247, 245, 1);
+      padding: 20px;
+      /* border-right: 1px solid #ddd; */
+      /* min-height: 100vh; */
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      /* margin-top: 10%; */
+    }
+
+    .profile {
+      text-align: center;
+      margin-bottom: 30px;
+      border-top: 1px solid rgba(222, 222, 222, 1);
+      padding-top: 20px;
+    }
+
+    .profile-nav {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-picture {
+      background-color: #5db65f;
+      color: white;
+      font-size: 24px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 auto;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 20px 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li a img {
+      margin-right: 10px;
+    }
+
+    .logout {
+      display: block;
+      /* margin-top: 50px; */
+      border-top: 1px solid rgba(222, 222, 222, 1);
+      text-decoration: none;
+      padding-top: 20px;
+      color: #ff5733;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logout img {
+      margin-right: 10px;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 30px;
+      height: 4px;
+      margin: 5px 0;
+      background-color: #333;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      /* margin-top: 10%; */
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 30px;
+      align-items: start;
+      gap: 40px;
+    }
+
+    .header h2 {
+      font-size: 24px;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .action-card {
+      /* background-color: #fff; */
+      /* padding: 15px; */
+
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      justify-content: space-between;
+      /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+      /* width: 100px;
+        height: 100px; */
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-right: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .actions a {
+      text-decoration: none;
+      color: #333;
+      
+    }
+
+    .action-card img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .add-claim {
+      color: #1f8f45;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .add-claim img {
+      margin-right: 10px;
+    }
+
+    .yourcompensation {
+      display: flex;
+      justify-content: space-between;
+
+      /* updated ///////////////////////////////// */
+      /* gap: 30%;
+      padding-right: 10px; */
+      flex-direction: row;
+    }
+
+    /* updated ///////////////////////////// */
+    .see-all{
+      display: flex;
+                font-size: 18px;
+                padding: 10px 20px;
+
+                font-weight: 400;
+                line-height: 22.05px;
+                text-align: left;
+                border: 1px solid rgba(33, 95, 255, 1);
+                border-radius: 5px;
+                text-align: center;
+                background-color: white;
+                white-space: nowrap;
+    }
+
+    .claims-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .claims-section h3 {
+      font-size: 20px;
+    }
+
+    .see-all {
+      text-decoration: none;
+      color: #0056d2;
+      font-size: 16px;
+    }
+
+    /* .upload-doc{
+      text-decoration: none;
+      color: white;
+      background-color: #0056d2;
+      font-size: 16px;
+
+      
+    display: flex;
+    
+    padding: 10px 20px;
+    font-weight: 400;
+    line-height: 22.05px;
+    text-align: left;
+    border: 1px solid rgba(33, 95, 255, 1);
+    border-radius: 5px;
+    text-align: center;
+      background-image: url(../static/assets/upload.png);
+      background-size: 30px;
+      background-repeat: no-repeat;
+      background-position: right;
+    white-space: nowrap;
+    padding-right: 35px;
+    } */
+
+    .claims-table {
+      margin-top: 20px;
+    }
+
+    .claim-row {
+      display: flex;
+      justify-content: space-between;
+      
+      align-items: center;
+      /* background-color: white; */
+      /* padding: 15px; */
+      margin-bottom: 10px;
+      /* border-radius: 8px; */
+      /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+
+      /* updated */
+      gap: 30px;
+    }
+
+    .route {
+      display: flex;
+      align-items: center;
+    }
+
+    .location {
+      font-weight: bold;
+      color: #1f8f45;
+      margin-right: 10px;
+    }
+
+    .arrow {
+      color: #1f8f45;
+      margin-right: 10px;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .claim-id,
+    .created-date {
+      color: #999;
+      font-size: 14px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+    }
+
+    .status-label {
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .cancelled {
+      background-color: #ffcccc;
+      color: #ff5733;
+    }
+
+    .overbooked {
+      background-color: #ffffcc;
+      color: #ff9900;
+    }
+
+    .complete-claim {
+      background-color: #1f8f45;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      margin-left: 10px;
+      text-decoration: none;
+    }
+
+    .arrow-link {
+      color: #333;
+      margin-left: 10px;
+      font-size: 18px;
+    }
+
+    /* media queries */
+
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      /* .sidebar {
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+          margin-top: 0;
+          align-items: center;
+          gap: 0;
+        } */
+
+      /* .profile-nav {
+          flex-direction: row;
+        } */
+
+      /* .profile {
+          border: none;
+        } */
+
+      /* .logout {
+          border: none;
+          padding: 0;
+        } */
+
+      .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 998;
+      }
+
+      .hamburger {
+        display: block;
+        position: relative;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .yourcompensation {
+        padding-right: 0;
+      }
+
+      /* tabel responsive queries */
+      .claims-table {
+        width: 100%;
+      }
+
+      .claim-row {
+        display: block;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .claim-row .route,
+      .claim-row .details,
+      .claim-row .claim-id,
+      .claim-row .created-date,
+      .claim-row .status {
+        /* display: block; */
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px 5px;
+        text-align: left;
+        border-bottom: 1px solid #e1e1e1;
+      }
+
+      .claim-row .status {
+        border-bottom: none;
+        text-align: left;
+      }
+
+      .status-label {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 3px;
+      }
+    }
+
+    @media screen and (max-width: 399px) {
+      .action-card {
+        border: none;
+      }
+
+      .see-all{
+        padding: 5px 10px;
+      }
+    }
+
+    @media screen and (max-width:470px) {
+      .user-help-msg{
+        flex-direction: column;
+        
+
+        
+      }
+
+      .route{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+     
+
+      .user-help-msg span{
+        font-size: 1.1 !important;
+      }
+    }
+        </style>
+    </head>
+    <body>
+        <div class="container page-container">
+            <!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div>
+                     <a href="{{ url_for('landing') }}">
+                    <img src="{{url_for('static',filename='assets/logo22.png')}}" width="200px" alt=""></a>
+                </div>
+                <div class="profile">
+                    <div class="profile-picture">
+                        <span>{{icon|upper}}</span>
+                    </div>
+                    <h3>{{username}}</h3>
+                    <!-- <p>{{email}}</p> -->
+                </div>
+                <nav>
+                    <ul class="profile-nav">
+                        <li>
+                            <a href="{{ url_for('user_dashboard') }}" class="active">
+                                <img src="{{url_for('static',filename='assets/13.png')}}" width="30px" alt="Home">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('user_dashboard', all='all') }}">
+                                <img src="{{url_for('static',filename='assets/gmci.png')}}" width="30px" alt="My Claims">
+                                My Claims
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('settings') }}">
+                                <img src="../static/assets/gmcic.png" width="30px" alt="Settings">
+                                Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('logout') }}" class="logout">
+                                <img src="{{url_for('static',filename='assets/13.png')}}" width="30px" alt="Logout">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Hamburger Menu -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="header">
+                    <div class="user-help-msg" style="display: flex;">
+                        <span style="font-size: 1.5rem;">Hey {{username}} ,</span>
+                        <span style="font-size: 1.5rem">How can we help?</span>
+                    </div>
+                    <div class="actions">
+                        <div class="action-card">
+                          <!-- space is because of <a></a> tag -->
+                            <a href="{{ url_for('user_dashboard') }}">
+                                <img src="{{url_for('static',filename='assets/7.png')}}" alt="Add Claim">
+                            
+                           
+                          </a>
+                          <a href="{{ url_for('user_dashboard') }}" style="text-decoration: none; color: #00a550">
+                            Add Claims
+                        </a>
+                            <span class="arrow">➜</span>
+                        </div>
+                        <div class="action-card">
+                            <img src="{{url_for('static',filename='assets/8.png')}}" width="100px" alt="Add Claim">
+                            <a href="{{url_for('help')}}" style="text-decoration: none; color: #00a550">
+                                FAQ's
+                            </a>
+                            <span class="arrow">➜</span>
+                        </div>
+                        <div class="action-card" style="border: none">
+                            <img src="{{url_for('static',filename='assets/12.png')}}" width="100px" alt="Add Claim">
+                            <a href="{{url_for('contact')}}" style="text-decoration: none; color: #00a550">
+                                Contact us
+                            </a>
+                            <span class="arrow">➜</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="yourcompensation">
+                    <div>
+                        <h3>Your compensation claims</h3>
+                    </div>
+                    <div>
+                        <a href="{{ url_for('user_dashboard', all='all') }}" style="text-decoration: none;">
+                            <button class="see-all">
+                                See all
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="claims-section page-container">
+                    <!-- Claims Table -->
+                    {% for flight in flights %}
+                    <div class="claims-table">
+                        <div class="claim-row">
+                            <div class="route">
+                                <span class="location">{{flight.leaving_from}}</span>
+                                <img src="../static/assets/14.png" width="30px" alt="">
+                                <span class="location">{{flight.destination}}</span>
+                            </div>
+                            <div class="details">
+                                <span class="airline">{{flight.airline}}</span>
+                                <span class="flight-date">{{flight.flight_date}}</span>
+                            </div>
+                            <div class="claim-id">Claim ID: #{{flight.id}}</div>
+                            <div class="created-date">Created: {{flight.date}}</div>
+                            <div class="status">
+                                <span class="status-label cancelled">{{flight.disruption}}</span>
+                                <a href="/in_dash/{{flight.id}}">
+                                    <img
+                                        src="{{url_for('static',filename='assets/caret-right.png')}}"
+                                        width="20px"
+                                        alt=""
+                                        style="margin-left: 5px"
+                                    >
+                                </a>
+                            </div>
+                            
+                        </div>
+
+                        <!-- updated //////////////////////////// -->
+                        <!-- <a href="/user_dashboard?all=all" style="text-decoration: none; float: right;">
+                          <button class="upload-doc">
+                              upload document
+                          </button>
+                        </a> -->
+                        {% endfor %}
+                        <!-- <div class="claim-row">
+              <div class="route">
+                <span class="location">Salzburg</span>
+                <img src="{{url_for('static',filename='assets/14.png')}}" width="30px" alt="" />
+                <span class="location">Copenhagen</span>
+              </div>
+              <div class="details">
+                <span class="airline">British Airways</span>
+                <span class="flight-date">7 July 2024</span>
+              </div>
+              <div class="claim-id">Claim ID: #1234</div>
+              <div class="created-date">Created: 12 July 2024</div>
+              <div class="status">
+                <span class="status-label overbooked">Overbooked</span>
+                <a href="#" class="complete-claim">Complete Claim</a>
+                <a href="../templates/claim_submit_next_user.html">
+                  <img
+                    src="{{url_for('static',filename='assets/caret-right.png')}}"
+                    width="20px"
+                    alt=""
+                    style="margin-left: 5px"
+                  />
+                </a>
+              </div>
+            </div> -->
+                    </div>
+                </div>
+            </div>
+            <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.getElementById("sidebar");
+        const hamburger = document.getElementById("hamburger");
+
+        hamburger.addEventListener("click", function () {
+          sidebar.classList.toggle("open");
+        });
+      });
+            </script>
+        </body>
+    </html>

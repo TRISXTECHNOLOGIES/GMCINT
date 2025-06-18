@@ -1,0 +1,3468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check Eligibility |Get My Claims</title>
+ <link rel="icon" href="../static/assets/GMC_Logomark.png" type="image/x-icon">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" /> -->
+    <link rel="stylesheet" href="../static/css/form.css" />
+    <link rel="stylesheet" href="../static/css/form2.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/MediaQueriesForm.css') }}"> -->
+    <!-- <script src="{{ url_for('static', filename='js/form.js') }}"></script> -->
+    <script src="../static/js/form.js"></script>
+    <script src="../static/js/validation.js"></script>
+    <style>
+      .suggestions-list {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        max-height: 200px;
+        overflow-y: auto;
+        position: relative;
+        background-color: white;
+        z-index: 1000;
+        width: 50%;
+
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .suggestions-list div {
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .suggestions-list div:hover {
+        background-color: #f0f8ff;
+      }
+
+      .suggestions-list div.selected {
+        background-color: #e0f7fa;
+      }
+      .suggestions {
+        border: 1px solid #ccc;
+        max-height: 200px;
+        overflow-y: auto;
+        background-color: white;
+        position: relative; /* Adjust position relative to the input */
+        z-index: 1000 !important; /* Ensure it's above other elements */
+        display: none; /* Hidden by default */
+        /* width: 82% !important; */
+        /* width: 100% !important; */
+        text-overflow: clip;
+
+        width: auto;
+        min-width: min-content;
+      }
+
+      .suggestions div {
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .suggestions div:hover {
+        background-color: #f0f0f0; /* Highlight on hover */
+      }
+
+      .user-logged-in {
+        background-color: #36ac57;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        border-radius: 50%;
+      }
+
+      @media screen and (max-width: 479px) {
+        label {
+          font-size: small !important;
+        }
+
+        .radio-group label {
+          font-size: small !important;
+        }
+
+        .form-group label {
+          font-size: small !important;
+        }
+
+        .radio-indicator {
+          width: 10px !important;
+          height: 10px !important;
+        }
+
+        .custom-radio span {
+          margin-right: 5px !important;
+        }
+
+        h2 {
+          font-size: small !important;
+        }
+
+        input {
+          font-size: small !important;
+        }
+
+        .form-container {
+          padding: 15px !important;
+        }
+      }
+
+      @media screen and (max-width: 542px) {
+        .horizontal-bar {
+          flex-direction: column;
+        }
+
+        .source-dest {
+          flex-direction: column;
+          /* background-color: rgb(242 247 245 / var(--tw-bg-opacity)) !important; */
+        }
+
+        .flight-display {
+          display: block !important;
+        }
+
+        .hide-flight {
+          display: none;
+        }
+
+        .from-content {
+          margin-right: auto;
+        }
+
+        .to-content {
+          margin-left: auto;
+        }
+
+        .hr {
+          border: 1px solid #36ac57 !important;
+        }
+
+        #leaving-from-summary {
+          margin-top: 10px !important;
+        }
+
+        #destination-summary {
+          margin-top: 10px !important;
+        }
+
+        .source-dest {
+          gap: 0px !important;
+          padding: 0px !important;
+          font-size: smaller;
+        }
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+    <script>
+      async function fetchSuggestions(query, id, id2, id3) {
+        if (query.length > 0) {
+          const response = await fetch(`/suggest?q=${query}`);
+          const suggestions = await response.json();
+          displaySuggestions(suggestions, id, id2, id3);
+        } else {
+          clearSuggestions(id2);
+        }
+      }
+  
+      function displaySuggestions(suggestions, id, id2, id3) {
+        const suggestionBox = document.getElementById(id2);
+        suggestionBox.innerHTML = '';
+        suggestions.forEach(suggestion => {
+          const option = document.createElement('div');
+          option.textContent = suggestion;
+          option.classList.add(id3);
+          option.onclick = () => {
+            document.getElementById(id).value = suggestion;
+            clearSuggestions(id2);
+          };
+          suggestionBox.appendChild(option);
+        });
+      }
+  
+      function clearSuggestions(id2) {
+        document.getElementById(id2).innerHTML = '';
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- header -->
+    <header style="background-color: white">
+      <div class="main-nav container">
+        <!-- Logo Section -->
+        <div class="logo">
+          <a href="{{ url_for('landing') }}">
+            <img
+              src="{{ url_for('static', filename='assets/logo22.png') }}"
+              alt="Company Logo"
+            />
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="{{ url_for('index') }}">Get My Claim</a></li>
+            <li><a href="{{ url_for('kyr') }}">Know Your Rights</a></li>
+            <li><a href="{{ url_for('about')}}">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Language Selector and Login -->
+        <div class="language-login" id="language-login">
+          <div class="language-login" id="language-login">
+            <!-- <div class="language-select">
+              <img src="../static/assets/lang.png" alt="Language" />
+            </div> -->
+            <a href="{{ url_for('login') }}" class="login">Log in</a>
+          
+          
+        </div>
+
+        <!-- Mobile Navigation Toggle -->
+        <a class="nav-toggle" id="nav-toggle">☰</a>
+      </div>
+    </header>
+    <!-- Progress Indicator -->
+    <div class="container mx-auto justify-center flex">
+      <div
+        class="lg:w-[60%] w-[98%] progress-indicator flex flex-row justify-center"
+      >
+        <div class="step completed flex-1">
+          <div class="flex flex-row items-center justify-center w-full flex-1">
+            <div class="top-[50%] left-[50%] w-full h-[2px] z-0"></div>
+            <div>
+              <div class="circle"></div>
+            </div>
+            <div
+              class="top-[50%] left-[50%] w-full h-[2px] bg-[#d9d9d9] line z-0"
+            ></div>
+          </div>
+          <div class="text-center">
+            <p class="block xl:hidden">Eligibility</p>
+            <p class="hidden xl:block">Eligibility Check</p>
+          </div>
+        </div>
+        <div class="step flex-1">
+          <div class="flex flex-row items-center w-full flex-1">
+            <div
+              class="top-[50%] left-[50%] w-full h-[2px] bg-[#d9d9d9] z-0 line"
+            ></div>
+            <div>
+              <div class="circle"></div>
+            </div>
+            <div
+              class="top-[50%] left-[50%] w-full h-[2px] bg-[#d9d9d9] z-0 line"
+            ></div>
+          </div>
+          <div class="text-center">
+            <p class="block xl:hidden">Information</p>
+            <p class="hidden xl:block">Additional Information</p>
+          </div>
+        </div>
+        <div class="step flex-1">
+          <div class="flex flex-row items-center w-full flex-1">
+            <div
+              class="top-[50%] left-[50%] w-full h-[2px] bg-[#d9d9d9] z-0 line"
+            ></div>
+            <div>
+              <div class="circle"></div>
+            </div>
+            <div
+              class="top-[50%] left-[50%] w-full h-[2px] bg-[#d9d9d9] z-0 line"
+            ></div>
+          </div>
+          <div class="text-center">
+            <p>Documents</p>
+          </div>
+        </div>
+        <div class="step flex-1">
+          <div class="flex flex-row items-center w-full flex-1">
+            <div
+              class="top-[50%] left-[50%] w-full h-[2px] bg-[#d9d9d9] z-0 line"
+            ></div>
+            <div>
+              <div class="circle"></div>
+            </div>
+            <div class="top-[50%] left-[50%] w-full h-[2px] z-0"></div>
+          </div>
+          <div class="text-center">
+            <p>Finish</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- form section -->
+    <section>
+      <div class="container section-container" style="display: flex">
+        <!-- sidebar -->
+        <div class="sidebar hidden lg:block">
+          <!-- <img src="{{ url_for('static', filename='assets/image1.png') }}" alt=""> -->
+          <!-- <img src="../static/assets/image1.png" alt=""> -->
+          <div
+            class="relative flex items-center justify-center h-[25rem] w-[20rem] mt-8"
+          >
+            <img
+              src="../static/assets/Form Left.jpg"
+              class="sidebanner absolute inset-0 w-full h-full object-cover"
+              alt=""
+            />
+            <img
+              src="../static/assets/wired-outline-966-privacy-policy (1).gif"
+              alt=""
+              class="relative z-10 w-20 h-20"
+            />
+          </div>
+        </div>
+        <!-- form section -->
+        <div class="form-container mt-5">
+          <form action="/index" method="post" enctype="multipart/form-data">
+            <!-- step 1 -->
+<!-- Step 1 -->
+<div class="form-step active" id="form-step-1">
+  <div style="border-radius: 15px">
+    <h2 class="text-[#36AC57] font-normal text-2xl pb-5">
+      Hey there, Let’s Start
+    </h2>
+    <div class="flex flex-col gap-4" id="form-container">
+      <!-- Original Leaving From and Final Destination -->
+      <div class="form-group rounded-md lg:px-12 py-8" id="original-form">
+        <div class="flex flex-row justify-between">
+          <label for="destination" class="text-bold text-md text-xl" id="label-destination">
+            Where were you flying in?
+          </label>
+        </div>
+        <div class="form-input back flex xl:flex-row flex-col">
+          <div class="w-full">
+            <label for="leavingFrom" class="text-bold text-md">Leaving From*</label>
+            <input
+             required
+          
+              type="text"
+              value="{{data['leaving_from']}}"
+              style="padding-left: 60px"
+              id="leavingFrom"
+              name="leaving_from"
+              class="!w-full"
+              placeholder="e.g. Salzburg"
+              autocomplete="off"
+            />
+            <div class="suggestions" id="leavingFromSuggestions"></div>
+          </div>
+          <div class="w-full">
+            <label for="destination" class="text-md">Final destination*</label>
+            <input
+            required
+              type="text"
+              style="
+                padding-left: 60px;
+                background-image: url('../static/assets/final.png');
+              "
+              id="destination"
+              class="!w-full"
+              name="destination"
+              placeholder="e.g. Copenhagen"
+              value="{{data['destination']}}"
+              autocomplete="off"
+            />
+            <div class="suggestions" id="destinationSuggestions"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connecting Flights Section -->
+      <div class="form-group rounded-md lg:px-12 py-8 w-full">
+        <label for="connectingFlights" class="text-lg">Did you have any connecting flights?</label>
+        <div class="radio-group flex xl:flex-row flex-col">
+          <label class="custom-radio !w-full">
+            <input
+            required
+              type="radio"
+              name="connecting_flights"
+              value="no"
+              class="!w-full"
+              id="connecting-flights-no"
+              
+            />
+            <span class="radio-indicator"></span>No, I didn't
+          </label>
+          <label class="custom-radio input2 !w-full">
+            <input
+            required
+              type="radio"
+              name="connecting_flights"
+              id="connecting-flights-yes"
+              value="yes"
+            />
+            <span class="radio-indicator"></span>Yes, I had to change flights
+          </label>
+        </div>
+      </div>
+
+      <!-- Cloned Form Section for Connecting Flight -->
+      <div id="cloned-form-section" style="display: none" class="form-group rounded-md lg:px-12 py-8">
+        <div class="form-input back flex xl:flex-row flex-col">
+          <div class="w-full">
+              <label for="connectingLeavingFrom" class="text-bold text-md">Connecting Flight*</label>
+              <input
+              required
+                  type="text"
+                  style="padding-left: 60px"
+                  id="connectingLeavingFrom"
+                  name="connecting_leaving_from"
+                  class="!w-full"
+                  placeholder="e.g. Paris"
+                  autocomplete="off"
+              />
+              <div id="suggestion-box-Connet-1" class="absolute bg-white border border-gray-300 mt-1  max-h-40 overflow-auto z-10 hidden"></div>
+          </div>
+      </div>
+        <!-- <script>
+          console.log("connecting", fetchSuggestions)
+        </script> -->
+        <!-- Additional Connecting Flights -->
+        <div id="additionalConnectingFlights"></div>
+        
+        <!-- Add Connecting Flight Button -->
+        <button type="button" id="addConnectingFlightBtn" class="bg-blue-500 text-white mt-2 px-4 py-2">Add Connecting Flight</button>
+
+        <!-- Remove Connecting Flight Button -->
+        <button type="button" id="removeConnectingFlightBtn" class="bg-blue-500 text-white mt-2 px-4 py-2">Remove Connecting Flight</button>
+                
+      </div>
+    </div>
+  </div>
+
+  <!-- Error and Next Button -->
+  <div class="flex flex-row justify-end pt-2">
+    <span id="error-message" class="text-red-500 hidden">Please fill out all required fields.</span>
+    <button type="button" class="nextBtn bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90" id="nextBtn" disabled>
+      Next
+    </button>
+  </div>
+</div>
+
+<!-- Step 2 -->
+<div class="form-step" id="form-step-2">
+  <div class="form-step-container-wo-btn bg-[#f2f7f5] lg:px-10 px-5">
+    <h2 class="text-black font-bold text-xl pb-2">When was your flight scheduled?</h2>
+    <div class="flex flex-col bg-[#f2f7f5]">
+      <label for="flightDate" class="text-xl bg-[#f2f7f5] py-2 pl-2">Date</label>
+      <input
+      required
+        type="date"
+        class="text-xl text-grey-100 w-full xl:w-1/3 p-2 rounded-md appearance-none"
+        id="flightDate"
+        name="flight_date"
+        max=""
+      />
+      <script>
+        // Get today's date
+        const today = new Date();
+
+        // Format date as YYYY-MM-DD
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so add 1
+        const day = String(today.getDate()).padStart(2, '0');
+
+        // Set the value of the date input to today's date
+        const formattedDate = `${year}-${month}-${day}`;
+        document.getElementById('flightDate').max = formattedDate;
+    </script>
+
+    </div>
+  </div>
+
+ <!-- Compensation Options Section -->
+<div class="form-group my-6 px-6" id="compensation-options" style="display: none">
+  <h2 class="text-black font-bold text-xl pb-2">Which Flight do you want compenstion for?</h2>
+  <div class="radio-group flex xl:flex-row flex-col">
+    <label class="custom-radio !w-full" id="compensation-first-flight" style="display: none;">
+      <input
+      
+        type="radio"
+        name="compensation_flight"
+        value="first_flight"
+        id="first-flight-option"
+      />
+      <span class="radio-indicator"></span>
+      <span id="from-label"></span> to <span id="first-flight-label"></span>
+    </label>
+
+    <label class="custom-radio !w-full" id="compensation-first-flight2" style="display: none;">
+      <input
+        type="radio"
+        name="compensation_flight"
+        value="first_flight"
+        id="first-flight-option"
+      />
+      <span class="radio-indicator"></span>
+      <span id="from-label2"></span> to <span id="first-flight-label2"></span>
+    </label>
+    
+    <label class="custom-radio !w-full" id="compensation-second-flight" style="display: none;">
+      <input
+        type="radio"
+        name="compensation_flight"
+        value="second_flight"
+        id="second-flight-option"
+      />
+      <span class="radio-indicator"></span>
+      <span id="first-flight-label1">to</span> to <span id="second-flight-label"></span>
+    </label>
+    
+    <label class="custom-radio !w-full" id="compensation-final-destination" style="display: none;">
+      <input
+        type="radio"
+        name="compensation_flight"
+        value="final_flight"
+        id="final-destination-option"
+      />
+      <span class="radio-indicator"></span>
+      <span id="second-flight-label1">second</span> to <span id="to-label"></span>
+    </label>
+  </div>
+</div>
+
+
+<div id="selected-flight-output" class="text-black font-bold my-4 hidden" ></div>
+
+
+
+<div id="selected-compensation-output" class="text-black font-bold my-4 hidden"></div>
+
+
+<!-- Navigation Buttons for Step 2 -->
+<div class="py-3 flex flex-row gap-10 justify-end pr-5">
+  <button type="button" class="prevBtn text-[#215FFF]">Back</button>
+  <button type="button" class="nextBtn bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90" >
+    Next
+  </button>
+</div>
+</div>
+
+
+            <!-- Step 3 -->
+
+            <div class="form-step" id="form-step-3">
+              <div class="flex flex-col gap-4">
+                <div class="form-group lg:px-12 py-5">
+                  <label for="flightIssue" class="!text-xl pb-2">
+                    Let's move on to the flight disruption. Tell us what
+                    happend.
+                  </label>
+                  <div
+                    class="radio-group lg:w-1/2 w-full"
+                    style="display: flex; flex-direction: column"
+                  >
+                    <label class="custom-radio !lg:w-1/2 !w-full">
+                      <input
+                      required
+                        type="radio"
+                        name="disruption"
+                        id="disruption-delayed"
+                        value="DELAY"
+                        onclick="toggleDelayHours(true)"
+                      />
+                      <span class="radio-indicator"></span>
+                      My flight was delayed
+                    </label>
+
+                    <label class="custom-radio !w-full">
+                      <input
+                      required
+                        type="radio"
+                        name="disruption"
+                        id="disruption-cancelled"
+                        value="CANCELLATION"
+                        onclick="toggleDelayHours(false)"
+                      />
+                      <span class="radio-indicator"></span>
+                      My flight was cancelled
+                    </label>
+
+                    <label class="custom-radio !w-full">
+                      <input
+                      required
+                        type="radio"
+                        name="disruption"
+                        id="disruption-denied"
+                        value="DENAY"
+                        onclick="toggleDelayHours(false)"
+                      />
+                      <span class="radio-indicator"></span>
+                      I was denied boarding
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Delayed Hours Section (Hidden initially) -->
+                <div
+                  class="form-group lg:px-12 py-5"
+                  id="delay-hours-section"
+                  style="display: none"
+                >
+                  <label for="delayHours" class="!text-xl"
+                    >How many hours late were you?</label
+                  >
+                  <div
+                    class="radio-group lg:w-1/2 w-full"
+                    style="display: flex; flex-direction: column"
+                  >
+                    <label class="custom-radio !w-full">
+                      <input
+                      required
+                        type="radio"
+                        name="delay"
+                        value="0-1"
+                        class="!w-full"
+                      />
+                      <span class="radio-indicator"></span>
+                      0-1 hours
+                    </label>
+                    <label class="custom-radio !w-full">
+                      <input type="radio" name="delay" value="1-2" />
+                      <span class="radio-indicator"></span>
+                      1-2 hours
+                    </label>
+                    <label class="custom-radio !w-full">
+                      <input type="radio" name="delay" value="2-3" />
+                      <span class="radio-indicator"></span>
+                      2-3 hours
+                    </label>
+                    <label class="custom-radio !w-full">
+                      <input type="radio" name="delay" value="3-4" />
+                      <span class="radio-indicator"></span>
+                      3-4 hours
+                    </label>
+                    <label class="custom-radio !w-full">
+                      <input type="radio" name="delay" value="4+" />
+                      <span class="radio-indicator"></span>
+                      4+ hours
+                    </label>
+                    <label class="custom-radio !w-full">
+                      <input type="radio" name="delay" value="never arrived" />
+                      <span class="radio-indicator"></span>
+                      Never arrived
+                    </label>
+                  </div>
+                </div>
+
+
+                <div
+                  class="form-group lg:px-12 py-5"
+                 
+                  
+                >
+                  <label for="delayReason" class="!text-xl"
+                    >Was your flight Delayed due to weather Conditions?</label
+                  >
+                  <div
+                    class="radio-group lg:w-1/2 w-full"
+                    style="display: flex; flex-direction: column"
+                  >
+                    <label class="custom-radio !w-full">
+                      <input
+                      required
+                        type="radio"
+                        name="reason"
+                        value="Yes"
+                        class="!w-full"
+                      />
+                      <span class="radio-indicator"></span>
+                      Yes
+                    </label>
+                    <label class="custom-radio !w-full">
+                      <input type="radio" name="reason" value="No" />
+                      <span class="radio-indicator"></span>
+                      No
+                    </label>
+
+                    <label class="custom-radio !w-full">
+                      <input type="radio" name="reason" value="No" />
+                      <span class="radio-indicator"></span>
+                      I don't Know
+                    </label>
+                    
+                  </div>
+                </div>
+              </div>
+
+              <div class="py-3 flex flex-row gap-10 justify-end pr-5">
+                <button type="button" class="prevBtn text-[#215FFF]">
+                  Back
+                </button>
+                <button
+                  type="button"
+                  class="nextBtn bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="form-step" id="form-step-4">
+              <div class="bg-[#f2f7f5] lg:px-5 rounded-xl">
+                <div class="flex max-sm:flex-col flex-col">
+                  <div class="form-group bg-[#f2f7f5] lg:w-1/2">
+                    <label for="airline" class="text-xl">Airline</label>
+                    <input
+                    required
+                      type="text"
+                      id="airline"
+                      name="airline"
+                      class="!lg:w-1/2 !w-full"
+                      value="{{data[airline]}}"
+                      placeholder="e.g. American Airlines"
+                      onkeyup="showSuggestions(this.value)"
+                    />
+                    <div
+                      id="suggestions"
+                      class="suggestions-list"
+                      style="
+                        border: 1px solid #ccc;
+                        display: none;
+                        position: absolute;
+                        background-color: white;
+                      "
+                    ></div>
+                  </div>
+                  
+                  
+                  
+                  <div class="form-group bg-[#f2f7f5] lg:w-1/2" style="display: none;" id="SelectedAirline2">
+                    <label for="airline2" class="text-xl">Connecting Airline 
+                      <input type="checkbox" name="same-airline" id="same-airline" style="margin-right: 5px; margin-left: 20px; ">Same airline
+                    </label>
+                    <input 
+                      type="text"
+                      id="airline2"
+                      name="airline2"
+                      class="!lg:w-1/2 !w-full"
+                      placeholder="e.g. American Airlines"
+                      autocomplete="off"
+                    />
+                    <div
+                      id="suggestionsAirline1"
+                      class="suggestions"
+                      style="border: 1px solid #ccc; display: none; position: absolute; background-color: white;"
+                    ></div>
+                  </div>
+                  
+                
+                  <div
+                  class="form-group bg-[#f2f7f5] lg:w-1/2"
+                  style="display: none"
+                  id="SelectedAirline3">
+                  <label for="airline2" class="text-xl">Connecting Airline 2</label>
+                  <input 
+                    type="text"
+                    id="airline3"
+                    name="airline3"
+                    class="!lg:w-1/2 !w-full"
+                    placeholder="e.g. American Airlines"
+                  />
+                  <div
+                      id="suggestionsAirline1"
+                      class="suggestions"
+                      style="border: 1px solid #ccc; display: none; position: absolute; background-color: white;"
+                    ></div>
+                </div>
+               
+                </div>
+                <div class="flex flex-col xl:flex-row">
+                  <div class="form-group bg-[#f2f7f5] w-full lg:w-1/2">
+                    <label for="booking_number" class="text-xl"
+                      >Booking Ref No.</label
+                    >
+                    <input
+                    required
+                      type="text"
+                      id="booking_number"
+                      name="booking_number"
+                      class="!lg:w-1/2 !w-full"
+                      placeholder="e.g. IXIGO2517"
+                    />
+                  </div>
+                  <div class="form-group w-full lg:w-1/2">
+                    <label for="flightNumber" class="text-xl"
+                      >Flight Number</label
+                    >
+                    <input 
+                    required
+                      
+                      type="text"
+                      id="flight_number"
+                      name="flight_number"
+                      class="!w-full"
+                      placeholder="e.g. AF 225"
+                    />
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="py-3 flex flex-row gap-10 justify-end pr-5">
+                <button type="button" class="prevBtn text-[#215FFF]">
+                  Back
+                </button>
+                <button
+                  id="toStep5Btn"
+                  type="button"
+                  class="nextBtn bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+
+            <div class="form-step" id="form-step-5">
+              <div class="rounded-xl bg-[#f2f7f5] py-5 px-6">
+                <p>
+                  It looks like you may be entitled to compensation under
+                  EC 261 / UK 261.
+                </p>
+              </div>
+
+              <div
+                class="compensation-summary bg-[#f2f7f5] !py-10 px-4 lg:px-10"
+              >
+                <div
+                  class="py-3 flex flex-row lg:items-center gap-2 justify-between"
+                >
+                  <div class="flex lg:flex-row flex-col gap-2">
+                    <p>
+                      Airline: <strong id="airline-summary">summary</strong>
+                    </p>
+                    <!-- Placeholder for Airline -->
+                    <p>
+                      Flight Number:
+                      <strong id="flight-number-summary"></strong>
+                    </p>
+                    <!-- Placeholder for Flight Number -->
+                  </div>
+                  <div>
+                    <div
+                      class="bg-[#FFE39F] p-2 rounded"
+                      style="font-size: small"
+                    >
+                      <strong
+                        class="text-[#FFBF25]"
+                        style="color: #ffbf25"
+                        id="disruption-summary"
+                      >
+                      </strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="horizontal-bar py-5 h-[100px] w-full flex">
+                  <div
+                    class="bg-[#36AC57] rounded-tl-lg rounded-bl-lg flex justify-center items-center w-[30%] lg:w-[10%]"
+                  >
+                    <img
+                      src="../static/assets/aeroplane.png"
+                      class="hide-flight"
+                      alt=""
+                      height="20px"
+                      width="20px"
+                    />
+                  </div>
+                  <div
+                    class="source-dest bg-[#ffffff] text-[#36AC57] flex items-center justify-evenly w-full gap-2 lg:gap-7 py-2 px-2 lg:px-10"
+                  >
+                    <div class="from-content flex gap-[10px]">
+                      <div
+                        class="flight-display"
+                        style="
+                          background-color: #36ac57;
+                          padding: 10px;
+                          display: none;
+                        "
+                      >
+                        <img
+                          src="../static/assets/aeroplane.png"
+                          alt=""
+                          width="20px"
+                        />
+                      </div>
+                      <div
+                        style="
+                          white-space: nowrap;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                        "
+                        class="font-bold"
+                        id="leaving-from-summary"
+                      >
+                        from
+                      </div>
+                    </div>
+
+                    <div class="w-full">
+                      <hr
+                        class="hr border-[1.7px] border-dashed !border-[#36AC57] w-full border-black"
+                      />
+                    </div>
+                    <div class="to-content flex gap-[10px]">
+                      <div
+                        style="
+                          white-space: nowrap;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                        "
+                        class="font-bold"
+                        id="destination-summary"
+                      >
+                        to
+                      </div>
+                      <div
+                        class="flight-display"
+                        style="
+                          background-color: #36ac57;
+                          padding: 10px;
+                          display: none;
+                        "
+                      >
+                        <img
+                          class="flight-display"
+                          src="../static/assets/aeroplane-down.png"
+                          alt=""
+                          width="20px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="bg-[#36AC57] to-img rounded-tr-lg rounded-br-lg w-[30%] lg:w-[10%] justify-center flex items-center"
+                  >
+                    <img
+                      src="../static/assets/aeroplane-down.png"
+                      class="hide-flight"
+                      alt=""
+                      height="20px"
+                      width="20px"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              
+
+              
+
+              <div class="py-3 flex flex-row gap-10 justify-between px-10 pr-5">
+                <button type="button" class="prevBtn text-[#215FFF]">
+                  Back
+                </button>
+                <div class="gap-3 flex flex-col md:flex-row">
+                  <button
+                    type="button"
+                    class="nextBtn bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90"
+                  >
+                    Claim for <strong
+                    
+                    
+                    id="disruption-summary-for-btn"
+
+                  >
+                  </strong>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="form-step" id="form-step-6">
+              <div class="bg-[#f2f7f5] px-5 py-3 rounded-xl">
+                <h2
+                  class="text-[#000000]"
+                  style="padding-left: 20px; padding-top: 20px"
+                >
+                  I'll need few details about you to get things rolling
+                </h2>
+                <div class="form-group">
+                  <label for="firstName" class="pl-2 text-xl">First Name</label>
+                  <input
+                  required
+                    type="text"
+                    id="firstName"
+                    name="first_name"
+                    class="!w-full lg:!w-1/2"
+                    placeholder="Enter First name as per your ticket"
+                    value="{{data[first_name]}}"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="lastName" class="pl-2 text-xl">Last Name</label>
+                  <input
+                  required
+                    type="text"
+                    id="lastName"
+                    name="last_name"
+                    class="!w-full lg:!w-1/2"
+                    placeholder="Enter Last name as per your ticket"
+                    value="{{data[last_name]}}"
+                    
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="pl-2 text-xl">Email ID</label>
+                  <input
+                  required
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="!w-full lg:!w-1/2"
+                    placeholder="Enter Your Email ID"
+                    style="
+                      padding-top: 18px;
+                      padding-bottom: 18px;
+                      padding-left: 20px;
+                      padding-right: 20px;
+                    "
+                  />
+                </div>
+              </div>
+              <div class="py-3 flex flex-row gap-10 justify-end pr-5">
+                <button type="button" class="prevBtn text-[#215FFF]">
+                  Back
+                </button>
+                <button
+                  type="button"
+                  class="nextBtn bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 7 -->
+
+            <div class="form-step" id="form-step-7">
+              <div class="form-group my-2 px-6">
+                <label for="travelGroup" class="pl-2 text-xl pb-3">
+                  You can <b style="color: green;"> claim compensation</b> for everyone in <b style"color: green;">your booking</b>. Were
+                  you traveling with Someone?
+                </label>
+                <div
+                  class="radio-group"
+                  style="display: flex; flex-direction: column"
+                >
+                  <label class="custom-radio !w-full lg:!w-1/2">
+                    <input
+                    required
+                      type="radio"
+                      name="group_travel"
+                      value="yes"
+                    />
+                    <span class="radio-indicator"></span>Yes, I was traveling
+                    with others
+                  </label>
+                  <label class="custom-radio !w-full lg:!w-1/2">
+                    <input
+                    required
+                      type="radio"
+                      name="group_travel"
+                      value="no"
+                    />
+                    <span class="radio-indicator"></span>No, I was traveling
+                    alone
+                  </label>
+                </div>
+              </div>
+              <p>
+               Note: If you were travelling with a minor please mention yourself in the passenger list below to describe yourself as natural guardian.
+              </p>
+
+            
+
+              
+
+              
+
+              <h3
+                class="pt-2 pb-2 pl-2 text-[#36AC57] text-lg font-semibold"
+                style="display: none"
+                id="addPassengerMsg"
+              >
+                Passenger Details
+                <span class="text-gray-400 italic !text-sm">(Optional)</span>
+              </h3>
+
+              <!-- Passenger Details Section -->
+              <div
+                id="passengerDetailsContainer"
+                class="form-group px-6"
+                style="display: none"
+              ></div>
+
+              <div class="px-6">
+                <button
+                  type="button"
+                  id="addPassengerBtn"
+                  class="addtBtn font-bold text-[#36AC57] flex items-center justify-center py-2 lg:!px-8 !px-5 my-10"
+                  disabled
+                  style="display: none"
+                >
+                  + Add Passenger
+                </button>
+              </div>
+
+              <div class="py-3 flex flex-row gap-10 justify-end pr-5">
+                <button type="button" class="prevBtn text-[#215FFF]">
+                  Back
+                </button>
+                <button
+                  type="button"
+                  class="nextBtn bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+            <!-- Step 8 -->
+            <div class="form-step" id="form-step-8">
+              <div class="bg-[#f2f7f5] px-0 lg:px-5 py-5 rounded-xl">
+                <h2 class="text-black font-bold py-3 px-5 text-xl">
+                  Address Details
+                </h2>
+                <div class="form-group">
+                  <label for="address" class="pl-2">Address</label>
+                  <input
+                  required
+                    type="text"
+                    id="address"
+                    name="address_line1"
+                    class="!w-full lg:!w-1/2"
+                    placeholder="Address"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="address2" class="pl-2">Address Line 2</label>
+                  <input
+                  
+                    type="text"
+                    id="address2"
+                    name="address_line_2"
+                    class="!w-full lg:!w-1/2"
+                    placeholder="Address line 2"
+                  />
+                </div>
+                <div class="flex flex-col lg:flex-row gap-5">
+                  <div class="form-group">
+                    <label for="city" class="pl-2">City</label>
+                    <input
+                    required
+                      type="text"
+                      id="city"
+                      class="!w-full"
+                      name="city"
+                      placeholder="City"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="postalCode" class="pl-2">Postal Code</label>
+                    <input
+                    required
+                      type="text"
+                      class="!w-full"
+                      id="postalCode"
+                      name="postal_code"
+                      placeholder="Postal Code"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="country" class="pl-2">Country</label>
+                  <input
+                    
+                    type="text"
+                    id="country"
+                    name="country"
+                    class="!w-full lg:!w-1/2"
+                    placeholder="Country"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="phoneNumber" class="pl-2">Phone Number</label>
+                  <input
+                  required
+                    type="text"
+                    id="phoneNumber"
+                    class="!w-full lg:!w-1/2"
+                    name="phone_number"
+                    placeholder="Phone Number"
+                  />
+                </div>
+                <div class="form-group flex items-center gap-2 pl-6">
+                  <label for="whatsappNotification">
+                    <input
+                      
+                      type="checkbox"
+                      id="whatsappNotification"
+                      name="notification"
+                    />
+                    Receive WhatsApp Notification
+                  </label>
+                </div>
+              </div>
+              <div class="py-3 flex flex-row gap-10 justify-end pr-5">
+                <button type="button" class="prevBtn text-[#215FFF]">
+                  Back
+                </button>
+                <button
+                  type="button"
+                  class="nextBtn bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+
+            <!--UPDATED INPUT FEILD-->
+            <!-- reference number step  -->
+
+            <!-- Step 9 -->
+            <div class="form-step" id="form-step-9">
+              <p class="text-[#36AC57] pl-2 py-3 w-full">
+                Great news! It looks like you maybe entitled to compensation
+                under EC 261 / UK 261. To get the money you deserve, sign below.
+              </p>
+              <div class="form-group w-full">
+                <canvas id="signaturePad" class="bg-white"></canvas>
+                <input type="hidden" name="signature" id="signature_data" />
+              </div>
+
+              <p class="py-2 pl-2 pr-3 md:pr-5 lg:5">
+                <label for="whatsappNotification">
+                  <input
+                  required
+                    type="checkbox"
+                    id="whatsappNotification"
+                    name="notification"
+                  />
+                </label>
+                By signing you agree to
+                <strong class="text-[#215fff]"><a href="{{url_for('TC')}}" target="_blank">Terms and Conditions</a></strong> and
+                <strong class="text-[#215fff]"><a href="{{url_for('fees')}}" target="_blank">Pricing</a></strong>, and you
+                authorize us to show your signature on the
+                <strong class="text-[#215fff]"><a href="{{url_for('static',filename='consent_form_templates.pdf')}}" target="_blank"> Assignment Agreement</a></strong>
+              </p>
+              <button
+                class="bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90"
+                type="button"
+                onclick="clearSignature()"
+              >
+                Clear Signature</button
+              ><br /><br />
+             
+              <div class="py-3 flex flex-row gap-10 justify-end pr-5">
+                <button type="button" class="prevBtn text-[#215FFF]">
+                  Back
+                </button>
+                <button
+                  type="button"
+                  class="nextBtn bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 10 -->
+            <div class="form-step" id="form-step-10">
+              <div class="text-[#36AC57] font-normal pl-2 py-2">
+                  Now, let’s gather the evidence that proves your case. Starting with your boarding pass or e-ticket — this is essential to prove your flight details.
+              </div>
+              <div class="bg-[#f2f7f5] rounded-lg">
+                  <p style="padding-left: 20px; padding-top: 20px">
+                      Please upload your boarding pass or e-ticket.
+                  </p>
+                  <div
+                      class="form-group uploadDocuments rounded-lg flex flex-col justify-center items-center text-center gap-2"
+                      id="documents"
+                      style="
+                          transform: translateY(-20px);
+                          margin: 40px 20px 20px 20px;
+                          background-color: white;
+                          cursor: pointer;
+                      "
+                  >
+                      <img src="../static/assets/upload.png" width="100px" alt="" />
+                      <div>
+                          <h3 class="text-2xl font-bold w-full">
+                              Drag and drop or Select file to upload
+                          </h3>
+                      </div>
+                      <p class="text-md font-normal w-full">
+                          We support PNG, JPG, JPEG & PDF. Max size 15MB.
+                      </p>
+                      <div class="hidden">
+                        <input accept=".png,.jpg,.jpeg,.pdf" type="file" id="uploadDocuments" name="documents" multiple class="hidden pointer" />
+
+                      </div>
+                  </div>
+            
+                  <!-- Uploaded file list will be displayed here -->
+                  <ul id="uploadedFilesList"></ul>
+                  
+              </div>
+              <p class="text-[#36AC57] pl-2 py-3 w-full">
+                  Note: Upload copy of your passport(s), tickets/boarding passes & receipts of any additional expenses such as hotels, food & travel if not provided by the airline.
+              </p>
+            
+              <div class="py-3 flex flex-row gap-10 justify-end pr-5">
+                  <button type="button" class="prevBtn text-[#215FFF]">Back</button>
+                  <button type="button" class="nextBtn bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90">
+                      Next
+                  </button>
+              </div>
+            </div>
+            <!-- step 11  have you contacted other -->
+            <div class="form-step" id="form-step-11">
+              <div class="flex flex-col gap-4">
+                <div class="form-group lg:px-12 py-5">
+                  <label for="flightIssue" class="!text-xl pb-2">
+                    Have you already contacted the airline?
+                  </label>
+                  <div
+                    class="radio-group lg:w-1/2 w-full"
+                    style="display: flex; flex-direction: column"
+                  >
+                    <label class="custom-radio !lg:w-1/2 !w-full">
+                      <input
+                      required
+                        type="radio"
+                        name="contacted_airline"
+                        id="disruption-delayed"
+                        value="yes"
+                      />
+                      <span class="radio-indicator"></span>
+                      Yes
+                    </label>
+
+                    <label class="custom-radio !w-full">
+                      <input
+                      required
+                        type="radio"
+                        name="contacted_airline"
+                        id="disruption-cancelled"
+                        value="no"
+                      />
+                      <span class="radio-indicator"></span>
+                      No
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group lg:px-12 py-5">
+                  <label for="flightIssue" class="!text-xl pb-2">
+                    Please add any other details about your flight cancellation.
+                  </label>
+                  <textarea
+                    name="incident_description"
+                    class="p-[10px] !w-full h-[200px]"
+                    placeholder="explain the incident"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="py-3 flex flex-row gap-10 justify-end pr-5">
+                <button type="button" class="prevBtn text-[#215FFF]">
+                  Back
+                </button>
+                <button
+                  type="submit"
+                  class="nextBtn bg-[#215FFF] text-white px-5 py-2 opacity-50 hover:opacity-90"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+
+            <!-- thank you ,successful  -->
+            <div class="form-step" id="form-step-12">
+            <h2 style="font-size: 50px">Thank you</h2>
+            <img src="{{ url_for('static', filename='assets/7gOKAjOfCE (1).gif') }}" alt="success" class="h-60 w-60" />
+            <h2 style="font-size: 40px">
+              We have received your form and you will receive a confirmation email soon!
+            </h2>
+
+            <p style="font-size: 18px; color: gray;">You will be redirected to the login page shortly...</p>
+
+            {% if state == 'submitted' %}
+                <div style="text-align:center;">
+                    <img src="{{ url_for('static', filename='assets/thankyou.gif') }}" alt="Thank You" style="width:300px;" />
+                    <p style="margin-top:20px;">Thank you! Your claim has been submitted.</p>
+                </div>
+                <script>
+                    setTimeout(function() {
+                        window.location.href = "{{ url_for('landing') }}";
+                    }, 5000);  // 5 seconds delay
+                </script>
+            {% else %}
+                <!-- existing form content -->
+            {% endif %}
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- scripts -->
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+    <script>
+      document
+        .getElementById("nav-toggle")
+        .addEventListener("click", function () {
+          const navLinks = document.getElementById("nav-links");
+          const langLogin = document.getElementById("language-login");
+          navLinks.classList.toggle("open");
+          langLogin.classList.toggle("open");
+        });
+    </script>
+
+    <script>
+      const canvas = document.getElementById("signaturePad");
+      const ctx = canvas.getContext("2d");
+      let drawing = false;
+
+      // Set canvas dimensions
+      canvas.width = 850; // Fixed width or use canvas.offsetWidth for dynamic
+      canvas.height = 280; // Fixed height
+
+      // Set initial drawing styles
+      ctx.lineWidth = 2;
+      ctx.lineCap = "round";
+      ctx.strokeStyle = "#000";
+
+      // Get the correct position for both mouse and touch events
+      function getEventPosition(event) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width; // Horizontal scale factor
+        const scaleY = canvas.height / rect.height; // Vertical scale factor
+
+        if (event.touches) {
+          const touch = event.touches[0];
+          return {
+            x: (touch.clientX - rect.left) * scaleX,
+            y: (touch.clientY - rect.top) * scaleY,
+          };
+        } else {
+          return {
+            x: (event.clientX - rect.left) * scaleX,
+            y: (event.clientY - rect.top) * scaleY,
+          };
+        }
+      }
+
+      // Start drawing
+      function startDrawing(event) {
+        const { x, y } = getEventPosition(event);
+        drawing = true;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+      }
+
+      // Draw line
+      function draw(event) {
+        if (!drawing) return;
+        const { x, y } = getEventPosition(event);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+      }
+
+      // Stop drawing
+      function stopDrawing() {
+        drawing = false;
+        document.getElementById("signature_data").value = canvas.toDataURL();
+      }
+
+      // Clear signature
+      function clearSignature() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        document.getElementById("signature_data").value = "";
+      }
+
+      // Mouse events
+      canvas.addEventListener("mousedown", (e) => startDrawing(e));
+      canvas.addEventListener("mousemove", (e) => draw(e));
+      canvas.addEventListener("mouseup", stopDrawing);
+      canvas.addEventListener("mouseleave", stopDrawing);
+
+      // Touch events
+      canvas.addEventListener("touchstart", (e) => startDrawing(e));
+      canvas.addEventListener("touchmove", (e) => draw(e));
+      canvas.addEventListener("touchend", stopDrawing);
+
+      // Attach clear signature to the button after canvas initialization
+      document
+        .getElementById("clearButton")
+        .addEventListener("click", clearSignature);
+    </script>
+
+    <!-- <style>
+      @media (max-width: 1100px) {
+        canvas {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      canvas {
+        display: block;
+        max-width: 100%;
+      }
+    </style> -->
+    <!-- <script>
+      const uploadArea = document.getElementById("documents");
+      const fileInput = document.getElementById("uploadDocuments");
+
+      uploadArea.addEventListener("click", () => {
+        fileInput.click(); //
+        
+      });
+    </script> -->
+
+<script>
+// Step 1
+// Step 1
+const connectingFlightsYes = document.getElementById("connecting-flights-yes");
+const connectingFlightsNo = document.getElementById("connecting-flights-no");
+const clonedFormSection = document.getElementById("cloned-form-section");
+const compensationOptions = document.getElementById("compensation-options");
+const nextBtnStep1 = document.getElementById("nextBtn");
+const step2NextBtn = document.getElementById("step2NextBtn");
+const connectingLeavingFrom = document.getElementById("connectingLeavingFrom");
+const fromLabel = document.getElementById("from-label");
+const toLabel = document.getElementById("to-label");
+const firstFlightLabel = document.getElementById("first-flight-label");
+const secondFlightLabel = document.getElementById("second-flight-label");
+const compensationFirstFlight = document.getElementById("compensation-first-flight");
+const compensationSecondFlight = document.getElementById("compensation-second-flight");
+const compensationFinalDestination = document.getElementById("compensation-final-destination");
+const addAirline = document.getElementById("addAirline");
+const SelectedAirline2 =document.getElementById("SelectedAirline2");
+let connectingFlightCount = 1;
+const connectingFlights = []; // Array to store additional connecting flights
+
+
+// Helper function to check if all required fields are filled
+function checkRequiredFields() {
+   const leavingFrom = document.getElementById("leavingFrom").value.trim();
+   const destination = document.getElementById("destination").value.trim();
+   const connectingFlightValue = connectingFlightsYes.checked ? connectingLeavingFrom.value.trim() : '';
+   return leavingFrom && destination && (!connectingFlightsYes.checked || connectingFlightValue);
+}
+
+
+// Function to toggle visibility of cloned form section
+function toggleClonedFormSection(show) {
+   if (show) {
+       clonedFormSection.style.display = "block";
+       connectingLeavingFrom.setAttribute("required", "required");
+   } else {
+       clonedFormSection.style.display = "none";
+       connectingLeavingFrom.removeAttribute("required");
+       connectingLeavingFrom.value = ''; // Clear the value
+   }
+}
+
+
+// Function to toggle compensation options visibility
+function toggleCompensationOptions(show) {
+   compensationOptions.style.display = show ? "block" : "none";
+}
+
+
+// Get the span elements by their IDs
+
+
+const fromLabel2 = document.getElementById('from-label2');
+const firstFlightLabel2 = document.getElementById("first-flight-label2");
+const compensationFirstFlight2 = document.getElementById("compensation-first-flight2");
+
+
+// Function to update the content of 'from-label2' with 'first-flight-label' value
+function updateFromLabel2() {
+   // Assign the text content of first-flight-label to from-label2
+  
+  
+   fromLabel2.textContent = firstFlightLabel.textContent;
+   firstFlightLabel2.textContent = toLabel.textContent;
+
+
+  
+}
+
+
+
+
+
+
+// Call the function whenever necessary to update the label
+
+
+
+
+// Add event listeners to radio buttons for connecting flights
+connectingFlightsYes.addEventListener("change", function () {
+   toggleClonedFormSection(true);
+   toggleCompensationOptions(true);
+  
+   // Update compensation option labels
+   const fromLabelFullText = document.getElementById("leavingFrom").value.trim();
+   const fromLabelFirstWord = fromLabelFullText.split(" ")[0];
+   // fromLabelFirstWord+=fromLabelFullText.split(" ")[1];
+   console.log(fromLabelFirstWord)
+   console.log(fromLabelFullText.split(" ")[1])
+   const fromLabelSecondWord = fromLabelFullText.split(" ")[1];
+  
+   fromLabel.textContent = fromLabelFirstWord +" " + fromLabelSecondWord;
+   console.log(fromLabel.textContent)
+  
+   const toLabelFullText = document.getElementById("destination").value.trim();
+   const toLabelFirstWord = toLabelFullText.split(" ")[0];
+   const toLabelSecondWord = toLabelFullText.split(" ")[1];
+   toLabel.textContent = toLabelFirstWord +" "+toLabelSecondWord;
+   console.log(toLabel.textContent);
+
+
+
+
+   const connectingLeavingFromFullText = connectingLeavingFrom.value.trim();
+       const connectingLeavingFromFirstWord = connectingLeavingFromFullText.split(" ")[0];
+       const connectingLeavingFromSecondWord = connectingLeavingFromFullText.split(" ")[1];
+       firstFlightLabel.textContent = connectingLeavingFromFirstWord +" "+connectingLeavingFromSecondWord;
+
+
+     
+
+
+   updateFromLabel2();
+
+
+  
+   compensationFirstFlight.style.display = "block"; // Show first flight option
+   compensationFirstFlight2.style.display = "block";
+
+
+   SelectedAirline2.style.display="block";
+   addAirline.style.display="block";
+
+
+   addAirline.addEventListener("click",()=>{
+       document.getElementById("SelectedAirline3").style.display="block";
+   })
+  
+});
+
+
+connectingFlightsNo.addEventListener("change", function () {
+   toggleClonedFormSection(false);
+   toggleCompensationOptions(false);
+   compensationFirstFlight.style.display = "block"; // Show only first flight option
+   compensationFirstFlight2.style.display = "block";
+   compensationSecondFlight.style.display = "none"; // Hide second flight option
+   compensationFinalDestination.style.display = "none"; // Hide final destination option
+});
+
+
+// Next button functionality
+nextBtnStep1.addEventListener("click", function () {
+   if (checkRequiredFields()) {
+       document.getElementById("form-step-1").classList.remove("active");
+       document.getElementById("form-step-2").classList.add("active");
+       step2NextBtn.disabled = false;
+   } else {
+       alert("Please fill out all required fields.");
+   }
+});
+
+
+// Update connecting flight input label when changed
+connectingLeavingFrom.addEventListener("input", function () {
+   if (connectingFlightsYes.checked) {
+
+
+       const connectingLeavingFromFullText = connectingLeavingFrom.value.trim();
+       const connectingLeavingFromFirstWord = connectingLeavingFromFullText.split(" ")[0];
+       const connectingLeavingFromSecondWord = connectingLeavingFromFullText.split(" ")[1];
+       firstFlightLabel.textContent = connectingLeavingFromFirstWord +" "+connectingLeavingFromSecondWord;
+       updateFromLabel2();
+   }
+});
+
+
+// Add additional connecting flight input
+// Sample array of suggestions
+const suggestionsConn2 = [
+  "Afghanistan:Kabul Hamid Karzai International Airport (Kabul) - IATA: KBL",
+"Albania:Tirana International Airport (Tirana) - IATA: TIA",
+"Algeria:Houari Boumediene Airport (Algiers) - IATA: ALG",
+"Angola:Quatro de Fevereiro Airport (Luanda) - IATA: LAD",
+"Antigua and Barbuda:V.C. Bird International Airport (Antigua) - IATA: ANU",
+"Argentina:Ezeiza Ministro Pistarini International Airport (Buenos Aires) - IATA: EZE",
+"Armenia:Zvartnots International Airport (Yerevan) - IATA: EVN",
+"Australia:Sydney Kingsford Smith Airport (Sydney) - IATA: SYD",
+"Austria:Vienna International Airport (Vienna) - IATA: VIE",
+"Salzburg Airport (Salzburg) - IATA: SZG",
+"Innsbruck Airport (Innsbruck) - IATA: INN",
+"Azerbaijan:Heydar Aliyev International Airport (Baku) - IATA: GYD",
+"Bahamas:Lynden Pindling International Airport (Nassau) - IATA: NAS",
+"Bahrain:Bahrain International Airport (Manama) - IATA: BAH",
+"Bangladesh:Shahjalal International Airport (Dhaka) - IATA: DAC",
+"Barbados:Grantley Adams International Airport (Bridgetown) - IATA: BGI",
+"Belarus:Minsk National Airport (Minsk) - IATA: MSQ",
+"Belgium:Brussels Airport (Brussels) - IATA: BRU",
+"Antwerp International Airport (Antwerp) - IATA: ANR",
+"Liege Airport (Liege) - IATA: LGG",
+"Belize:Philip S. W. Goldson International Airport (Belize City) - IATA: BZE",
+"Benin:Cotonou Cadjehoun Airport (Cotonou) - IATA: COO",
+"Bhutan:Paro International Airport (Paro) - IATA: PBH",
+"Bolivia:Viru Viru International Airport (Santa Cruz) - IATA: VVI",
+"Bosnia and Herzegovina:Sarajevo International Airport (Sarajevo) - IATA: SJJ",
+"Botswana:Sir Seretse Khama International Airport (Gaborone) - IATA: GBE",
+"Brazil:Sao Paulo-Guarulhos International Airport (Sao Paulo) - IATA: GRU",
+
+
+];
+
+
+addConnectingFlightBtn.addEventListener("click", function () {
+   if (connectingFlightCount < 2) {
+       connectingFlightCount++;
+      
+       // Create a div wrapper for the input field and suggestion box
+       const wrapper = document.createElement("div");
+       wrapper.classList.add("form-input", "back", "flex", "xl:flex-row", "flex-col", "relative");
+
+
+       // Create new input for connecting flight
+       const newFlightInput = document.createElement("input");
+       newFlightInput.setAttribute("type", "text");
+       newFlightInput.setAttribute("class", "!w-full mt-2 !pl-[60px]");
+       newFlightInput.setAttribute("placeholder", `e.g. Connecting Flight ${connectingFlightCount}`);
+       newFlightInput.setAttribute("autocomplete", "off");
+      
+       // Create a div for the suggestion box
+       const suggestionBox = document.createElement("div");
+       suggestionBox.classList.add("absolute", "bg-white","mt-[67px]", "border", "border-gray-300", "w-full", "max-h-40", "overflow-auto", "z-10", "hidden");
+
+
+       // Append input and suggestion box to wrapper
+       wrapper.appendChild(newFlightInput);
+       wrapper.appendChild(suggestionBox);
+
+
+       // Append the wrapper to the DOM
+       additionalConnectingFlights.appendChild(wrapper);
+
+
+       // Store the new flight input
+       connectingFlights.push(newFlightInput);
+
+
+       // Add event listener for input field to show suggestions
+       newFlightInput.addEventListener("input", function () {
+           const userInput = this.value.toLowerCase();
+           suggestionBox.innerHTML = ""; // Clear previous suggestions
+           suggestionBox.classList.add("hidden"); // Hide suggestion box by default
+
+
+           if (userInput) {
+               // Filter suggestions based on user input
+               const filteredSuggestions = suggestionsConn2.filter(suggestion =>
+                   suggestion.toLowerCase().includes(userInput)
+               );
+
+
+               // If there are suggestions, display them
+               if (filteredSuggestions.length > 0) {
+                   filteredSuggestions.forEach(suggestion => {
+                       const suggestionItem = document.createElement("div");
+                       suggestionItem.textContent = suggestion;
+                       suggestionItem.classList.add("p-2", "cursor-pointer");
+
+
+                       // Add hover effect
+                       suggestionItem.addEventListener("mouseover", function () {
+                           suggestionItem.classList.add("bg-gray-200");
+                       });
+
+
+                       suggestionItem.addEventListener("mouseout", function () {
+                           suggestionItem.classList.remove("bg-gray-200");
+                       });
+
+
+                       // Fill input with suggestion on click
+                       suggestionItem.addEventListener("click", function () {
+                           newFlightInput.value = suggestion;
+                           suggestionBox.innerHTML = ""; // Clear suggestions
+                           suggestionBox.classList.add("hidden"); // Hide suggestion box
+
+
+                           updateConnectingFromLabel();
+
+
+                          
+                       });
+
+
+                       suggestionBox.appendChild(suggestionItem);
+                   });
+
+
+                   suggestionBox.classList.remove("hidden"); // Show suggestion box
+               }
+           }
+       });
+
+
+       // Hide suggestion box when clicking outside
+       document.addEventListener("click", function (event) {
+           if (!wrapper.contains(event.target)) {
+               suggestionBox.innerHTML = ""; // Clear suggestions
+               suggestionBox.classList.add("hidden"); // Hide suggestion box
+           }
+       });
+
+
+       // Update labels based on input
+       newFlightInput.addEventListener("input", function () {
+           updateConnectingFromLabel();
+       });
+   }
+});
+
+
+// Remove Connecting Flight Button
+const removeConnectingFlightBtn = document.getElementById('removeConnectingFlightBtn');
+
+
+// Remove last added connecting flight input
+removeConnectingFlightBtn.addEventListener("click", function () {
+
+
+  if (connectingFlightCount > 0) {
+       // Remove the last wrapper (containing the input and suggestion box)
+       const lastFlightWrapper = connectingFlights.pop(); // Get the wrapper instead of the input
+       additionalConnectingFlights.remove(lastFlightWrapper); // Remove the wrapper
+
+
+       // Decrement the flight count
+       connectingFlightCount--;
+
+
+       // Update labels to reflect the removal of the flight
+       updateConnectingFromLabel();
+       compensationFinalDestination.style.display = "none";
+       compensationFirstFlight2.style.display = "block";
+   }
+});
+
+
+// Function to update connecting flight labels for compensation options
+function updateConnectingFromLabel() {
+   const firstFlight = connectingLeavingFrom.value.trim();
+   const secondFlight = connectingFlights[0]?.value.trim() || ''; // First connecting flight
+   const destination = document.getElementById("destination").value.trim();
+
+
+   // Update first flight option (source to flight 1)
+   const fromLabelFullText = document.getElementById("leavingFrom").value.trim();
+   const fromLabelFirstWord = fromLabelFullText.split(" ")[0];
+   const fromLabelSecondWord = fromLabelFullText.split(" ")[1];
+   fromLabel.textContent = fromLabelFirstWord+" "+fromLabelSecondWord;
+
+
+   const connectingLeavingFromFullText = connectingLeavingFrom.value.trim();
+       const connectingLeavingFromFirstWord = connectingLeavingFromFullText.split(" ")[0];
+       const connectingLeavingFromSecondWord = connectingLeavingFromFullText.split(" ")[1];
+       firstFlightLabel.textContent = connectingLeavingFromFirstWord+" "+connectingLeavingFromSecondWord;
+
+
+ 
+   updateFromLabel2();
+
+
+ 
+   // Update second flight option (flight 1 to flight 2, if applicable)
+   if (secondFlight) {
+       compensationSecondFlight.style.display = "block";
+
+
+       const firstFlightFirstWord = firstFlight.split(" ")[0];
+       const firstFlightSecondWord = firstFlight.split(" ")[1];
+       firstFlightLabel.textContent = firstFlightFirstWord +" "+firstFlightSecondWord;
+
+
+       const secondFlightLabelFirstWord = secondFlight.split(" ")[0];
+       const secondFlightLabelSecondWord = secondFlight.split(" ")[1];
+       secondFlightLabel.textContent = secondFlightLabelFirstWord +" "+secondFlightLabelSecondWord;
+   } else {
+       compensationSecondFlight.style.display = "none";
+   }
+
+
+   // Update final destination option (flight 2 to destination, or flight 1 to destination)
+   if (secondFlight) {
+       compensationFinalDestination.style.display = "block";
+       compensationFirstFlight2.style.display = "none";
+       secondFlightLabel.textContent = secondFlight;
+       toLabel.textContent = destination;
+   } else {
+       compensationFinalDestination.style.display = "block";
+       compensationFirstFlight2.style.display = "none";
+
+
+      
+       // firstFlightLabel.textContent = firstFlight;
+       // toLabel.textContent = destination;
+
+
+       firstFlightLabel.textContent = connectingLeavingFromFirstWord;
+       toLabel.textContent = toLabelFirstWord;
+   }
+}
+
+
+// Update compensation option visibility when proceeding to Step 2
+step2NextBtn.addEventListener("click", function () {
+   // Prepare to update the compensation options based on all connecting flights
+   updateConnectingFromLabel(); // Update the label to include all connecting flights
+});
+
+
+
+
+// Function to toggle visibility of compensation options
+function toggleCompensationOptions(show) {
+   compensationOptions.style.display = show ? "block" : "none";
+}
+
+
+// Add event listeners for connecting flights
+connectingFlightsYes.addEventListener("change", function () {
+   toggleClonedFormSection(true);
+   toggleCompensationOptions(true);
+  
+   // Update labels for first flight based on user input
+   const fromLabelFullText = document.getElementById("leavingFrom").value.trim();
+   const fromLabelFirstWord = fromLabelFullText.split(" ")[0];
+   const fromLabelSecondWord = fromLabelFullText.split(" ")[1];
+   fromLabel.textContent = fromLabelFirstWord+" "+fromLabelSecondWord;
+
+
+   const toLabelFullText = document.getElementById("destination").value.trim();
+   toLabelFirstWord = toLabelFullText.split(" ")[0];
+   toLabelSecondWord = toLabelFullText.split(" ")[1];
+
+
+   toLabel.textContent = toLabelFirstWord+" "+toLabelSecondWord;
+
+
+  
+  
+   const connectingLeavingFromFullText = connectingLeavingFrom.value.trim();
+       const connectingLeavingFromFirstWord = connectingLeavingFromFullText.split(" ")[0];
+       const connectingLeavingFromSecondWord = connectingLeavingFromFullText.split(" ")[1];
+       firstFlightLabel.textContent = connectingLeavingFromFirstWord+" "+connectingLeavingFromSecondWord;
+
+
+   updateFromLabel2();
+
+
+  
+
+
+   compensationFirstFlight.style.display = "block"; // Show first flight option
+   compensationFirstFlight2.style.display = "block";
+
+
+   document.querySelectorAll('input[type="radio"][name="compensation_flight"]').forEach((checkbox) => {
+     checkbox.addEventListener('change', displayCheckedCompensationOption);
+ });
+});
+
+
+connectingFlightsNo.addEventListener("change", function () {
+   toggleClonedFormSection(false);
+   toggleCompensationOptions(false);
+   compensationFirstFlight.style.display = "block"; // Show only the first flight option
+   compensationSecondFlight.style.display = "none"; // Hide second flight option
+   compensationFinalDestination.style.display = "none"; // Hide final destination option
+
+
+ });
+
+
+// Handle 'Next' button for Step 1
+
+
+// Update connecting flight input label when changed
+connectingLeavingFrom.addEventListener("input", function () {
+   if (connectingFlightsYes.checked) {
+     const connectingLeavingFromFullText = connectingLeavingFrom.value.trim();
+       const connectingLeavingFromFirstWord = connectingLeavingFromFullText.split(" ")[0];
+       firstFlightLabel.textContent = connectingLeavingFromFirstWord;
+       updateFromLabel2();
+   }
+});
+
+
+
+
+
+
+// Function to update compensation labels based on connecting flights
+function updateConnectingFromLabel() {
+   const firstFlight = connectingLeavingFrom.value.trim();
+   const secondFlight = connectingFlights[0]?.value.trim() || '';
+   const destination = document.getElementById("destination").value.trim();
+
+
+   // First flight option: Source -> Flight 1
+   const fromLabelFullText = document.getElementById("leavingFrom").value.trim();
+   const fromLabelFirstWord = fromLabelFullText.split(" ")[0];
+   const fromLabelSecondWord = fromLabelFullText.split(" ")[1];
+   fromLabel.textContent = fromLabelFirstWord+" "+fromLabelSecondWord;
+   firstFlightLabel.textContent = firstFlight;
+
+
+   const firstflightlabel1 = document.getElementById("first-flight-label1");
+
+
+   const firstFlightFirstWord = firstFlight.split(" ")[0];
+   const firstFlightSecondWord = firstFlight.split(" ")[1];
+   firstFlightLabel.textContent = firstFlightFirstWord+" "+firstFlightSecondWord;
+
+
+   firstflightlabel1.textContent=firstFlightFirstWord+" "+firstFlightSecondWord;
+  
+   updateFromLabel2();
+
+
+
+
+   // Second flight option: Flight 1 -> Flight 2 (if applicable)
+   if (secondFlight) {
+       compensationSecondFlight.style.display = "block";
+       compensationFirstFlight2.style.display = "none";
+
+
+       const secondFlightFirstWord = secondFlight.split(" ")[0];
+       const secondFlightSecondWord = secondFlight.split(" ")[1];
+       secondFlightLabel.textContent = secondFlightFirstWord+" "+secondFlightSecondWord;
+
+
+       const secondflightlabel1 = document.getElementById("second-flight-label1");
+
+
+       secondflightlabel1.textContent=secondFlightFirstWord+" "+secondFlightSecondWord;
+   } else {
+       compensationSecondFlight.style.display = "none";
+   }
+
+
+   // Final destination option: Last flight -> Destination
+   if (secondFlight) {
+       compensationFinalDestination.style.display = "block";
+       compensationFirstFlight2.style.display = "none";
+
+
+       const toLabelFirstWord = destination.split(" ")[0];
+       const toLabelSecondWord = destination.split(" ")[1];
+       toLabel.textContent=toLabelFirstWord+" "+toLabelSecondWord;
+
+
+   } else {
+       compensationFinalDestination.style.display = "block";
+       compensationFirstFlight2.style.display = "none";
+       // toLabel.textContent = destination;
+
+
+       const toLabelFirstWord = destination.split(" ")[0];
+       const toLabelSecondWord = destination.split(" ")[1];
+       toLabel.textContent=toLabelFirstWord+" "+toLabelSecondWord;
+   }
+}
+
+
+// Remove label updates from Step 2 'Next' button
+step2NextBtn.addEventListener("click", function () {
+   // Logic to proceed to Step 3 without updating labels again
+   document.getElementById("form-step-2").classList.remove("active");
+   document.getElementById("form-step-3").classList.add("active");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+<script>
+  // Function to display the selected compensation option text
+  function displayCheckedCompensationOption() {
+    // Get all radio buttons within the compensation options
+    const compensationOptions = document.querySelectorAll('input[type="radio"][name="compensation_flight"]');
+    
+    // Variable to hold the text content
+    let selectedText = '';
+
+    // Loop through the radio buttons to find the checked one
+    compensationOptions.forEach((radio) => {
+        if (radio.checked) {
+            // Get the label associated with the checked radio button
+            const label = radio.closest('label');
+            selectedText = label ? label.textContent.trim() : '';
+        }
+    });
+
+    // Display the selected text in an element (you can customize this)
+    document.getElementById("selected-compensation-output").textContent = selectedText;
+
+    // Extract the first and last words
+    const words = selectedText.split('to');
+    const firstWord = words[0]; // First word
+    const lastWord = words[words.length - 1]; // Last word
+
+    // Display the first and last words in separate output elements (if desired)
+    // document.getElementById("selected-flight-output").textContent = `First word: ${firstWord}, Last word: ${lastWord}`;
+
+    // if(firstWord==="to"){
+    //   document.getElementById("leaving-from-summary").textContent=;
+    // }
+    document.getElementById("leaving-from-summary").textContent=firstWord;
+    document.getElementById("destination-summary").textContent=lastWord;
+  }
+  
+  // Add event listeners to the checkbox inputs
+  document.querySelectorAll('input[type="radio"][name="compensation_flight"]').forEach((checkbox) => {
+      checkbox.addEventListener('change', displayCheckedCompensationOption);
+  });
+  
+  
+  </script>
+
+    <script>
+      // step 3
+      // Get references to the radio buttons and the delay hours section
+      const disruptionDelayed = document.getElementById("disruption-delayed");
+      const disruptionCancelled = document.getElementById(
+        "disruption-cancelled"
+      );
+      const disruptionDenied = document.getElementById("disruption-denied");
+      const delayHoursSection = document.getElementById("delay-hours-section");
+
+      // Add event listeners for the disruption radio buttons
+      disruptionDelayed.addEventListener("change", function () {
+        // Show delay hours section when "My flight was delayed" is selected
+        delayHoursSection.style.display = "block";
+      });
+
+      disruptionCancelled.addEventListener("change", function () {
+        // Hide delay hours section when "My flight was cancelled" is selected
+        delayHoursSection.style.display = "none";
+      });
+
+      disruptionDenied.addEventListener("change", function () {
+        // Hide delay hours section when "I was denied boarding" is selected
+        delayHoursSection.style.display = "none";
+      });
+    </script>
+
+    <script>
+      // step 4
+      // Get references to the form fields
+
+      const sameAirline = document.getElementById("same-airline");
+
+      const airline2 = document.getElementById("airline2");
+
+      sameAirline.addEventListener("click",()=>{
+        if(sameAirline.checked){
+        airline2.value = airline.value;
+        console.log("hiiiii");
+      }
+      })
+
+    </script>
+
+    <script>
+      // step 5
+      // Get references to the form fields
+
+      const airlineInput = document.getElementById("airline");
+      const flightNumberInput = document.getElementById("flight_number");
+      const leavingFromInput = document.getElementById("leavingFrom");
+      const destinationInput = document.getElementById("destination");
+
+      // Get references to the placeholders in step 5
+      const airlineSummary = document.getElementById("airline-summary");
+      const flightNumberSummary = document.getElementById(
+        "flight-number-summary"
+      );
+      const leavingFromSummary = document.getElementById(
+        "leaving-from-summary"
+      );
+      const destinationSummary = document.getElementById("destination-summary");
+      const disruptionSummary = document.getElementById("disruption-summary");
+      const disruptionSummaryForBtn = document.getElementById("disruption-summary-for-btn");
+
+      // Add event listener to the button to update step 5
+
+      // Update the summary with the user input values
+      // Add event listener to the button to update step 5
+      document
+        .getElementById("toStep5Btn")
+        .addEventListener("click", function () {
+          // Update the summary with the user input values
+
+          flightNumberSummary.textContent = flightNumberInput.value;
+
+          const AirlineSummaryInputValue = airlineInput.value.trim();
+          // const AirlineSummaryInputFirstWord =
+          //   AirlineSummaryInputValue.split(" ")[0];
+          airlineSummary.textContent = AirlineSummaryInputValue;
+
+          // console.log('input[name="compensation_flight1"]:checked').value;
+          // console.log('input[name="compensation_flight2"]:checked').value;
+          // console.log('input[name="compensation_flight3"]:checked').value;
+
+
+          const radioNo = document.getElementById('connecting-flights-no');
+
+          // Function to check if the radio button is checked
+          function checkRadioSelected() {
+              if (radioNo.checked) {
+                const FromInputValue = leavingFromInput.value.trim();
+                const FromInputFirstWord = FromInputValue.split(" ")[0];
+                const FromInputSecondWord = FromInputValue.split(" ")[1];
+                leavingFromSummary.textContent = FromInputFirstWord+" "+FromInputSecondWord;
+ 
+ 
+                const DestinationInputValue = destinationInput.value.trim();
+                const DestinationInputFirstWord = DestinationInputValue.split(" ")[0];
+                const DestinationInputSecondWord = DestinationInputValue.split(" ")[1];
+                destinationSummary.textContent = DestinationInputFirstWord+" "+DestinationInputSecondWord;
+ 
+ 
+              } 
+          }
+
+          // Call the function to check the radio button state
+          checkRadioSelected();
+
+          // const FromInputValue = leavingFromInput.value.trim();
+          // const FromInputFirstWord = FromInputValue.split(" ")[0];
+          // leavingFromSummary.textContent = FromInputFirstWord;
+
+          // const DestinationInputValue = destinationInput.value.trim();
+          // const DestinationInputFirstWord = DestinationInputValue.split(" ")[0];
+          // destinationSummary.textContent = DestinationInputFirstWord; 
+
+          disruptionSummary.textContent = document.querySelector(
+            'input[name="disruption"]:checked'
+          ).value;
+
+          disruptionSummaryForBtn.textContent = document.querySelector(
+            'input[name="disruption"]:checked'
+          ).value;
+        });
+    </script>
+
+    <script>
+      // step 7 javaScript
+      // Get references to the radio buttons
+      const groupTravelYes = document.querySelector(
+        'input[name="group_travel"][value="yes"]'
+      );
+      const groupTravelNo = document.querySelector(
+        'input[name="group_travel"][value="no"]'
+      );
+
+      // Passenger details container and add button
+      const passengerDetailsContainer = document.getElementById(
+        "passengerDetailsContainer"
+      );
+      const addPassengerBtn = document.getElementById("addPassengerBtn");
+
+      const addPassengerMsg = document.getElementById("addPassengerMsg");
+
+      // Counter to track the number of passengers added
+      let passengerCount = 1;
+
+      // Function to create passenger input fields
+      function createPassengerFields(index) {
+        return `
+      <div class="passenger-group mb-[50px]" id="passenger-${index}">
+        <h4 class="pt-2 pb-2 text-lg">Passenger ${index} <input class="ml-[10px] mr-[5px]" type="checkbox" name="passenger_${index}_type" value="minor">Minor</h4>
+        <label for="passenger${index}FirstName">First Name</label>
+        <input
+          
+          type="text"
+          id="passenger${index}FirstName"
+          name="first_name_passenger_${index}"
+          class="!w-full lg:!w-1/2"
+          placeholder="Enter First name as per your ID"
+        />
+        <label style="margin-top: 10px" for="passenger${index}LastName">Last Name</label>
+        <input
+          
+          type="text"
+          id="passenger${index}LastName"
+          name="last_name_passenger_${index}"
+          class="!w-full lg:!w-1/2"
+          placeholder="Enter Last name as per your ID"
+        />
+        
+      </div>
+    `;
+      }
+
+      // Show passenger details if traveling in a group
+      groupTravelYes.addEventListener("change", function () {
+        if (this.checked) {
+          passengerDetailsContainer.style.display = "block";
+          addPassengerMsg.style.display = "block";
+          addPassengerBtn.disabled = false;
+          addPassengerBtn.style.display = "block";
+
+          // Add the first passenger fields by default
+          if (passengerCount === 0) {
+            passengerCount++;
+            passengerDetailsContainer.innerHTML =
+              createPassengerFields(passengerCount);
+          }
+        }
+      });
+
+      // Hide and clear passenger details if traveling alone
+      groupTravelNo.addEventListener("change", function () {
+        if (this.checked) {
+          passengerDetailsContainer.style.display = "none";
+          addPassengerMsg.style.display = "none";
+          addPassengerBtn.disabled = true;
+          addPassengerBtn.style.display = "none";
+
+          // Clear all passenger fields
+          passengerDetailsContainer.innerHTML = "";
+          passengerCount = 0;
+        }
+      });
+
+      // Add new passenger fields when "Add Passenger" button is clicked
+      addPassengerBtn.addEventListener("click", function () {
+        if (passengerCount < 5) {
+          passengerCount++;
+          passengerDetailsContainer.insertAdjacentHTML(
+            "beforeend",
+            createPassengerFields(passengerCount)
+          );
+        }
+
+        // Disable the button if the max number of passengers is reached
+        if (passengerCount === 5) {
+          addPassengerBtn.disabled = true;
+        }
+      });
+
+
+      //DisplayMajorDetails
+
+      const majorDetailsCheckBox = document.getElementById("majorDetails");
+
+      const firstName1 = document.getElementById("firstName1");
+      const lastName1 = document.getElementById("lastName1");
+      const email1 = document.getElementById("email1");
+      const DisplayMajorDetails = document.getElementById("DisplayMajorDetails");
+
+      majorDetails.addEventListener("click",()=>{
+        if(majorDetails.checked){
+          DisplayMajorDetails.style.display="block";
+          firstName1.value=document.getElementById("firstName").value;
+          lastName1.value=document.getElementById("lastName").value;
+          email1.value=document.getElementById("email").value;
+        }
+      })
+
+    </script>
+
+    <script>
+      // step 3 JavaScript
+      function toggleDelayHours(isDelayed) {
+        const delayHoursSection = document.getElementById(
+          "delay-hours-section"
+        );
+        const delayInputs = delayHoursSection.querySelectorAll(
+          'input[name="delay"]'
+        );
+
+        
+
+        if (isDelayed) {
+          // Show the delay hours section and set inputs as required
+          delayHoursSection.style.display = "block";
+          delayInputs.forEach((input) => {
+            input.required = true;
+            input.checked = false; // Clear checked state to avoid accidental selection
+          });
+        } else {
+          // Hide the delay hours section and remove required attribute from inputs
+          delayHoursSection.style.display = "none";
+          delayInputs.forEach((input) => {
+            input.required = false;
+            input.checked = false; // Clear checked state when hidden
+          });
+        }
+      }
+    </script>
+
+    <!--Updated List -->
+
+    <script>
+      const airlines = [
+        "Aegean Airlines",
+"Aer Lingus",
+"Air Baltic",
+"Air Dolomiti",
+"Air Europa",
+"Air France",
+"Air Malta",
+"Air Nostrum",
+"Air Serbia",
+"ITA Airways",
+"Austrian Airlines",
+"Blue Air",
+"British Airways",
+"Brussels Airlines",
+"Condor",
+"Croatia Airlines",
+"Czech Airlines",
+"easyJet",
+"Eurowings",
+"Finnair",
+"Iberia",
+"Jet2.com",
+"KLM Royal Dutch Airlines",
+"LOT Polish Airlines",
+"Lufthansa",
+"Luxair",
+"Norwegian Air Shuttle",
+"Ryanair",
+"SAS-Scandinavian Airlines",
+"Swiss International Air Lines",
+"TAP Air Portugal",
+"Transavia",
+"TUI Airways",
+"Virgin Atlantic",
+"Vueling",
+"Wizz Air",
+"Aeroflot",
+"Air Canada",
+"Air India",
+"All Nippon Airways (ANA)",
+"American Airlines",
+"Asiana Airlines",
+"Cathay Pacific",
+"Delta Air Lines",
+"EgyptAir",
+"El Al Israel Airlines",
+"Emirates",
+"Etihad Airways",
+"Ethiopian Airlines",
+"Japan Airlines",
+"Kenya Airways",
+"Korean Air",
+"Middle East Airlines (MEA)",
+"Qantas",
+"Qatar Airways",
+"Royal Air Maroc",
+"Singapore Airlines",
+"South African Airways",
+"SriLankan Airlines",
+"Thai Airways",
+"Turkish Airlines",
+"United Airlines",
+"Uzbekistan Airways",
+"Vietnam Airlines",
+"WestJet",
+"China Eastern Airlines",
+"China Southern Airlines",
+"Hainan Airlines",
+"Garuda Indonesia",
+"Air Transat",
+"Air Mauritius",
+"Pakistan International Airlines",
+"Philippine Airlines",
+"Saudia",
+"Oman Air",
+
+      ];
+
+      function showSuggestions(value) {
+        const suggestionsBox = document.getElementById("suggestions");
+        suggestionsBox.innerHTML = "";
+        if (value.length === 0) {
+          suggestionsBox.style.display = "none";
+          return;
+        }
+
+        const filteredAirlines = airlines.filter((airline) =>
+          airline.toLowerCase().includes(value.toLowerCase())
+        );
+
+        if (filteredAirlines.length > 0) {
+          suggestionsBox.style.display = "block";
+          filteredAirlines.forEach((airline) => {
+            const suggestionItem = document.createElement("div");
+            suggestionItem.textContent = airline;
+            suggestionItem.style.padding = "8px";
+            suggestionItem.style.cursor = "pointer";
+            suggestionItem.onclick = function () {
+              document.getElementById("airline").value = airline;
+              suggestionsBox.innerHTML = "";
+              suggestionsBox.style.display = "none";
+            };
+            suggestionsBox.appendChild(suggestionItem);
+          });
+        } else {
+          suggestionsBox.style.display = "none";
+        }
+      }
+    </script>
+    <script type="module">
+      const airports = [
+      { country: "Afghanistan", name: "Kabul (KBL) Kabul Hamid Karzai International Airport", iata: "KBL" },
+{ country: "Albania", name: "Tirana (TIA) Tirana International Airport", iata: "TIA" },
+{ country: "Algeria", name: "Algiers (ALG) Houari Boumediene Airport", iata: "ALG" },
+{ country: "Angola", name: "Luanda (LAD) Quatro de Fevereiro Airport", iata: "LAD" },
+{ country: "Antigua and Barbuda", name: "Antigua (ANU) V.C. Bird International Airport", iata: "ANU" },
+{ country: "Argentina", name: "Buenos Aires(EZE) Ezeiza Ministro Pistarini International Airport", iata: "EZE" },
+{ country: "Armenia", name: "Yerevan (EVN) Zvartnots International Airport", iata: "EVN" },
+{ country: "Australia", name: "Sydney (SYD) Sydney Kingsford Smith Airport", iata: "SYD" },
+{ country: "Austria", name: "Vienna (VIE) Vienna International Airport", iata: "VIE" },
+{ country: "Austria", name: "Salzburg (SZG) Salzburg Airport", iata: "SZG" },
+{ country: "Austria", name: "Innsbruck (INN) Innsbruck Airport", iata: "INN" },
+{ country: "Azerbaijan", name: "Baku (GYD) Heydar Aliyev International Airport", iata: "GYD" },
+{ country: "Bahamas", name: "Nassau (NAS) Lynden Pindling International Airport", iata: "NAS" },
+{ country: "Bahrain", name: "Manama (BAH) Bahrain International Airport", iata: "BAH" },
+{ country: "Bangladesh", name: "Dhaka (DAC) Shahjalal International Airport", iata: "DAC" },
+{ country: "Barbados", name: "Bridgetown (BGI) Grantley Adams International Airport", iata: "BGI" },
+{ country: "Belarus", name: "Minsk (MSQ) Minsk National Airport", iata: "MSQ" },
+{ country: "Belgium", name: "Brussels (BRU) Brussels Airport", iata: "BRU" },
+{ country: "Belgium", name: "Antwerp (ANR) Antwerp International Airport", iata: "ANR" },
+{ country: "Belgium", name: "Liege (LGG) Liege Airport", iata: "LGG" },
+{ country: "Belize", name: "Belize City(BZE) Philip S. W. Goldson International Airport", iata: "BZE" },
+{ country: "Benin", name: "Cotonou (COO) Cotonou Cadjehoun Airport", iata: "COO" },
+{ country: "Bhutan", name: "Paro (PBH) Paro International Airport", iata: "PBH" },
+{ country: "Bolivia", name: "Santa Cruz(VVI) Viru Viru International Airport", iata: "VVI" },
+{ country: "Bosnia and Herzegovina", name: "Sarajevo (SJJ) Sarajevo International Airport", iata: "SJJ" },
+{ country: "Botswana", name: "Gaborone (GBE) Sir Seretse Khama International Airport", iata: "GBE" },
+{ country: "Brazil", name: "Sao Paulo(GRU) Sao Paulo-Guarulhos International Airport", iata: "GRU" },
+{ country: "Brunei", name: "Bandar-Seri Begawan(BWN) Brunei International Airport", iata: "BWN" },
+{ country: "Bulgaria", name: "Sofia (SOF) Sofia Airport", iata: "SOF" },
+{ country: "Bulgaria", name: "Varna (VAR) Varna Airport", iata: "VAR" },
+{ country: "Bulgaria", name: "Burgas (BOJ) Burgas Airport", iata: "BOJ" },
+{ country: "Burkina Faso", name: "Ouagadougou (OUA) Ouagadougou Airport", iata: "OUA" },
+{ country: "Burundi", name: "Bujumbura (BJM) Bujumbura International Airport", iata: "BJM" },
+{ country: "Cabo Verde", name: "Espargos (SID) Amilcar Cabral International Airport", iata: "SID" },
+{ country: "Cambodia", name: "Phnom Penh(PNH) Phnom Penh International Airport", iata: "PNH" },
+{ country: "Cameroon", name: "Douala (DLA) Douala International Airport", iata: "DLA" },
+{ country: "Canada", name: "Toronto (YYZ) Toronto Pearson International Airport", iata: "YYZ" },
+{ country: "Canada", name: "Vancouver (YVR) Vancouver International Airport", iata: "YVR" },
+{ country: "Canada", name: "Montreal (YUL) Montreal-Trudeau International Airport", iata: "YUL" },
+{ country: "Central African Republic", name: "Bangui (BGF) Bangui M'Poko International Airport", iata: "BGF" },
+{ country: "Chad", name: "N'Djamena (NDJ) N'Djamena International Airport", iata: "NDJ" },
+{ country: "Chile", name: "Santiago (SCL) Arturo Merino Benitez International Airport", iata: "SCL" },
+{ country: "China", name: "Beijing (PEK) Beijing Capital International Airport", iata: "PEK" },
+{ country: "China", name: "Shanghai (PVG) Shanghai Pudong International Airport", iata: "PVG" },
+{ country: "China", name: "Guangzhou (CAN) Guangzhou Baiyun International Airport", iata: "CAN" },
+{ country: "Colombia", name: "Bogota (BOG) El Dorado International Airport", iata: "BOG" },
+{ country: "Comoros", name: "Moroni (HAH) Prince Said Ibrahim International Airport", iata: "HAH" },
+{ country: "Republic of the Congo", name: "Brazzaville (BZV) Maya-Maya Airport", iata: "BZV" },
+{ country: "Democratic Republic of the Congo", name: "Kinshasa (FIH) N'Djili International Airport", iata: "FIH" },
+{ country: "Costa Rica", name: "San Jose(SJO) Juan Santamaria International Airport", iata: "SJO" },
+{ country: "Croatia", name: "Zagreb (ZAG) Zagreb Franjo Tudman Airport", iata: "ZAG" },
+{ country: "Croatia", name: "Dubrovnik (DBV) Dubrovnik Airport", iata: "DBV" },
+{ country: "Croatia", name: "Split (SPU) Split Airport", iata: "SPU" },
+{ country: "Cuba", name: "Havana (HAV) Jose Marti International Airport", iata: "HAV" },
+{ country: "Cyprus", name: "Larnaca (LCA) Larnaca International Airport", iata: "LCA" },
+{ country: "Cyprus", name: "Paphos (PFO) Paphos International Airport", iata: "PFO" },
+{ country: "Czech Republic", name: "Prague (PRG) Vaclav Havel Airport Prague", iata: "PRG" },
+{ country: "Czech Republic", name: "Brno (BRQ) Brno-Turany Airport", iata: "BRQ" },
+{ country: "Czech Republic", name: "Ostrava (OSR) Ostrava Airport", iata: "OSR" },
+{ country: "Denmark", name: "Copenhagen (CPH) Copenhagen Airport", iata: "CPH" },
+{ country: "Denmark", name: "Billund (BLL) Billund Airport", iata: "BLL" },
+{ country: "Denmark", name: "Aalborg (AAL) Aalborg Airport", iata: "AAL" },
+{ country: "Djibouti", name: "Djibouti (JIB) Djibouti-Ambouli International Airport", iata: "JIB" },
+{ country: "Dominica", name: "Marigot (DOM) Douglas-Charles Airport", iata: "DOM" },
+{ country: "Dominican Republic", name: "Santo Domingo(SDQ) Las Americas International Airport", iata: "SDQ" },
+{ country: "Ecuador", name: "Quito (UIO) Mariscal Sucre International Airport", iata: "UIO" },
+{ country: "Egypt", name: "Cairo (CAI) Cairo International Airport", iata: "CAI" },
+{ country: "El Salvador", name: "San Salvador(SAL) Monsenor Oscar Arnulfo Romero International Airport", iata: "SAL" },
+{ country: "Equatorial Guinea", name: "Malabo (SSG) Malabo International Airport", iata: "SSG" },
+{ country: "Eritrea", name: "Asmara (ASM) Asmara International Airport", iata: "ASM" },
+{ country: "Estonia", name: "Tallinn (TLL) Tallinn Lennart Meri Airport", iata: "TLL" },
+{ country: "Eswatini", name: "Manzini (SHO) King Mswati III International Airport", iata: "SHO" },
+{ country: "Ethiopia", name: "Addis Ababa(ADD) Addis Ababa Bole International Airport", iata: "ADD" },
+{ country: "Fiji", name: "Nadi (NAN) Nadi International Airport", iata: "NAN" },
+{ country: "Finland", name: "Helsinki (HEL) Helsinki-Vantaa Airport", iata: "HEL" },
+{ country: "Finland", name: "Oulu (OUL) Oulu Airport", iata: "OUL" },
+{ country: "Finland", name: "Tampere (TMP) Tampere-Pirkkala Airport", iata: "TMP" },
+{ country: "France", name: "Paris (CDG) Paris Charles de Gaulle Airport", iata: "CDG" },
+{ country: "France", name: "Paris (ORY) Paris Orly Airport", iata: "ORY" },
+{ country: "France", name: "Nice (NCE) Nice Cote d'Azur Airport", iata: "NCE" },
+{ country: "France", name: "Lyon (LYS) Lyon Saint-Exupery Airport", iata: "LYS" },
+{ country: "France", name: "Marseille (MRS) Marseille Provence Airport", iata: "MRS" },
+{ country: "France", name: "Toulouse (TLS) Toulouse Blagnac Airport", iata: "TLS" },
+{ country: "France", name: "Bordeaux (BOD) Bordeaux-Merignac Airport", iata: "BOD" },
+{ country: "France", name: "Nantes (NTE) Nantes Atlantique Airport", iata: "NTE" },
+{ country: "Gabon", name: "Libreville (LBV) Libreville International Airport", iata: "LBV" },
+{ country: "Gambia", name: "Banjul (BJL) Banjul International Airport", iata: "BJL" },
+{ country: "Georgia", name: "Tbilisi (TBS) Tbilisi International Airport", iata: "TBS" },
+{ country: "Germany", name: "Frankfurt (FRA) Frankfurt am Main Airport", iata: "FRA" },
+{ country: "Germany", name: "Munich (MUC) Munich Airport", iata: "MUC" },
+{ country: "Germany", name: "Berlin (BER) Berlin Brandenburg Airport", iata: "BER" },
+{ country: "Germany", name: "Dusseldorf (DUS) Dusseldorf Airport", iata: "DUS" },
+{ country: "Germany", name: "Hamburg (HAM) Hamburg Airport", iata: "HAM" },
+{ country: "Germany", name: "Stuttgart (STR) Stuttgart Airport", iata: "STR" },
+{ country: "Germany", name: "Cologne (CGN) Cologne Bonn Airport", iata: "CGN" },
+{ country: "Ghana", name: "Accra (ACC) Kotoka International Airport", iata: "ACC" },
+{ country: "Greece", name: "Athens (ATH) Athens International Airport", iata: "ATH" },
+{ country: "Greece", name: "Thessaloniki (SKG) Thessaloniki Airport", iata: "SKG" },
+{ country: "Greece", name: "Heraklion (HER) Heraklion Airport", iata: "HER" },
+{ country: "Greece", name: "Rhodes (RHO) Rhodes Diagoras International Airport", iata: "RHO" },
+{ country: "Grenada", name: "St. George's(GND) Maurice Bishop International Airport", iata: "GND" },
+{ country: "Guatemala", name: "Guatemala City(GUA) La Aurora International Airport", iata: "GUA" },
+{ country: "Guinea", name: "Conakry (CKY) Conakry International Airport", iata: "CKY" },
+{ country: "Guinea-Bissau", name: "Bissau (OXB) Osvaldo Vieira International Airport", iata: "OXB" },
+{ country: "Guyana", name: "Georgetown (GEO) Cheddi Jagan International Airport", iata: "GEO" },
+{ country: "Haiti", name: "Port-au-Prince (PAP) Toussaint Louverture International Airport", iata: "PAP" },
+{ country: "Honduras", name: "SanPedro Sula(SAP) Ramon Villeda Morales International Airport", iata: "SAP" },
+{ country: "Hungary", name: "Budapest (BUD) Budapest Ferenc Liszt International Airport", iata: "BUD" },
+{ country: "Iceland", name: "Reykjavik (KEF) Keflavik International Airport", iata: "KEF" },
+{ country: "India", name: "New Delhi(DEL) Indira Gandhi International Airport", iata: "DEL" },
+{ country: "India", name: "Mumbai (BOM) Chhatrapati Shivaji Maharaj International Airport", iata: "BOM" },
+{ country: "India", name: "Bengaluru (BLR) Kempegowda International Airport", iata: "BLR" },
+{ country: "India", name: "Kolkata (CCU) Netaji Subhas Chandra Bose International Airport", iata: "CCU" },
+{ country: "India", name: "Chennai (MAA) Chennai International Airport", iata: "MAA" },
+{ country: "India", name: "Hyderabad (HYD) Rajiv Gandhi International Airport", iata: "HYD" },
+{ country: "India", name: "Kochi (COK) Cochin International Airport", iata: "COK" },
+{ country: "India", name: "Ahmedabad (AMD) Sardar Vallabhbhai Patel International Airport", iata: "AMD" },
+{ country: "India", name: "Goa (GOI) Goa International Airport", iata: "GOI" },
+{ country: "India", name: "Pune (PNQ) Pune International Airport", iata: "PNQ" },
+{ country: "India", name: "Thiruvananthapuram (TRV) Trivandrum International Airport", iata: "TRV" },
+{ country: "India", name: "Mangalore (IXE) Mangalore International Airport", iata: "IXE" },
+{ country: "India", name: "Madurai (IXM) Madurai International Airport", iata: "IXM" },
+{ country: "India", name: "Tiruchirappalli (TRZ) Tiruchirappalli International Airport", iata: "TRZ" },
+{ country: "India", name: "Bagdogra (IXB) Bagdogra International Airport", iata: "IXB" },
+{ country: "India", name: "Bhubaneswar (BBI) Biju Patnaik International Airport", iata: "BBI" },
+{ country: "India", name: "Guwahati (GAU) Lokpriya Gopinath Bordoloi International Airport", iata: "GAU" },
+{ country: "India", name: "Imphal (IMF) Imphal International Airport", iata: "IMF" },
+{ country: "India", name: "Port Blair(IXZ) Veer Savarkar International Airport", iata: "IXZ" },
+{ country: "India", name: "Kannur (CNN) Kannur International Airport", iata: "CNN" },
+{ country: "Indonesia", name: "Jakarta (CGK) Soekarno-Hatta International Airport", iata: "CGK" },
+{ country: "Indonesia", name: "Bali (DPS) Ngurah Rai International Airport", iata: "DPS" },
+{ country: "Iran", name: "Tehran (IKA) Tehran Imam Khomeini International Airport", iata: "IKA" },
+{ country: "Iraq", name: "Baghdad (BGW) Baghdad International Airport", iata: "BGW" },
+{ country: "Ireland", name: "Dublin (DUB) Dublin Airport", iata: "DUB" },
+{ country: "Ireland", name: "Cork (ORK) Cork Airport", iata: "ORK" },
+{ country: "Ireland", name: "Shannon (SNN) Shannon Airport", iata: "SNN" },
+{ country: "Israel", name: "Tel Aviv(TLV) Ben Gurion International Airport", iata: "TLV" },
+{ country: "Italy", name: "Rome (FCO) Leonardo da Vinci-Fiumicino Airport", iata: "FCO" },
+{ country: "Italy", name: "Milan (MXP) Milan Malpensa Airport", iata: "MXP" },
+{ country: "Italy", name: "Venice (VCE) Venice Marco Polo Airport", iata: "VCE" },
+{ country: "Italy", name: "Naples (NAP) Naples International Airport", iata: "NAP" },
+{ country: "Italy", name: "Bologna (BLQ) Bologna Airport", iata: "BLQ" },
+{ country: "Italy", name: "Florence (FLR) Florence Airport", iata: "FLR" },
+{ country: "Jamaica", name: "Kingston (KIN) Norman Manley International Airport", iata: "KIN" },
+{ country: "Jamaica", name: "Montego Bay(MBJ) Sangster International Airport", iata: "MBJ" },
+{ country: "Japan", name: "Tokyo (HND) Tokyo Haneda International Airport", iata: "HND" },
+{ country: "Japan", name: "Tokyo (NRT) Narita International Airport", iata: "NRT" },
+{ country: "Japan", name: "Osaka (KIX) Kansai International Airport", iata: "KIX" },
+{ country: "Jordan", name: "Amman (AMM) Queen Alia International Airport", iata: "AMM" },
+{ country: "Kazakhstan", name: "Nur-Sultan (NQZ) Nursultan Nazarbayev International Airport", iata: "NQZ" },
+{ country: "Kazakhstan", name: "Almaty (ALA) Almaty International Airport", iata: "ALA" },
+{ country: "Kenya", name: "Nairobi (NBO) Jomo Kenyatta International Airport", iata: "NBO" },
+{ country: "Kiribati", name: "Tarawa (TRW) Bonriki International Airport", iata: "TRW" },
+{ country: "Kuwait", name: "Kuwait City(KWI) Kuwait International Airport", iata: "KWI" },
+{ country: "Kyrgyzstan", name: "Bishkek (FRU) Manas International Airport", iata: "FRU" },
+{ country: "Laos", name: "Vientiane (VTE) Wattay International Airport", iata: "VTE" },
+{ country: "Latvia", name: "Riga (RIX) Riga International Airport", iata: "RIX" },
+{ country: "Lebanon", name: "Beirut (BEY) Beirut Rafic Hariri International Airport", iata: "BEY" },
+{ country: "Lesotho", name: "Maseru (MSU) Moshoeshoe I International Airport", iata: "MSU" },
+{ country: "Liberia", name: "Monrovia (ROB) Roberts International Airport", iata: "ROB" },
+{ country: "Libya", name: "Tripoli (MJI) Mitiga International Airport", iata: "MJI" },
+{ country: "Lithuania", name: "Vilnius (VNO) Vilnius International Airport", iata: "VNO" },
+{ country: "Lithuania", name: "Kaunas (KUN) Kaunas International Airport", iata: "KUN" },
+{ country: "Lithuania", name: "Palanga (PLQ) Palanga International Airport", iata: "PLQ" },
+{ country: "Luxembourg", name: "Luxembourg City(LUX) Luxembourg Findel Airport", iata: "LUX" },
+{ country: "Madagascar", name: "Antananarivo (TNR) Ivato International Airport", iata: "TNR" },
+{ country: "Malawi", name: "Lilongwe (LLW) Lilongwe International Airport", iata: "LLW" },
+{ country: "Malaysia", name: "Kuala Lumpur(KUL) Kuala Lumpur International Airport", iata: "KUL" },
+{ country: "Maldives", name: "Male (MLE) Velana International Airport", iata: "MLE" },
+{ country: "Mali", name: "Bamako (BKO) Bamako-Senou International Airport", iata: "BKO" },
+{ country: "Malta", name: "Luqa (MLA) Malta International Airport", iata: "MLA" },
+{ country: "Marshall Islands", name: "Majuro (MAJ) Amata Kabua International Airport", iata: "MAJ" },
+{ country: "Mauritania", name: "Nouakchott (NKC) Nouakchott-Oumtounsy International Airport", iata: "NKC" },
+{ country: "Mauritius", name: "Port Louis(MRU) Sir Seewoosagur Ramgoolam International Airport", iata: "MRU" },
+{ country: "Mexico", name: "Mexico City(MEX) Mexico City International Airport", iata: "MEX" },
+{ country: "Micronesia", name: "Pohnpei (PNI) Pohnpei International Airport", iata: "PNI" },
+{ country: "Moldova", name: "Chisinau (KIV) Chisinau International Airport", iata: "KIV" },
+{ country: "Mongolia", name: "Ulaanbaatar (ULN) Chinggis Khaan International Airport", iata: "ULN" },
+{ country: "Montenegro", name: "Podgorica (TGD) Podgorica Airport", iata: "TGD" },
+{ country: "Morocco", name: "Casablanca (CMN) Mohammed V International Airport", iata: "CMN" },
+{ country: "Mozambique", name: "Maputo (MPM) Maputo International Airport", iata: "MPM" },
+{ country: "Myanmar", name: "Yangon (RGN) Yangon International Airport", iata: "RGN" },
+{ country: "Namibia", name: "Windhoek (WDH) Hosea Kutako International Airport", iata: "WDH" },
+{ country: "Nauru", name: "Yaren (INU) Nauru International Airport", iata: "INU" },
+{ country: "Nepal", name: "Kathmandu (KTM) Tribhuvan International Airport", iata: "KTM" },
+{ country: "Netherlands", name: "Amsterdam (AMS) Amsterdam Schiphol Airport", iata: "AMS" },
+{ country: "Netherlands", name: "Eindhoven (EIN) Eindhoven Airport", iata: "EIN" },
+{ country: "Netherlands", name: "Rotterdam (RTM) Rotterdam The Hague Airport", iata: "RTM" },
+{ country: "New Zealand", name: "Auckland (AKL) Auckland International Airport", iata: "AKL" },
+{ country: "Nicaragua", name: "Managua (MGA) Augusto C. Sandino International Airport", iata: "MGA" },
+{ country: "Niger", name: "Niamey (NIM) Diori Hamani International Airport", iata: "NIM" },
+{ country: "Nigeria", name: "Lagos (LOS) Murtala Muhammed International Airport", iata: "LOS" },
+{ country: "North Macedonia", name: "Skopje (SKP) Skopje International Airport", iata: "SKP" },
+{ country: "Norway", name: "Oslo (OSL) Oslo Gardermoen Airport", iata: "OSL" },
+{ country: "Oman", name: "Muscat (MCT) Muscat International Airport", iata: "MCT" },
+{ country: "Palau", name: "Koror (ROR) Roman Tmetuchl International Airport", iata: "ROR" },
+{ country: "Panama", name: "Panama City(PTY) Tocumen International Airport", iata: "PTY" },
+{ country: "Papua New Guinea", name: "Port Moresby(POM) Jacksons International Airport", iata: "POM" },
+{ country: "Paraguay", name: "Asuncion (ASU) Silvio Pettirossi International Airport", iata: "ASU" },
+{ country: "Peru", name: "Lima (LIM) Jorge Chavez International Airport", iata: "LIM" },
+{ country: "Philippines", name: "Manila (MNL) Ninoy Aquino International Airport", iata: "MNL" },
+{ country: "Poland", name: "Warsaw (WAW) Warsaw Chopin Airport", iata: "WAW" },
+{ country: "Poland", name: "Krakow (KRK) Krakow John Paul II International Airport", iata: "KRK" },
+{ country: "Poland", name: "Gdansk (GDN) Gdansk Lech Walesa Airport", iata: "GDN" },
+{ country: "Portugal", name: "Lisbon (LIS) Lisbon Humberto Delgado Airport", iata: "LIS" },
+{ country: "Portugal", name: "Porto (OPO) Porto Francisco Sa Carneiro Airport", iata: "OPO" },
+{ country: "Portugal", name: "Faro (FAO) Faro Airport", iata: "FAO" },
+{ country: "Portugal", name: "Funchal (FNC) Madeira Airport", iata: "FNC" },
+{ country: "Qatar", name: "Doha (DOH) Hamad International Airport", iata: "DOH" },
+{ country: "Romania", name: "Bucharest (OTP) Henri Coanda International Airport", iata: "OTP" },
+{ country: "Romania", name: "Cluj-Napoca (CLJ) Cluj-Napoca International Airport", iata: "CLJ" },
+{ country: "Russia", name: "Moscow (SVO) Sheremetyevo International Airport", iata: "SVO" },
+{ country: "Russia", name: "Moscow (DME) Domodedovo International Airport", iata: "DME" },
+{ country: "Russia", name: "St. Petersburg(LED) Pulkovo Airport", iata: "LED" },
+{ country: "Rwanda", name: "Kigali (KGL) Kigali International Airport", iata: "KGL" },
+{ country: "Saint Kitts and Nevis", name: "Basseterre (SKB) Robert L. Bradshaw International Airport", iata: "SKB" },
+{ country: "Saint Lucia", name: "Vieux Fort(UVF) Hewanorra International Airport", iata: "UVF" },
+{ country: "Saint Vincent and the Grenadines", name: "Kingstown (SVD) Argyle International Airport", iata: "SVD" },
+{ country: "Samoa", name: "Apia (APW) Faleolo International Airport", iata: "APW" },
+{ country: "Sao Tome and Principe", name: "Sao Tome(TMS) Sao Tome International Airport", iata: "TMS" },
+{ country: "Saudi Arabia", name: "Riyadh (RUH) King Khalid International Airport", iata: "RUH" },
+{ country: "Saudi Arabia", name: "Jeddah (JED) King Abdulaziz International Airport", iata: "JED" },
+{ country: "Saudi Arabia", name: "Medina (MED) Prince Mohammad bin Abdulaziz International Airport", iata: "MED" },
+{ country: "Senegal", name: "Dakar (DSS) Blaise Diagne International Airport", iata: "DSS" },
+{ country: "Serbia", name: "Belgrade (BEG) Belgrade Nikola Tesla Airport", iata: "BEG" },
+{ country: "Seychelles", name: "Victoria (SEZ) Seychelles International Airport", iata: "SEZ" },
+{ country: "Sierra Leone", name: "Freetown (FNA) Lungi International Airport", iata: "FNA" },
+{ country: "Singapore", name: "Singapore (SIN) Changi International Airport", iata: "SIN" },
+{ country: "Slovakia", name: "Bratislava (BTS) Bratislava Airport", iata: "BTS" },
+{ country: "Slovenia", name: "Ljubljana (LJU) Ljubljana Joze Pucnik Airport", iata: "LJU" },
+{ country: "Solomon Islands", name: "Honiara (HIR) Honiara International Airport", iata: "HIR" },
+{ country: "Somalia", name: "Mogadishu (MGQ) Aden Adde International Airport", iata: "MGQ" },
+{ country: "South Africa", name: "Johannesburg (JNB) O.R. Tambo International Airport", iata: "JNB" },
+{ country: "South Africa", name: "Cape Town(CPT) Cape Town International Airport", iata: "CPT" },
+{ country: "South Africa", name: "Durban (DUR) King Shaka International Airport", iata: "DUR" },
+{ country: "South Korea", name: "Seoul (ICN) Incheon International Airport", iata: "ICN" },
+{ country: "South Korea", name: "Seoul (GMP) Gimpo International Airport", iata: "GMP" },
+{ country: "South Sudan", name: "Juba (JUB) Juba International Airport", iata: "JUB" },
+{ country: "Spain", name: "Madrid (MAD) Madrid Barajas Airport", iata: "MAD" },
+{ country: "Spain", name: "Barcelona (BCN) Barcelona El Prat Airport", iata: "BCN" },
+{ country: "Spain", name: "Palma-de-Mallorca (PMI) Palma de Mallorca Airport", iata: "PMI" },
+{ country: "Spain", name: "Malaga (AGP) Malaga-Costa del Sol Airport", iata: "AGP" },
+{ country: "Spain", name: "Gran Canaria(LPA) Gran Canaria Airport", iata: "LPA" },
+{ country: "Spain", name: "Seville (SVQ) Seville Airport", iata: "SVQ" },
+{ country: "Sri Lanka", name: "Colombo (CMB) Bandaranaike International Airport", iata: "CMB" },
+{ country: "Sudan", name: "Khartoum (KRT) Khartoum International Airport", iata: "KRT" },
+{ country: "Suriname", name: "Paramaribo (PBM) Johan Adolf Pengel International Airport", iata: "PBM" },
+{ country: "Sweden", name: "Stockholm (ARN) Stockholm Arlanda Airport", iata: "ARN" },
+{ country: "Sweden", name: "Gothenburg (GOT) Gothenburg Landvetter Airport", iata: "GOT" },
+{ country: "Sweden", name: "Malmo (MMX) Malmo Airport", iata: "MMX" },
+{ country: "Switzerland", name: "Zurich (ZRH) Zurich Airport", iata: "ZRH" },
+{ country: "Switzerland", name: "Geneva (GVA) Geneva Airport", iata: "GVA" },
+{ country: "Switzerland", name: "Basel (BSL) Basel-Mulhouse Airport", iata: "BSL" },
+{ country: "Syria", name: "Damascus (DAM) Damascus International Airport", iata: "DAM" },
+{ country: "Taiwan", name: "Taipei (TPE) Taoyuan International Airport", iata: "TPE" },
+{ country: "Tajikistan", name: "Dushanbe (DYU) Dushanbe International Airport", iata: "DYU" },
+{ country: "Tanzania", name: "Dar-es Salaam(DAR) Julius Nyerere International Airport", iata: "DAR" },
+{ country: "Thailand", name: "Bangkok (BKK) Suvarnabhumi Airport", iata: "BKK" },
+{ country: "Thailand", name: "Bangkok (DMK) Don Mueang International Airport", iata: "DMK" },
+{ country: "Togo", name: "Lome (LFW) Gnassingbe Eyadema International Airport", iata: "LFW" },
+{ country: "Tonga", name: "Nuku'alofa (TBU) Fua'amotu International Airport", iata: "TBU" },
+{ country: "Trinidad and Tobago", name: "Piarco (POS) Piarco International Airport", iata: "POS" },
+{ country: "Tunisia", name: "Tunis (TUN) Tunis-Carthage International Airport", iata: "TUN" },
+{ country: "Turkey", name: "Istanbul (IST) Istanbul Airport", iata: "IST" },
+{ country: "Turkey", name: "Istanbul (SAW) Sabiha Gokcen International Airport", iata: "SAW" },
+{ country: "Turkmenistan", name: "Ashgabat (ASB) Ashgabat International Airport", iata: "ASB" },
+{ country: "Tuvalu", name: "Funafuti (FUN) Funafuti International Airport", iata: "FUN" },
+{ country: "Uganda", name: "Entebbe (EBB) Entebbe International Airport", iata: "EBB" },
+{ country: "Ukraine", name: "Kyiv (KBP) Boryspil International Airport", iata: "KBP" },
+{ country: "United Arab Emirates", name: "Dubai (DXB) Dubai International Airport", iata: "DXB" },
+{ country: "United Arab Emirates", name: "Abu Dhabi(AUH) Abu Dhabi International Airport", iata: "AUH" },
+{ country: "United Arab Emirates", name: "Sharjah (SHJ) Sharjah International Airport", iata: "SHJ" },
+{ country: "United Kingdom", name: "London (LHR) London Heathrow Airport", iata: "LHR" },
+{ country: "United Kingdom", name: "London (LGW) London Gatwick Airport", iata: "LGW" },
+{ country: "United Kingdom", name: "Manchester (MAN) Manchester Airport", iata: "MAN" },
+{ country: "United Kingdom", name: "Edinburgh (EDI) Edinburgh Airport", iata: "EDI" },
+{ country: "United Kingdom", name: "Birmingham (BHX) Birmingham Airport", iata: "BHX" },
+{ country: "United Kingdom", name: "Glasgow (GLA) Glasgow International Airport", iata: "GLA" },
+{ country: "United Kingdom", name: "Bristol (BRS) Bristol Airport", iata: "BRS" },
+{ country: "United States", name: "Atlanta (ATL) Hartsfield-Jackson Atlanta International Airport", iata: "ATL" },
+{ country: "United States", name: "Los Angeles(LAX) Los Angeles International Airport", iata: "LAX" },
+{ country: "United States", name: "Chicago (ORD) Chicago O'Hare International Airport", iata: "ORD" },
+{ country: "United States", name: "New York(JFK) John F. Kennedy International Airport", iata: "JFK" },
+{ country: "United States", name: "Dallas (DFW) Dallas/Fort Worth International Airport", iata: "DFW" },
+{ country: "United States", name: "San Francisco(SFO) San Francisco International Airport", iata: "SFO" },
+{ country: "United States", name: "Denver (DEN) Denver International Airport", iata: "DEN" },
+{ country: "United States", name: "Seattle (SEA) Seattle-Tacoma International Airport", iata: "SEA" },
+{ country: "United States", name: "Miami (MIA) Miami International Airport", iata: "MIA" },
+{ country: "United States", name: "Las Vegas(LAS) Las Vegas McCarran International Airport", iata: "LAS" },
+{ country: "United States", name: "Orlando (MCO) Orlando International Airport", iata: "MCO" },
+{ country: "United States", name: "Boston (BOS) Boston Logan International Airport", iata: "BOS" },
+{ country: "United States", name: "Houston (IAH) Houston George Bush Intercontinental Airport", iata: "IAH" },
+{ country: "Uruguay", name: "Montevideo (MVD) Carrasco International Airport", iata: "MVD" },
+{ country: "Uzbekistan", name: "Tashkent (TAS) Tashkent International Airport", iata: "TAS" },
+{ country: "Vanuatu", name: "Port Vila(VLI) Bauerfield International Airport", iata: "VLI" },
+{ country: "Venezuela", name: "Caracas (CCS) Simon Bolivar International Airport", iata: "CCS" },
+{ country: "Vietnam", name: "Hanoi (HAN) Noi Bai International Airport", iata: "HAN" },
+{ country: "Vietnam", name: "Ho-Chi-Minh City(SGN) Tan Son Nhat International Airport", iata: "SGN" },
+{ country: "Yemen", name: "Sana'a (SAH) Sana'a International Airport", iata: "SAH" },
+{ country: "Zambia", name: "Lusaka (LUN) Kenneth Kaunda International Airport", iata: "LUN" },
+{ country: "Zimbabwe", name: "Harare (HRE) Robert Gabriel Mugabe International Airport", iata: "HRE" },
+
+
+      
+      
+
+      ];
+
+      function showSuggestions(inputElement, suggestionsElement, airports) {
+        inputElement.addEventListener("input", () => {
+          const query = inputElement.value.toLowerCase();
+          suggestionsElement.innerHTML = "";
+          if (query) {
+            const filteredAirports = airports.filter((airport) =>
+              airport.name.toLowerCase().includes(query)
+            );
+
+            filteredAirports.forEach((airport) => {
+              const div = document.createElement("div");
+              div.textContent = `${airport.name} (${airport.iata})`;
+              div.onclick = () => {
+                inputElement.value = airport.name;
+                suggestionsElement.innerHTML = "";
+                suggestionsElement.style.display = "none";
+              };
+              suggestionsElement.appendChild(div);
+            });
+
+            suggestionsElement.style.display = filteredAirports.length
+              ? "block"
+              : "none";
+          } else {
+            suggestionsElement.style.display = "none";
+          }
+        });
+
+        inputElement.addEventListener("focus", () => {
+          if (suggestionsElement.childNodes.length) {
+            suggestionsElement.style.display = "block";
+          }
+        });
+
+        inputElement.addEventListener("blur", () => {
+          setTimeout(() => {
+            suggestionsElement.style.display = "none";
+          }, 150);
+        });
+      }
+
+      //const leavingFromInput = document.getElementById('leavingFrom');
+      const leavingFromSuggestions = document.getElementById(
+        "leavingFromSuggestions"
+      );
+      //const destinationInput = document.getElementById('destination');
+      const destinationSuggestions = document.getElementById(
+        "destinationSuggestions"
+      );
+
+      showSuggestions(leavingFromInput, leavingFromSuggestions, airports);
+      showSuggestions(destinationInput, destinationSuggestions, airports);
+    </script>
+
+
+
+<script>
+  // connecting flight 1 suggestion script
+  const suggestionsConnt1 = [
+    
+"Kabul (KBL) Kabul Hamid Karzai International Airport",
+"Tirana (TIA) Tirana International Airport",
+"Algiers (ALG) Houari Boumediene Airport",
+"Luanda (LAD) Quatro de Fevereiro Airport",
+"Antigua (ANU) V.C. Bird International Airport",
+"Buenos Aires(EZE) Ezeiza Ministro Pistarini International Airport",
+"Yerevan (EVN) Zvartnots International Airport",
+"Sydney (SYD) Sydney Kingsford Smith Airport",
+"Vienna (VIE) Vienna International Airport",
+"Salzburg (SZG) Salzburg Airport",
+"Innsbruck (INN) Innsbruck Airport",
+"Baku (GYD) Heydar Aliyev International Airport",
+"Nassau (NAS) Lynden Pindling International Airport",
+"Manama (BAH) Bahrain International Airport",
+"Dhaka (DAC) Shahjalal International Airport",
+"Bridgetown (BGI) Grantley Adams International Airport",
+"Minsk (MSQ) Minsk National Airport",
+"Brussels (BRU) Brussels Airport",
+"Antwerp (ANR) Antwerp International Airport",
+"Liege (LGG) Liege Airport",
+"Belize City(BZE) Philip S. W. Goldson International Airport",
+"Cotonou (COO) Cotonou Cadjehoun Airport",
+"Paro (PBH) Paro International Airport",
+"Santa Cruz(VVI) Viru Viru International Airport",
+"Sarajevo (SJJ) Sarajevo International Airport",
+"Gaborone (GBE) Sir Seretse Khama International Airport",
+"Sao Paulo(GRU) Sao Paulo-Guarulhos International Airport",
+"Bandar-Seri Begawan(BWN) Brunei International Airport",
+"Sofia (SOF) Sofia Airport",
+"Varna (VAR) Varna Airport",
+"Burgas (BOJ) Burgas Airport",
+"Ouagadougou (OUA) Ouagadougou Airport",
+"Bujumbura (BJM) Bujumbura International Airport",
+"Espargos (SID) Amilcar Cabral International Airport",
+"Phnom Penh(PNH) Phnom Penh International Airport",
+"Douala (DLA) Douala International Airport",
+"Toronto (YYZ) Toronto Pearson International Airport",
+"Vancouver (YVR) Vancouver International Airport",
+"Montreal (YUL) Montreal-Trudeau International Airport",
+"Bangui (BGF) Bangui M'Poko International Airport",
+"N'Djamena (NDJ) N'Djamena International Airport",
+"Santiago (SCL) Arturo Merino Benitez International Airport",
+"Beijing (PEK) Beijing Capital International Airport",
+"Shanghai (PVG) Shanghai Pudong International Airport",
+"Guangzhou (CAN) Guangzhou Baiyun International Airport",
+"Bogota (BOG) El Dorado International Airport",
+"Moroni (HAH) Prince Said Ibrahim International Airport",
+"Brazzaville (BZV) Maya-Maya Airport",
+"Kinshasa (FIH) N'Djili International Airport",
+"San Jose(SJO) Juan Santamaria International Airport",
+"Zagreb (ZAG) Zagreb Franjo Tudman Airport",
+"Dubrovnik (DBV) Dubrovnik Airport",
+"Split (SPU) Split Airport",
+"Havana (HAV) Jose Marti International Airport",
+"Larnaca (LCA) Larnaca International Airport",
+"Paphos (PFO) Paphos International Airport",
+"Prague (PRG) Vaclav Havel Airport Prague",
+"Brno (BRQ) Brno-Turany Airport",
+"Ostrava (OSR) Ostrava Airport",
+"Copenhagen (CPH) Copenhagen Airport",
+"Billund (BLL) Billund Airport",
+"Aalborg (AAL) Aalborg Airport",
+"Djibouti (JIB) Djibouti-Ambouli International Airport",
+"Marigot (DOM) Douglas-Charles Airport",
+"Santo Domingo(SDQ) Las Americas International Airport",
+"Quito (UIO) Mariscal Sucre International Airport",
+"Cairo (CAI) Cairo International Airport",
+"San Salvador(SAL) Monsenor Oscar Arnulfo Romero International Airport",
+"Malabo (SSG) Malabo International Airport",
+"Asmara (ASM) Asmara International Airport",
+"Tallinn (TLL) Tallinn Lennart Meri Airport",
+"Manzini (SHO) King Mswati III International Airport",
+"Addis Ababa(ADD) Addis Ababa Bole International Airport",
+"Nadi (NAN) Nadi International Airport",
+"Helsinki (HEL) Helsinki-Vantaa Airport",
+"Oulu (OUL) Oulu Airport",
+"Tampere (TMP) Tampere-Pirkkala Airport",
+"Paris (CDG) Paris Charles de Gaulle Airport",
+"Paris (ORY) Paris Orly Airport",
+"Nice (NCE) Nice Cote d'Azur Airport",
+"Lyon (LYS) Lyon Saint-Exupery Airport",
+"Marseille (MRS) Marseille Provence Airport",
+"Toulouse (TLS) Toulouse Blagnac Airport",
+"Bordeaux (BOD) Bordeaux-Merignac Airport",
+"Nantes (NTE) Nantes Atlantique Airport",
+"Libreville (LBV) Libreville International Airport",
+"Banjul (BJL) Banjul International Airport",
+"Tbilisi (TBS) Tbilisi International Airport",
+"Frankfurt (FRA) Frankfurt am Main Airport",
+"Munich (MUC) Munich Airport",
+"Berlin (BER) Berlin Brandenburg Airport",
+"Dusseldorf (DUS) Dusseldorf Airport",
+"Hamburg (HAM) Hamburg Airport",
+"Stuttgart (STR) Stuttgart Airport",
+"Cologne/Bonn (CGN) Cologne Bonn Airport",
+"Accra (ACC) Kotoka International Airport",
+"Athens (ATH) Athens International Airport",
+"Thessaloniki (SKG) Thessaloniki Airport",
+"Heraklion (HER) Heraklion Airport",
+"Rhodes (RHO) Rhodes Diagoras International Airport",
+"St. George's(GND) Maurice Bishop International Airport",
+"Guatemala City(GUA) La Aurora International Airport",
+"Conakry (CKY) Conakry International Airport",
+"Bissau (OXB) Osvaldo Vieira International Airport",
+"Georgetown (GEO) Cheddi Jagan International Airport",
+"Port-au-Prince (PAP) Toussaint Louverture International Airport",
+"SanPedro Sula(SAP) Ramon Villeda Morales International Airport",
+"Budapest (BUD) Budapest Ferenc Liszt International Airport",
+"Reykjavik (KEF) Keflavik International Airport",
+"New Delhi(DEL) Indira Gandhi International Airport",
+"Mumbai (BOM) Chhatrapati Shivaji Maharaj International Airport",
+"Bengaluru (BLR) Kempegowda International Airport",
+"Kolkata (CCU) Netaji Subhas Chandra Bose International Airport",
+"Chennai (MAA) Chennai International Airport",
+"Hyderabad (HYD) Rajiv Gandhi International Airport",
+"Kochi (COK) Cochin International Airport",
+"Ahmedabad (AMD) Sardar Vallabhbhai Patel International Airport",
+"Goa (GOI) Goa International Airport",
+"Pune (PNQ) Pune International Airport",
+"Thiruvananthapuram (TRV) Trivandrum International Airport",
+"Mangalore (IXE) Mangalore International Airport",
+"Madurai (IXM) Madurai International Airport",
+"Tiruchirappalli (TRZ) Tiruchirappalli International Airport",
+"Bagdogra (IXB) Bagdogra International Airport",
+"Bhubaneswar (BBI) Biju Patnaik International Airport",
+"Guwahati (GAU) Lokpriya Gopinath Bordoloi International Airport",
+"Imphal (IMF) Imphal International Airport",
+"Port Blair(IXZ) Veer Savarkar International Airport",
+"Kannur (CNN) Kannur International Airport",
+"Jakarta (CGK) Soekarno-Hatta International Airport",
+"Bali (DPS) Ngurah Rai International Airport",
+"Tehran (IKA) Tehran Imam Khomeini International Airport",
+"Baghdad (BGW) Baghdad International Airport",
+"Dublin (DUB) Dublin Airport",
+"Cork (ORK) Cork Airport",
+"Shannon (SNN) Shannon Airport",
+"Tel Aviv(TLV) Ben Gurion International Airport",
+"Rome (FCO) Leonardo da Vinci-Fiumicino Airport",
+"Milan (MXP) Milan Malpensa Airport",
+"Venice (VCE) Venice Marco Polo Airport",
+"Naples (NAP) Naples International Airport",
+"Bologna (BLQ) Bologna Airport",
+"Florence (FLR) Florence Airport",
+"Kingston (KIN) Norman Manley International Airport",
+"Montego Bay(MBJ) Sangster International Airport",
+"Tokyo (HND) Tokyo Haneda International Airport",
+"Tokyo (NRT) Narita International Airport",
+"Osaka (KIX) Kansai International Airport",
+"Amman (AMM) Queen Alia International Airport",
+"Nur-Sultan (NQZ) Nursultan Nazarbayev International Airport",
+"Almaty (ALA) Almaty International Airport",
+"Nairobi (NBO) Jomo Kenyatta International Airport",
+"Tarawa (TRW) Bonriki International Airport",
+"Kuwait City (KWI) Kuwait International Airport",
+"Bishkek (FRU) Manas International Airport",
+"Vientiane (VTE) Wattay International Airport",
+"Riga (RIX) Riga International Airport",
+"Beirut (BEY) Beirut Rafic Hariri International Airport",
+"Maseru (MSU) Moshoeshoe I International Airport",
+"Monrovia (ROB) Roberts International Airport",
+"Tripoli (MJI) Mitiga International Airport",
+"Vilnius (VNO) Vilnius International Airport",
+"Kaunas (KUN) Kaunas International Airport",
+"Palanga (PLQ) Palanga International Airport",
+"Luxembourg City(LUX) Luxembourg Findel Airport",
+"Antananarivo (TNR) Ivato International Airport",
+"Lilongwe (LLW) Lilongwe International Airport",
+"Kuala Lumpur(KUL) Kuala Lumpur International Airport",
+"Male (MLE) Velana International Airport",
+"Bamako (BKO) Bamako-Senou International Airport",
+"Luqa (MLA) Malta International Airport",
+"Majuro (MAJ) Amata Kabua International Airport",
+"Nouakchott (NKC) Nouakchott-Oumtounsy International Airport",
+"Port Louis(MRU) Sir Seewoosagur Ramgoolam International Airport",
+"Mexico City(MEX) Mexico City International Airport",
+"Pohnpei (PNI) Pohnpei International Airport",
+"Chisinau (KIV) Chisinau International Airport",
+"Ulaanbaatar (ULN) Chinggis Khaan International Airport",
+"Podgorica (TGD) Podgorica Airport",
+"Casablanca (CMN) Mohammed V International Airport",
+"Maputo (MPM) Maputo International Airport",
+"Yangon (RGN) Yangon International Airport",
+"Windhoek (WDH) Hosea Kutako International Airport",
+"Yaren (INU) Nauru International Airport",
+"Kathmandu (KTM) Tribhuvan International Airport",
+"Amsterdam (AMS) Amsterdam Schiphol Airport",
+"Eindhoven (EIN) Eindhoven Airport",
+"Rotterdam (RTM) Rotterdam The Hague Airport",
+"Auckland (AKL) Auckland International Airport",
+"Managua (MGA) Augusto C. Sandino International Airport",
+"Niamey (NIM) Diori Hamani International Airport",
+"Lagos (LOS) Murtala Muhammed International Airport",
+"Skopje (SKP) Skopje International Airport",
+"Oslo (OSL) Oslo Gardermoen Airport",
+"Muscat (MCT) Muscat International Airport",
+"Koror (ROR) Roman Tmetuchl International Airport",
+"Panama City(PTY) Tocumen International Airport",
+"Port Moresby(POM) Jacksons International Airport",
+"Asuncion (ASU) Silvio Pettirossi International Airport",
+"Lima (LIM) Jorge Chavez International Airport",
+"Manila (MNL) Ninoy Aquino International Airport",
+"Warsaw (WAW) Warsaw Chopin Airport",
+"Krakow (KRK) Krakow John Paul II International Airport",
+"Gdansk (GDN) Gdansk Lech Walesa Airport",
+"Lisbon (LIS) Lisbon Humberto Delgado Airport",
+"Porto (OPO) Porto Francisco Sa Carneiro Airport",
+"Faro (FAO) Faro Airport",
+"Funchal (FNC) Madeira Airport",
+"Doha (DOH) Hamad International Airport",
+"Bucharest (OTP) Henri Coanda International Airport",
+"Cluj-Napoca (CLJ) Cluj-Napoca International Airport",
+"Moscow (SVO) Sheremetyevo International Airport",
+"Moscow (DME) Domodedovo International Airport",
+"St. Petersburg(LED) Pulkovo Airport",
+"Kigali (KGL) Kigali International Airport",
+"Basseterre (SKB) Robert L. Bradshaw International Airport",
+"Vieux Fort(UVF) Hewanorra International Airport",
+"Kingstown (SVD) Argyle International Airport",
+"Apia (APW) Faleolo International Airport",
+"Sao Tome(TMS) Sao Tome International Airport",
+"Riyadh (RUH) King Khalid International Airport",
+"Jeddah (JED) King Abdulaziz International Airport",
+"Medina (MED) Prince Mohammad bin Abdulaziz International Airport",
+"Dakar (DSS) Blaise Diagne International Airport",
+"Belgrade (BEG) Belgrade Nikola Tesla Airport",
+"Victoria (SEZ) Seychelles International Airport",
+"Freetown (FNA) Lungi International Airport",
+"Singapore (SIN) Changi International Airport",
+"Bratislava (BTS) Bratislava Airport",
+"Ljubljana (LJU) Ljubljana Joze Pucnik Airport",
+"Honiara (HIR) Honiara International Airport",
+"Mogadishu (MGQ) Aden Adde International Airport",
+"Johannesburg (JNB) O.R. Tambo International Airport",
+"Cape Town(CPT) Cape Town International Airport",
+"Durban (DUR) King Shaka International Airport",
+"Seoul (ICN) Incheon International Airport",
+"Seoul (GMP) Gimpo International Airport",
+"Juba (JUB) Juba International Airport",
+"Madrid (MAD) Madrid Barajas Airport",
+"Barcelona (BCN) Barcelona El Prat Airport",
+"Palma-de Mallorca(PMI) Palma de Mallorca Airport",
+"Malaga (AGP) Malaga-Costa del Sol Airport",
+"Gran Canaria(LPA) Gran Canaria Airport",
+"Seville (SVQ) Seville Airport",
+"Colombo (CMB) Bandaranaike International Airport",
+"Khartoum (KRT) Khartoum International Airport",
+"Paramaribo (PBM) Johan Adolf Pengel International Airport",
+"Stockholm (ARN) Stockholm Arlanda Airport",
+"Gothenburg (GOT) Gothenburg Landvetter Airport",
+"Malmo (MMX) Malmo Airport",
+"Zurich (ZRH) Zurich Airport",
+"Geneva (GVA) Geneva Airport",
+"Basel (BSL) Basel-Mulhouse Airport",
+"Damascus (DAM) Damascus International Airport",
+"Taipei (TPE) Taoyuan International Airport",
+"Dushanbe (DYU) Dushanbe International Airport",
+"Dar-es Salaam(DAR) Julius Nyerere International Airport",
+"Bangkok (BKK) Suvarnabhumi Airport",
+"Bangkok (DMK) Don Mueang International Airport",
+"Lome (LFW) Gnassingbe Eyadema International Airport",
+"Nuku`alofa (TBU) Fua`amotu International Airport",
+"Piarco Spain(POS) Piarco International Airport",
+"Tunis (TUN) Tunis-Carthage International Airport",
+"Istanbul (IST) Istanbul Airport",
+"Istanbul (SAW) Sabiha Gokcen International Airport",
+"Ashgabat (ASB) Ashgabat International Airport",
+"Funafuti (FUN) Funafuti International Airport",
+"Entebbe (EBB) Entebbe International Airport",
+"Kyiv (KBP) Boryspil International Airport",
+"Dubai (DXB) Dubai International Airport",
+"Abu Dhabi(AUH) Abu Dhabi International Airport",
+"Sharjah (SHJ) Sharjah International Airport",
+"London (LHR) London Heathrow Airport",
+"London (LGW) London Gatwick Airport",
+"Manchester (MAN) Manchester Airport",
+"Edinburgh (EDI) Edinburgh Airport",
+"Birmingham (BHX) Birmingham Airport",
+"Glasgow (GLA) Glasgow International Airport",
+"Bristol (BRS) Bristol Airport",
+"Atlanta (ATL) Hartsfield-Jackson Atlanta International Airport",
+"Los Angeles(LAX) Los Angeles International Airport",
+"Chicago (ORD) Chicago O'Hare International Airport",
+"New York(JFK) John F. Kennedy International Airport",
+"Dallas (DFW) Dallas/Fort Worth International Airport",
+"San Francisco(SFO) San Francisco International Airport",
+"Denver (DEN) Denver International Airport",
+"Seattle (SEA) Seattle-Tacoma International Airport",
+"Miami (MIA) Miami International Airport",
+"Las Vegas(LAS) Las Vegas McCarran International Airport",
+"Orlando (MCO) Orlando International Airport",
+"Boston (BOS) Boston Logan International Airport",
+"Houston (IAH) Houston George Bush Intercontinental Airport",
+"Montevideo (MVD) Carrasco International Airport",
+"Tashkent (TAS) Tashkent International Airport",
+"Port Vila(VLI) Bauerfield International Airport",
+"Caracas (CCS) Simon Bolivar International Airport",
+"Hanoi (HAN) Noi Bai International Airport",
+"Ho-Chi-Minh City(SGN) Tan Son Nhat International Airport",
+"Sana'a (SAH) Sana'a International Airport",
+"Lusaka (LUN) Kenneth Kaunda International Airport",
+"Harare (HRE) Robert Gabriel Mugabe International Airport",
+
+
+
+  ];
+
+  const inputField = document.getElementById("connectingLeavingFrom");
+  const suggestionBox = document.getElementById("suggestion-box-Connet-1");
+
+  // Add event listener for input field
+  inputField.addEventListener("input", function () {
+      const userInput = this.value.toLowerCase();
+      suggestionBox.innerHTML = ""; // Clear previous suggestions
+      suggestionBox.classList.add("hidden"); // Hide suggestion box by default
+
+      if (userInput) {
+          // Filter suggestions based on user input
+          const filteredSuggestions = suggestionsConnt1.filter(suggestion =>
+              suggestion.toLowerCase().includes(userInput)
+          );
+
+          // If there are suggestions, display them
+          if (filteredSuggestions.length > 0) {
+              filteredSuggestions.forEach(suggestion => {
+                  const suggestionItem = document.createElement("div");
+                  suggestionItem.textContent = suggestion;
+                 
+
+                  
+                  suggestionItem.classList.add("p-2", "cursor-pointer");
+
+                  // Add hover effect
+                  suggestionItem.addEventListener("mouseover", function () {
+                      suggestionItem.classList.add("bg-gray-200");
+                  });
+
+                  suggestionItem.addEventListener("mouseout", function () {
+                      suggestionItem.classList.remove("bg-gray-200");
+                  });
+
+                 // Fill input with suggestion on click
+                 suggestionItem.addEventListener("click", function () {
+                      connectingLeavingFrom.value = suggestion;  // Set the selected suggestion as the input value
+                      console.log(connectingLeavingFrom.value)
+
+                      const connectingLeavingFromFullText = connectingLeavingFrom.value.trim();
+                     const connectingLeavingFromFirstWord = connectingLeavingFromFullText.split(" ")[0];
+                     const connectingLeavingFromSecondWord = connectingLeavingFromFullText.split(" ")[1];
+                     firstFlightLabel.textContent = connectingLeavingFromFirstWord +" "+connectingLeavingFromSecondWord;
+
+
+
+                      updateFromLabel2();
+
+                      
+      
+    
+
+        
+
+
+
+       
+
+                      suggestionBox.innerHTML = ""; // Clear suggestions
+                      suggestionBox.classList.add("hidden"); // Hide suggestion box
+
+                      //updateConnectingFromLabel();
+                      // updateConnectingFromLabel();
+                      
+                      // updateFromLabel2();
+                  });
+
+                  
+
+                  suggestionBox.appendChild(suggestionItem);
+                  
+              });
+             
+
+              suggestionBox.classList.remove("hidden"); // Show suggestion box
+              
+          }
+      }
+  });
+
+  // Hide suggestion box when clicking outside
+  document.addEventListener("click", function (event) {
+      if (!inputField.contains(event.target)) {
+          suggestionBox.innerHTML = ""; // Clear suggestions
+          suggestionBox.classList.add("hidden"); // Hide suggestion box
+      }
+  });
+</script>
+
+<script>
+  // List of airline suggestions
+  const airline1Suggestions = [
+
+"Aegean Airlines",
+"Aer Lingus",
+"Air Baltic",
+"Air Dolomiti",
+"Air Europa",
+"Air France",
+"Air Malta",
+"Air Nostrum",
+"Air Serbia",
+"ITA Airways",
+"Austrian Airlines",
+"Blue Air",
+"British Airways",
+"Brussels Airlines",
+"Condor",
+"Croatia Airlines",
+"Czech Airlines",
+"easyJet",
+"Eurowings",
+"Finnair",
+"Iberia",
+"Jet2.com",
+"KLM Royal Dutch Airlines",
+"LOT Polish Airlines",
+"Lufthansa",
+"Luxair",
+"Norwegian Air Shuttle",
+"Ryanair",
+"SAS-Scandinavian Airlines",
+"Swiss International Air Lines",
+"TAP Air Portugal",
+"Transavia",
+"TUI Airways",
+"Virgin Atlantic",
+"Vueling",
+"Wizz Air",
+"Aeroflot",
+"Air Canada",
+"Air India",
+"All Nippon Airways (ANA)",
+"American Airlines",
+"Asiana Airlines",
+"Cathay Pacific",
+"Delta Air Lines",
+"EgyptAir",
+"El Al Israel Airlines",
+"Emirates",
+"Etihad Airways",
+"Ethiopian Airlines",
+"Japan Airlines",
+"Kenya Airways",
+"Korean Air",
+"Middle East Airlines (MEA)",
+"Qantas",
+"Qatar Airways",
+"Royal Air Maroc",
+"Singapore Airlines",
+"South African Airways",
+"SriLankan Airlines",
+"Thai Airways",
+"Turkish Airlines",
+"United Airlines",
+"Uzbekistan Airways",
+"Vietnam Airlines",
+"WestJet",
+"China Eastern Airlines",
+"China Southern Airlines",
+"Hainan Airlines",
+"Garuda Indonesia",
+"Air Transat",
+"Air Mauritius",
+"Pakistan International Airlines",
+"Philippine Airlines",
+"Saudia",
+"Oman Air",
+
+
+  ];
+
+  const airlineInput2 = document.getElementById("airline2");
+  const suggestionsAirline1 = document.getElementById("suggestionsAirline1");
+
+  // Add event listener to the input field for airline suggestions
+  airlineInput2.addEventListener("input", function () {
+    const userInput = this.value.toLowerCase();
+    suggestionsAirline1.innerHTML = ""; // Clear previous suggestions
+    suggestionsAirline1.style.display = "none"; // Hide suggestions by default
+
+    if (userInput) {
+      // Filter airline suggestions based on user input
+      const filteredAirlines = airline1Suggestions.filter(airline =>
+        airline.toLowerCase().includes(userInput)
+      );
+
+      // If there are filtered suggestions, show them
+      if (filteredAirlines.length > 0) {
+        filteredAirlines.forEach(airline => {
+          const suggestionItem = document.createElement("div");
+          suggestionItem.textContent = airline;
+          suggestionItem.classList.add("p-2", "cursor-pointer");
+
+          // Add hover effect
+          suggestionItem.addEventListener("mouseover", function () {
+            suggestionItem.style.backgroundColor = "#f0f0f0";
+          });
+          suggestionItem.addEventListener("mouseout", function () {
+            suggestionItem.style.backgroundColor = "#fff";
+          });
+
+          // Fill input with clicked suggestion
+          suggestionItem.addEventListener("click", function () {
+            airlineInput2.value = airline;
+            suggestionsAirline1.innerHTML = ""; // Clear suggestions
+            suggestionsAirline1.style.display = "none"; // Hide suggestion box
+          });
+
+          suggestionsAirline1.appendChild(suggestionItem);
+        });
+
+        suggestionsAirline1.style.display = "block"; // Show suggestions
+      }
+    }
+  });
+
+  // Hide suggestion box when clicking outside
+  document.addEventListener("click", function (event) {
+    if (!airlineInput2.contains(event.target) && !suggestionsAirline1.contains(event.target)) {
+      suggestionsAirline1.innerHTML = ""; // Clear suggestions
+      suggestionsAirline1.style.display = "none"; // Hide suggestion box
+    }
+  });
+</script>
+
+    <!-- validation script -->
+    <!-- Include SignaturePad.js before this script -->
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+
+   
+  </body>
+</html>

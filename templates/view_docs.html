@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Files</title>
+    <style>
+        .content-container {
+            margin: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+        .content-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .content-list li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .content-list li:hover {
+            background-color: #f0f0f0;
+        }
+        .content-container h1 {
+            text-align: center;
+            color: #333;
+        }
+        .file-preview {
+            margin-top: 8px;
+        }
+        @media (max-width: 600px) {
+            .content-container {
+                margin: 10px;
+                padding: 10px;
+            }
+            .content-list li {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <h1>Uploaded Files</h1>
+        <ul class="content-list">
+                {% for file in files %}
+                    <li>
+                        <strong>{{ file }}</strong><br>
+                        <a href="{{ url_for('download_doc', flight_id=flight_id, filename=file) }}" target="_blank">
+                            {% if file.lower().endswith('.pdf') %}
+                                📄 View PDF
+                            {% elif file.lower().endswith(('.png', '.jpg', '.jpeg')) %}
+                                <img src="{{ url_for('download_doc', flight_id=flight_id, filename=file) }}" alt="Image" style="max-width: 150px; max-height: 150px; margin-top: 5px;">
+                            {% else %}
+                                ⬇️ Download File
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+
+                {% if signed_file %}
+                    <li>
+                        <strong>{{ signed_file }}</strong><br>
+                        <a href="{{ url_for('download_signed_doc', flight_id=flight_id) }}" target="_blank">
+                            📄 Download Final Consent Form (Signed DOCX)
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+
+    </div>
+</body>
+</html>

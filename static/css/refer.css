@@ -1,0 +1,510 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Set the whole background color to white */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f2f7f5;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #e0e0e0;
+}
+
+.language-login {
+    display: flex;
+    align-items: center;
+}
+
+.language-select {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.language-select img {
+    height: 25px;
+    margin-right: 25px;
+}
+
+.login {
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.refer-friend-section {
+    position: relative;
+    background-image: url('assets/refer1.png'); /* Replace with the path to your image */
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Adjust the height as needed */
+    border-radius: 15px;
+    margin: 20px;
+    overflow: hidden;
+}
+
+.refer-friend-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.refer-friend-content h2 {
+    font-size: 2em;
+    margin: 0;
+}
+
+
+.earn-reward-section {
+    padding: 40px;
+    background-color: #f9f9f9;
+    text-align: center;
+    position: relative;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.earn-reward-content {
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.earn-reward-content h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.earn-reward-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn-share {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.btn-share:hover {
+    background-color: #0056b3;
+}
+
+.chat-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.5em;
+}
+
+
+.friend-flight-delay-section {
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.friend-flight-delay-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.friend-flight-delay-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.friend-flight-delay-text {
+    max-width: 50%;
+    margin-left: 20px;
+}
+
+.friend-flight-delay-text h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.friend-flight-delay-text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn-share {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.btn-share:hover {
+    background-color: #0056b3;
+}
+
+
+.referral-section {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    
+    margin-left: 200px;
+}
+
+h2 {
+    color: #555;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.step {
+    max-width: 200px;
+    text-align: center;
+}
+
+
+
+.circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: white;
+    color: #34c181;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    margin: 0 auto 10px auto;
+    position: relative;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1em;
+    color: #555;
+}
+
+.share-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.share-button:hover {
+    background-color: #0056b3;
+}
+
+
+.compensation-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.text-content {
+    width: 50%;
+    padding-right: 20px;
+}
+
+.text-content h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn-share {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.btn-share:hover {
+    background-color: #0056b3;
+}
+
+.image-content {
+    width: 45%;
+}
+
+.image-content img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.faq-section {
+    background-color: white;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.faq-container {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 800px;
+    width: 100%;   
+
+}
+
+.faq-container h2 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+.faq-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    background-color: #f2f7f5;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.faq-item span {
+    font-size: 1em;
+    color: #333;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: #f7f9fc;
+    border: none;
+    padding: 15px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #e2e8f0;
+}
+
+.faq-answer {
+    display: none;
+    padding: 15px;
+    background: #f7f9fc;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+.show-more {
+    display: block;
+    text-align: left;
+    margin-top: 20px;
+    color: #34a853;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.show-more:hover {
+    color: #0056b3;
+}
+
+.footer-section {
+    background-color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 0%;
+}
+
+.footer-logo img {
+    max-width: 300px; /* Adjust size as needed */
+    padding: 0%;
+    margin: 0%;
+}
+
+.footer-text {
+    flex-grow: 1;
+    margin: 0 20px;
+    color: #555;
+}
+
+.footer-text p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.footer-icons img {
+    margin: 0 10px;
+    width: 30px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+}
+
+
+.multi-column-footer {
+    background-color: #f9f9f9;
+    padding: 50px;
+    text-align: left;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.company {
+    align-items: center;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.footer-column h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1em;
+}
+
+.footer-column ul li a:hover {
+    color: #27ae60;
+}

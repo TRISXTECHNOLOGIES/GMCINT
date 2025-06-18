@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Get My Claims</title>
+    <link rel="stylesheet" href="../static/css/ste.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/ste.css')}}"> -->
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ url_for('static', filename='assets/logo22.png')}}" alt="Get My Claims Logo"
+                style="align-items: center; padding-left: 38px;">
+        </div>
+        <div class="user-info">
+            <div class="user-icon">{{icon}} </div>
+            <p>{{data['first_name']}} {{data['last_name']}} </p>
+            <p>{{data['email']}} </p>
+        </div>
+        <nav>
+            <ul style="
+            width: 106px;
+            padding-left: 89px;
+            font-weight: bolder;">
+                <li><a href="/login">Home</a></li>
+                <li><a href="/my_claims">My Claims</a></li>
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hamburger Menu -->
+       
+    </div>
+
+   
+
+      
+
+    <!-- Main Content -->
+    <main>
+
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        
+        <section class="settings-section">
+           
+            <h2>Settings</h2>
+            
+            <div class="tabs">
+                <button class="tab active" data-tab="profile">My profile</button>
+                <button class="tab" data-tab="notification">Notification</button>
+            </div>
+            <div>
+                <form action="/settings?type=details" method="post">
+                    <!-- Profile Tab -->
+                    <div class="tab-content active" id="profile">
+                        <h3>Profile Details</h3>
+                        <div class="form-group">
+                            <div class="form-input" >
+                                <label for="firstName">First Name</label>
+                                <input type="text" name="first_name" value="{{data['first_name']}}" id="firstName"
+                                    placeholder="Enter your first name"  required>
+                            </div>
+                            <div class="form-input">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" name="last_name" value="{{data['last_name']}}" id="lastName"
+                                    placeholder="Enter your Last name"  required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-input">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" value="{{data['email']}}" id="email"
+                                    placeholder="e.g. abc@example.com"  required>
+                            </div>
+                            <div class="form-input">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="text" name="phone_number" id="phoneNumber" placeholder="+91 XXXXXXXXXX"
+                                    >
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="change-password-btn">Update Details</button>
+                </form>
+            </div>
+            </div>
+            <div>
+                <h3>Change Password</h3>
+                <div class="form-group">
+                    <form action="/settings?type=password" method="post">
+                        <div class="form-input">
+                            <label for="oldPassword">Old Password</label>
+                            <input type="password" name="old" class="oldPassword" id="oldPassword" placeholder="Enter old password"
+                                style="width: 345px;" required>
+                        </div>
+                        <div class="form-input">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" name="new" class="newPassword" id="newPassword" placeholder="Enter new password"
+                                style="width: 345px;" required>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-input">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" name="confirm"  id="confirmPassword" placeholder="Confirm new password"
+                            style="width: 345px;" required>
+                    </div>
+                </div>
+                <button type="submit" class="change-password-btn">Change Password</button>
+                </form>
+            </div>
+            <!-- <div><a href="/forget_password"><button class="change-password-btn">Forget Password</button></a></div>
+            <div> -->
+                {% with messages = get_flashed_messages() %}
+              {% if messages %}
+              <ul>
+              {% for message in messages %}
+              <li>{{message}} </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          {% endwith %}
+
+            </div>
+
+            <!-- Notification Tab -->
+            <div class="tab-content" id="notification">
+                <h3>Notification Settings</h3>
+                <p>Notification settings content goes here...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../static/js/set.js"></script>
+    <!-- <script src="{{ url_for('static', filename='js/set.js')}}"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,261 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Set the whole background color to white */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f2f7f5;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #e0e0e0;
+}
+
+.language-login {
+    display: flex;
+    align-items: center;
+}
+
+.language-select {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.language-select img {
+    height: 25px;
+    margin-right: 25px;
+}
+
+.login {
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.privacy-statement-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.privacy-statement-section h4 {
+    font-size: 1em;
+    color: grey;
+    margin-bottom: 5px;
+}
+
+.privacy-statement-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.privacy-content p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+
+.definitions-personal-data-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+
+.principles-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.section ul li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+
+.data-collection-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+.footer-section {
+    background-color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 0%;
+}
+
+.footer-logo img {
+    max-width: 300px; /* Adjust size as needed */
+    padding: 0%;
+    margin: 0%;
+}
+
+.footer-text {
+    flex-grow: 1;
+    margin: 0 20px;
+    color: #555;
+}
+
+.footer-text p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.footer-icons img {
+    margin: 0 10px;
+    width: 30px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+}
+
+
+.multi-column-footer {
+    background-color: #f9f9f9;
+    padding: 50px;
+    text-align: left;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.company {
+    align-items: center;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.footer-column h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1em;
+}
+
+.footer-column ul li a:hover {
+    color: #27ae60;
+}

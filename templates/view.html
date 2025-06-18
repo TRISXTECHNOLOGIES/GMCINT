@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Flight Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Submitted Flight Details</h1>
+
+        <h2>General Details</h2>
+        <div class="details">
+            <p><strong>User Name:</strong>{{flight.first_name}} {{flight.last_name}}</p>
+            <p><strong>Group Travel:</strong>{{flight.group_travel|upper}}</p>
+            {% if flight.first_name_passenger_2%}
+            {% if flight.passenger_2_type %}
+            <p><strong>Passenger 2:</strong>{{flight.first_name_passenger_2}} {{flight.last_name_passenger_2}}(minor)
+            </p>
+            {% else %}
+            <p><strong>Passenger 2:</strong>{{flight.first_name_passenger_2}} {{flight.last_name_passenger_2}}</p>
+            {% endif %}
+            {% endif %}
+
+            {% if flight.first_name_passenger_3 %}
+            {% if flight.passenger_3_type %}
+            <p><strong>Passenger 3:</strong>{{flight.first_name_passenger_3}} {{flight.last_name_passenger_3}}(minor)
+            </p>
+            {% else %}
+            <p><strong>Passenger 3:</strong>{{flight.first_name_passenger_3}} {{flight.last_name_passenger_3}}</p>
+            {% endif %}
+            {% endif %}
+            {% if flight.first_name_passenger_4 %}
+            {% if flight.passenger_4_type %}
+            <p><strong>Passenger 4:</strong>{{flight.first_name_passenger_4}} {{flight.last_name_passenger_4}}(minor)
+            </p>
+            {% else %}
+            <p><strong>Passenger 4:</strong>{{flight.first_name_passenger_4}} {{flight.last_name_passenger_4}}</p>
+            {% endif %}
+            {% endif %}
+            {% if flight.first_name_passenger_5 %}
+            {% if flight.passenger_5_type %}
+            <p><strong>Passenger 5:</strong>{{flight.first_name_passenger_5}} {{flight.last_name_passenger_5}}(minor)
+            </p>
+            {% else %}
+            <p><strong>Passenger 5:</strong>{{flight.first_name_passenger_5}} {{flight.last_name_passenger_5}}</p>
+            {% endif %}
+            {% endif %}
+            <p><strong>Email:</strong>{{flight.email}}</p>
+            <p><strong>Contact Number:</strong>{{flight.phone_number}} </p>
+            <p><strong>Address:</strong>{{flight.address_line1}} {{flight.address_line2}} </p>
+        </div>
+
+        <h2>Flight Details</h2>
+        <div class="details">
+            <p><strong>Leaving From:</strong>{{flight.leaving_from}} </p>
+            <p><strong>Destination:</strong>{{flight.destination}} </p>
+            <p><strong>Flight Schedule:</strong>{{flight.flight_date}} </p>
+            <p><strong>Connecting Flights:</strong>{{flight.connecting_flights|upper}} </p>
+            {% if flight.connecting_flights !='no' %}
+            <p><strong>Connecting Flight 1st:</strong>{{flight.leaving_from}} TO {{flight.connecting_leaving_from}}</p>
+            {% if flight.connecting_leaving_from2 %}
+            <p><strong>Connecting Flight 2nd:</strong>{{flight.connecting_leaving_from}} TO {{flight.connecting_leaving_from2}}</p>
+            <p><strong>Final Flight:</strong>{{flight.connecting_leaving_from2}} TO {{flight.destination}}</p>
+            {% endif %}
+            <p><strong>Compensation Flight:</strong>{{flight.compensation_flight}}</p>
+            {% endif %}
+            <p><strong>What Exactly Occurred:</strong>{{flight.incident_description}} </p>
+            <p><strong>Disruption:</strong> {{flight.disruption}}</p>
+            <p><strong>Reason:</strong> {{flight.reason|upper}}</p>
+            {% if flight.disruption =='DELAYED' %}
+            <p><strong>Delayed Hours:</strong> {{flight.delay}} hours</p>
+            {% endif %}
+            <p><strong>Airline Name:</strong>{{flight.airline|upper}} </p>
+            {% if flight.airline2 %}
+            <p><strong>Airline Name 2nd:</strong> {{flight.airline2|upper}}</p>
+            {% endif %}
+            {% if flight.airline3 %}
+            <p><strong>Airline Name 3rd:</strong> {{flight.airline3|upper}}</p>
+            {% endif %}
+            <p><strong>Flight Number:</strong>{{flight.flight_number}} </p>
+            <p><strong>Date:</strong>{{flight.date}} </p>
+            <p><strong>Booking Reference Number:</strong>{{flight.booking_number}} </p>
+            <p><strong>Contacted Airline:</strong>{{flight.contacted_airline|upper}} </p>
+            <p><strong>Uploaded Documents:</strong> <a href="{{ url_for('view_docs',
+                    user_id=session.get('user_id'),
+                    flight_id=flight.id) }}"
+   target="_blank">View Document</a></p>
+        </div>
+
+        <h2>Comment Box</h2>
+        <ul>
+            {% for comment in flight.comments %}
+            <li>
+                {{comment.user_id}} <strong>{{comment.admin_name}} </strong>
+                {{comment.timestamp}}
+                <strong style="color: blue;">{{comment.text}}</strong>
+            </li>
+            {% endfor %}
+
+        </ul>
+        <div class="comment-box">
+            <form id="commentForm" action="/view/{{ flight.id }}" method="post">
+                <label for="comment">Add a Comment:</label>
+                <textarea id="comment" name="comment" rows="5"></textarea>
+                <button type="submit">Send Update</button>
+            </form><br>
+            <a href="/login"><button>Back To Dashboard</button></a>
+        </div>
+    </div>
+</body>
+
+</html>

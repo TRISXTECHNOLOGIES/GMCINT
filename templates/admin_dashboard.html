@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Lists - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/super.css') }}">
+
+    <script src="{{ url_for('static', filename='js/dash.js') }}"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+</head>
+
+<body> 
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #F7F9FA;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 250px;
+            background-color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-header img {
+            width: 150px;
+            margin-bottom: 30px;
+        }
+
+        nav ul li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav ul li.active a,
+        nav ul li a:hover {
+            color: #35B67E;
+            font-weight: 700;
+        }
+
+        nav ul li.active,
+        nav ul li:hover {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        nav ul li img {
+            margin-right: 10px;
+        }
+
+        .sidebar-section ul li .active,
+        .sidebar-section ul li:hover {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .sidebar-section ul li .active a,
+        .sidebar-section ul li a:hover {
+            color: #35B67E;
+            font-weight: 700;
+        }
+
+        .sidebar-section ul li {
+            margin-right: 10px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-left i {
+            font-size: 24px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 250px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .notification-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            margin-left: -10px;
+            margin-right: 20px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: bold;
+        }
+
+        .user-role {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .status-boxes {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .status-box {
+            flex: 1;
+            margin: 0 10px;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .status-box:hover {
+            background-color: #f8f9fa;
+        }
+
+        .filter-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #date-filter-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-filters {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .dropdown-filters select {
+            padding: 8px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #reset-filter-button {
+            padding: 10px 20px;
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-list h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .contact-list table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .contact-list th,
+        .contact-list td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .contact-list th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .contact-list tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .status-contacted {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .status-progress {
+            background-color: #d2ea69;
+            color: #0b7e26;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .status-completed {
+            background-color: #9fd36b;
+            color: #314736;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .status-pending {
+            background-color: #ffeeba;
+            color: #856404;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .status-na {
+            background-color: #e02b3a;
+            color: #151212;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ url_for('static', filename='assets/logo2.png') }}" alt="Get My Claims Logo">
+        </div>
+        <nav>
+            <ul>
+                <li class="active"><a href="/admin_dashboard">Dashboard</a></li>
+                <li><a href="/admin_crm">CRM Data</a></li>
+            </ul>
+        </nav>
+       
+
+        <div class="sidebar-section">
+            <ul style="
+            padding-left: 10px;
+            margin-bottom: 0px;
+            margin-top: 11px;
+        ">
+                <li style=" margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+            "><a href="#">Setting</a></li>
+                <li style=" margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                padding: 10px;"><a href="/logout">Log Out</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <div class="header-left">
+                <i class="fas fa-bars"></i>
+                <input type="text" placeholder="Search" class="search-bar">
+            </div>
+            <div class="header-right">
+                <i class="fas fa-bell"></i><span class="notification-count">6</span>
+                <img src="{{url_for('static',filename='assets/user-avatar.png')}}" alt="User Avatar"
+                    class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">{{username}}</span>
+                    <span class="user-role">{{role}} </span>
+                </div>
+                <i class="fas fa-caret-down"></i>
+            </div>
+        </div>
+
+        <div class="status-boxes">
+            <a href="/admin_dashboard?type=open">
+                <div class="status-box" data-status="Contacted">OPEN LEADS</div>
+            </a>
+            <a href="/admin_dashboard?type=progress">
+                <div class="status-box" data-status="In Progress">IN PROGRESS</div>
+            </a>
+            <a href="/admin_dashboard?type=pending">
+                <div class="status-box" data-status="Pending">PENDING</div>
+            </a>
+            <a href="/admin_dashboard?type=closed">
+                <div class="status-box" data-status="Closed">CLOSED</div>
+            </a>
+        </div>
+
+        <div class="filter-section">
+            <form action="/admin_dashboard" method="get">
+                <div class="dropdown-filters">
+                    <button id="date-filter-button" type="submit"><i class="fas fa-filter"></i> Find </button>
+                    <input type="text" id="datepicker" name="date" placeholder="Date" />
+
+                    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                    
+
+
+                        <!-- Type options dynamically generated -->
+                    </select>
+
+                    <select id="filter-status" name="status">
+                        <option value="" >Status</option>
+                        {% for status in allowed_status %}
+                        <option value="{{status}}">
+                            {{status}}
+                        </option>
+                        {% endfor %}
+                        <!-- Status options dynamically generated -->
+                    </select>
+                    <button type="reset" id="reset-filter-button"><i class="fas fa-redo-alt"></i> Reset Filter</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="contact-list">
+            <h1>Contact Lists</h1>
+            <!-- Dropdown to Select Admin for Assignment -->
+            
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>DATE</th>
+                            <th>DETAILS</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contact-table-body">
+                        <!-- Example Leads -->
+                        <!-- <tr data-status="Pending"> -->
+                        <!-- <td>00002</td> -->
+                        <!-- <td>Rosie Pearson</td> -->
+                        <!-- <td>abcdefg123@gmail.com</td> -->
+                        <!-- <td>+91 9876543210</td> -->
+                        <!-- <td>28 May 2019</td> -->
+                        <!-- <td>Book</td> -->
+                        <!-- <td class=" status-progress">In Progress</td> -->
+                        <!-- </tr> -->
+                        {% for flight in flights %}
+                        {% if flight.status=='NA' %}
+                        <tr data-status="NA">
+                            <td>{{ flight.id }}</td>
+                            <td>{{ flight.first_name }} {{ flight.last_name }}</td>
+                            <td>{{ flight.email }}</td>
+                            <td>{{ flight.phone_number }}</td>
+                            <td>{{ flight.date }}</td>
+                            <td><button
+                                    style="background-color: #2b8c40; height: 35px; width: 60px; border-radius: 10px; color: white; border-color: #2b8c40;"
+                                    type="button" class="view-details-btn" data-flight-id="{{ flight.id }}">
+                                    <a href="/view/{{ flight.id }}" target="_blank">view</a>
+                                </button></td>
+                            <td class="status-na">NA</td>
+                        </tr>
+
+                        {% elif flight.status=='open' %}
+                        <tr data-status="Contacted">
+                            <td>{{ flight.id }}</td>
+                            <td>{{ flight.first_name }} {{ flight.last_name }}</td>
+                            <td>{{ flight.email }}</td>
+                            <td>{{ flight.phone_number }}</td>
+                            <td>{{ flight.date }}</td>
+                            <td><button
+                                    style="background-color: #2b8c40; height: 35px; width: 60px; border-radius: 10px; color: white; border-color: #2b8c40;"
+                                    type="button" class="view-details-btn" data-flight-id="{{ flight.id }}">
+                                    <a href="/view/{{ flight.id }}" target="_blank">view</a>
+                                </button></td>
+                            <td class="status-contacted">Contacted</td>
+                        </tr>
+                        {% elif flight.status=='completed' %}
+                        <tr data-status="Completed">
+                            <td>{{ flight.id }}</td>
+                            <td>{{ flight.first_name }} {{ flight.last_name }}</td>
+                            <td>{{ flight.email }}</td>
+                            <td>{{ flight.phone_number }}</td>
+                            <td>{{ flight.date }}</td>
+                            <td><button
+                                    style="background-color: #2b8c40; height: 35px; width: 60px; border-radius: 10px; color: white; border-color: #2b8c40;"
+                                    type="button" class="view-details-btn" data-flight-id="{{ flight.id }}">
+                                    <a href="/view/{{ flight.id }}" target="_blank">view</a>
+                                </button></td>
+                            <td class="status-completed">Completed</td>
+                        </tr>
+
+                        {% elif flight.status=='pending' %}
+                        <tr data-status="Pending">
+                            <td>{{ flight.id }}</td>
+                            <td>{{ flight.first_name }} {{ flight.last_name }}</td>
+                            <td>{{ flight.email }}</td>
+                            <td>{{ flight.phone_number }}</td>
+                            <td>{{ flight.date }}</td>
+                            <td><button
+                                    style="background-color: #2b8c40; height: 35px; width: 60px; border-radius: 10px; color: white; border-color: #2b8c40;"
+                                    type="button" class="view-details-btn" data-flight-id="{{ flight.id }}">
+                                    <a href="/view/{{ flight.id }}" target="_blank">view</a>
+                                </button></td>
+                            <td class="status-pending">Pending</td>
+                        </tr>
+                        {% else %}
+                        <tr data-status="Progress">
+                            <td>{{ flight.id }}</td>
+                            <td>{{ flight.first_name }} {{ flight.last_name }}</td>
+                            <td>{{ flight.email }}</td>
+                            <td>{{ flight.phone_number }}</td>
+                            <td>{{ flight.date }}</td>
+                            <td><button
+                                    style="background-color: #2b8c40; height: 35px; width: 60px; border-radius: 10px; color: white; border-color: #2b8c40;"
+                                    type="button" class="view-details-btn" data-flight-id="{{ flight.id }}">
+                                    <a href="/view/{{ flight.id }}" target="_blank">view</a>
+                                </button></td>
+                            <td class="status-progress">Progress</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+                <div class="pagination">
+                    {% if pagination.has_prev %}
+                    <button class="prev-page">
+                        <a href="{{ url_for('admin_dashboard', page=pagination.prev_num, date=date,status=status) }}">Previous</a>
+                    </button>
+                    {% endif %}
+                    
+                    {% for page_num in pagination.iter_pages(left_edge=2, right_edge=2, left_current=2, right_current=2) %}
+                    {% if page_num %}
+                        <a href="{{ url_for('admin_dashboard', page=page_num, date=date,status=status) }}"
+                        class="{% if page_num == pagination.page %}active{% endif %}">
+                        {{ page_num }}
+                    </a>
+                {% else %}
+                    ...
+                    {% endif %}
+                    {% endfor %}
+                            
+                            
+                            {% if pagination.has_next %}
+                            <button class="next-page">
+                                <a href="{{ url_for('admin_dashboard', page=pagination.next_num, date=date,status=status) }}">Next</a>
+                            </button>
+                    {% endif %}
+                </div>
+        </div>
+
+    </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+</body>
+
+</html>

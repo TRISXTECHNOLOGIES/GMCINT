@@ -1,0 +1,352 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Set the whole background color to white */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 100px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f2f7f5;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #ffffff;
+}
+
+.language-login {
+    display: flex;
+    align-items: center;
+}
+
+.language-select {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.language-select img {
+    height: 35px;
+    margin-right: 0px;
+}
+
+.login {
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+
+.cookie-policy-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h3 {
+    font-size: 1em;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+.section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+.cookies-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+.cookies-types-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.section ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.section ul li {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+
+.cookie-list-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+.targeting-cookies-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.targeting-cookies-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.targeting-cookies-section p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: white;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+
+.necessary-cookies-section {
+    margin: 100px;
+    padding: 20px;
+}
+
+.necessary-cookies-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.necessary-cookies-section p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #cfcccc;
+    padding: 15px;
+    text-align: left;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+
+.footer-section {
+    background-color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 0%;
+}
+
+.footer-logo img {
+    max-width: 300px; /* Adjust size as needed */
+    padding: 0%;
+    margin: 0%;
+}
+
+.footer-text {
+    flex-grow: 1;
+    margin: 0 20px;
+    color: #555;
+}
+
+.footer-text p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.footer-icons img {
+    margin: 0 10px;
+    width: 30px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+}
+
+
+.multi-column-footer {
+    background-color: #f9f9f9;
+    padding: 50px;
+    text-align: left;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.company {
+    align-items: center;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.footer-column h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1em;
+}
+
+.footer-column ul li a:hover {
+    color: #27ae60;
+}

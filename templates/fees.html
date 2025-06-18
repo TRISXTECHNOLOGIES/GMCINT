@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <title>Fees | Get My Claims</title>
+ <link rel="icon" href="../static/assets/GMC_Logomark.png" type="image/x-icon">
+    <style>
+      h1 {
+        text-align: center;
+      }
+
+      .green-line {
+        width: 200px;
+        height: 3px;
+        background-color: #e2f3e7;
+        align-items: flex-start;
+      }
+
+      .ui-widgets {
+        position: relative;
+        display: inline-block;
+        width: 10rem;
+        height: 10rem;
+        border-radius: 9rem;
+        margin: 1.5rem;
+        border: 1.2rem solid palegreen;
+        /* box-shadow: inset 0 0 7px grey; */
+        border-left-color: #36ac57;
+        border-top-color: #36ac57;
+        border-right-color: #215fff !important;
+        border-bottom-color: white;
+
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      /* Apply css properties to the second 
+			child of ui-widgets class */
+      .ui-widgets:nth-child(2) {
+        border-right-color: white;
+
+        border-bottom-color: white;
+      }
+
+      /* Apply css properties to ui-widgets class 
+			and ui-values class*/
+      .ui-widgets .ui-values {
+        top: 40px;
+        position: absolute;
+        left: 12px;
+        right: 0;
+        font-weight: 700;
+        font-size: 2rem;
+      }
+
+      /* Apply css properties to ui-widgets 
+			class and ui-labels class*/
+      .ui-widgets .ui-labels {
+        left: 0;
+        bottom: -16px;
+        /* text-shadow: 0 0 4px grey; */
+        color: black;
+        position: absolute;
+        width: 100%;
+        font-size: 16px;
+      }
+
+      /* General Styles */
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+      }
+
+      .container {
+        max-width: 1280px !important;
+        margin-inline: auto;
+        overflow: hidden;
+        /* padding-top: 40px; */
+      }
+
+      /* .container {
+        max-width: 1180px;
+        margin-inline: auto;
+        overflow: hidden; 
+      } */
+
+      /* General Navbar Styles */
+      .main-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 20px;
+        background-color: white;
+        position: relative;
+      }
+
+      .logo img {
+        height: 130px;
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        background-color: #f2f7f5;
+        border-radius: 25px;
+        padding: 15px 15px;
+      }
+
+      nav ul li {
+        /* margin: 0 20px; */
+        text-align: center;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+        padding: 15px 20px;
+        border-radius: 20px;
+        transition: background-color 0.3s;
+      }
+
+      nav ul li a:hover {
+        background-color: #ffffff;
+      }
+
+      .language-login {
+        display: flex;
+        align-items: center;
+      }
+
+      .language-select {
+        margin-right: 20px;
+      }
+
+      .language-select img {
+        height: 25px;
+      }
+
+      .login {
+        padding: 10px 20px;
+        border: 2px solid #007bff;
+        background-color: white;
+        color: #007bff;
+        border-radius: 25px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .login:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      /* Dropdown for Know Your Rights */
+      .dropdown {
+        position: relative;
+        z-index: 1000;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: fixed;
+        background-color: white;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        min-width: 200px;
+        z-index: 999;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+
+      .dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        /* border-bottom: 1px solid #f2f2f2; */
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f2f7f5;
+      }
+
+      .dropbtn::after {
+        content: "▼";
+
+        margin-left: 10px;
+      }
+
+      .dropbtn.active::after {
+        content: "▲";
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover a {
+        background-color: #fff;
+      }
+
+      /* Mobile Styles */
+      .nav-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 991px) {
+        .nav-toggle {
+          display: block;
+          background: none;
+          border: none;
+          font-size: 24px;
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: fixed;
+          background-color: white;
+          top: 95px;
+          left: 0;
+          width: 100%;
+
+          z-index: 999;
+          border: none;
+          border-radius: 0%;
+          align-items: center;
+        }
+
+        .nav-links.open {
+          display: flex;
+        }
+
+        .nav-links li {
+          margin: 10px 0;
+        }
+
+        nav ul li {
+          text-align: left;
+        }
+
+        .dropdown-content {
+          position: static;
+          border: none;
+        }
+
+        .dropdown-content a {
+          padding: 10px 15px;
+        }
+
+        .language-login {
+          display: none;
+          position: fixed;
+          background-color: white;
+          top: 295px;
+          left: 0;
+          width: 100%;
+          z-index: 999;
+          padding-bottom: 20px;
+          flex-direction: column;
+        }
+
+        .language-login.open {
+          display: flex;
+        }
+      }
+
+      /* Reduce font size for smaller screens */
+      @media screen and (max-width: 1096px) {
+        nav ul li a {
+          font-size: 12px;
+        }
+      }
+
+      /* Reduce font size for smaller screens */
+
+      /* Accordion styles */
+      .accordion {
+        border-bottom: 1px solid #ccc;
+        /* margin-bottom: 10px; */
+      }
+
+      .accordion-button {
+        display: none; /* Hide accordion buttons by default for larger screens */
+        justify-content: space-between;
+        background: none;
+        border: none;
+        /* padding: 15px 0; */
+        width: 100%;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1.1em;
+        font-family: Arial, sans-serif;
+      }
+
+      .accordion-icon {
+        width: 24px;
+        height: 24px;
+        transition: transform 0.3s;
+        /* margin-top: 13px; */
+      }
+
+      .accordion-content {
+        max-height: none;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+
+      .accordion-content ul {
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .accordion-content a {
+        display: block;
+        margin: 30px 0;
+        color: #000000;
+        text-decoration: none;
+        padding-left: 10px;
+      }
+
+      .accordion-content a:hover {
+        color: #0056b3;
+      }
+
+      /* Rotate icon when accordion is open */
+      .accordion-button[aria-expanded="true"] .accordion-icon {
+        transform: rotate(180deg);
+      }
+
+      /* When accordion is opened on small screens */
+      .accordion-button[aria-expanded="true"] + .accordion-content {
+        max-height: 300px; /* Set max height for expanded state */
+      }
+
+      /* Accordion and responsive styles for smaller screens */
+
+      @media screen and (min-width: 769px) {
+        .accordion {
+          border: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .accordion-button {
+          display: flex; /* Display accordion buttons on smaller screens */
+        }
+
+        .accordion-content {
+          max-height: 0; /* Collapsed by default */
+        }
+      }
+      /* Mobile Responsive Code */
+      @media (max-width: 768px) {
+        html,
+        body {
+          overflow-x: hidden;
+        }
+
+        nav ul li {
+          /* margin: 10px 0; */
+        }
+
+        .banner-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .banner-section {
+          padding: 20px;
+        }
+
+        .faq-container {
+          max-width: 100%;
+          /* padding: 20px; */
+        }
+
+        .search-bar-section {
+          padding: 20px;
+        }
+
+        .link-column {
+          align-items: stretch;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .banner-text {
+          font-size: 1.5em;
+        }
+
+        /* .sbc1 {
+          margin-right: 20px;
+          margin-left: 20px;
+          border-radius: 10px;
+        } */
+
+        .banner-button {
+          padding: 8px 16px;
+          font-size: 0.9em;
+        }
+
+        /* .faq-item {
+          flex-direction: column;
+          align-items: flex-start;
+        } */
+
+        .faq-item span,
+        .arrow {
+          font-size: 1em;
+        }
+
+        .show-more {
+          font-size: 0.9em;
+        }
+      }
+
+      @media screen and (max-width: 479px) {
+        html,
+        body {
+          /* overflow-y: hidden; */
+          overflow-x: hidden;
+        }
+
+        /* footer section {
+          padding-top: 10px !important;
+          padding-bottom: 10px !important;
+        } */
+
+        h1 {
+          font-size: 1.2em !important;
+        }
+
+        h2 {
+          font-size: 0.9em !important;
+        }
+
+        h3 {
+          font-size: 0.7em !important;
+        }
+
+        p {
+          font-size: 0.8em !important;
+        }
+
+        .accordion-content a {
+          font-size: 0.8em !important;
+        }
+      }
+
+      /* Specific Sections */
+      .compensation-breakdown,
+      .fees-detailed-view,
+      .definitions,
+      .services-free,
+      .compensation-fees {
+        padding: 0px 20px;
+        background-color: #fff;
+      }
+
+      .compensation-breakdown h1,
+      .fees-detailed-view h1,
+      .definitions h1,
+      .services-free h1,
+      .compensation-fees h1 {
+        font-size: 2em;
+        color: #333;
+        text-align: left;
+      }
+
+      .compensation-breakdown h2,
+      .fees-detailed-view h2 {
+        font-size: 1.2em;
+        color: #7a7a7a;
+
+        margin-bottom: 40px;
+      }
+
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 100px;
+      }
+
+      .card {
+        flex: 2;
+        min-width: 450px;
+        max-width: 300px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .card h3 {
+        font-size: 1.2em;
+        color: #28a745;
+        margin-bottom: 20px;
+      }
+
+      .breakdown {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .breakdown p {
+        font-size: 1.3em;
+        color: #333;
+        /* margin: 10px 0; */
+        font-weight: 700;
+      }
+
+      .chart,
+      .chart0 {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background: conic-gradient(#a8e6a3 0% 65%, #f9f9f9 65% 100%);
+        border-radius: 50%;
+        /* margin: 20px 0; */
+      }
+
+      .breakdown-chart {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 20px; */
+      }
+
+      .percentage {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5em;
+        color: #28a745;
+      }
+
+      .fees-detailed-view,
+      .definitions,
+      .services-free,
+      .compensation-fees,
+      p {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 28px;
+        text-align: left;
+      }
+
+      /* .fees-detailed-view,
+      .definitions,
+      .services-free,
+      .compensation-fees,
+      span {
+        margin-right: 20px;
+      } */
+
+      /* why choose section General styles */
+      /* .why-choose-section {
+        padding: 50px;
+        background-color: #fff;
+        text-align: center;
+      }
+
+      .why-choose-section h2 {
+        font-size: 2em;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .why-choose-section h2 span {
+        color: #27ae60;
+      } */
+
+      /* For larger screens: Display in two columns */
+      /* .comparison-content {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        flex-direction: row;
+      }
+
+      .column {
+        width: 45%;
+      }
+
+      .column ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .column ul li {
+        display: flex; */
+      /* align-items: flex-start; */
+      /* margin-bottom: 20px; */
+      /* padding: 5px 20px; */
+      /* align-items: center; */
+      /* min-height: 150px;
+      } */
+
+      /* .column1 ul li {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        
+        background-color: #e2f3e7;
+        
+        border-radius: 5px;
+        
+        min-height: 150px;
+      } */
+
+      /* .column ul li img {
+        width: 20px;
+        height: 20px;
+        margin-right: 15px;
+        margin-left: 10px;
+        
+      } */
+
+      /* .column ul li {
+        padding-top: 10px !important;
+      }
+
+      .column ul li div {
+        text-align: left;
+      }
+
+      .column ul li h4 {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .column ul li p {
+        font-size: 1em;
+        color: #555;
+      } */
+
+      .column ul li div {
+        text-align: left;
+      }
+
+      .column ul li h4 {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .column ul li p {
+        font-size: 1em;
+        color: #555;
+      }
+
+      .get-claim-btn {
+        padding: 15px 30px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      /* For smaller screens: Horizontal scrolling without scrollbar */
+      @media (max-width: 768px) {
+        /* .why-choose-section {
+          padding: 20px;
+        } */
+        /* .comparison-content {
+          display: flex;
+          flex-direction: row;
+          gap: 15px;
+          padding: 20px 0;
+          overflow-x: auto;
+          scroll-behavior: smooth; 
+          -ms-overflow-style: none; 
+          scrollbar-width: none; 
+        } */
+
+        /* .comparison-content::-webkit-scrollbar {
+          display: none; 
+        } */
+
+        /* .column {
+          flex: none;
+          width: 90%; 
+        } */
+
+        /* .column ul li {
+          flex-direction: row; 
+        } */
+
+        /* .column ul li img {
+          margin: 0 auto 10px; 
+        } */
+
+        /* .why-choose-section h2 {
+          font-size: 1.5em; 
+        } */
+
+        .get-my-claim-btn {
+          margin-top: 20px;
+        }
+
+        .check-eligibility {
+          padding: 10px 20px !important;
+          transform: translate(22%, -120%) !important;
+        }
+      }
+
+      @media screen and (max-width: 540px) {
+        .breakdown {
+          justify-content: center;
+        }
+
+        .accordion-headerfoot {
+          font-size: 16px !important;
+        }
+
+        .check-eligibility {
+          padding: 5px 10px !important;
+          transform: translate(25%, -150%) !important;
+          font-size: 0.5em !important;
+        }
+      }
+
+      @media screen and (max-width: 320px) {
+        .check-eligibility {
+          padding: 2px 6px !important;
+          transform: translate(22%, -180%) !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header style="background-color: white">
+      <div class="main-nav container">
+        <!-- Logo Section -->
+        <div class="logo">
+          <a href="{{ url_for('landing') }}">
+            <img src="../static/assets/logo22.png" alt="Company Logo" />
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav style="margin-right: 30px">
+          <ul class="nav-links" id="nav-links">
+            <li><a href="/index1">Get My Claim</a></li>
+
+            <!-- Dropdown for Know Your Rights -->
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">Know Your Rights</a>
+              <div class="dropdown-content" id="dropdown-content">
+                <a href="{{url_for('kyr')+'#Should Know'}}"
+                  >Air passenger rights</a
+                >
+                <a href="{{url_for('kyr')+'#Delay'}}"
+                  >Flight delay compensation</a
+                >
+                <a href="{{url_for('kyr')+'#Cancellation'}}"
+                  >Flight cancellation compensation</a
+                >
+                <a href="{{url_for('kyr')+'#Missed'}}">Missed connection</a>
+                <a href="../templates/kyr.html#Overbooking"
+                  >Overbooking compensation</a
+                >
+                <a href="../templates/kyr.html#Denied"
+                  >Denied boarding compensation</a
+                >
+                <a href="{{url_for('kyr')+'#Delayed'}}"
+                  >Delayed baggage compensation</a
+                >
+                <a href="{{url_for('kyr')+'#Strike'}}"
+                  >Airline strike compensation</a
+                >
+                <!-- <a href="#">Passengers with disabilities</a>
+                <a href="#">Airlines</a>
+                <a href="#">Airports</a> -->
+              </div>
+            </li>
+
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li>
+              <a href="/login" class="login" id="logIn" style="display: none"
+                >Log in</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Language Selector and Login -->
+        <div class="language-login" id="language-login">
+          <!-- <div class="language-select">
+            <img src="../static/assets/lang.png" alt="Language" />
+          </div> -->
+          <a href="/login" class="login">Log in</a>
+        </div>
+
+        <!-- Mobile Navigation Toggle -->
+        <a class="nav-toggle" id="nav-toggle">☰</a>
+      </div>
+    </header>
+
+    <!-- Compensation Breakdown Section -->
+    <section class="compensation-breakdown container">
+      <h1 style="text-align: center">Imagine GMC wins you 600€ compensation</h1>
+      <h2 style="text-align: center">
+        No Win, No Fee, where our fee is based on the compensation we get for
+        you
+      </h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>STANDARD</h3>
+          <div class="breakdown">
+            <div>
+              <p>
+                <strong style="color: #36ac57">You receive</strong><br />€480 |
+                <span style="color: #36ac57">80%</span>
+              </p>
+              <p>
+                <strong style="color: #215fff">Our fee</strong><br />€120* |
+                <span style="color: #215fff">20%</span>
+              </p>
+              <br />
+              <p>
+                *Note: Does not <br />
+                include GST/VAT!
+              </p>
+            </div>
+
+            <!-- <div class="chart"><span class="percentage">65%</span></div> -->
+
+            <div class="ui-widgets">
+              <div class="ui-values">
+                <p
+                  style="
+                    background-color: #e2f3e7;
+                    border-radius: 50%;
+                    width: 100px;
+                    height: 100px;
+                    position: relative;
+                    margin: 0px 0px;
+                    transform: translateY(-30px);
+                    text-align: center;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      display: block;
+                      position: absolute;
+                      margin-top: 37%;
+                      margin-left: 16%;
+                      font-size: 35px;
+                      font-weight: 600;
+                    "
+                    >80%</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="card">
+          <h3>LEGAL ACTION*</h3>
+          <div class="breakdown">
+            <div>
+              <p><strong>You receive</strong><br />£260 | 50%</p>
+              <p><strong>Our fee</strong><br />£260 | 50%</p>
+            </div>
+            <div class="chart0"><span class="percentage">50%</span></div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- Why Choose Get My Claims Section -->
+    <!-- Why Choose Get My Claims Section -->
+    <div class="bg-white">
+      <section class="why-choose-section p-2 container mx-auto py-10">
+        <h2
+          class="mb-10 lg:mb-[100px] font-normal text-[2em] font-bold text-center"
+        >
+          <span class="text-xl lg:text-[30px] text-black">
+            Why you choose
+          </span>
+          <br /><span class="font-bold lg:text-[40px] text-[#27ae60]"
+            >Get My Claims?</span
+          >
+        </h2>
+        <div class="comparison-content flex lg:flex-row flex-col gap-16">
+          <!-- Disadvantages (Left Column) -->
+          <div class="column lg:w-[50%]">
+            <h3
+              class="text-2xl lg:text-[30px] text-center font-bold pb-10 lg:pb-[25px]"
+            >
+              Claim by yourself
+              <div class="flex justify-center w-full pt-7">
+                <hr class="border-[1px] w-[70%] border-[#36AC572B]" />
+              </div>
+            </h3>
+
+            <ul class="text-left flex flex-col gap-2 lg:gap-5">
+              <div class="min-h-[150px] rounded-lg flex items-center">
+                <li class="flex justify-start px-[20px] text-center gap-5">
+                  <div class="h-full">
+                    <div
+                      class="text-center w-8 h-8 flex items-center justify-center"
+                    >
+                      <i
+                        class="fa-solid fa-triangle-exclamation text-[#FF4242] text-[25px]"
+                      ></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Stressful</h4>
+                    <p>
+                      You have to complete the whole process by yourself,
+                      including negotiations with the airline.
+                    </p>
+                  </div>
+                </li>
+              </div>
+
+              <div class="min-h-[150px] rounded-lg flex items-center">
+                <li class="flex justify-start px-[20px] text-center gap-5">
+                  <div class="h-full">
+                    <div
+                      class="text-center w-8 h-8 flex items-center justify-center"
+                    >
+                      <i
+                        class="fa-solid fa-triangle-exclamation text-[#FF4242] text-[25px]"
+                      ></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Lots of paperwork</h4>
+                    <p>
+                      Knowing what forms are required and where to send them can
+                      get complicated.
+                    </p>
+                  </div>
+                </li>
+              </div>
+
+              <div class="min-h-[150px] rounded-lg flex items-center">
+                <li class="flex justify-start px-[20px] text-center gap-5">
+                  <div class="h-full">
+                    <div
+                      class="text-center w-8 h-8 flex items-center justify-center"
+                    >
+                      <i
+                        class="fa-solid fa-triangle-exclamation text-[#FF4242] text-[25px]"
+                      ></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Time consuming</h4>
+                    <p>
+                      It can take months of back and forth, and hours on hold to
+                      airline call centres, to get compensation.
+                    </p>
+                  </div>
+                </li>
+              </div>
+
+              <div class="min-h-[150px] rounded-lg flex items-center">
+                <li class="flex justify-start px-[20px] text-center gap-5">
+                  <div class="h-full">
+                    <div
+                      class="text-center w-8 h-8 flex items-center justify-center"
+                    >
+                      <i
+                        class="fa-solid fa-triangle-exclamation text-[#FF4242] text-[25px]"
+                      ></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Risky</h4>
+                    <p>
+                      If your claim goes to court, you'll have to shoulder legal
+                      fees yourself, whether you win or lose.
+                    </p>
+                  </div>
+                </li>
+              </div>
+
+              <div class="min-h-[150px] rounded-lg flex items-center">
+                <li class="flex justify-start px-[20px] text-center gap-5">
+                  <div class="h-full">
+                    <div
+                      class="text-center w-8 h-8 flex items-center justify-center"
+                    >
+                      <i
+                        class="fa-solid fa-triangle-exclamation text-[#FF4242] text-[25px]"
+                      ></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Unresponsive airlines</h4>
+                    <p>
+                      You might be left in the dark by the airline, with little
+                      to no updates on the status of your claim.
+                    </p>
+                  </div>
+                </li>
+              </div>
+            </ul>
+          </div>
+
+          <!-- Advantages (Right Column) -->
+          <div class="column column1 lg:w-[50%]">
+            <h3
+              class="text-2xl lg:text-[30px] font-bold pb-10 lg:pb-[25px] text-center"
+            >
+              Use <span class="text-[#27ae60]">Get My Claims</span>
+              <div class="flex justify-center w-full pt-7">
+                <hr class="border-[1px] w-[70%] border-[#36AC572B]" />
+              </div>
+            </h3>
+            <ul class="flex flex-col gap-2 lg:gap-5">
+              <div
+                class="min-h-[150px] bg-[#CFE0DA45] rounded-lg flex justify-start items-center"
+              >
+                <li class="flex justify-start px-[20px] text-center gap-5">
+                  <div class="h-full">
+                    <div
+                      class="border-2 border-[#27ae60] text-center w-8 h-8 flex items-center justify-center rounded-[50%]"
+                    >
+                      <i
+                        class="fa-solid fa-check text-[#27ae60] text-[15px]"
+                      ></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Easy and hassle-free</h4>
+                    <p>
+                      We handle your entire claim, from kick off to
+                      compensation.
+                    </p>
+                  </div>
+                </li>
+              </div>
+
+              <div
+                class="min-h-[150px] bg-[#CFE0DA45] rounded-lg flex justify-start items-center"
+              >
+                <li class="flex justify-start px-[20px] text-center gap-5">
+                  <div class="h-full">
+                    <div
+                      class="border-2 border-[#27ae60] text-center w-8 h-8 flex items-center justify-center rounded-[50%]"
+                    >
+                      <i
+                        class="fa-solid fa-check text-[#27ae60] text-[15px]"
+                      ></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>We take care of it</h4>
+                    <p>
+                      We guide you through the essential documents, and submit
+                      them for you.
+                    </p>
+                  </div>
+                </li>
+              </div>
+
+              <!-- savetime -->
+              <div
+                class="min-h-[150px] bg-[#CFE0DA45] rounded-lg flex items-center"
+              >
+                <li class="flex justify-start px-[20px] text-center gap-5">
+                  <div class="h-full">
+                    <div
+                      class="border-2 border-[#27ae60] text-center w-8 h-8 flex items-center justify-center rounded-[50%]"
+                    >
+                      <i
+                        class="fa-solid fa-check text-[#27ae60] text-[15px]"
+                      ></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Save time</h4>
+                    <p>
+                      You simply submit your documents with us online — we'll
+                      take it from there.
+                    </p>
+                  </div>
+                </li>
+              </div>
+
+              <!-- no -->
+
+              <div
+                class="min-h-[150px] bg-[#CFE0DA45] rounded-lg flex items-center"
+              >
+                <li class="flex justify-start px-[20px] text-center gap-5">
+                  <div class="h-full">
+                    <div
+                      class="border-2 border-[#27ae60] text-center w-8 h-8 flex items-center justify-center rounded-[50%]"
+                    >
+                      <i
+                        class="fa-solid fa-check text-[#27ae60] text-[15px]"
+                      ></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>No win, no fee</h4>
+                    <p>
+                      We handle all legal fees, and we'll only charge our fee
+                      when you get paid.
+                    </p>
+                  </div>
+                </li>
+              </div>
+
+              <div
+                class="min-h-[150px] bg-[#CFE0DA45] rounded-lg flex items-center"
+              >
+                <li class="flex justify-start px-[20px] text-center gap-5">
+                  <div class="h-full">
+                    <div
+                      class="border-2 border-[#27ae60] text-center w-8 h-8 flex items-center justify-center rounded-[50%]"
+                    >
+                      <i
+                        class="fa-solid fa-check text-[#27ae60] text-[15px]"
+                      ></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Regular updates</h4>
+                    <p>
+                      You can count on us to give you regular updates and answer
+                      any questions you have.
+                    </p>
+                  </div>
+                </li>
+              </div>
+            </ul>
+            <div class="mt-10 text-center">
+              <a href="{{ url_for('index1') }}">
+                <button class="get-claim-btn">Get My Claims</button></a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Fees Detailed View Section -->
+    <!-- <section class="fees-detailed-view container">
+      <h1>Our fees</h1>
+      <h2>Detailed View</h2>
+
+      <div class="introduction">
+        <h1>1. INTRODUCTION</h1>
+        <div class="section">
+          <h4>Use of our Services</h4>
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">1.1</span> Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+            tempor incididunt:
+          </p>
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">1.11</span> Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam.
+          </p>
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">1.12</span> Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+            non proident, sunt in culpa.
+          </p>
+        </div>
+        <div class="section">
+          <h4>Nature of our Services</h4>
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">1.2</span> Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit
+          </p>
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">1.3</span> Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore
+            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa.
+          </p>
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">1.4</span> Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa.
+          </p>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Definitions Section -->
+    <!-- <section class="definitions container">
+      <h1>2. DEFINITIONS</h1>
+      <div class="content">
+        <p>
+          In these Terms, the following defined terms shall have the meanings
+          stated below:
+        </p>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.1</span> Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.2</span> Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.3</span>
+            Exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.4</span> Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore
+            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.5</span> Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.6</span> Quis
+            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.7</span> Tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.8</span> Amet,
+            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.9</span> Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.10</span> Dolor
+            sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.11</span> Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.12</span> Labore
+            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.13</span> Magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.14</span> Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa.
+          </p>
+        </div>
+        <div class="definition-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">2.15</span>
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa.
+          </p>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Services Free of Charge Section -->
+    <!-- <section class="services-free container">
+      <h1>3. SERVICES FREE OF CHARGE</h1>
+      <h2>Getting Started</h2>
+      <div class="content">
+        <div class="service-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">3.1</span> After you
+            have accepted these Terms, AirHelp will provide you the Eligibility
+            Service and Information Service to determine whether AirHelp
+            believes, in its sole Discretion, you have an Eligible Claim.
+          </p>
+        </div>
+        <div class="service-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">3.2</span> If
+            AirHelp makes this determination, AirHelp will provide you with the
+            Form. The purpose of the Form is to permit AirHelp to engage on your
+            behalf either directly or indirectly with Lawyers, the Airline or
+            its representatives, and/or courts in order to obtain Flight
+            Compensation.
+          </p>
+        </div>
+        <div class="service-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">3.3</span> Provision
+            of the Information Service or Eligibility Service by AirHelp shall
+            not constitute a binding offer to provide you with any other
+            Services, including, without limitation, the Compensation Service.
+          </p>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Compensation Service Fees Section -->
+    <!-- <section class="compensation-fees container">
+      <h1>4. COMPENSATION SERVICE FEES</h1>
+      <div class="content">
+        <div class="fee-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">4.1</span> The
+            Compensation Service is where AirHelp helps you obtain Flight
+            Compensation from the Airline. AirHelp’s model is a no-win, no-fee
+            model. This means that when we’re providing the Compensation
+            Service, AirHelp only charges you when we have obtained Flight
+            Compensation for you from the Airline.
+          </p>
+        </div>
+        <div class="fee-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">4.2</span> There are
+            two types of fees that AirHelp may charge for the Compensation
+            Service. First we charge the Service Fee, then depending on whether
+            we are required to engage in Legal Action, we also charge the Legal
+            Action Fee. These fees are deducted from the total amount of Flight
+            Compensation AirHelp is able to obtain from the Airline.
+          </p>
+        </div>
+        <div class="fee-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">4.3</span> AirHelp+
+            Members do not pay either the Service Fee or Legal Action Fee for
+            the Compensation Service. AirHelp+ Members pay the Membership Fees
+            listed below.
+          </p>
+        </div>
+        <div class="fee-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">4.4</span> If
+            AirHelp makes this determination, AirHelp will provide you with the
+            Form. The purpose of the Form is to permit AirHelp to engage on your
+            behalf either directly or indirectly with Lawyers, the Airline or
+            its representatives, and/or courts in order to obtain Flight
+            Compensation.
+          </p>
+        </div>
+        <div class="fee-item">
+          <p>
+            <span style="color: #36ac57; margin-right: 5px">4.5</span> For each
+            Claim where we successfully obtain Flight Compensation, the Service
+            Fee is 35% of the total Flight Compensation, including applicable
+            VAT.
+          </p>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Image Section -->
+    <section
+      class="py-10 footer-banner"
+      style="background: linear-gradient(to top, #f2f7f5 50%, white 50%)"
+    >
+      <div class="container mx-auto relative">
+        <img src="../static/assets/banners...png" alt="" />
+        <button
+          class="check-eligibility"
+          style="
+            padding: 15px 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+
+            transform: translate(30%, -150%);
+          "
+        >
+          Check Eligibility
+        </button>
+      </div>
+    </section>
+
+    <!--Footer Section-->
+    <!-- <section class="container footer-social-media-icons">
+      <div class="footer-logo">
+        <img src="{{url_for('static',filename='assets/logo2.png')}}"
+             alt="Get My Claims Logo" />
+      </div>
+      <div class="footer-icons">
+        <img src="{{url_for('static',filename='assets/instagram.png')}}"
+             alt="Instagram" />
+        <img src="{{url_for('static',filename='assets/twitter.png')}}"
+             alt="Twitter" />
+        <img src="{{url_for('static',filename='assets/facebook.png')}}"
+             alt="Facebook" />
+        <img src="{{url_for('static',filename='assets/threads.png')}}"
+             alt="Threads" />
+      </div>
+    </section> -->
+
+    <!-- Multi-Column Footer Section -->
+    <!-- <footer class="multi-column-footer">
+      <div class="footer-content2 container">
+        <div class="footer-column">
+          <h3 class="footerH3">KNOW YOUR RIGHTS</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>KNOW YOUR RIGHTS</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/kyr">Air passenger rights</a></li>
+                <li><a href="/kyr">Flight delay compensation</a></li>
+                <li><a href="/kyr">Flight cancellation compensation</a></li>
+                <li><a href="/kyr">Missed connection</a></li>
+                <li><a href="/kyr">Denied boarding compensation</a></li>
+                <li><a href="/kyr">Airline strike compensation</a></li>
+                <li><a href="/kyr">Airlines</a></li>
+                <li><a href="/kyr">Airports</a></li>
+                <li><a href="/kyr">Flight refund</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3 class="footerH3">OUR COMPANY</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>OUR COMPANY</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/about">About us</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/partner">Become a partner</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footerH3">SUPPORT</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>SUPPORT</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/help">Help</a></li>
+                <li><a href="/fees">Our fees</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footerH3">OUR PRODUCTS</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>OUR PRODUCTS</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/">Check your compensation</a></li>
+                <li><a href="/refer">Refer a friend</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3 class="footerH3">OTHERS</h3>
+          <div class="accordion">
+            <button class="accordion-button">
+              <h3>OTHERS</h3>
+              <svg viewBox="0 0 24 24"
+                   class="accordion-icon">
+                <path fill="currentColor"
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li><a href="/T&C">Terms and Conditions</a></li>
+                <li><a href="/policy">Privacy Policy</a></li>
+                <li><a href="/cookies">Cookies</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+    <footer class="bg-[#f2f7f5]">
+      <section class="py-20 relative">
+        <div class="container mx-auto p-2">
+          <div class="flex justify-between lg:flex-row flex-col lg:gap-0 gap-8">
+            <div class=" ">
+              <img
+                src="../static/assets/gncLogo.png"
+                alt=""
+                class="w-[40%] pb-5"
+              />
+              <p class="lg:w-[50%] !text-[20px] font-medium leading-[24px]">
+                Flight Delayed or Cancelled?<br />
+                Don't let your cash fly away.<br />
+                Claim Now and get what you're owed!
+              </p>
+            </div>
+            <div class="w-full flex lg:justify-end gap-5">
+              <a
+                href="https://www.facebook.com/share/FTovYP4P1vxifv5a/?mibextid=LQQJ4d"
+              >
+                <img
+                  src="../static/assets/facebook.png"
+                  alt="facebook"
+                  class="w-[25px] h-[30px]"
+                />
+              </a>
+              <a href="https://x.com/getmyclaims">
+                <img
+                  src="../static/assets/twitter.png"
+                  alt="Twitter"
+                  class="w-[25px] h-[30px]"
+                />
+              </a>
+              <img
+                src="../static/assets/threads.png"
+                alt="threads"
+                class="w-[30px] h-[30px]"
+              />
+
+              <a
+                href="https://www.instagram.com/getmyclaims/profilecard/?igsh=MThxeWQ3YjN5OGZuZg=="
+              >
+                <img
+                  src="../static/assets/instagram.png"
+                  alt="instagram"
+                  class="w-[35px] h-[30px]"
+                />
+              </a>
+            </div>
+          </div>
+          <div></div>
+        </div>
+      </section>
+      <div class="justify-center flex">
+        <hr class="border-[1px] border-[#c5c9c7] w-[100%]" />
+      </div>
+      <div class="container mx-auto relative lg:block hidden p-2 mt-[-2rem]">
+        <img
+          src="../static/assets/GMC_Logomark.png"
+          alt=""
+          class="w-[25%] opacity-25 absolute right-0 top-[30%]"
+        />
+        <div class="flex flex-row justify-between py-10 mb-20">
+          <div>
+            <p class="uppercase font-bold">Know your right</p>
+            <div class="pt-5">
+              <div class="flex flex-col gap-3">
+                <div><a href="/kyr">Air passenger rights</a></div>
+                <div><a href="/kyr">Flight delay compensation</a></div>
+                <div><a href="/kyr">Flight cancellation compensation</a></div>
+                <div><a href="/kyr">Missed connection</a></div>
+                <div><a href="/kyr">Denied boarding compensation</a></div>
+                <div><a href="/kyr">Airline strike compensation</a></div>
+                <div><a href="/kyr">Airlines</a></div>
+                <div><a href="/kyr">Airports</a></div>
+                <div><a href="/kyr">Flight refund</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-8">
+            <div>
+              <div>
+                <p class="uppercase font-bold">Our Company</p>
+                <div class="pt-5">
+                  <div class="flex flex-col gap-3">
+                    <div><a href="/about">About us</a></div>
+                    <div><a href="#">Blog</a></div>
+                    <div><a href="/partner">Become a partner</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="uppercase font-bold">Support</p>
+              <div class="pt-5">
+                <div class="flex flex-col gap-3">
+                  <div><a href="/help">Help</a></div>
+                  <div><a href="/fees">Our fees</a></div>
+                  <div><a href="/contact">Contact Us</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="uppercase font-bold">Our Product</p>
+            <div class="pt-5">
+              <div class="flex flex-col gap-3">
+                <div><a href="/">Check your compensation</a></div>
+                <div><a href="#">Refer a friend</a></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="uppercase font-bold">Others</p>
+            <div class="pt-5">
+              <div class="flex flex-col gap-3">
+                <div><a href="/T&C">Terms and Conditions</a></div>
+                <div><a href="/policy">Privacy Policy</a></div>
+                <div><a href="/cookies">Cookies</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mx-auto hidden lg:block">
+        <div class="justify- flex py-1">
+          <hr class="border-[1px] border-[#c5c9c7] w-[100%]" />
+        </div>
+        <div class="flex flex-row justify-center">
+          <p class="!text-[16px]">Copyright &copy; 2024 getmyClaim</p>
+        </div>
+      </div>
+    </footer>
+    <div class="accordion-container w-full flex flex-col block xl:hidden">
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Know your right
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div>
+              <a href="/kyr" class="hover:underline">Air passenger rights</a>
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Flight delay compensation</a
+              >
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Flight cancellation compensation</a
+              >
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline">Missed connection</a>
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Denied boarding compensation</a
+              >
+            </div>
+            <div>
+              <a href="/kyr" class="hover:underline"
+                >Airline strike compensation</a
+              >
+            </div>
+            <div><a href="/kyr" class="hover:underline">Airlines</a></div>
+            <div><a href="/kyr" class="hover:underline">Airports</a></div>
+            <div><a href="/kyr" class="hover:underline">Flight refund</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Our Company
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div><a href="/about" class="hover:underline">About us</a></div>
+            <div><a href="/" class="hover:underline">Blog</a></div>
+            <div>
+              <a href="/partner" class="hover:underline">Become a partner</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Support
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div><a href="/help" class="hover:underline">Help</a></div>
+            <div><a href="/fees" class="hover:underline">Our fees</a></div>
+            <div><a href="/contact" class="hover:underline">Contact Us</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section border-b-[1px]">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Our Product
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div>
+              <a href="/" class="hover:underline">Check your compensation</a>
+            </div>
+            <div>
+              <a href="#" class="hover:underline">Refer a friend</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section">
+        <p
+          class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center"
+        >
+          Others
+          <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+        </p>
+        <div class="accordion-contentmb hidden p-4">
+          <div class="flex flex-col gap-3">
+            <div>
+              <a href="/T&C" class="hover:underline">Terms and Conditions</a>
+            </div>
+            <div>
+              <a href="/policy" class="hover:underline">Privacy Policy</a>
+            </div>
+            <div><a href="/cookies" class="hover:underline">Cookies</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto lg:hidden block bg-[#f2f7f5]">
+      <div class="justify- flex">
+        <hr class="border border-[#c5c9c7] w-[100%]" />
+      </div>
+      <div class="flex flex-row justify-center">
+        <p class="!text-[16px]">Copyright &copy; 2024 getmyClaim</p>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("nav-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("nav-links").classList.toggle("open");
+          document.getElementById("logIn").style.display = "block";
+        });
+
+      window.addEventListener("scroll", () => {
+        const dropdown_content_toggle =
+          document.getElementById("dropdown-content");
+
+        dropdown_content_toggle.style.display = "none";
+
+        document.getElementById("nav-links").classList.remove("open");
+      });
+
+      document.querySelectorAll(".dropbtn").forEach((item) => {
+        item.addEventListener("click", function () {
+          // Toggle the 'active' class on the clicked item
+          this.classList.toggle("active");
+
+          // Get the associated content
+          const content = this.nextElementSibling;
+
+          // Toggle the display of the content
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      });
+
+      // why choose script
+
+      const comparisonContent = document.querySelector(".comparison-content");
+
+      // Mouse down event
+      comparisonContent.addEventListener("mousedown", (e) => {
+        isDown = true;
+        comparisonContent.classList.add("active"); // Add an active class if you want to style the dragging state
+        startX = e.pageX - comparisonContent.offsetLeft;
+        scrollLeft = comparisonContent.scrollLeft;
+      });
+
+      // Mouse leave event (for when the mouse leaves the carousel while dragging)
+      comparisonContent.addEventListener("mouseleave", () => {
+        isDown = false;
+        comparisonContent.classList.remove("active");
+      });
+
+      // Mouse up event (stops scrolling)
+      comparisonContent.addEventListener("mouseup", () => {
+        isDown = false;
+        comparisonContent.classList.remove("active");
+      });
+
+      // Mouse move event (scrolling logic)
+      comparisonContent.addEventListener("mousemove", (e) => {
+        if (!isDown) return; // Stop the function if not holding the mouse
+        e.preventDefault();
+        const x = e.pageX - comparisonContent.offsetLeft;
+        const walk = (x - startX) * 2; // Multiply for faster scroll
+        comparisonContent.scrollLeft = scrollLeft - walk;
+      });
+
+      // Touch events for mobile swipe scrolling
+      comparisonContent.addEventListener("touchstart", (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - comparisonContent.offsetLeft;
+        scrollLeft = comparisonContent.scrollLeft;
+      });
+
+      comparisonContent.addEventListener("touchend", () => {
+        isDown = false;
+      });
+
+      comparisonContent.addEventListener("touchmove", (e) => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - comparisonContent.offsetLeft;
+        const walk = (x - startX) * 2;
+        comparisonContent.scrollLeft = scrollLeft - walk;
+      });
+
+      // Toggle functionality for accordion
+      const accordionButtons = document.querySelectorAll(".accordion-button");
+
+      accordionButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const expanded =
+            button.getAttribute("aria-expanded") === "true" || false;
+          button.setAttribute("aria-expanded", !expanded);
+
+          const content = button.nextElementSibling;
+          if (!expanded) {
+            content.style.maxHeight = content.scrollHeight + "px";
+          } else {
+            content.style.maxHeight = 0;
+          }
+        });
+      });
+    </script>
+
+    <script>
+      const accordionHeaders = document.querySelectorAll(
+        ".accordion-headerfoot"
+      );
+      const accordionContents = document.querySelectorAll(
+        ".accordion-contentmb"
+      );
+      const accordionIcons = document.querySelectorAll(".accordion-icon");
+
+      accordionHeaders.forEach((header, index) => {
+        header.addEventListener("click", () => {
+          accordionContents.forEach((content, i) => {
+            if (i !== index) {
+              content.classList.add("hidden");
+              accordionIcons[i].classList.remove("fa-angle-up");
+              accordionIcons[i].classList.add("fa-angle-down");
+            }
+          });
+
+          accordionContents[index].classList.toggle("hidden");
+
+          const isOpen = !accordionContents[index].classList.contains("hidden");
+          accordionIcons[index].classList.toggle("fa-angle-down", !isOpen);
+          accordionIcons[index].classList.toggle("fa-angle-up", isOpen);
+        });
+      });
+    </script>
+  </body>
+</html>

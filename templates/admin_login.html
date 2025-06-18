@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get My Claims</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Set the whole background color to white */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #f2f7f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 100px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f2f7f5;
+    border-radius: 25px;
+    padding: 30px 20px;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 20px 20px;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+    
+}
+
+nav ul li a:hover {
+    background-color: #27ae60;
+}
+
+.language-login {
+    display: flex;
+    align-items: center;
+}
+
+.language-select {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.language-select img {
+    height: 35px;
+    margin-right: 0px;
+}
+
+.login {
+    padding: 10px 20px;
+    border: 2px solid #27ae60;
+    background-color: white;
+    color: #27ae60;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login:hover {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* Container for the form */
+.form-container {
+    width: 300px;
+    margin: 50px auto;  
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    
+    background-color: #f9f9f9;
+}
+
+/* Styling the labels */
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Styling the input fields */
+.form-container input[type="text"],
+.form-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Styling the submit button */
+.form-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Hover effect for the button */
+.form-container button[type="submit"]:hover {
+    background-color: #27ae60;
+}
+
+
+.footer-section {
+    background-color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 0%;
+}
+
+.footer-logo img {
+    max-width: 300px; /* Adjust size as needed */
+    padding: 0%;
+    margin: 0%;
+}
+
+.footer-text {
+    flex-grow: 1;
+    margin: 0 20px;
+    color: #555;
+}
+
+.footer-text p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.footer-icons img {
+    margin: 0 10px;
+    width: 30px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+}
+
+
+.multi-column-footer {
+    background-color: #f9f9f9;
+    padding: 50px;
+    text-align: left;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.company {
+    align-items: center;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.footer-column h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1em;
+}
+
+.footer-column ul li a:hover {
+    color: #27ae60;
+}
+
+/* Mobile Responsive Code */
+@media (max-width: 768px) {
+    header {
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    nav ul {
+        flex-direction: row;
+        padding: 0px;
+        margin-top: 20px;
+    }
+
+    nav ul li {
+        margin: 0 0;
+    }
+
+    .language-login {
+        flex-direction: row;
+        margin-top: 20px;
+    }
+
+    .form-container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-logo {
+        margin-bottom: 20px;
+    }
+
+    .footer-text {
+        margin: 20px 0;
+    }
+
+    .multi-column-footer {
+        padding: 20px;
+    }
+
+    .footer-column {
+        margin: 20px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li a {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .login {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .form-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .form-container label {
+        font-size: 14px;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="password"] {
+        padding: 8px;
+    }
+
+    .form-container button[type="submit"] {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .footer-logo img {
+        max-width: 200px;
+    }
+
+    .footer-column h3 {
+        font-size: 1.1em;
+    }
+
+    .footer-column ul li a {
+        font-size: 0.9em;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('landing') }}">
+                <img src="{{ url_for('static', filename='assets/logo22.png') }}" alt="Get My Claims">
+            </a>
+            
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#">Get My Claim</a></li>
+
+                <li><a href="{{ url_for('kyr') }}">Know Your Rights</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="language-login">
+            <div class="language-select">
+                <img src="{{ url_for('static', filename='assets/lang.png') }}" alt="Language">
+                
+            </div>
+            <a href="{{ url_for('login') }}" class="login" >Log in</a>
+        </div>
+    </header>
+
+
+    <div class="form-container" style="background-color:white;">
+		<h2>Admin Login</h2>
+		<form method="POST" action="{{ url_for('admin_login') }}" style="max-width: 400px; margin: 0 auto; padding: 20px; background-color: #f2f7f5; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <div style="margin-bottom: 15px;">
+                <label for="email" style="display: block; font-weight: bold; margin-bottom: 5px;">Email:</label>
+                <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="password" style="display: block; font-weight: bold; margin-bottom: 5px;">Password:</label>
+                <input type="password" name="password" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+            </div>
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #27ae60; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                Login
+            </button>
+        </form>
+        
+</div>
+
+
+
+<!--Footer Section-->
+<section>
+    <div class="footer-logo">
+            <img src="{{ url_for('static', filename='assets/logo22.png') }}" alt="Get My Claims Logo">
+        </div>
+</section>
+
+<footer class="footer-section">
+    <div class="footer-content">
+        
+        <div class="footer-text">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
+        </div>
+        <div class="footer-icons">
+            <img src="{{ url_for('static', filename='assets/Instagram.png') }}" alt="Instagram">
+            <img src="{{ url_for('static', filename='assets/Twitter.png') }}" alt="Twitter">
+            <img src="{{ url_for('static', filename='assets/Facebook.png') }}" alt="Facebook">
+            <img src="{{ url_for('static', filename='assets/Threads.png') }}" alt="Threads">
+        </div>
+    </div>
+</footer>
+
+
+<!-- Multi-Column Footer Section -->
+<footer class="multi-column-footer">
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>KNOW YOUR RIGHTS</h3>
+            <ul>
+                <li><a href="#">Air passenger rights</a></li>
+                <li><a href="#">Flight delay compensation</a></li>
+                <li><a href="#">Flight cancellation compensation</a></li>
+                <li><a href="#">Missed connection</a></li>
+                <li><a href="#">Denied boarding compensation</a></li>
+                <li><a href="#">Airline strike compensation</a></li>
+                <li><a href="#">Airlines</a></li>
+                <li><a href="#">Airports</a></li>
+                <li><a href="#">Flight refund</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <div class="company">
+            <h3>OUR COMPANY</h3>
+            <ul>
+                <li><a href="{{ url_for('about') }}">About us</a></li>
+                <li><a href="{{ url_for('blog') }}">Blog</a></li>
+                <li><a href="{{ url_for('partner') }}">Become a partner</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="footer-column">
+            <h3>SUPPORT</h3>
+            <ul>
+                <li><a href="{{ url_for('help') }}">Help</a></li>
+                <li><a href="{{ url_for('fees') }}">Our fees</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>OUR PRODUCTS</h3>
+            <ul>
+                <li><a href="#">Check your compensation</a></li>
+                <li><a href="{{ url_for('refer') }}">Refer a friend</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>OTHERS</h3>
+            <ul>
+                <li><a href="{{ url_for('TC') }}">Terms and Conditions</a></li>
+                <li><a href="{{ url_for('policy') }}">Privacy Policy</a></li>
+                <li><a href="{{ url_for('cookies') }}">Cookies</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+
+
+</body>
+</html>
+
+

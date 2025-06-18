@@ -1,0 +1,859 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Set the whole background color to white */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 100px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f2f7f5;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #ffffff;
+}
+
+.language-login {
+    display: flex;
+    align-items: center;
+}
+
+.language-select {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.language-select img {
+    height: 35px;
+    margin-right: 0px;
+}
+
+.login {
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.main-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #f9f9f9;
+}
+
+.content {
+    max-width: 50%;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.highlight {
+    color: #27ae60;
+}
+
+p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.compensation {
+    font-weight: bold;
+    color: #27ae60;
+}
+
+.no-fee {
+    color: #27ae60;
+}
+
+.know-rights-btn {
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.know-rights-btn:hover {
+    background-color: #0056b3;
+}
+
+.form {
+    background-color: #f2f7f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 40%;
+}
+
+.form-header {
+    background-color: #27ae60;
+    color: white;
+    padding: 10px;
+    border-radius: 20px 20px 0px 0px;
+    text-align: left;
+    font-size: 1.2em;
+    margin-bottom: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 150px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.form-group label img {
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px; /* Adjust spacing as needed */
+}
+
+.input-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Adjust the size as needed */
+    pointer-events: none; /* Prevent the icon from blocking input clicks */
+}
+
+.input-container input {
+    width: 100%; /* Adjust width as needed */
+    padding-left: 40px; /* Adjust based on the icon's width and margin */
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.check-compensation-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.check-compensation-btn:hover {
+    background-color: #0056b3;
+}
+
+.or-divider {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.2em;
+    color: #999;
+}
+
+.upload-group {
+    text-align: center;
+}
+
+.upload-group label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    cursor: pointer;
+}
+
+.upload-group label img {
+    margin-right: 10px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.bold-text {
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+.benefits-section {
+    display: flex;
+    padding: 50px;
+    background-color: #fff;
+}
+
+.benefits-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.benefits-image {
+    position: relative;
+    width: 50%;
+}
+
+.benefits-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.benefits-labels {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.label {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.label img {
+    margin-right: 10px;
+}
+
+.benefits-text {
+    width: 45%;
+    padding-left: 20px;
+}
+
+.benefits-text h2 {
+    color: #27ae60;
+    margin-bottom: 10px;
+}
+
+.benefits-text h3 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.benefits-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.benefits-text ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.benefits-text ul li:before {
+    content: '✔';
+    color: #27ae60;
+    margin-right: 10px;
+}
+
+.flight-problems-section {
+    display: flex;
+    padding: 50px;
+    background-color: #f9f9f9;
+}
+
+.flight-problems-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.flight-problems-text {
+    width: 50%;
+}
+
+.flight-problems-text h2 {
+    font-size: 1.5em;
+    color: #27ae60;
+    margin-bottom: 10px;
+}
+
+.flight-problems-text h3 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.flight-problems-text p {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.flight-problems-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax for card size */
+    gap: 20px; /* Adjust gap between cards */
+    padding: 20px; /* Adjust padding around the grid */
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.card h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1em;
+    color: #555;
+}
+
+
+.steps-section {
+    padding: 50px;
+    background-color: #f2f7f4;
+    text-align: center;
+}
+
+.steps-section h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.steps-section h2 {
+    color: #27ae60;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.steps-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.step {
+    text-align: center;
+    width: 30%;
+}
+
+.step-icon {
+    background-color: #27ae60;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 15%;
+    align-items: center;
+    margin-left: 40%;
+}
+
+.step h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.step p {
+    color: #777;
+    font-size: 1em;
+}
+
+.get-claim-btn {
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.get-claim-btn:hover {
+    background-color: #0056b3;
+}
+
+.featured-section {
+    background-color: #f2f7f4;
+    text-align: center;
+    padding: 20px;
+}
+
+.featured-text {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.featured-logos img {
+    margin: 0 20px;
+    height: 40px; /* Adjust the height according to your preference */
+    vertical-align: middle;
+}
+
+.no-win-no-fee-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    background-color: white;
+    border-radius: 50;
+}
+
+.no-win-no-fee-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    gap: 10%;
+}
+
+.text-content {
+    max-width: 50%;
+}
+
+.text-content h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.get-my-claims-btn {
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.get-my-claims-btn:hover {
+    background-color: #0056b3;
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.testimonials-section {
+    padding: 50px;
+    background-color: #f9f9f9;
+    text-align: left;
+}
+
+.testimonials-section h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.testimonials-content {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.testimonials-scroller {
+    display: inline-block;
+    animation: scroll 12s linear infinite;
+}
+
+.testimonial {
+    display: inline-block;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    vertical-align: top;
+    width: 300px;
+}
+
+.testimonial-image {
+    position: relative;
+}
+
+.testimonial-image img {
+    border-radius: 10px;
+    width: 100%;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.play-button:before {
+    content: '▶';
+    color: white;
+    font-size: 24px;
+}
+
+.testimonial h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.rating span {
+    font-size: 1.5em;
+    color: gold;
+}
+
+.testimonial p {
+    font-size: 0.9em;
+    color: #555;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+.why-choose-section {
+    padding: 50px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.why-choose-section h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.why-choose-section h2 span {
+    color: #27ae60;
+}
+
+.comparison-content {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.column {
+    width: 45%;
+    padding: 20px;
+    margin: 5%;
+}
+
+.column h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.column h3 span {
+    color: #27ae60;
+}
+
+.column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.column ul li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.column ul li img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.column ul li div {
+    text-align: left;
+}
+
+.column ul li h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.column ul li p {
+    font-size: 1em;
+    color: #555;
+}
+
+.get-my-claim-btn {
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-left: 50%;
+}
+
+.get-my-claim-btn:hover {
+    background-color: #0056b3;
+}
+
+.faq-section {
+    padding: 50px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.faq-section h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.faq-section h2 span {
+    color: #27ae60;
+}
+
+.faq-section p {
+    font-size: 1em;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.faq-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-item {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question:hover {
+    background-color: #e9e9e9;
+}
+
+.faq-answer {
+    display: none;
+    padding: 15px;
+    border-top: 1px solid #e9e9e9;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+.icon {
+    font-size: 1.5em;
+}
+
+
+.image-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    background-color: #f9f9f9; /* Adjust background color as needed */
+}
+
+.image-section img {
+    max-width: 80%; /* Adjust max-width as needed */
+    height: auto;
+    border-radius: 10px; /* Optional: add border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for a better look */
+}
+
+.footer-section {
+    background-color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 0%;
+}
+
+.footer-logo img {
+    max-width: 300px; /* Adjust size as needed */
+    padding: 0%;
+    margin: 0%;
+}
+
+.footer-text {
+    flex-grow: 1;
+    margin: 0 20px;
+    color: #555;
+}
+
+.footer-text p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.footer-icons img {
+    margin: 0 10px;
+    width: 30px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+}
+
+
+.multi-column-footer {
+    background-color: #f9f9f9;
+    padding: 50px;
+    text-align: left;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.company {
+    align-items: center;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.footer-column h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1em;
+}
+
+.footer-column ul li a:hover {
+    color: #27ae60;
+}

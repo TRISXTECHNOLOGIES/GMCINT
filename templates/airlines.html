@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet" />
+    <title>Airlines</title>
+
+    <style>
+      
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Set the whole background color to white */
+}
+
+html,body{
+  overflow-x: hidden;
+}
+
+.container1{
+  max-width: 1280px!important;
+  margin-inline: auto;
+  overflow: hidden; 
+  /* padding-top: 40px; */
+}
+
+.container{
+  max-width: 1280px!important;
+  margin-inline: auto;
+  overflow: hidden; 
+  /* padding-top: 40px; */
+}
+
+  /* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Default styling for sidebar links */
+.sidebar ul li a {
+  color: green;
+  text-decoration: none;
+}
+
+/* Active state styling for sidebar links */
+.sidebar ul li.active a {
+  color: green !important;
+  font-weight: bold;
+}
+
+
+
+
+/* header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    flex-direction: column;
+} */
+
+/* General Navbar Styles */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
+  background-color: white;
+  position: relative;
+}
+
+.logo img {
+  height: 130px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: #f2f7f5;
+  border-radius: 25px;
+  padding: 15px 15px;
+  
+}
+
+nav ul li {
+  /* margin: 0 20px; */
+  text-align: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 15px 20px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #ffffff;
+}
+
+.language-login {
+  display: flex;
+  align-items: center;
+}
+
+.language-select {
+  margin-right: 20px;
+}
+
+.language-select img {
+  height: 25px;
+}
+
+.login {
+  padding: 10px 20px;
+  border: 2px solid #007bff;
+  background-color: white;
+  color: #007bff;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Dropdown for Know Your Rights */
+.dropdown {
+  position: relative;
+  z-index: 1000;
+}
+
+.dropdown-content {
+  display: none;
+  position: fixed;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  z-index: 999;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  /* border-bottom: 1px solid #f2f2f2; */
+}
+
+.dropdown-content a:hover {
+  background-color: #f2f7f5;
+}
+
+.dropbtn::after {
+  content: "▼";
+
+  margin-left: 10px;
+}
+
+.dropbtn.active::after {
+  content: "▲";
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover a {
+  background-color: #fff;
+}
+
+/* Mobile Styles */
+.nav-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 991px) {
+  .nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 24px;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    top: 95px;
+    left: 0;
+    width: 100%;
+
+    z-index: 999;
+    border: none;
+    border-radius: 0%;
+    align-items: center;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  nav ul li {
+    text-align: left;
+  }
+
+  .dropdown-content {
+    position: static;
+    border: none;
+  }
+
+  .dropdown-content a {
+    padding: 10px 15px;
+  }
+
+  .language-login {
+    display: none;
+    position: fixed;
+    background-color: white;
+    top: 295px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    padding-bottom: 20px;
+    flex-direction: column;
+  }
+
+  .language-login.open{
+    display: flex;
+  }
+}
+
+/* Reduce font size for smaller screens */
+@media screen and (max-width: 1096px) {
+  nav ul li a {
+    font-size: 12px;
+  }
+}
+
+
+
+    body,html {
+        overflow-x: hidden;
+      }
+
+
+
+  .main-content p{
+    line-height: 25px;
+  }
+
+  /* .main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+}
+
+.logo img {
+    height: 80px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f2f7f5;
+    border-radius: 25px;
+    padding: 15px 15px;
+}
+
+nav ul li {
+    margin: 0 20px;
+    text-align: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 15px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #ffffff;
+}
+
+.language-login {
+    display: flex;
+    align-items: center;
+}
+
+.language-select {
+    margin-right: 20px;
+}
+
+.language-select img {
+    height: 25px;
+}
+
+.login {
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login:hover {
+    background-color: #007bff;
+    color: white;
+} */
+
+/* Mobile Styles */
+/* .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+} */
+
+/* Responsive Styling */
+/* @media screen and (max-width: 991px) {
+
+    html,body{
+        overflow-x: hidden;
+    }
+
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: white;
+        top: 85px;
+        left: 0;
+        width: 100%;
+        
+        z-index: 999;
+        border: none;
+        border-radius: 0%;
+    }
+
+    .main-nav{
+        padding: 0px 40px !important;
+        padding-left: 30px !important;
+    }
+
+    nav ul{
+        padding: 0px 0px !important;
+    }
+
+    
+    .language-login{
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: white;
+        top: 237px;
+        left: 0;
+        padding-bottom: 30px;
+        
+        gap: 10px;
+        width: 100%;
+        
+        z-index: 999;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .language-login {
+        display: none;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+    .language-login.open{
+        display: flex;
+    }
+}
+
+@media screen and (max-width:1096px) {
+    nav ul li a{
+        font-size: 12px;
+    }
+
+   
+} */
+
+
+
+.content-section {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.content-container {
+    display: flex;
+    width: 100%;
+    
+}
+
+/* Sidebar Container */
+.sidebar {
+  width: 30%;
+}
+
+/* Sidebar List Styling */
+.sidebar ul {
+  background-color: #f2f7f5;
+  padding: 20px 40px;
+  list-style-type: none;
+  border-radius: 15px;
+}
+
+/* List Item Styling */
+.sidebar ul li {
+  padding: 15px 0;
+  cursor: pointer;
+  position: relative; /* For positioning the dot and lines */
+  padding-left: 25px; /* Space for dot */
+ 
+  
+}
+
+.sidebar ul li.active {
+  color: #36a266;
+  font-weight: bold;
+}
+
+/* Dot Styling */
+.dot {
+  position: absolute;
+  left: 0;
+  top: 15px;
+  height: 12px;
+  width: 12px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Active Dot Styling */
+.sidebar ul li.active .dot {
+  background-color: #36a266;
+}
+
+/* Line Above and Below the Dot */
+.sidebar ul li::before,
+.sidebar ul li::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  width: 2px;
+  background-color: #ddd;
+}
+
+.sidebar ul li::before {
+  top: -15px;
+  height: 15px;
+}
+
+.sidebar ul li::after {
+  top: 25px;
+  height: 100%;
+}
+
+.sidebar ul li:first-child::before {
+  content: none; /* Remove line above the first dot */
+}
+
+.sidebar ul li:last-child::after {
+  content: none; /* Remove line below the last dot */
+}
+
+
+.main-content {
+    width: 70%;
+    
+    /* float: right; */
+    /* margin-left: 31%; */
+
+    /* margin-top: 130px;  */
+    /* padding-right:  50px;  */
+}
+
+.main-content h1 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.eligibility-container h1{
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.main-content p {
+    margin-bottom: 20px;
+}
+
+.content-row {
+    /* display: flex; */
+    align-items: auto;
+    gap: 30px; /* Adjust the gap between text and image */
+}
+
+.content-image img {
+    
+    height: 100px;
+    width: 100px;
+}
+
+
+.content-image {
+    text-align: center;
+    margin: 20px 20px;
+}
+
+.content-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    height: auto;
+}
+
+.extra-content h2 {
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+.extra-content p {
+    margin-bottom: 20px;
+}
+
+
+.cta-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff;
+    
+}
+
+.cta-container {
+    background-color: #36a266;
+    color: #fff;
+    padding: 20px 100px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* max-width: 600px; */
+    /* width: 70%; */
+
+    
+}
+
+.cta-container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+
+.content-section {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.content-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.content-container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    padding: 50px;
+}
+
+.content-container p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+
+.eligibility-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #fff;
+}
+
+.eligibility-container {
+    width: 100%;
+    
+    text-align: left;
+}
+
+.eligibility-container h1 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.eligibility-container p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+
+.compensation-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #fff;
+}
+
+.compensation-container {
+    width: 100%;
+    max-width: 1000px;
+    text-align: left;
+}
+
+.compensation-container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.compensation-container p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+
+
+/* Accordion styles */
+.accordion {
+  border-bottom: 1px solid #ccc;
+  /* margin-bottom: 10px; */
+}
+
+.accordion-button {
+  display: none; /* Hide accordion buttons by default for larger screens */
+  justify-content: space-between;
+  background: none;
+  border: none;
+  /* padding: 15px 0; */
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-family: Arial, sans-serif;
+}
+
+.accordion-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s;
+  /* margin-top: 13px; */
+}
+
+.accordion-content {
+  max-height: none;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-content ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.accordion-content a {
+  display: block;
+  margin: 30px 0;
+  color: #000000;
+  text-decoration: none;
+  padding-left: 10px;
+}
+
+.accordion-content a:hover {
+  color: #0056b3;
+}
+
+/* Rotate icon when accordion is open */
+.accordion-button[aria-expanded="true"] .accordion-icon {
+  transform: rotate(180deg);
+}
+
+/* When accordion is opened on small screens */
+.accordion-button[aria-expanded="true"] + .accordion-content {
+  max-height: 300px; /* Set max height for expanded state */
+}
+
+/* Accordion and responsive styles for smaller screens */
+
+@media screen and (min-width: 769px) {
+  .accordion {
+    border: none;
+  }
+}
+
+@media (max-width: 768px) {
+ 
+
+  .accordion-button {
+    display: flex; /* Display accordion buttons on smaller screens */
+  }
+
+  .accordion-content {
+    max-height: 0; /* Collapsed by default */
+  }
+}
+/* Mobile Responsive Code */
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  /* .logo img {
+    height: 100px;
+  } */
+
+  nav ul {
+    flex-direction: row;
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .login {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .banner-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .banner-section {
+    padding: 20px;
+  }
+
+  .faq-container {
+    max-width: 100%;
+    /* padding: 20px; */
+  }
+
+  .search-bar-section {
+    padding: 20px;
+  }
+
+ 
+  .link-column {
+    align-items: stretch;
+  }
+
+ 
+}
+
+@media (max-width: 480px) {
+  nav ul li a {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .banner-text {
+    font-size: 1.5em;
+  }
+
+  /* .sbc1 {
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+  } */
+
+  .banner-button {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
+
+  /* .faq-item {
+    flex-direction: column;
+    align-items: flex-start;
+  } */
+
+  .faq-item span,
+  .arrow {
+    font-size: 1em;
+  }
+
+  
+  .show-more {
+    font-size: 0.9em;
+  }
+
+  
+}
+
+
+@media screen and (max-width: 479px) {
+  
+
+  html,
+  body {
+    /* overflow-y: hidden; */
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 1.2em !important;
+  }
+
+  h2 {
+    font-size: 0.9em !important;
+  }
+
+  h3 {
+    font-size: 0.7em !important;
+  }
+
+  /* p {
+    font-size: 0.7em !important;
+  } */
+
+  /* .accordion-content a {
+    font-size: 0.7em !important;
+  } */
+}
+
+
+
+/* Media queries */
+@media screen and (max-width:1025px) {
+    .main-content{
+        padding-right: 15px;
+    }
+
+    .sidebar{
+        height: 50vh;
+        margin-top: 10px;
+    }
+
+    /* .sidebar ul li{
+        padding: 7px 0px;
+    } */
+
+    
+}
+
+@media (max-width: 768px) {
+    /* header {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: row;
+        padding: 10px;
+        display: none;
+    } */
+
+    /* .logo img{
+        width: 50%;
+    } */
+
+    .content-section {
+        flex-direction: column;
+        
+    }
+
+    .sidebar {
+        /* width: 50%;
+        margin-bottom: 20px; */
+        display: none;
+    }
+
+    .sidebar li{
+        padding: 0;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0px;
+        padding: 20px ;
+    }
+
+    .compensation-table{
+        width: 95%;
+    }
+
+    
+}
+
+@media screen and (max-width:479px) {
+
+    /* html, body {
+        min-width: 100%;
+        overflow-x: hidden;
+      }
+       */
+    /* html,body{
+        overflow-x: hidden;
+    } */
+
+    .main-nav{
+        padding-left: 0px !important;
+        padding-right: 10px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    /* .main-content{
+        width: 100%;
+        padding-right: 20px !important;
+        padding-left: 15px !important;
+    } */
+
+    .main-content {
+        padding: 0px !important;
+        max-width: 308px;
+        /* box-sizing: border-box; */
+    }
+      
+    .content-row{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cta-container{
+      padding: 20px 20px;
+    }
+
+    .extra-content{
+        display: flex;
+        flex-direction: column;   
+    }
+
+    .compensation-section{
+        width: 100%;
+    }
+
+    
+    .cta-section{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cta-container{
+        border-radius: 15px;
+    }
+}
+
+    
+
+
+/* .header1 { */
+    /* position: fixed; */
+    
+    /* z-index: 1;
+    width: 3px;
+} */
+  
+  /* The progress container (grey background) */
+  /* .progress-container {
+    width: 5px;
+    height: 500px;
+    
+    padding-left: 20px;
+    padding-top: 47px;
+  } */
+  
+  /* The progress bar (scroll indicator) */
+  /* .progress-bar {
+    height: 100%;
+    background: #04AA6D;
+    width: 100%;
+  } */
+
+
+
+      h3 {
+        font-weight: 700 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header style="background-color: white">
+      <div class="main-nav container">
+        <!-- Logo Section -->
+        <div class="logo">
+          <a href="{{ url_for('landing') }}">
+            <img src="../static/assets/logo22.png" alt="Company Logo" />
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav style="margin-right: 30px">
+          <ul class="nav-links" id="nav-links">
+            <li><a href="/index1">Get My Claim</a></li>
+
+            <!-- Dropdown for Know Your Rights -->
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">Know Your Rights</a>
+              <div class="dropdown-content" id="dropdown-content">
+                <a href="../templates/kyr.html#Should Know "
+                  >Air passenger rights</a
+                >
+                <a href="../templates/kyr.html#Delay"
+                  >Flight delay compensation</a
+                >
+                <a href="../templates/kyr.html#Cancellation"
+                  >Flight cancellation compensation</a
+                >
+                <a href="../templates/kyr.html#Missed">Missed connection</a>
+                <a href="../templates/kyr.html#Overbooking">Overbooking compensation</a>
+                <a href="../templates/kyr.html#Denied"
+                  >Denied boarding compensation</a
+                >
+                <a href="../templates/kyr.html#Delayed"
+                  >Delayed baggage compensation</a
+                >
+                <a href="../templates/kyr.html#Strike"
+                  >Airline strike compensation</a
+                >
+                <!-- <a href="#">Passengers with disabilities</a>
+                <a href="#">Airlines</a>
+                <a href="#">Airports</a> -->
+              </div>
+            </li>
+
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li>
+              <a href="/login" class="login" id="logIn" style="display: none"
+                >Log in</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Language Selector and Login -->
+        <div class="language-login" id="language-login">
+          <!-- <div class="language-select">
+              <img src="../static/assets/lang.png" alt="Language" />
+            </div> -->
+          <a href="/login" class="login">Log in</a>
+        </div>
+
+        <!-- Mobile Navigation Toggle -->
+        <a class="nav-toggle" id="nav-toggle">☰</a>
+      </div>
+    </header>
+
+    <section class="content-section">
+      <div class="container1" style="display: flex; gap: 15px">
+        <div class="sidebar">
+          <div style="width: 100%">
+            <ul>
+              <li class="active"><span class="dot"></span> Your Rights with
+                Different Airlines</li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Air India"
+                  style="text-decoration: none; color: black">
+                  Claim compensation with Air India
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Austrian"
+                  style="text-decoration: none; color: black">
+                  Austrian Airlines
+
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Brussels"
+                  style="text-decoration: none; color: black">Brussels Airlines
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Czech" style="text-decoration: none; color: black">Czech Airlines
+
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Scandinavian" style="text-decoration: none; color: black">
+                  Scandinavian Airlines
+
+                </a>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <a href="#Finnair" style="text-decoration: none; color: black">
+                  Finnair
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#France
+                  "
+                  style="text-decoration: none; color: black">
+                  Air France
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Lufthansa"
+                  style="text-decoration: none; color: black">
+                  Lufthansa
+
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Lingus" style="text-decoration: none; color: black">
+                  Lingus
+
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Alitalia"
+                  style="text-decoration: none; color: black">
+                  Alitalia
+
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Dutch"
+                  style="text-decoration: none; color: black">
+                  KLM Royal Dutch Airlines
+
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Polish" style="text-decoration: none; color: black">
+                  LOT Polish Airlines
+
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Portugal"
+                  style="text-decoration: none; color: black">
+                  Portugal
+
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a
+                  href="#Iberia"
+                  style="text-decoration: none; color: black">
+                  Iberia
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#British" style="text-decoration: none; color: black">British Airways
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Virgin Atlantic" style="text-decoration: none; color: black">Virgin Atlantic
+
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#American Airlines"
+                  style="text-decoration: none; color: black">American Airlines
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#United" style="text-decoration: none; color: black">United Airlines
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Canada" style="text-decoration: none; color: black">Air Canada
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Turkish" style="text-decoration: none; color: black">Turkish Airlines
+                </a>
+              </li>
+
+              <li>
+                <span class="dot"></span>
+                <a href="#Emirates" style="text-decoration: none; color: black">Emirates
+                </a>
+              </li>
+
+              
+
+            
+
+            </ul>
+          </div>
+        </div>
+        <div class="main-content">
+          <h1 id="Different">
+            Understanding Your Rights with Different Airlines
+          </h1>
+          <div class="content-row">
+            <div>
+              <p>
+                Each airline has specific policies for handling flight
+                disruptions, but regulations like EC 261/2004 provide
+                standardized rights for passengers flying with EU-based airlines
+                or from an EU airport. Compensation amounts and eligibility
+                criteria can vary based on the airline and the specific
+                circumstances of your flight disruption.
+
+              </p>
+
+            </div>
+            <!-- <div class="extra-content"></div> -->
+
+            <section class="content-section">
+              <div>
+                <h1 id="Air India">Claim for flight delay or missed connection
+                  compensation with Air India
+                </h1>
+              </div>
+              <div class="content-container">
+
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with Air India. If your Air India flight is delayed by three
+                  hours or more, or if you miss a connection due to a delay, you
+                  may be entitled to compensation.
+
+                </p>
+
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1 id="Austrian">Claim for flight delay or missed connection
+                  compensation with Austrian Airlines
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with Austrian Airlines. We handle the process to secure your
+                  rightful compensation for delays and missed connections under
+                  EU regulations. You may be entitled to compensation.
+
+                </p>
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1 id="Brussels">Claim for flight delay or missed connection compensation with
+                  Brussels Airlines
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with Brussels Airlines. If your Brussels Airlines flight
+                  experiences significant delays or causes you to miss a
+                  connecting flight, you can claim compensation. You may be
+                  entitled to compensation.
+
+                </p>
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1 id="Czech">Claim for flight delay or missed connection
+                  compensation with Czech Airlines
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with Czech Airlines. Ensure you get the compensation you
+                  deserve for any disruptions to your Czech Airlines travel
+                  plans. You may be entitled to compensation.
+
+                </p>
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1
+                  id="Scandinavian">
+                  Claim for flight delay or missed connection compensation with
+                  Scandinavian Airlines
+
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with Scandinavian Airlines. If your Scandinavian Airlines
+                  flight is delayed or you miss a connection, we’ll help you
+                  claim compensation. You may be entitled to compensation.
+
+                </p>
+
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1
+                  id="Finnair">
+                  Claim for flight delay or missed connection compensation with
+                  Finnair
+                </h1>
+
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with Finnair. You could be eligible for compensation if your
+                  Finnair flight is delayed or if you miss a connecting flight.
+                  You may be entitled to compensation.
+
+                </p>
+
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1
+                  id="France">
+                  Claim for flight delay or missed connection compensation with
+                  Air France
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with Air France. We assist in claiming your compensation for
+                  any Air France flight delays or missed connections. You may be
+                  entitled to compensation.
+
+                </p>
+
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1
+                  id="Lufthansa">
+                  Claim for flight delay or missed connection compensation with
+                  Lufthansa
+
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with Lufthansa. Let us help you secure compensation for
+                  Lufthansa flight disruptions and missed connections. You may
+                  be entitled to compensation.
+
+                </p>
+
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1
+                  id="Lingus">
+                  Claim for flight delay or missed connection compensation with
+                  Aer Lingus
+
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with Aer Lingus. If your Aer Lingus flight is delayed or if
+                  you miss a connection, you may be entitled to compensation.
+
+                </p>
+
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1 id="Alitalia">Claim for flight delay or missed connection compensation with
+                  Alitalia
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with Alitalia. We help you claim the compensation you deserve
+                  if your Alitalia flight is delayed or if you miss a
+                  connection. You may be entitled to compensation.
+
+                </p>
+
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1 id="Dutch">Claim for flight delay or missed connection compensation with
+                  KLM Royal Dutch Airlines
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with KLM Royal Dutch Airlines. If your KLM flight is delayed
+                  by three hours or more, or if you miss a connection due to a
+                  delay, you may be entitled to compensation.
+
+                </p>
+
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1
+                  id="Polish">
+                  Claim for flight delay or missed connection compensation with
+                  LOT Polish Airlines
+
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with LOT Polish Airlines. Ensure you get the compensation you
+                  deserve for any disruptions to your LOT Polish Airlines travel
+                  plans. You may be entitled to compensation.
+
+                </p>
+
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1
+                  id="Portugal">
+                  Claim for flight delay or missed connection compensation with
+                  TAP Air Portugal
+
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with TAP Air Portugal. We assist you in claiming your
+                  compensation for any TAP Air Portugal flight delays or missed
+                  connections. You may be entitled to compensation.
+
+                </p>
+
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1
+                  id="Iberia">
+                  Claim for flight delay or missed connection compensation with
+                  Iberia
+
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with Iberia. If your Iberia flight experiences significant
+                  delays or causes you to miss a connecting flight, you can
+                  claim compensation. You may be entitled to compensation.
+                </p>
+
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1
+                  id="SWISS">
+                  Claim for flight delay or missed connection compensation with
+                  SWISS International Air Lines
+
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with SWISS International Air Lines. If your SWISS flight is
+                  delayed by three hours or more, or if you miss a connection
+                  due to a delay, you may be entitled to compensation.
+
+                </p>
+
+              </div>
+            </section>
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1
+                  id="British">
+                  Claim for flight delay or missed connection compensation with
+                  British Airways
+
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with British Airways. We handle the process to secure your
+                  rightful compensation for delays and missed connections under
+                  EU regulations. You may be entitled to compensation.
+                </p>
+
+              </div>
+            </section>
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1
+                  id="Virgin Atlantic">
+                  Claim for flight delay or missed connection compensation with
+                  Virgin Atlantic
+                  
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with British Airways. We handle the process to secure your
+                  rightful compensation for delays and missed connections under
+                  EU regulations. You may be entitled to compensation.
+                </p>
+
+              </div>
+            </section>
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1 id="American Airlines">
+                  Claim for flight delay or missed connection compensation with
+                  American Airlines
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections
+                  with American Airlines. If your American Airlines flight is
+                  delayed by three hours or more, or if you miss a connection
+                  due to a delay, you may be entitled to compensation.
+                </p>
+              </div>
+            </section>
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1 id="United">
+                  Claim for flight delay or missed connection compensation with
+                  United Airlines
+
+                </h1>
+                <p>
+
+                  Claim compensation for flight delays or missed connections
+                  with United Airlines. Ensure you get the compensation you
+                  deserve for any disruptions to your United Airlines travel
+                  plans. You may be entitled to compensation.
+
+                </p>
+              </div>
+
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1 id="Canada">
+                  Claim for flight delay or missed connection compensation with
+                  Air Canada
+
+                </h1>
+                <p>
+
+                  Claim compensation for flight delays or missed connections
+                  with Air Canada. We assist you in claiming your compensation
+                  for any Air Canada flight delays or missed connections. You
+                  may be entitled to compensation.
+
+                </p>
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1 id="Turkish">
+                  Claim for flight delay or missed connection compensation with Turkish Airlines
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections with Turkish Airlines. If your Turkish Airlines flight experiences significant delays or causes you to miss a connecting flight, you can claim compensation. You may be entitled to compensation.
+                </p>
+              </div>
+            </section>
+
+            <section class="eligibility-section">
+              <div class="eligibility-container">
+                <h1 id="Emirates">
+                  Claim for flight delay or missed connection compensation with Emirates
+                </h1>
+                <p>
+                  Claim compensation for flight delays or missed connections with Emirates. If your Emirates flight is delayed by three hours or more, or if you miss a connection due to a delay, you may be entitled to compensation.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <!-- Image Section -->
+      <section
+        class="py-10 footer-banner"
+        style="background: linear-gradient(to top, #f2f7f5 50%, white 50%)">
+        <div class="container mx-auto">
+          <img src="../static/assets/banner4.png" alt />
+        </div>
+        <!-- <img class="container"
+             src="{{url_for('static',filename='assets/secc.png')}}"
+             alt="Descriptive Alt Text" /> -->
+      </section>
+
+      
+      <footer class="bg-[#f2f7f5]">
+        <section class="py-20 relative">
+          <div class="container mx-auto p-2">
+            <div
+              class="flex justify-between lg:flex-row flex-col lg:gap-0 gap-8">
+              <div class=" ">
+                <img
+                  src="../static/assets/gncLogo.png"
+                  alt
+                  class="w-[40%] pb-5" />
+                <p class="lg:w-[50%] text-[20px] font-medium leading-[24px]">
+                  Flight Delayed or Cancelled?<br>
+                  Don't let your cash fly away.<br> Claim Now and get what you're owed!
+                </p>
+              </div>
+              <div class="w-full flex lg:justify-end gap-5">
+                <a href="https://www.facebook.com/share/FTovYP4P1vxifv5a/?mibextid=LQQJ4d"> <img src="../static/assets/facebook.png"
+                  alt="facebook"
+                  class="w-[25px] h-[30px]">
+             </a>
+             <a href="https://x.com/getmyclaims">   
+                 <img src="../static/assets/twitter.png"
+                  alt="Twitter"
+                  class="w-[25px] h-[30px]">
+             </a>
+             <img src="../static/assets/threads.png"
+                  alt="threads"
+                  class="w-[30px] h-[30px]">
+             
+             <a href="https://www.instagram.com/getmyclaims/profilecard/?igsh=MThxeWQ3YjN5OGZuZg=="> 
+               <img src="../static/assets/instagram.png"
+                  alt="instagram"
+                  class="w-[35px] h-[30px]">
+                 
+             </a>
+              </div>
+            </div>
+            <div></div>
+          </div>
+        </section>
+        <div class="justify-center flex">
+          <hr class="border-[1px] border-[#c5c9c7] w-[100%]" />
+        </div>
+        <div class="container mx-auto relative lg:block hidden p-2 mt-[-2rem]">
+          <img
+            src="../static/assets/GMC_Logomark.png"
+            alt
+            class="w-[25%] opacity-25 absolute right-0 top-[30%]" />
+          <div class="flex flex-row justify-between py-10 mb-20">
+            <div>
+              <p class="uppercase font-bold">Know your right</p>
+              <div class="pt-5">
+                <div class="flex flex-col gap-3">
+                  <div><a href="/kyr">Air passenger rights</a></div>
+                  <div><a href="/kyr">Flight delay compensation</a></div>
+                  <div><a href="/kyr">Flight cancellation compensation</a></div>
+                  <div><a href="/kyr">Missed connection</a></div>
+                  <div><a href="/kyr">Denied boarding compensation</a></div>
+                  <div><a href="/kyr">Airline strike compensation</a></div>
+                  <div><a href="/kyr">Airlines</a></div>
+                  <div><a href="/kyr">Airports</a></div>
+                  <div><a href="/kyr">Flight refund</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-8">
+              <div>
+                <div>
+                  <p class="uppercase font-bold">Our Company</p>
+                  <div class="pt-5">
+                    <div class="flex flex-col gap-3">
+                      <div><a href="/about">About us</a></div>
+                      <div><a href="#">Blog</a></div>
+                      <div><a href="/partner">Become a partner</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="uppercase font-bold">Support</p>
+                <div class="pt-5">
+                  <div class="flex flex-col gap-3">
+                    <div><a href="/help">Help</a></div>
+                    <div><a href="/fees">Our fees</a></div>
+                    <div><a href="/contact">Contact Us</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="uppercase font-bold">Our Product</p>
+              <div class="pt-5">
+                <div class="flex flex-col gap-3">
+                  <div><a href="/">Check your compensation</a></div>
+                  <div><a href="#">Refer a friend</a></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="uppercase font-bold">Others</p>
+              <div class="pt-5">
+                <div class="flex flex-col gap-3">
+                  <div><a href="/T&C">Terms and Conditions</a></div>
+                  <div><a href="/policy">Privacy Policy</a></div>
+                  <div><a href="/cookies">Cookies</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container mx-auto hidden lg:block">
+          <div class="justify- flex py-1">
+            <hr class="border-[1px] border-[#c5c9c7] w-[100%]" />
+          </div>
+          <div class="flex flex-row justify-center">
+            <p>Copyright &copy; 2024 getmyClaim</p>
+          </div>
+        </div>
+      </footer>
+      <div class="accordion-container w-full flex flex-col block xl:hidden">
+        <div class="accordion-section border-b-[1px]">
+          <p
+            class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center">
+            Know your right
+            <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+          </p>
+          <div class="accordion-contentmb hidden p-4">
+            <div class="flex flex-col gap-3">
+              <div>
+                <a href="/kyr" class="hover:underline">Air passenger rights</a>
+              </div>
+              <div>
+                <a href="/kyr" class="hover:underline">Flight delay
+                  compensation</a>
+              </div>
+              <div>
+                <a href="/kyr" class="hover:underline">Flight cancellation
+                  compensation</a>
+              </div>
+              <div>
+                <a href="/kyr" class="hover:underline">Missed connection</a>
+              </div>
+              <div>
+                <a href="/kyr" class="hover:underline">Denied boarding
+                  compensation</a>
+              </div>
+              <div>
+                <a href="/kyr" class="hover:underline">Airline strike
+                  compensation</a>
+              </div>
+              <div><a href="/kyr" class="hover:underline">Airlines</a></div>
+              <div><a href="/kyr" class="hover:underline">Airports</a></div>
+              <div><a href="/kyr" class="hover:underline">Flight
+                  refund</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-section border-b-[1px]">
+          <p
+            class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center">
+            Our Company
+            <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+          </p>
+          <div class="accordion-contentmb hidden p-4">
+            <div class="flex flex-col gap-3">
+              <div><a href="/about" class="hover:underline">About us</a></div>
+              <div><a href="/blog" class="hover:underline">Blog</a></div>
+              <div>
+                <a href="/partner" class="hover:underline">Become a partner</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-section border-b-[1px]">
+          <p
+            class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center">
+            Support
+            <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+          </p>
+          <div class="accordion-contentmb hidden p-4">
+            <div class="flex flex-col gap-3">
+              <div><a href="/help" class="hover:underline">Help</a></div>
+              <div><a href="/fees" class="hover:underline">Our fees</a></div>
+              <div><a href="/contact" class="hover:underline">Contact
+                  Us</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-section border-b-[1px]">
+          <p
+            class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center">
+            Our Product
+            <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+          </p>
+          <div class="accordion-contentmb hidden p-4">
+            <div class="flex flex-col gap-3">
+              <div>
+                <a href="/" class="hover:underline">Check your compensation</a>
+              </div>
+              <div>
+                <a href="/refer" class="hover:underline">Refer a friend</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-section">
+          <p
+            class="accordion-headerfoot uppercase font-medium bg-[#f2f7f5] p-4 cursor-pointer flex justify-between items-center">
+            Others
+            <i class="fa-solid fa-angle-down accordion-icon text-[#36AC57]"></i>
+          </p>
+          <div class="accordion-contentmb hidden p-4">
+            <div class="flex flex-col gap-3">
+              <div>
+                <a href="/T&C" class="hover:underline">Terms and Conditions</a>
+              </div>
+              <div>
+                <a href="/policy" class="hover:underline">Privacy Policy</a>
+              </div>
+              <div><a href="/cookies" class="hover:underline">Cookies</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mx-auto lg:hidden block bg-[#f2f7f5]">
+        <div class="justify- flex">
+          <hr class="border border-[#c5c9c7] w-[100%]" />
+        </div>
+        <div class="flex flex-row justify-center">
+          <p>Copyright &copy; 2024 getmyClaim</p>
+        </div>
+      </div>
+
+      <script>
+      document
+        .getElementById("nav-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("nav-links").classList.toggle("open");
+          document.getElementById("logIn").style.display = "block";
+        });
+
+
+        window.addEventListener("scroll",()=>{
+        const dropdown_content_toggle =
+        document.getElementById("dropdown-content");
+
+        dropdown_content_toggle.style.display = "none";
+
+        document.getElementById("nav-links").classList.remove("open")
+      })
+
+
+      document.querySelectorAll(".dropbtn").forEach((item) => {
+        item.addEventListener("click", function () {
+          // Toggle the 'active' class on the clicked item
+          this.classList.toggle("active");
+
+          // Get the associated content
+          const content = this.nextElementSibling;
+
+          // Toggle the display of the content
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      });
+
+
+
+      // Toggle accordion content on click
+      document.querySelectorAll(".accordion-toggle").forEach((item) => {
+        item.addEventListener("click", function () {
+          // Toggle the 'active' class on the clicked item
+          this.classList.toggle("active");
+
+          // Get the associated content
+          const content = this.nextElementSibling;
+
+          // Toggle the display of the content
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      });
+    </script>
+
+      <script>
+      const accordionHeaders = document.querySelectorAll(
+        ".accordion-headerfoot"
+      );
+      const accordionContents = document.querySelectorAll(
+        ".accordion-contentmb"
+      );
+      const accordionIcons = document.querySelectorAll(".accordion-icon");
+
+      accordionHeaders.forEach((header, index) => {
+        header.addEventListener("click", () => {
+          accordionContents.forEach((content, i) => {
+            if (i !== index) {
+              content.classList.add("hidden");
+              accordionIcons[i].classList.remove("fa-angle-up");
+              accordionIcons[i].classList.add("fa-angle-down");
+            }
+          });
+
+          accordionContents[index].classList.toggle("hidden");
+
+          const isOpen = !accordionContents[index].classList.contains("hidden");
+          accordionIcons[index].classList.toggle("fa-angle-down", !isOpen);
+          accordionIcons[index].classList.toggle("fa-angle-up", isOpen);
+        });
+      });
+
+
+      // Toggle functionality for accordion
+      const accordionButtons = document.querySelectorAll(".accordion-button");
+
+      accordionButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const expanded =
+            button.getAttribute("aria-expanded") === "true" || false;
+          button.setAttribute("aria-expanded", !expanded);
+
+          const content = button.nextElementSibling;
+          if (!expanded) {
+            content.style.maxHeight = content.scrollHeight + "px";
+          } else {
+            content.style.maxHeight = 0;
+          }
+        });
+      });
+    </script>
+
+      <script>
+  // Get all sidebar links and sections
+  const sidebarLinks = document.querySelectorAll(".sidebar ul li");
+  const sections = document.querySelectorAll(
+    ".main-content section, .main-content h1"
+  );
+
+  // Function to remove 'active' class from all links
+  function removeActiveClasses() {
+    sidebarLinks.forEach((link) => {
+      link.classList.remove("active");
+    });
+  }
+
+  // Function to add 'active' class to the current link
+  function addActiveClass(link) {
+    link.classList.add("active");
+  }
+
+  // Event listener for scrolling
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    // Determine which section is currently in the viewport
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= sectionTop - sectionHeight / 3) {
+        current = section.getAttribute("id");
+      }
+
+      const dropdown_content_toggle =
+        document.getElementById("dropdown-content");
+
+      dropdown_content_toggle.style.display = "none";
+    });
+
+    // Remove and add 'active' classes based on the current section
+    sidebarLinks.forEach((li) => {
+      const anchor = li.querySelector("a");
+      if (anchor && anchor.getAttribute("href") === `#${current}`) {
+        removeActiveClasses();
+        addActiveClass(li);
+      }
+    });
+  });
+
+  // Event listener for sidebar clicks to change the active link
+  sidebarLinks.forEach((li) => {
+    li.addEventListener("click", function () {
+      removeActiveClasses();
+      addActiveClass(this);
+    });
+  });
+</script>
+
+    </body>
+  </html>
